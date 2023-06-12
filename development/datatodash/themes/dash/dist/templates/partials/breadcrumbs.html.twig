@@ -1,0 +1,21 @@
+{% set crumbs = breadcrumbs.get() %}
+{% set breadcrumbs_config = config.plugins.breadcrumbs %}
+{% set divider = breadcrumbs_config.icon_divider_classes %}
+
+{% if crumbs | length > 1 or breadcrumbs_config.show_all %}
+<ul class="dd-breadcrumb breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+  {% for crumb in crumbs %}
+    {% if not loop.last %}
+      {% if crumb.routable %}
+  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <a href="{{ crumb.url }}" itemscope itemtype="http://schema.org/Thing" itemprop="item" itemid="{{ crumb.url }}">{{ crumb.menu }}</a>
+  </li>
+      {% endif %}
+    {% else %}
+  <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+    <span itemscope itemtype="http://schema.org/Thing" itemprop="item" itemid="{{ crumb.url }}">{{ crumb.menu }}</span>
+  </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

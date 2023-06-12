@@ -1,0 +1,1 @@
+﻿document.cookie = 'camefrom=brastemp.com.br';

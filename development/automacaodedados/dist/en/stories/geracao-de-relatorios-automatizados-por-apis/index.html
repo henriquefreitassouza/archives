@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>Creating automated reports through APIs | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="How to use APIs to automate report generation? | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/geracao-de-relatorios-automatizados-por-apis/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="Creating automated reports through APIs | Data Automation">
+<meta property="og:description" content="How to use APIs to automate report generation? | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-11-19 13:13:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-10-17 13:13:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="6 minutes" />
+
+<meta property="article:tag" content="Automation" />
+<meta property="article:section" content="Automation" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/geracao-de-relatorios-automatizados-por-apis/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/geracao-de-relatorios-automatizados-por-apis/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Dashboard being presented in a computer.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/geracao-de-relatorios-automatizados-por-apis/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/geracao-de-relatorios-automatizados-por-apis/images/thumbnail_hubc2768ad4dea027bde041fbc53f85446_108416_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-11-19 13:13:00 &#43;0000 UTC" itemprop="datePublished">19/11/2017 13:13:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/automation" itemprop="articleSection">automation</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Creating automated reports through APIs</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Recently I had to build a repository with data that would feed some reports. The sources that would need to be ingested were scattered at least across 6 different systems and reunite all that information weekly was time consuming. I&rsquo;ve figured out a way to make that process somewhat more efficient.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/geracao-de-relatorios-automatizados-por-apis/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Creating automated reports through APIs</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 6 minutes</strong>
+        <p>Published on September 19, 2017. Updated on October 17, 2021.</p>
+<p>Automate things is essential to think about productivity and scalability. Automate tasks with some degree of repetitivity means using one&rsquo;s time to think more strategically. In a startup environment this is simply a life or death question. A good automation pipeline can also mean cost reduction, as scalability can be achieved with little extra cost to keep the operation running. A bad automation pipeline, on the other hand, increase costs and does not scale appropriately.</p>
+<p>Nowadays there are hundreds of tools for data management and visualization capabilities for about any business needs. Some examples are advertising management, CRM, analytics, administrative systems and many others. What happens is that the information that feed such systems must be extracted from the sources and properly treated, and there aren&rsquo;t always native integration channels between the sources and data platforms. In such scenarios, files like spreadsheets and documents, acting like middlewares, are manually created and filled with data from many different systems. This creates a new set of problems, such as human errors and more time working on repetitive tasks.</p>
+<p>The solution isn&rsquo;t always to create a middleware. It can be simpler and cheaper. It can even use those same spreadsheets and documents that act like middlewares. Spreadsheets are extremely versatile to ingest and treat data. There are many cases when it makes sense keep a spreadsheet updated with some frequency instead of building a tool, specially if the budget is low. The work I&rsquo;ve done resulted in one of such spreadsheets, with information to get a grasp on the financial health of the business.</p>
+<h2 id="automation-with-apis">Automation with APIs</h2>
+<p>Each source from which I&rsquo;ve needed to extract data allowed not only to export data into spreadsheet files, but also to export data in a format called JSON. The name is an acronym for Javascript Object Notation. That type of file is used to exchange messages between systems that can understand it. The following is an excerpt of a JSON file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Adwords&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;account&#34;</span><span class="p">:</span> <span class="s2">&#34;xpto&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;total_spent&#34;</span><span class="p">:</span> <span class="s2">&#34;48032.44&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;impressions&#34;</span><span class="p">:</span> <span class="s2">&#34;188492&#34;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Each line between the brackets stores a pair, forming a key and a value. The key is an identifier and the value stores data that is identified by its key. The set of key value pairs between the brackets is called an object. A object can contain many key value pairs and keys can even store objects, forming a nested file structure.</p>
+<p>JSON is a very useful file format, as it is a common pattern and recognized across many different technologies. All common programming languages have a way to send and receive JSON objects through the internet, and this is why it is one of the most used files to integrate digital systems. Many tools provide services that can send JSON objects to those who request them - usually other systems. These services are called APIs, or Application Programming Interfaces, gateways that deliver data under request.</p>
+<h2 id="a-practical-example-of-an-api">A practical example of an API</h2>
+<p>Suppose that you want to know the critic&rsquo;s rating for the movie Batman: The Dark Knight Returns. A database like the one <a href="http://www.omdbapi.com/" target="_blank" rel="noopener">OMDB</a> provides have all the information that you need. They also provide an API to search the database. To retrieve information about the movie, you just have to access the following address: <a href="http://www.omdbapi.com/?apikey=">http://www.omdbapi.com/?apikey=</a><strong>your_api_key</strong>&amp;t=Batman+The+Dark+Knight. A JSON object similar to the following one should be returned:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;Title&#34;</span><span class="p">:</span> <span class="s2">&#34;Batman: The Dark Knight Returns, Part 1&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Year&#34;</span><span class="p">:</span> <span class="s2">&#34;2012&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Rated&#34;</span><span class="p">:</span> <span class="s2">&#34;PG-13&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Released&#34;</span><span class="p">:</span> <span class="s2">&#34;25 Sep 2012&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Genre&#34;</span><span class="p">:</span> <span class="s2">&#34;Animation, Action, Adventure&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Language&#34;</span><span class="p">:</span> <span class="s2">&#34;English&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Country&#34;</span><span class="p">:</span> <span class="s2">&#34;USA&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Awards&#34;</span><span class="p">:</span> <span class="s2">&#34;5 nominations.&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;Metascore&#34;</span><span class="p">:</span> <span class="s2">&#34;N/A&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;imdbRating&#34;</span><span class="p">:</span> <span class="s2">&#34;8.0&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;imdbVotes&#34;</span><span class="p">:</span> <span class="s2">&#34;42,023&#34;</span><span class="p">,</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The highlighted portion of the address, your_api_key, is a method for authentication. This is a unique token to identify the user making the request to the API, and only authenticated users are allowed to see information about the movies. You can register for free at the OMDB website to receive an API key. The JSON object that is shown here is a simplified version, but we can see that the object contains a key called &ldquo;imdbRating&rdquo;, with a value of 8.0. Maybe you&rsquo;re asking yourself what is the point of going for the trouble to find the information like that when you can simply visit the IMDB website and search for the movie. Now is the time to talk about automation: this work can be done once and scheduled to be done in regular intervals, and the object to be received will always contain the most recent information. This may not be the best example to automate searches, but imagine that this data represent the value of stocks for different companies and you&rsquo;re building a dashboard that will display this information refreshed hourly. This can be done by creating a routine that will call the financial API service from hour to hour and return the most recent stock prices, eliminating the need for a manual update every time the information is needed.</p>
+<h2 id="back-to-the-automation-project">Back to the automation project</h2>
+<p>Almost every tool that I&rsquo;ve worked with had an API with a good documentation and many addresses to request different data. Once I&rsquo;ve received the JSON object, I had to feed the data source, or the source that received and treated the external data. This source, which was also the source of the reports, was a spreadsheet created on Google Sheets. Google Sheets was chosen due to its native integration to a script editor called <a href="https://www.google.com/script/" target="_blank" rel="noopener">Google Apps Script</a>. This script editor allows developers to enhance all of Google&rsquo;s line of office products, among other things. This tool have a very interesting resource: a utility to communicate with other systems through the internet, which is exactly what I needed.</p>
+<p>With the script editor opened, I had just to fill in some lines of code to receive the JSON object:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">spreadsheet</span> <span class="o">=</span> <span class="s2">&#34;https://sheets.google.com/id=spreadsheet1&#34;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">sheet</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">openByUrl</span><span class="p">(</span><span class="nx">spreadsheet</span><span class="p">).</span><span class="nx">getSheetByName</span><span class="p">(</span><span class="s2">&#34;name&#34;</span><span class="p">);</span>
+<span class="c1">// This call will return a JSON object like the one from the previous example
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">&#34;http://www.omdbapi.com/?apikey=sua_api_key&amp;t=Batman+The+Dark+Knight&#34;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">UrlFetchApp</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+<span class="c1">// Since I just want the review, I&#39;ll select and store only this information from the resulting object
+</span><span class="c1"></span><span class="nx">sheet</span><span class="p">.</span><span class="nx">getRange</span><span class="p">(</span><span class="s2">&#34;A1&#34;</span><span class="p">).</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">imdbRating</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This could be done another way, but the process is the same:</p>
+<ul>
+<li>access the address;</li>
+<li>capture the returned JSON;</li>
+<li>treat the object (unserialize it);</li>
+<li>write the data into the spreadsheet.</li>
+</ul>
+<p>I&rsquo;ve used the OMDB example since the API is public, unlike the one I&rsquo;ve used in the project I&rsquo;ve worked on.</p>
+<p>To end, Google Apps Script allows the developers to schedule scripts to execute repeatedly on set intervals. I&rsquo;ve configured the tool to execute it hourly and it was done! I&rsquo;ve set up an automated data ingestion pipeline. It is important to keep an eye out for API updates, but it isn&rsquo;t everyday that such event happens, so you can focus on understanding the data that is getting to the report and not on it&rsquo;s maintenance.</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC">17/11/2020 09:10:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Setting up Metabase and PostgreSQL with Docker</h2>
+      <p class="mb-6 text-white" itemprop="abstract">How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</p>
+      <div>
+        <a class="button-primary" href="/en/stories/configurando-metabase-e-postgresql-no-docker/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC">03/09/2020 19:23:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets Part 2 - Moving to AWS</h2>
+      <p class="mb-6 text-white" itemprop="abstract">We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets-na-aws/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC">02/09/2018 14:07:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets: automatically exporting leads to spreadsheets</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

@@ -1,0 +1,33 @@
+baseURL = "https://www.automacaodedados.com.br"
+title = "Automação de Dados"
+defaultContentLanguage = "pt"
+paginate = 6
+[markup]
+  [markup.highlight]
+    lineNos = true
+    noClasses = false
+[languages]
+  [languages.pt]
+    title = "Automação de Dados"
+    languageName = "Português"
+    weight = 1
+    [languages.pt.params]
+      flag = "🇧🇷"
+      description = "Aflorando o lado humano da tecnologia"
+    [languages.pt.menu]
+      [[languages.pt.menu.header]]
+        identifier = "all_stories"
+        name = "Todas as Histórias"
+        url = "/stories"
+  [languages.en]
+    title = "Data Automation"
+    languageName = "English"
+    weight = 2
+    [languages.en.params]
+      flag = "🇺🇸"
+      description = "Surfacing the human side of technology"
+    [languages.en.menu]
+      [[languages.en.menu.header]]
+        identifier = "all_stories"
+        name = "All Stories"
+        url = "/stories"

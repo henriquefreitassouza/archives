@@ -1,0 +1,61 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set query = uri.query('q') | e | trim %}
+{% set limit = 10 %}
+{% set options = {'items': {'@page': '/blog'}, 'order': {'by': 'date', 'dir': 'desc'}, 'paginate': true} %}
+
+{% set collection = page.collection(options) %}
+{% for child in collection %}
+  {% if query | lower in child.title | lower == false and query | lower in child.content | lower == false %}
+    {% do collection.remove(child.path) %}
+  {% endif %}
+{% endfor %}
+
+{% do paginate(collection, limit) %}
+
+{% block stylesheets %}
+  {% do assets.addCss('theme://public/css/dash-blog.css') %}
+  {{ parent() }}
+{% endblock stylesheets %}
+
+{% block javascript %}
+  {{ parent() }}
+  {% do assets.addJs('theme://public/js/dash-blog.js', {'group': 'bottom'}) %}
+{% endblock %}
+
+{% block content %}
+<section class="dd-section dd-search">
+  <div class="dd-section--container">
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12">
+          <header class="dd-search__header">
+            <div class="dd-search__header-title dd-title--centered">
+              <h1>Sua busca por: {{ query }}</h1>
+            </div>
+            {% include 'partials/search_form.html.twig' %}
+          </header>
+          <div class="dd-search__body">
+            {% if collection | length == 0 %}
+              <p>Não há posts com o termo <strong>{{ query }}</strong>. Tente fazer uma nova busca com termos similares ao pesquisado ou, se preferir, utilize as categorias para encontrar o conteúdo desejado.</p>
+              <div class="dd-search__categories">
+                <h2>Todas as categorias</h2>
+                {% include 'partials/categories.html.twig' %}
+              </div>
+            {% else %}
+              {% for child in collection %}
+                {% include 'partials/search_list.html.twig' with {'page': child, 'truncate': true} %}
+              {% endfor %}
+            {% endif %}
+          </div>
+          {% if config.plugins.pagination.enabled and collection.params.pagination %}
+          <div class="dd-search__pagination">
+              {% include 'partials/pagination.html.twig' with {'base_url': page.url, 'pagination': collection.params.pagination, 'query': query} %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

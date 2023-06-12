@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html class="" lang="{{ .Language.Lang }}" dir="ltr">
+  <head>
+    {{ partial "base/metadata.html" . }}
+    {{ partial "base/head.html" . }}
+    {{ block "head" . }}{{ end }}
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">{{ T "skip_to_content" }}</a>
+      {{ partial "base/header.html" . }}
+      <main id="content" class="flex-grow">
+        {{ block "main" . }}{{ end }}
+      </main>
+      <footer>
+        {{ partial "base/footer.html" . }}
+      </footer>
+    </div>
+    {{ partial "base/foot.html" . }}
+    {{ block "foot" . }}{{ end }}
+  </body>
+</html>

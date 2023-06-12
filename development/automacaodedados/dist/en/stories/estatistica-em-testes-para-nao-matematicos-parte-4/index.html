@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>Statistics for testing - Histograms and density curves | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Statistics for testing - Histograms and density curves | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="Statistics for testing - Histograms and density curves | Data Automation">
+<meta property="og:description" content="Statistics for testing - Histograms and density curves | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-11-26 09:59:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-10-23 09:59:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="6 minutes" />
+
+<meta property="article:tag" content="Statistics" />
+<meta property="article:section" content="Statistics" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Histogram and density curve charts.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-4/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/images/thumbnail_hu50fb275cbf52d4888e4a49f439717ebb_46228_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-11-26 09:59:00 &#43;0000 UTC" itemprop="datePublished">26/11/2017 09:59:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/statistics" itemprop="articleSection">statistics</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Statistics for testing - Histograms and density curves</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">During a test, many samples are collected and its conversion rates calculated. The next step is to group and classify this data in such a way that will be possible to infer data about the whole population. How does that happen and why this is important inside a test?</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Statistics for testing - Histograms and density curves</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 6 minutes</strong>
+        <p>Published on November 26, 2017 and updated on October 23, 2021.</p>
+<p>This post is the fourth in a 6 part series in which I&rsquo;ll break down the main topics within statistics for online sample testing. The topics are:</p>
+<ul>
+<li><a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-1/" >The importance of understanding statistics for tests with samples</a>;</li>
+<li><a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-2/" >Hypotheses</a>;</li>
+<li><a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" >Samples and probabilities</a>;</li>
+<li><strong>Histograms and density curves</strong> (this post);</li>
+<li><a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-5/" >P-value, alpha, beta and power</a>;</li>
+<li><a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-6/" >Designing tests and configuring calculators</a>.</li>
+</ul>
+<p>Bonus: <a href="/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/" >A/B testing significance calculator</a>.</p>
+<h2 id="central-tendency-measures-and-the-distribution-of-data">Central tendency measures and the distribution of data</h2>
+<p>Sets of data are explained using two types of numbers: one that can represent the whole group and another to show the distribution of the data. The first number is the <strong>measure of central tendency</strong>, shortly presented on the <a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" >previous post</a>, and the other one is the <strong>measure of distribution</strong>. The previous post also presented three common measures of central tendency, that are:</p>
+<ul>
+<li>Mean (or average): better known between the three. The mean is calculated by adding all the numbers in the set and dividing the result by the number of values;</li>
+<li>Median: the median is calculated by ordering the numbers and selecting the one that is in the middle of the set. If there is an even amount of numbers, the median is the mean between the two numbers in the middle of the set;</li>
+<li>Mode: the mode is the most frequent number in a set. If there are two or more numbers in the set that appear with the same frequency, the set will have more than one mode, relative to the amount of numbers with equal frequencies in the set.</li>
+</ul>
+<p>Each measurement have its uses, and tests use the mean.</p>
+<p>Besides the measures of central tendency there are distribution measures. Understanding the distribution of data in a set is imoprtant to calculate by how much they <strong>deviate</strong> from the measure of central tendency. Two deviation measures are:</p>
+<ul>
+<li>Variance: the variability within a data set;</li>
+<li>Standard deviation: the square root of the variance, used in conjunction with the mean to estimate the average deviation for the data set.</li>
+</ul>
+<p>Both measures explain the deviation within a data set, but the variance is not sensitive to differences between individual distances. This means that it is not possible to calculate individual distances between data points. This problem is solved by calculating the square root of the variance, resulting in the standard deviation. The standard deviation is used to compare individual data points against the mean.</p>
+<h2 id="classifying-probabilities-of-success">Classifying probabilities of success</h2>
+<p>The <a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" >previous post</a> briefly presented the probability theory, the probability of successes (or conversion rates) within the context of online tests, as well as the importance of collecting conversion rates from many samples in order to find the conversion rate for the population. The next step is to understand what happens when these conversion rates are calculated.</p>
+<p>Throughout the execution of a test, the portion of the traffic that is participating from the test is counted, as well as the number of individuals that completed the task being studied, which represents a conversion. This is done for all testing groups, and can be a form submission, a button click, a purchase etc. Samples from this traffic are collected and their conversion rates are calculated. There conversion rates are then classified on &ldquo;buckets&rdquo; called <strong>frequencies</strong>. Testing tools automatically adjust the number of frequencies as more data is being collected. Examples of frequencies would be &ldquo;between 0% and 0.99%, between 1% and 1.99%, between 2% and 2.99%, &hellip;, between n% and n.99%&rdquo;. Samples are collected, their conversion rates are calculated and then placed inside the appropriate frequency.</p>
+<p>The chart that plot frequency distributions is the <strong>histogram</strong>. It shows the distribution of numeric data by the number of occurrences for each defined frequency (or bin). In our example, frequencies are the intervals between probabilities of success, presented on the x axis, and the number of samples in each frequency, presented on the y axis.</p>
+<figure >
+  
+  <img data-src="images/figure1-histogram-with-bins.webp" class="lazy" alt="Example of histogram with defined frequency intervals." title="Example of histogram with defined frequency intervals." />
+  
+  
+  <figcaption>
+    <p>Example of histogram with defined frequency intervals. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="the-law-of-big-numbers-and-the-theorem-of-central-limit">The law of big numbers and the theorem of central limit</h2>
+<p>The way converion rates are distributed in the data set is important. When more samples are collected, and more conversion rates are calculated, the distribution takes on a specific shape when presented on a histogram. The post on <a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" >probabilities</a> presented the law of big numbers, which states that the bigger the study group, the closest the mean of all observed events will be from the population mean. This is noticeable in a histogram, as more and more conversion rates get classified inside the frequencies. The shape that the histogram takes resembles a mountain, or a <strong>bell</strong>.</p>
+<figure >
+  
+  <img data-src="images/figure2-histogram-resembling-a-normal-distribution.webp" class="lazy" alt="Example of a histogram taking on a specific shape." title="Example of a histogram taking on a specific shape." />
+  
+  
+  <figcaption>
+    <p>Example of a histogram taking on a specific shape. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This particular distribution is called a <strong>normal distribution</strong> (or gaussian distribution, or bell shaped distribution). The normal distribution is part of a mathematical field called <strong>probability distribution</strong>, which are mathematical functions that explain the probability of certain events. There is more than one probability distribution, and the one that explain normal distributions is called <strong>continuous probability distribution</strong>. The continuous probability distribution calculates the probability of a number being inside an interval.</p>
+<figure >
+  
+  <img data-src="images/figure3-distribution-over-histogram.webp" class="lazy" alt="Histogram resembling a normal distribution." title="Histogram resembling a normal distribution." />
+  
+  
+  <figcaption>
+    <p>Histogram resembling a normal distribution. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The distribution of data in a set approximates a normal distribution the bigger the sample and conversion rates. This concept is called the <strong>central limit theorem</strong>. According to the central limit theorem, characteristics and behaviors from samples will be in accordance with those presented by the population, which means that the distribution of the data in both the sample and the population will be the same or very close. Is this certainty that makes it possible to use sample data to infer behaviors and characteristics for entire populations.</p>
+<h2 id="the-empirical-rule">The empirical rule</h2>
+<p>Probability distribution function calculate <strong>areas</strong> under the distribution, and the goal is to know the probability that a number will fall within a certain range inside the area. Since probabilities of success can assume any value, and it is impossible to know what this value is for the entire population, calculate areas is useful to estimate an interval of possible values for the probability of success. This interval is the confidence interval, which was briefly presented in the <a href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" >previous post</a>. Another useful property, particular to normal distributions, is the so called <strong>empirical rule</strong>. This rule, also called 68-95-99.7, states that 68% of all data in a normal distribution will be located within one unit of distance from the measure of central tendency, 95% of all data will be located within two units of distance from the measure of central tendency, and 99.7% of all data will be located within three units of distance from the measure of central tendency. The unit of distance is the standard deviation and the measure of central tendency is the mean.</p>
+<figure >
+  
+  <img data-src="images/figure4-normal-distribution-and-standard-deviation-en.webp" class="lazy" alt="Marks for standard deviations within a normal distribution." title="Marks for standard deviations within a normal distribution." />
+  
+  
+  <figcaption>
+    <p>Marks for standard deviations within a normal distribution. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Once the data is normally distributed for each variation of a test, some calculations are performed to get to the numbers that are displayed on the dashboards of testing tools. These distribution curves need also to be juxtaposed to calculate the difference between them. This will be the topic for the next post.</p>
+<h2 id="further-reading">Further reading</h2>
+<p><a href="https://stats.stackexchange.com/questions/35123/whats-the-difference-between-variance-and-standard-deviation" target="_blank" rel="noopener">This post on the statistics forum of Stack Exchange</a> makes in in depth explanation of the difference between the variation and the standard deviation.</p>
+<p>Let&rsquo;s study statistics!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/images/thumbnail_hu445bb0ea2c66d3cb7c1eb80c74a417bb_106746_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-12-06 11:36:00 &#43;0000 UTC">06/12/2017 11:36:00</time>
+      </div>
+      <a href="/en/categories/statistics" class="badge" itemprop="articleSection">statistics</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Online testing sample calculator</h2>
+      <p class="mb-6 text-white" itemprop="abstract">I built an online sample testing calculator. It calculates required sample sizes, estimated time to finish and statistical significance of tests. This post will explain how it works and how to use it.</p>
+      <div>
+        <a class="button-primary" href="/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/estatistica-em-testes-para-nao-matematicos-parte-6/images/thumbnail_hu8efac969a2e378d483f761e54d87fc3a_81326_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-29 09:12:00 &#43;0000 UTC">29/11/2017 09:12:00</time>
+      </div>
+      <a href="/en/categories/statistics" class="badge" itemprop="articleSection">statistics</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Statistics for testing - Setup testing tools</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Setup tests with online samples require careful planning. Wrong configurations can invalidate any findings and lead businesses to make wrong decisions – what can be worse than having no data at all.</p>
+      <div>
+        <a class="button-primary" href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-6/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/estatistica-em-testes-para-nao-matematicos-parte-5/images/thumbnail_hu736ab047195c247913f95fd813824efd_30026_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-27 09:47:00 &#43;0000 UTC">27/11/2017 09:47:00</time>
+      </div>
+      <a href="/en/categories/statistics" class="badge" itemprop="articleSection">statistics</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Statistics for testing - P-value, alpha, beta and effect size</h2>
+      <p class="mb-6 text-white" itemprop="abstract">The most widely adopted testing tools take care of the math on experiments, but the researcher must be able to make the necessary configurations for calculations to be correct. I will explain what are …</p>
+      <div>
+        <a class="button-primary" href="/en/stories/estatistica-em-testes-para-nao-matematicos-parte-5/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

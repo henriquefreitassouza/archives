@@ -1,0 +1,43 @@
+{{ $category := .Param "categories" }}
+{{ $category := index ($category) 0 }}
+{{ $categories_page := path.Join "categories/" $category | lower | urlize }}
+{{ $author := index .Site.Data.authors (.Params.author | default "automacaodedados") }}
+{{ $image := .Resources.GetMatch "images/thumbnail.jpg" }}
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  {{ if $image }}
+    {{ $image := $image.Fill "500x500" }}
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('{{ $image.RelPermalink }}');"></div>
+  {{ end }}
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      {{ if $image }}
+      <div>
+        <address class="text-white text-base" itemprop="author">{{ $author.name }}</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="{{ .PublishDate }}">{{ dateFormat "02/01/2006 15:04:05" .PublishDate }}</time>
+      </div>
+      <a href="{{ $categories_page | relLangURL }}" class="badge" itemprop="articleSection">{{ lower $category }}</a>
+      {{ else }}
+      <div>
+        <address class="text-base dark:text-white" itemprop="author">{{ $author.name }}</address>
+        <time class="text-base dark:text-white" itemprop="datePublished" pubdate datetime="{{ .PublishDate }}">{{ dateFormat "02/01/2006 15:04:05" .PublishDate }}</time>
+      </div>
+      <a href="{{ $categories_page | relLangURL }}" class="badge focus:ring-offset-gray-300 dark:focus:ring-offset-secondary-darker" itemprop="articleSection">{{ lower $category }}</a>
+      {{ end }}
+    </header>
+    <main class="relative" itemprop="articleBody">
+      {{ if $image }}
+      <h2 class="text-white" itemprop="headline">{{ .Title }}</h2>
+      <p class="mb-6 text-white" itemprop="abstract">{{ plainify .Summary | truncate 200 }}</p>
+      <div>
+        <a class="button-primary" href="{{ .Permalink | relURL }}">{{ T "read_more" }}</a>
+      </div>
+      {{ else }}
+      <h2 class="dark:text-white" itemprop="headline">{{ .Title }}</h2>
+      <p class="mb-6 dark:text-white" itemprop="abstract">{{ plainify .Summary | truncate 200 }}</p>
+      <div>
+        <a class="button-primary focus:ring-offset-gray-300 dark:focus:ring-offset-secondary-darker" href="{{ .Permalink | relURL }}">{{ T "read_more" }}</a>
+      </div>
+      {{ end }}
+    </main>
+  </article>
+</div>

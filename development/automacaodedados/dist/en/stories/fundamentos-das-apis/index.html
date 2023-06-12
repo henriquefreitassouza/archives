@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>The basics of APIs | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The basics of APIs | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/fundamentos-das-apis/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="The basics of APIs | Data Automation">
+<meta property="og:description" content="The basics of APIs | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-12-12 21:34:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-04 21:34:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="6 minutes" />
+
+<meta property="article:tag" content="Automation" />
+<meta property="article:section" content="Automation" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/fundamentos-das-apis/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/fundamentos-das-apis/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Cloud of services connected to the internet.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/fundamentos-das-apis/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/fundamentos-das-apis/images/thumbnail_hu8e001238a21948e060e944a14f5fb3f9_88985_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-12-12 21:34:00 &#43;0000 UTC" itemprop="datePublished">12/12/2017 21:34:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/automation" itemprop="articleSection">automation</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">The basics of APIs</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">APIs are very useful to automate processes and personalize workflows. From a technical standpoint, they contribute for developing distributed applications. Knowing APIs is vital to create applications able to communicate with the outside world.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/fundamentos-das-apis/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">The basics of APIs</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 6 minutes</strong>
+        <p>Published on December 12, 2017 and updated on November 04, 2021.</p>
+<p>What is an API? API stands for Application Programming Interface. APIs are channels for information exchange between systems. APIs provide or retrieve data that software developers can use inside their own applications, like <a href="/en/stories/uma-introducao-ao-google-apps-script/" >information about movies</a>. Although being similar concepts, there are differences between APIs and the called <strong>webhooks</strong>, which are event notifiers. While APIs are explicitly called by applications, webhooks notify external sources when events are triggered. Examples of webhooks are those used on payment gateways. When someone purchase a product, a payment notification is sent to the vendor, which then send the product. Calls to webhooks can even be done by APIs.</p>
+<h2 id="the-inner-workings-of-apis">The inner workings of APIs</h2>
+<p>The two main employments for APIs are to <strong>integrate systems</strong> and <strong>automate processes</strong>. Integration is done by building a workflow from which two or more systems exchange data and automation is done by collecting, processing, storing and delivering data without human intervention. APIs reduce costs and increase the performance of teams. Web services usually use APIs.</p>
+<p>APIs work with at least two actors: a <strong>client</strong>, which request information, and a <strong>server</strong>, which deliver the information being requested. These actors communicate through a <strong>protocol</strong>, which is a set os rules known by all parties. Since data is transferred over the internet, the protocol that is usually adopted is the <strong>HTTP</strong>. An HTTP request consists of four parts:</p>
+<ul>
+<li>URL: the address in which data is located;</li>
+<li>Method: the operation that is to be performed on the server. Can be GET, POST, PUT, PATCH and DELETE;</li>
+<li>Headers: additional information, or metadata, to be sent along the data;</li>
+<li>Body: data to be sent with the request.</li>
+</ul>
+<p>And response have three parts:</p>
+<ul>
+<li>Status code: three digits number that inform the status of the current request, such as success or fail;</li>
+<li>Headers: additional information, or metadata, received along the data;</li>
+<li>Body: data to be received.</li>
+</ul>
+<p>Data sent through APIs are mainly <strong>XML</strong> and <strong>JSON</strong> files.</p>
+<p>XML is similar to HTML:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;order&gt;</span>
+  <span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Smartphone<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;price&gt;</span>899.99<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;item&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Smart TV<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;price&gt;</span>1299.99<span class="nt">&lt;/price&gt;</span>
+  <span class="nt">&lt;/item&gt;</span>
+  <span class="nt">&lt;total&gt;</span>2199.98<span class="nt">&lt;/total&gt;</span>
+  <span class="nt">&lt;status&gt;</span>payment pending<span class="nt">&lt;/status&gt;</span>
+<span class="nt">&lt;/order&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>And JSON is similar to Javascript objects:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;order&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;items&#34;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Smartphone&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;price&#34;</span><span class="p">:</span> <span class="mf">899.99</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Smart TV&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;price&#34;</span><span class="p">:</span> <span class="mf">1299.99</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;total&#34;</span><span class="p">:</span> <span class="s2">&#34;2199.98&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="s2">&#34;payment pending&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>APIs are built over established technologies and are designed following a set of best practices. The most known API design patterns are <strong>SOAP</strong> and <strong>REST</strong>. While SOAP is a protocol, REST is an architectural style, or an arrangement of components used to establish communication between systems. <a href="https://blog.smartbear.com/apis/understanding-soap-and-rest-basics/" target="_blank" rel="noopener">The main differences between the two</a> are:</p>
+<ul>
+<li>SOAP can use other protocols besides HTTP and use XML to transfer data;</li>
+<li>REST is based on HTTP and can use different file formats.</li>
+</ul>
+<p>REST is commonly used to build APIs, since it is easier to learn and is generally faster than SOAP.</p>
+<h2 id="authentication">Authentication</h2>
+<p>Some APIs require users to authenticate in order to access their resources. Authentication can be done in following ways:</p>
+<ul>
+<li>With user and password;</li>
+<li>With access keys.</li>
+</ul>
+<p>Access keys replace user and password credentials, and are created inside an application protected by credentials. The simpler way to retrieve a key is to login to a service that has APIs and create access keys. These keys may have specific usage permissions, depending on the API. Keys can grant read or write access to specific data or everything. Some keys have expiration dates.</p>
+<p>Authentication methods vary with each API. Some methods are:</p>
+<ul>
+<li>Send credentials along with the requested URL as parameters;</li>
+<li>Send credentials along with the header Authentication;</li>
+<li>Send credentials along with the request body;</li>
+<li>Use authentication protocol <strong>OAuth</strong>.</li>
+</ul>
+<h3 id="oauth">OAuth</h3>
+<p>OAuth is abbreviation for Open Authentication. It is a protocol to authenticate systems whose specs are maintained by <a href="https://www.ietf.org/" target="_blank" rel="noopener">Internet Engineering Task Force</a>, and by the time of this post is on version 2 (OAuth2). OAuth protocol is used to build authentication systems for APIs using established design patterns. Authentication steps under OAuth2 are as follow:</p>
+<ul>
+<li>Client send access request to the server;</li>
+<li>Client is redirected to authentication server to provide user and password;</li>
+<li>Once authenticated, an authorization code is sent to the requester;</li>
+<li>This authorization code is sent along with a client key to the server. This client key is created inside the application that house the data to be accessed;</li>
+<li>Once the combination of authorization code and client key is accepted, the requester receive an access token.</li>
+</ul>
+<p>Tokens can be used to access data. Some applications may give expiration dates for tokens for security purposes. When a token expires, the authentication workflow is reset. Token can also grant specific permissions to the data through APIs.</p>
+<h2 id="working-with-an-api">Working with an API</h2>
+<p>APIs are accessed through <strong>endpoints</strong>, which are URLs that request, send, modify or delete data. For instance, accessing the hypothetical endpoint:</p>
+<p><strong><a href="https://api.service.com/data">https://api.service.com/data</a></strong></p>
+<p>Could result in the following data being sent back to the requester:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;customers&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Miguel&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;customer1@service.com&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;phone&#34;</span><span class="p">:</span> <span class="s2">&#34;+55 11 4446-9965&#34;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Laura&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;customer2@service.com&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;phone&#34;</span><span class="p">:</span> <span class="s2">&#34;+55 13 4526-9847&#34;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The endpoint is called &ldquo;data&rdquo; and return information about customers. This example call used the GET method. Each HTTP request is done using one of several methods. The most common is GET, used to retrieve information from servers. Other HTTP methos that are used with APIs are:</p>
+<ul>
+<li>POST: send data to the server;</li>
+<li>PUT: update data stored in the server or insert it if not available;</li>
+<li>PATCH: update data stored in the server;</li>
+<li>DELETE: delete data from the server.</li>
+</ul>
+<p>It is important to note that some APIs may deliver data only when using POST requests and not GET.</p>
+<p>A POST request will probably have and endpoint similar to the one used for GET requests, and its body will carry the data that will be transferred to the server. One example of such request done using <a href="https://developers.google.com/apps-script/" target="_blank" rel="noopener">Google Apps Script</a> can look like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="kd">var</span> <span class="nx">customer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;Marcelo&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;email&#34;</span><span class="o">:</span> <span class="s2">&#34;customer3@service.com&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;phone&#34;</span><span class="o">:</span> <span class="s2">&#34;+55 11 9485-6685&#34;</span>
+  <span class="p">};</span>
+
+  <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;method&#34;</span><span class="o">:</span> <span class="s2">&#34;post&#34;</span><span class="p">,</span>
+    <span class="s2">&#34;payload&#34;</span><span class="o">:</span> <span class="nx">customer</span>
+  <span class="p">};</span>
+
+  <span class="nx">response</span> <span class="o">=</span> <span class="nx">UrlFetchApp</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="s2">&#34;https://api.service.com/data&#34;</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The customer object store the data that will be sent on the body of the request. The method that was used is POST on the &ldquo;method&rdquo; key, indicating that this request will send data over the internet using the HTTP protocol.</p>
+<p>APIs are very simple to use and provide a secure interface to access data. They work like a bridge that connect all sorts of services and make the internet richer by the day. Although they follow industry standard practices, each application will have its own specific business needs, which differentiate each API from all the others. This is why each API provider will also provide a <strong>documentation</strong>, an essential component to understand an API.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Zapier developed <a href="https://zapier.com/learn/apis/" target="_blank" rel="noopener">a complete course</a> on the basics of APIs, from concepts to implementation.</p>
+<p>Let&rsquo;s integrate and automate!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC">17/11/2020 09:10:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Setting up Metabase and PostgreSQL with Docker</h2>
+      <p class="mb-6 text-white" itemprop="abstract">How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</p>
+      <div>
+        <a class="button-primary" href="/en/stories/configurando-metabase-e-postgresql-no-docker/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC">03/09/2020 19:23:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets Part 2 - Moving to AWS</h2>
+      <p class="mb-6 text-white" itemprop="abstract">We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets-na-aws/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC">02/09/2018 14:07:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets: automatically exporting leads to spreadsheets</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

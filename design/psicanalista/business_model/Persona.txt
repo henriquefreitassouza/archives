@@ -1,0 +1,46 @@
+Experiência
+Ação
+Vivência
+Dinâmica
+
+Psicodrama
+Dramatização
+
+Persona
+- Januário
+- 34 anos
+- Psicodramaturgo na prefeitura de Taboão da Serra
+
+user story: O Januário é um psicodramaturgo que quer prestar seus serviços para a iniciativa privada para avançar em sua carreira.
+
+scenario: Para começar a atuar em empresas privadas, o Januário pretende criar um site e cartões de visita. Os recursos serão divulgados para empresas e para conhecidos.
+
+customer journey
+- O Januário divulga seus serviços para empresas
++ Ações: a divulgação é feita usando as redes sociais e marketing offline
++ Pensamentos:
++ Oportunidades
+- Empresas interessadas iniciam contato em busca do serviço
++ Ações
++ Pensamentos
++ Oportunidades
+- O Januário visita a empresa para conhecer o departamento que requisitou o serviço
++ Ações
++ Pensamentos
++ Oportunidades
+- O Januário conhece a equipe e o problema em mãos
++ Ações
++ Pensamentos
++ Oportunidades
+- O Januário explica como será a dinâmica
++ Ações
++ Pensamentos
++ Oportunidades
+- O Januário monitora o andamento das atividades e intervém nos momentos em que a equipe se mostra perdida
++ Ações
++ Pensamentos
++ Oportunidades
+- O Januário finaliza a dinâmica e junto com o grupo registra as lições aprendidas
++ Ações
++ Pensamentos
++ Oportunidades

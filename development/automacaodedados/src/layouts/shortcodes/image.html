@@ -1,0 +1,17 @@
+<figure {{ with .Get `class` }}class="{{ . }}"{{ end }}>
+  {{ with .Get `href` }}
+  <a href="{{ . }}" {{ if .Get `target` }}target="{{ .Get `target` }}" rel="noopener"{{ end }}>
+    <img src="{{ .Get `src` }}" {{ if or (.Get `alt`) (.Get `caption`) }}alt="{{ with .Get `alt` }}{{ . }}{{ else }}{{ .Get `caption` }}{{ end }}" {{ with .Get `title` }}title="{{ . }}"{{ end }}{{ end }} />
+  </a>
+  {{ else }}
+  <img {{ if .Get `lazy` }}data-src="{{ .Get `src` }}" class="lazy"{{ else }}src="{{ .Get `src` }}"{{ end }} {{ if or (.Get `alt`) (.Get `caption`) }}alt="{{ with .Get `alt` }}{{ . }}{{ else }}{{ .Get `caption` }}{{ end }}" {{ with .Get `title` }}title="{{ . }}"{{ end }}{{ end }} />
+  {{ end }}
+  {{ if .Get `caption` }}
+  <figcaption>
+    <p>{{ .Get `caption` }}{{- "" -}}
+       {{ if and (.Get `attrhref`) (.Get `attr`) }}
+         {{ with .Get `attrhref` }}<a href="{{ . }}" {{ with .Get `attrtarget` }}target="{{ . }}" rel="noopener"{{ end }}>{{ .Get `attr` }}{{- "" -}}</a>{{ end }}
+       {{ end }}</p>
+  </figcaption>
+  {{ end }}
+</figure>

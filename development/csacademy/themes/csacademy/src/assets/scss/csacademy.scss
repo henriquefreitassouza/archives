@@ -1,0 +1,20 @@
+/*!
+Theme Name: CS Academy
+Theme URI: http://csacademy.com.br
+Author: Henrique Freitas Souza
+Author URI: http://henriquefreitas.com.br
+Description: CS Academy is a Customer Success school.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: csacademy
+Tags: csacademy, customer success, school, bootcamp, courses
+*/
+
+@import 'colors';
+@import 'settings';
+@import 'accessibility';
+@import 'foundation';
+@import 'theme';
+
+@include foundation-everything;

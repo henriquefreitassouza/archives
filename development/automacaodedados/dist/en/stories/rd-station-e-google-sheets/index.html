@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>RD Station and Google Sheets: automatically exporting leads to spreadsheets | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="RD Station and Google Sheets: automatically exporting leads to spreadsheets | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="RD Station and Google Sheets: automatically exporting leads to spreadsheets | Data Automation">
+<meta property="og:description" content="RD Station and Google Sheets: automatically exporting leads to spreadsheets | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2018-09-02 14:07:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-10 14:07:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="18 minutes" />
+
+<meta property="article:tag" content="Automation" />
+<meta property="article:section" content="Automation" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="RD Station and Google Sheets logos.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC" itemprop="datePublished">02/09/2018 14:07:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/automation" itemprop="articleSection">automation</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">RD Station and Google Sheets: automatically exporting leads to spreadsheets</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/rd-station-e-google-sheets/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">RD Station and Google Sheets: automatically exporting leads to spreadsheets</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 18 minutes</strong>
+        <p>Published on September 02, 2018 and updated on November 10, 2021.</p>
+<p><strong>SPOILER ALERT: this post contains code lines! I&rsquo;ll assume that you&rsquo;re familiar with some fundamental concepts of Javascript, know what is an API and what is JSON.</strong></p>
+<p>Update September 04, 2020:</p>
+<ul>
+<li>This post now have a second part: <a href="/en/stories/rd-station-e-google-sheets-na-aws/" >RD Station and Google Sheets Part 2 -  Migrating to AWS</a>;</li>
+<li><a href="https://zapier.com/pricing" target="_blank" rel="noopener">Price plans for Zapier have changed</a>. The plan that allowed for 3.000 API calls doesn&rsquo;t exist anymore, the current plan allows for 2.000 API calls and the upgrade goes to 5.000 API calls;</li>
+<li><a href="https://developers.google.com/apps-script/guides/v8-runtime" target="_blank" rel="noopener">Google Apps Script now runs the V8 engine</a>, which allows to write apps using the ES6 Javascript syntax. Not all ES6 resources are available by the time this post was updated;</li>
+<li>RD Station webhook object syntax <a href="https://developers.rdstation.com/pt-BR/migration/webhooks" target="_blank" rel="noopener">will change</a>;</li>
+<li>There is no distinction between parallel and managerial automation flows anymore. Every automation flow is now parallel;</li>
+<li>Current limit of cells in a single Google spreadsheet file is <a href="https://support.google.com/drive/answer/37603?hl=en" target="_blank" rel="noopener">5.000.000</a>.</li>
+</ul>
+<p>Update November 10, 2021:</p>
+<ul>
+<li>Google Apps Script was updated, including the way it is accessed from other Google services. The new path is Extensions &gt; Apps Script;</li>
+<li>RD Station is using OAuth2 as the authentication protocol for its API;</li>
+<li>Automation flows are created and edited using a new interface and the option to send webhooks is called &ldquo;Send Leads to Integration&rdquo;;</li>
+<li>Webhook object syntax hasn&rsquo;t changed since the last time this post was updated;</li>
+<li>Publishing web apps on Google Apps Script is now done by pressing the button &ldquo;Deploy&rdquo;, located on the top right corner of the editor.</li>
+</ul>
+<h2 id="why-spreadsheets">Why spreadsheets?</h2>
+<p>Exchange data between sources is something commonly done when aggregating data to further analyze or visualize. One very known data aggregator is the electronic spreadsheet &ndash; everyday Excel and Sheet files. Spreadsheets are convenient to store, manipulate and visualize data from many different formats using a tabular syntax. They are easy to understand and the way it is organized is convenient for sharing with other people and also with other tools, which is why they were never replaced for tools more suited for data analysis. If you can&rsquo;t live without your metrics spreadsheet you know what I&rsquo;m talking about. Now, it is known that spreadsheets are nothing without data and that a considerable amount of time is spent filling cells in the right places to produce the information that will lead us to our valuable insights. Reducing this time, then, means having more time to analyze data. Tools like Zapier and Pluga ease our lives with this, since they already have connections with hundreds of other tools and a friendly interface to create data flows between them. Why them not use these tools?</p>
+<p>Choosing the right plan depends on the amount of calls that will be made to them. A initial plan to process a low amount of data can be enough and cheap, but, as the volume of data increase, the more upgrades will be necessary to maintain the integration working (for reference, by the time this post was published, on August 2018, Zapier charged USD 62.50 per month on its professional plan, which allowed for up to 3.000 API calls. If more calls are needed, it is necessary to upgrade to its professional plus plan, increasing the cost to USD 156.25. Based on that, I&rsquo;ll consider 3.000 API calls as being a low amount, but I&rsquo;ll make a case that this is relative for each business and the available budget. Note that, in the process of sending leads to external tools automatically, a call is the same as sending one lead to its destination, which in this case is a spreadsheet. With Zapier&rsquo;s professional plan it will be possible to send up to 3.000 leads to the spreadsheet each month).</p>
+<figure >
+  
+  <img data-src="images/figure1-zapier-price-plans-august-2018.webp" class="lazy" alt="Zapier plans and features in August 2018." title="Zapier plans and features in August 2018." />
+  
+  
+  <figcaption>
+    <p>Zapier plans and features in August 2018. Source: Zapier.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Each integration is limited by the amount of available API calls for each plan, and whatever exceeds the limit is sent to a queue, scheduled to be sent once the limit is reset or the current plan is upgraded. This can still be acceptable if the spreadsheet won&rsquo;t be frequently fed and / or used, but ad hoc analysis, which may need fresh data, may not be done just to avoid exceeding the limit of calls. A second disadvantage is to use this integration with seasonal events, like co-marketing and events, in which usually there&rsquo;s a big volume of leads. If not thought out, this abnormal amount of leads can surprise the team and exceed the plan, breaking the integration. In other words: escalation can be a problem. Another point: testing is required when building an integration. Testing calls to the API are still calls and are still deducted from the plan. There is another way to build such integration, avoiding each of those problems.</p>
+<h2 id="the-secret-or-not-recipe-behind-the-integration">The secret (or not) recipe behind the integration</h2>
+<p>From plan PRO onward, <a href="https://www.rdstation.com/" target="_blank" rel="noopener">RD Station</a> allows for developers to integrate the automation marketing tool with other tools using what are called APIs and webhooks, interfaces &ndash; or doors &ndash; that allows for data to flow in and out of the system. APIs open a communication channel with RD Station through programming interfaces, while webhooks send event notification and data to specified destinations. If you&rsquo;re interested in learning more about APIs, check these posts:</p>
+<ul>
+<li><a href="/en/stories/apis-e-carrinhos-de-supermercado/" >APIs and grocery carts</a> (with no technical jargon);</li>
+<li><a href="/en/stories/fundamentos-das-apis/" >API basics</a> (with technical jargon).</li>
+</ul>
+<p>In this post, we&rsquo;ll make use of <strong>webhooks</strong>.</p>
+<p>In order for a webhook to send data somewhere, it needs two pieces of information:</p>
+<ul>
+<li>An address from where to send data;</li>
+<li>A trigger that will call the webhook.</li>
+</ul>
+<p>This address is a URL that can listen to the webhook.</p>
+<p>Webhooks are called when certain actions are done, called triggers. Only when triggers are executed that webhooks will notify addresses sending data. This trigger is configured inside the tool that sends them. In this case, it is RD Station.</p>
+<p>Time to configure the spreadsheet so we can get down to business!</p>
+<h2 id="spreadsheets-with-scripts">Spreadsheets with scripts?</h2>
+<p>Building scripts alongside spreadsheets isn&rsquo;t something new, <a href="https://www.oreilly.com/library/view/vb-vba/1565923588/1565923588_ch01-6-fm2xml.html" target="_blank" rel="noopener">as Excel's VBA has been around for quite a while</a>. We&rsquo;ll do something along these lines, but using another spreadsheet manager, another scripting tool and a different programming language. We&rsquo;ll use <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Google Sheets</a> to manage spreadsheets, <a href="/en/stories/uma-introducao-ao-google-apps-script/" >Google Apps Script</a> to develop the script and Apps Script as the programming language, created by Google and based on Javascript. Those who are familiar with Javascript will notice a lot of similarities between this language and Apps Script, which brings an immediate benefit for using it, as the learning curve gets shorter. Also, if you&rsquo;re learning Apps Script, you&rsquo;ll immediately get familiarity with Javascript and the inner workings of web applications. As for the spreadsheet management tool, one advantage of Google Sheets specifically is that the tool is already on the cloud and ready to be enhanced with plugins that can open external connections with other software. This means that we won&rsquo;t have to build code specifically to &ldquo;open a door&rdquo; and establish a communication channel for transporting data as this was already done for us.</p>
+<h2 id="hands-on-configuring-the-spreadsheet">Hands on: configuring the spreadsheet</h2>
+<p>Let&rsquo;s begin with Google Sheets. Create a new spreadsheet on your account. With a new spreadsheet, navigate to Tools &gt; Script Editor.</p>
+<figure >
+  
+  <img data-src="images/figure2-google-sheets-script-editor.webp" class="lazy" alt="Menu entry to access the Script Editor on Google Sheets on August 2018." title="Menu entry to access the Script Editor on Google Sheets on August 2018." />
+  
+  
+  <figcaption>
+    <p>Menu entry to access the Script Editor on Google Sheets on August 2018. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Google Apps Script editor will be shown.</p>
+<figure >
+  
+  <img data-src="images/figure3-google-apps-script-editor.webp" class="lazy" alt="Google Apps Script editor opened." title="Google Apps Script editor opened." />
+  
+  
+  <figcaption>
+    <p>Google Apps Script editor opened. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>There are three main sections on Google Apps Script&rsquo;s editor: the toolbar, on top, project files panel, on the left, and the code editor, on the right. The <a href="https://developers.google.com/apps-script/reference/" target="_blank" rel="noopener">documentation</a> is a good place to start if you need to familiarize yourself with both the editor and the language.</p>
+<p>The first step will be to inform Google Apps Script (which I&rsquo;ll be calling GAS from now on) that the script will be receiving and managing external data, or that the script will be communicating with the external world. On GAS terms, this script will be a web application (or web app). To do that, clear the default code on the editor that was created inside the file Code.gs, and create two new functions, called doGet and doPost. Both receive an argument called &ldquo;e&rdquo; that represent data that was passed when calling the script.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">doGet</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Todo
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">doPost</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Todo
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The function doGet manage any data that is passed as URL parameters. If, for instance, script URL is <a href="https://script.google.com/d/id_do_script/exec?nome=Henrique&amp;cargo=cientista_de_dados">https://script.google.com/d/id_do_script/exec?nome=Henrique&amp;cargo=cientista_de_dados</a>, what is on the right side of the question mark are all parameters passed as key=value pairs, separated by an equal sign. The first key, in this example, is &ldquo;name&rdquo; and its value is &ldquo;Henrique&rdquo;. Key value pairs are separated with ampersands (&amp;).</p>
+<figure >
+  
+  <img data-src="images/figure4-doget-dopost-functions.webp" class="lazy" alt="doPost and doGet functions created." title="doPost and doGet functions created." />
+  
+  
+  <figcaption>
+    <p>doPost and doGet functions created. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>To be characterized as a web app, this script needs only one of these functions. We&rsquo;ve declared doGet in case the web app is accessed directly with a GET method (unlikely, but possible). If this function is not declared, a directly access to the URL would result in a message like &ldquo;The script finished execution but there is nothing to be returned&rdquo;. By just declaring the function the output will be a blank screen. We&rsquo;ll leave as is.</p>
+<p>The function that will receive and manage data from RD Station is doPost. It accepts data passed alongside the body of a message using the POST method.</p>
+<p>To begin with, we&rsquo;ll write the code that will manage the data and write it in the spreadsheet. Inside doPost write the following code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Check if POST call contains data in its body and that the data is formatted as JSON
+</span><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">postData</span><span class="p">.</span><span class="nx">contents</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">postData</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;application/json&#39;</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">// In case there&#39;s JSON data, it must be transformed into an object to be further processed
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">lead</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">postData</span><span class="p">.</span><span class="nx">contents</span><span class="p">);</span>
+
+  <span class="c1">// Call a function to write the data into the spreadsheet. This function will be created
+</span><span class="c1"></span>  <span class="nx">writeMessage</span><span class="p">(</span><span class="nx">lead</span><span class="p">);</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This code is doing the following:</p>
+<ul>
+<li>Check if POST parameter have data and this data is formatted as JSON. If it is, the webhook successfully delivered data for a new lead to the URL;</li>
+<li>If there&rsquo;s data, do what is called parse, that is, transform the object that arrived to one that is recognized in Javascript. Apps Script use the same class and method to parse JSON strings, which is JSON.parse(). This method receive a string to be parsed, which will be the data contained in the webhook. The parsed text is stored at a variable called lead;</li>
+<li>The next line call a function writeMessage, which receives an argument. We&rsquo;ll send the lead that was just parsed.</li>
+</ul>
+<p>The next step is to create writeMessage. Write the following code on the same file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">writeMessage</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Open the spreadsheet and select the sheet Sheet1
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">sheet</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getActiveSpreadsheet</span><span class="p">().</span><span class="nx">getSheetByName</span><span class="p">(</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">);</span>
+
+  <span class="c1">// Select a range of cells that will store headers. Arguments are, in order: first line, first row, last line, last row. The combination will create a range with all cells between first and last selected rows and columns
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">headers</span> <span class="o">=</span> <span class="nx">sheet</span><span class="p">.</span><span class="nx">getRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+
+  <span class="c1">// Write down the names of the columns into Sheet1
+</span><span class="c1"></span>  <span class="nx">headers</span><span class="p">.</span><span class="nx">setValues</span><span class="p">([[</span><span class="s1">&#39;Nome&#39;</span><span class="p">,</span> <span class="s1">&#39;Email&#39;</span><span class="p">,</span> <span class="s1">&#39;Data de Criação&#39;</span><span class="p">,</span> <span class="s1">&#39;Empresa&#39;</span><span class="p">,</span> <span class="s1">&#39;Origem da Primeira Conversão&#39;</span><span class="p">,</span> <span class="s1">&#39;Estágio no Funil&#39;</span><span class="p">,</span> <span class="s1">&#39;Lead Scoring&#39;</span><span class="p">,</span> <span class="s1">&#39;Interesse&#39;</span><span class="p">]]);</span>
+
+  <span class="c1">// Lock Sheet1 so only the user that holds the lock can write on it
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">lock</span> <span class="o">=</span> <span class="nx">LockService</span><span class="p">.</span><span class="nx">getScriptLock</span><span class="p">();</span>
+
+  <span class="c1">// Wait for one second until the next lines of code finish
+</span><span class="c1"></span>  <span class="nx">lock</span><span class="p">.</span><span class="nx">waitLock</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+  <span class="c1">// Browse the data that arrived from the webhook
+</span><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Write down the data into Sheet1
+</span><span class="c1"></span>    <span class="nx">sheet</span><span class="p">.</span><span class="nx">appendRow</span><span class="p">([</span><span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span><span class="p">,</span>
+                       <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">email</span><span class="p">,</span>
+                       <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">created_at</span><span class="p">,</span>
+                       <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">company</span><span class="p">,</span>
+                       <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">first_conversion</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span>
+                       <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">lead_stage</span><span class="p">,</span>
+                       <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">fit_score</span><span class="p">,</span>
+                       <span class="nx">message</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">interest</span><span class="p">]);</span>
+
+    <span class="c1">// Update sheet with a new line
+</span><span class="c1"></span>    <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">flush</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Release the lock on Sheet1 so other users can write to this sheet
+</span><span class="c1"></span>  <span class="nx">lock</span><span class="p">.</span><span class="nx">releaseLock</span><span class="p">();</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Spaces and comments may give the impression that this code is doing a lot of things, when in reality it is not. It is doing the following:</p>
+<ul>
+<li>Open the spreadsheet bound to the script and select a sheet called Sheet1. SpreadsheetApp is the name of the class that manage spreadsheets on Google Sheets;</li>
+<li>Select the range that will contain headers. To write data into a sheet, one must first select a cell or interval where data will be stored. There are many properties that can be extracted from each lead sent by the webhook, including custom fields. To make things easier, we&rsquo;ll select only some default properties from RD Station;</li>
+<li>Write down all headers into the first line of Sheet1. The method setValues expects a multidimensional list, this is why values are passed into lists with two dimensions;</li>
+<li>If the automation flow is configured to accept both new and current leads in segmentation lists, all existing leads will be sent simultaneously to the spreadsheet, on very short intervals. This creates a problem, because the script can&rsquo;t manage many concurrent requests and overlap lines, causing data losses. To avoid the problem, we use the class LockService, that manage multiple requests to the script;</li>
+<li>Method waitLock is use to lock given sections of code, ensuring that only one execution is done per user. In the meanwhile, other requests that come in are queued and scheduled to be processed as each lock is released;</li>
+<li>A for loop is used to navigation on the object that was received by the webhook. This loop will stop once a variable called i is equal to the amount of leads that were sent by the webhook (except for the case when the automation flow is configured to send both new and current leads to the script, the webhook should only send one lead at a time, so this for loop will set i to be zero and increment it only once before finishing the loop);</li>
+<li>For each loop, add a new line to Sheet1 containing the fields that were selected. Note that the object message have a property called leads, which is a list. To iterate over this property we use the variable i, which is incremented after each loop. The method appendRow is smart enough to find the last line with data and fill the next one, ensuring that no data will be overwritten;</li>
+<li>After being written, the sheet is updated using the method flush from SpreadsheetApp. Writing operations are grouped to be executed together, increasing the performance of the web app. In this case we need the line to be written immediately after having the data available, as the lock must be released as soon as possible;</li>
+<li>The lock is released after data has been wrote and other requests can arrive.</li>
+</ul>
+<p>This code is executed inside doPost every time a lead is sent by a webhook. Note that the header is written every time a new lead arrives. This could have been done differently, by first checking if headers are present, but we&rsquo;ll leave as it is for simplicity. Lines with lead data aren&rsquo;t overwritten thanks to the security lock that was applied to avoid multiple requests inside the for loop.</p>
+<p>The next step is to publish the web app. Publish the app means making it public, what is required in order for RD Station to send the data. To publish the app, navigate to Publish &gt; Deploy as a Web App. Select the project version (in this case will be New) and describe what is being deployed. Under permissions, choose your user to authenticate the script and allow for any user to access it, even anonymous users, so RD Station can connect with the script. After clicking &ldquo;Deploy&rdquo;, GAS will ask you to authorize the script to write on spreadsheets and connect to external services using your credentials. Onde authorized, the app will be published and its public URL will be made available. This is the URL that will be passed to RD Station as we configure everything.</p>
+<p>Update November 10, 2021: this procedure is now done by using a button called &ldquo;Deploy&rdquo;, located at the top right section of the screen. It is necessary to create a new deploy, click in the cog icon that stands for the kind of deploy and select the web app option. Remaining steps are the same and the public URL is created after publication.</p>
+<figure >
+  
+  <img data-src="images/figure5-deploy-web-app.webp" class="lazy" alt="Creation of a new deploy in August 2018." title="Creation of a new deploy in August 2018." />
+  
+  
+  <figcaption>
+    <p>Creation of a new deploy in August 2018. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<figure >
+  
+  <img data-src="images/figure6-web-app-url.webp" class="lazy" alt="Published web app with a public URL in August 2018." title="Published web app with a public URL in August 2018." />
+  
+  
+  <figcaption>
+    <p>Published web app with a public URL in August 2018. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The next step is to configure RD Station to send data to the spreadsheet, but before that, there is something that you should be aware of: by allowing anyone to execute the script, a security breach is opened that may allow for unintentional data to be sent. This script, working a server, is allowed to receive any POST and GET requests. It is vital to sanitize the data to ensure no malicious data gets to the application.</p>
+<h2 id="more-hands-on-rd-station">More hands on: RD Station</h2>
+<p>RD Station provides two ways to configure webhooks: using the option to create webhooks that can be found under Account Name &gt; Integration or by using automation flows. What differs between the two is that when creating webhooks using the Integration menu, it is only possible to use new opportunity or conversion as triggers, while with automation flows it is also possible to use segmentation lists as triggers. I&rsquo;ll show both ways, as well as when to use each one. Let&rsquo;s begin by using the option that&rsquo;s available under Integration. Select &ldquo;Configure&rdquo; next to webhooks to open the list of webhooks and then &ldquo;Create&rdquo; on the top right portion of the page. This will present a webhook creation popup window.</p>
+<figure >
+  
+  <img data-src="images/figure7-rd-station-webhook.webp" class="lazy" alt="New webhook creation screen at August 2018." title="New webhook creation screen at August 2018." />
+  
+  
+  <figcaption>
+    <p>New webhook creation screen at August 2018. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Webhook name is an internal identifier. URL is the address from which the webhook will send data on each lead. This is the URL that was created when publishing a web app through GAS. Triggers can be conversion or new opportunity. If new opportunity is choose you just have to save and the webhook will be created. If conversion is choose, it is possible to choose a specific conversion event or leave the field blank. Doing this will result in all conversions being sent to the webhook. Once saved, RD Station will start sending data through the webhook every time that the chosen event triggers.</p>
+<p>The second way of creating a webhook is by using automation flows. I&rsquo;ll use this form on this post, as this will make use of segmentation lists as a trigger. Using an automation flow allows to add steps between the trigger and calling the webhook. This way you can, for instance, notify an e-mail address when a lead is sent, add a tag or change the step of the lead on the funnel.</p>
+<p>To configure webhooks using automation flows, go to Relationship &gt; Marketing Automation and add a new automation flow. Choose between parallel and managerial and give a name to this flow. Choose the event that will start the automation flow, which can be conversion or upon entering a segmentation list. Build the flow according to your needs and for the last step add the webhook action, which is called &ldquo;Send to URL (integration)&rdquo;. The URL that is being asked is the one that was generated when publishing the web app on GAS. <a href="https://ajuda.rdstation.com.br/hc/pt-br/articles/115001273943" target="_blank" rel="noopener">RD Station documentation</a> suggests adding a step to wait a minute between entering a segmentation list and sending it through the webhook.</p>
+<p>Update November 10, 2021: RD Station dropped support for managerial automation flows. Every automation flow is now parallel.</p>
+<figure >
+  
+  <img data-src="images/figure8-automation-flow-send-to-web-app.webp" class="lazy" alt="Automation flow setup to send data to a spreadsheet in August 2018." title="Automation flow setup to send data to a spreadsheet in August 2018." />
+  
+  
+  <figcaption>
+    <p>Automation flow setup to send data to a spreadsheet in August 2018. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Update November 10, 2021: RD Station automation flow editing interface is different from the one shown here, but steps remain the same.</p>
+<p>Upon finish editing, save and activate the automation flow. By now, the integration should be working and when a new lead enters the automation flow, it will be sent to the script, which in turn will manage the data and record it on the spreadsheet.</p>
+<figure >
+  
+  <img data-src="images/figure9-populated-spreadsheet.webp" class="lazy" alt="Data on new leads being written on a spreadsheet in August 2018." title="Data on new leads being written on a spreadsheet in August 2018." />
+  
+  
+  <figcaption>
+    <p>Data on new leads being written on a spreadsheet in August 2018. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Every time that a new lead joins the list, it will also enter the automation flow and will be sent to the spreadsheet. Since we&rsquo;ve used appendRow, new leads won&rsquo;t replace existing data.</p>
+<p>Big lists can take a while before being recorded on the spreadsheet and an option is to download the entire list, import it to Google Sheets and integration only new leads. RD Station limit the amount of calls made to its APIs and webhooks based on what plan the company have. For reference, i&rsquo;ve contacted support on August 30, 2018 and was informed that these are the current limits:</p>
+<ul>
+<li>120 conversions per minute for plans Pro and inferior;</li>
+<li>500 conversions per minute for Enterprise plans.</li>
+</ul>
+<p>These limits are quite comfortable for small companies that are trying to scale and have low budgets. It is also important to have in mind the maximum amount of cells that Google Sheets can handle, <a href="https://support.google.com/drive/answer/37603?hl=en" target="_blank" rel="noopener">which is 2,000,000</a>. This number is used to determine the amount of rows and columns that the file can hold. The smaller the number of rows, the bigger the number of lines and vice versa.</p>
+<p>Update November 10, 2021: The current amount of cells a Google Sheets file can handle is 5,000,000.</p>
+<p>Done! Every time that a new lead fulfill certain conditions inside RD Station, it will be automatically sent to a spreadsheet.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Check out the part 2 of this post and know how to send data from RD Station to AWS: <a href="/en/stories/rd-station-e-google-sheets-na-aws/" >RD Station and Google Sheets Part 2 - Migrating to AWS</a>.</p>
+<p>Let&rsquo;s automate!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC">17/11/2020 09:10:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Setting up Metabase and PostgreSQL with Docker</h2>
+      <p class="mb-6 text-white" itemprop="abstract">How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</p>
+      <div>
+        <a class="button-primary" href="/en/stories/configurando-metabase-e-postgresql-no-docker/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC">03/09/2020 19:23:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets Part 2 - Moving to AWS</h2>
+      <p class="mb-6 text-white" itemprop="abstract">We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets-na-aws/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/apis-e-carrinhos-de-supermercado/images/thumbnail_hu46c54be97ab545b46d52504c6747000a_184568_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-07-04 21:20:00 &#43;0000 UTC">04/07/2018 21:20:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">APIs and grocery carts</h2>
+      <p class="mb-6 text-white" itemprop="abstract">What is an API and what it is for? This post will introduce it without using technical language.</p>
+      <div>
+        <a class="button-primary" href="/en/stories/apis-e-carrinhos-de-supermercado/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

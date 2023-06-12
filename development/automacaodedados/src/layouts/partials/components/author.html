@@ -1,0 +1,16 @@
+{{ $author := index .Site.Data.authors (.Params.author | default "automacaodedados") }}
+{{ if $author }}
+{{ $avatar := $author.avatar | default "(.Site.BaseURL | relURL)/images/profiles/automacaodedados/profile.webp" }}
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="{{ $avatar }}" alt="{{ $author.fullname }}" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">{{ $author.fullname }}</address>
+    {{ if (isset $author.bio .Language.Lang) }}
+    <p class="mb-auto text-base dark:text-white" itemprop="description">{{ index $author.bio .Language.Lang }}</p>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

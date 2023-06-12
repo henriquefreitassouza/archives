@@ -1,0 +1,17 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block stylesheets %}
+  {% do assets.addCss('theme://public/css/dash-home.css') %}
+  {{ parent() }}
+{% endblock stylesheets %}
+
+{% block javascript %}
+  {{ parent() }}
+  {% do assets.addJs('theme://public/js/dash-home.js', {'group': 'bottom'}) %}
+{% endblock %}
+
+{% block content %}
+  {% for module in page.collection %}
+    {{ module.content }}
+  {% endfor %}
+{% endblock %}

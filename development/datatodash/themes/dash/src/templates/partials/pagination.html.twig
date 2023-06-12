@@ -1,0 +1,47 @@
+{% set pagination = pagination | default(page.collection.params.pagination) %}
+{% set base_url = base_url | default(page.url) %}
+
+{% if pagination | length > 1 %}
+<nav>
+  <ul class="dd-pagination pagination">
+    {% if pagination.hasPrev %}
+      {% set url = (base_url ~ pagination.params ~ pagination.prevUrl) | replace({'//':'/'}) %}
+      {% if category %}
+        {% set url = url ~ '/' ~ category %}
+      {% endif %}
+      {% if query %}
+        {% set url = url ~ '?q=' ~ query %}
+      {% endif %}
+      <li class="page-item"><a rel="prev" href="{{ url }}"><i class="icon icon-back"></i></a></li>
+    {% endif %}
+
+    {% for paginate in pagination %}
+      {% if paginate.isCurrent %}
+        <li class="page-item active"><a href="#">{{ paginate.number }}</a></li>
+      {% elseif paginate.isInDelta %}
+        {% set url = (base_url ~ pagination.params ~ paginate.url) | replace({'//':'/'}) %}
+        {% if category %}
+          {% set url = url ~ '/' ~ category %}
+        {% endif %}
+        {% if query %}
+          {% set url = url ~ '?q=' ~ query %}
+        {% endif %}
+        <li class="page-item"><a href="{{ url }}">{{ paginate.number }}</a></li>
+      {% elseif paginate.isDeltaBorder %}
+        <li class="page-item"><span>&hellip;</span></li>
+      {% endif %}
+    {% endfor %}
+
+    {% if pagination.hasNext %}
+      {% set url = (base_url ~ pagination.params ~ pagination.nextUrl) | replace({'//':'/'}) %}
+      {% if category %}
+        {% set url = url ~ '/' ~ category %}
+      {% endif %}
+      {% if query %}
+        {% set url = url ~ '?q=' ~ query %}
+      {% endif %}
+      <li class="page-item"><a rel="next" href="{{ url }}"><i class="icon icon-forward"></i></a></li>
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}

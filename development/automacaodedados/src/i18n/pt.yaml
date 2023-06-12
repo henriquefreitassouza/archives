@@ -1,0 +1,62 @@
+- id: no_category
+  translation: 'Sem Categoria'
+- id: no_hero_posts
+  translation: 'Nada pra ver aqui...'
+- id: latest_posts
+  translation: 'Últimas histórias'
+- id: no_posts
+  translation: 'Ainda não há histórias sobre dados por aqui. Continue procurando.'
+- id: category_title
+  translation: 'Todas as categorias'
+- id: more_stories
+  translation: 'Leia também estas histórias'
+- id: menu_about
+  translation: 'Sobre'
+- id: menu_search
+  translation: 'Buscar'
+- id: page_path
+  translation: 'pagina'
+- id: all_about_taxonomy
+  translation: 'Tudo sobre'
+- id: read_more
+  translation: 'Leia mais'
+- id: 404_title
+  translation: 'Página não encontrada'
+- id: 404_description
+  translation: 'Esta página não existe ou mudou de endereço. Utilize a navegação ou a busca presentes no cabeçalho desta página para encontrar as histórias que deseja ler.'
+- id: about
+  translation: 'Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.'
+- id: footer_note
+  translation: 'Feito com Hugo + Tailwind e hospedado no Github Pages.'
+- id: search_title
+  translation: 'Sua busca por:'
+- id: footer_title_1
+  translation: 'Jornada de Dados'
+- id: footer_title_2
+  translation: 'Últimas histórias'
+- id: reading_time
+  translation: 'Tempo estimado para a leitura'
+- id: minute
+  translation: 'minuto'
+- id: minutes
+  translation: 'minutos'
+- id: search_label
+  translation: 'Buscar histórias'
+- id: search_aria_label
+  translation: 'Buscar em todo o site'
+- id: toggle_navigation
+  translation: 'Abrir e fechar navegação principal'
+- id: skip_to_content
+  translation: 'Pular para o conteúdo'
+- id: logo_title
+  translation: 'Logo Automação de Dados'
+- id: search_start
+  translation: 'Iniciar a busca'
+- id: theme_toggle
+  translation: 'Trocar entre temas escuro e claro'
+- id: previous_page
+  translation: 'Página anterior'
+- id: next_page
+  translation: 'Próxima página'
+- id: minutes
+  translation: 'minutos'

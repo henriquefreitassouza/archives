@@ -1,0 +1,30 @@
+<div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="{{ .Site.BaseURL }}/images/automacaodedados_logo_white.svg" alt="{{ T `logo_title` }}" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">{{ .Site.Title }}</span>
+        </div>
+        <p class="text-white">{{ T "about" }}</p>
+      </div>
+      {{ partial "navigation/navigation_footer.html" . }}
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">{{ T "footer_note" }}</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          {{ range $.Site.Home.AllTranslations }}
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="{{ .Permalink | relURL }}" itemprop="name">{{ .Param "flag" }} {{ .Language.LanguageName }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

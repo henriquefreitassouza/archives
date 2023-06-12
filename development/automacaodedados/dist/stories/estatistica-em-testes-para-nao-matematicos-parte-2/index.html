@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Estatística para testes - Hipóteses | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Estatística para testes - Hipóteses | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Estatística para testes - Hipóteses | Automação de Dados">
+<meta property="og:description" content="Estatística para testes - Hipóteses | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-11-23 11:07:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-10-21 11:07:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="6 minutos" />
+
+<meta property="article:tag" content="Estatística" />
+<meta property="article:section" content="Estatística" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Diferentes tipos de hipóteses exibidas sobre curvas de densidade.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-2/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-2/images/thumbnail_hu6d7ae4ac00d6fbd38aa368b64fd73f06_40880_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-11-23 11:07:00 &#43;0000 UTC" itemprop="datePublished">23/11/2017 11:07:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/estat%c3%adstica" itemprop="articleSection">estatística</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Estatística para testes - Hipóteses</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Existem vários tipos de testes baseados em amostragens, e neste post será apresentado o mais comum quando se fala em testes com amostras online, como o A/B: testes baseados em hipóteses.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-2/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Estatística para testes - Hipóteses</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 6 minutos</strong>
+        <p>Publicado em 23/11/2017 e atualizado em 21/10/2021.</p>
+<p>Este post é o segundo de uma série com 6 em que vou destrinchar os principais conceitos estatísticos para testes online. Os tópicos serão:</p>
+<ul>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-1/" >A importância de entender estatística para testes com amostras</a>;</li>
+<li><strong>Hipóteses</strong> (este post);</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" >Amostras e probabilidades</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-4/" >Histogramas e curvas de densidade</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-5/" >P-valor, alfa, beta e tamanho do efeito</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-6/" >Configuração de testes com amostras online e de calculadoras</a>.</li>
+</ul>
+<p>Bônus: <a href="/stories/calculadora-de-significancia-estatistica-para-testes-ab/" >Calculadora de significância estatística para testes A/B</a>.</p>
+<h2 id="o-início-de-um-experimento-hipóteses">O início de um experimento: hipóteses</h2>
+<p>Existem diversos tipos de testes com amostras. Os mais comuns no mundo online e adotados pelas ferramentas de testes mais conhecidas são os <strong>testes de hipóteses</strong>. Uma hipótese é uma afirmação que representa uma crença estabelecida. O objetivo de um teste é pôr esta hipótese à prova para validá-la ou invalidá-la. Há duas hipóteses em testes desta natureza: a <strong>hipótese nula</strong> e a <strong>hipótese alternativa</strong> (também chamada de hipótese alfa). A hipótese nula representa a premissa de que o tratamento dado para um grupo de estudo não se correlaciona com alterações comportamentais observadas, enquanto a hipótese alternativa é a crença de que o tratamento dado para um grupo de estudo possui correlação com o comportamento apresentado após o tratamento. Um exemplo de hipótese alternativa: trocar a cor de um botão na página inicial de um site aumentará o tráfego na página de produto em 10%. A hipótese nula é, então, a premissa de que a troca da cor do botão não vai aumentar o tráfego na página de produto em 10%. A definição das hipóteses é importante para configurar e analisar o resultado de um teste.</p>
+<p>Quando o resultado de um teste é confrontado com a hipótese nula, ela pode ser <strong>rejeitada</strong> ou <strong>aceita</strong>, em termos estatísticos. Aceitar a hipótese nula significa que a alteração induzida no grupo de tratamento não teve o efeito esperado; rejeitar a hipótese nula significa admitir que a probabilidade de o comportamento observado no grupo de tratamento ter sido obra do acaso, e não do tratamento, é baixa. A nomenclatura pode parecer estranha, mas na prática ela significa que não é só porque o pesquisador induziu uma alteração para parte do grupo de estudo que essa alteração foi a causa de uma mudança de comportamento, caso ela exista. Voltando ao exemplo do botão na página inicial de um site; assumindo que o botão foi alterado e que o tráfego na página de produto cresceu 10%, como garantir que foi essa a alteração que causou um aumento de 10% no tráfego desta página? Rejeitar a hipótese nula não significa aceitar de imediato a hipótese alternativa. A probabilidade de que a mudança de comportamento observada foi induzida pelo projetista de testes é calculada, e será definida em outro post.</p>
+<h2 id="erros-em-testes">Erros em testes</h2>
+<p>Existe ainda a possibilidade do resultado de um teste estar errado, mesmo que os procedimentos tenham sido feitos corretamente. Isso acontece porque o estudo é feito com amostras e não com toda a população, e existe a chance de a amostra não representar todas as características da população estudada. Essa possibilidade abre margem para <strong>erros amostrais</strong>, conhecidos em termos estatísticos como <strong>erro do tipo I</strong> (também chamado de alfa ou falso positivo) e <strong>erro do tipo II</strong> (também chamado de beta ou falso negativo).</p>
+<ul>
+<li>O erro do tipo I acontece quando a hipótese nula é rejeitada quando ela deveria ter sido aceita. Em outras palavras, <strong>afirmar que algo é verdadeiro quando não é</strong>.</li>
+<li>O erro do tipo II acontece quando a hipótese nula é aceita quando ela deveria ter sido negada. Em outras palavras, <strong>afirmar que algo é falso quando não é</strong>.</li>
+</ul>
+<p>O erro do tipo I está diretamente associado a um conceito a ser explicado em detalhes em outro post, chamado <strong>alfa</strong>. Talvez você já tenha ouvido falar no complemento desse número, chamado de <strong>significância estatística</strong>. Por hora, a significância estatística é o parâmetro definido nas ferramentas de teste que dá um nível de confiança no resultado obtido para o estudo. Geralmente são assumidos os valores de 90%, 95% ou 99%. O que 95% de significância estatística, por exemplo, quer dizer na prática é que a cada 20 repetições de um teste, em uma delas o resultado será um falso positivo, ou erro do tipo I.</p>
+<p>Já o erro do tipo II está associado ao conceito de <strong>beta</strong>. Novamente, o complemento dele é mais conhecido e os detalhes deste número também serão discutidos em outro post. Em uma calculadora de testes, por exemplo, pede-se o complemento de beta para calcular a probabilidade de encontrar o efeito esperado em um teste, e geralmente assume-se 80%. Na prática, a cada dez vezes que o teste foi executado, o resultado em duas das execuções será um falso negativo, ou erro do tipo II.</p>
+<p>Uma forma comum de explicar a relação entre hipóteses nula e alternativa, bem como os possíveis erros no resultado de testes, é fazer um paralelo com o sistema jurídico penal. Imagine que um juiz precisa decidir se um réu é inocente ou culpado. Pela lei, presume-se que um cidadão é inocente (hipótese nula) até que se prove o contrário (hipótese alternativa). Dispostos em uma tabela, os possíveis desfechos do julgamento são:</p>
+<figure >
+  
+  <img data-src="images/figure1-different-types-of-errors.webp" class="lazy" alt="Tabela com os possíveis desfechos e realidades de um julgamento, apresentando os erros dos tipos I e II." title="Tabela com os possíveis desfechos e realidades de um julgamento, apresentando os erros dos tipos I e II." />
+  
+  
+  <figcaption>
+    <p>Tabela com os possíveis desfechos e realidades de um julgamento, apresentando os erros dos tipos I e II. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Se foram encontradas evidências contra o réu, a hipótese nula (sua inocência) será negada. Se estas mesmas evidências apontam que o réu cometeu o crime pelo qual está sendo julgado, a hipótese alternativa (sua culpa) será aceita. Agora, se as evidências não são fortes o suficiente, o juiz poderá proferir o veredito errado culpando um inocente (falso positivo ou tipo I) ou inocentando um culpado (falso negativo ou tipo II).</p>
+<p>Voltando a realidade corporativa, a margem de erro aceitável deve ser definida pela organização com base no preço a ser pago por um erro. No caso de testes com amostras online, é comum pensar que erros do tipo I, ou falsos positivos, são muito mais severos do que erros do tipo II, pois na prática significa tomar decisões com base em informações inverídicas. O erro do tipo II não é tão severo se pensarmos que na prática isso significa que o negócio perdeu uma oportunidade. Neste caso a operação continua como estava. Pense que em uma área como a medicina, estas margens precisam ser o mais próximas de zero o possível, afinal os estudos lidam diretamente com vidas. Por outro lado, buscar essas margens pequenas requer mais amostras e mais tempo de execução. Para uma empresa, isso significa mais tempo e custos maiores com o experimento.</p>
+<p>Acompanhe os próximos posts para saber como testar suas hipóteses. O próximo tópico é <strong>probabilidades</strong>.</p>
+<p>Bora criar hipóteses!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">Leia também estas histórias</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/calculadora-de-significancia-estatistica-para-testes-ab/images/thumbnail_hu445bb0ea2c66d3cb7c1eb80c74a417bb_106746_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-12-06 11:36:00 &#43;0000 UTC">06/12/2017 11:36:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Calculadora para testes com amostras online</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Construí uma calculadora para testes com amostras online. Ela retorna o tamanho da amostra necessária para o teste, a duração estimada de dias para que o teste seja concluído e a significância …</p>
+      <div>
+        <a class="button-primary" href="/stories/calculadora-de-significancia-estatistica-para-testes-ab/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-6/images/thumbnail_hu8efac969a2e378d483f761e54d87fc3a_81326_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-29 09:12:00 &#43;0000 UTC">29/11/2017 09:12:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Estatística para testes - Configuração das ferramentas</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Configurar testes com amostras online requer alguns cuidados. Configurações erradas podem invalidar os achados do estudo e levar negócios a tomarem decisões com base em dados inverídicos – o que é …</p>
+      <div>
+        <a class="button-primary" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-6/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-5/images/thumbnail_hu736ab047195c247913f95fd813824efd_30026_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-27 09:47:00 &#43;0000 UTC">27/11/2017 09:47:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Estatística para testes - P-valor, alfa, beta e tamanho do efeito</h2>
+      <p class="mb-6 text-white" itemprop="abstract">As ferramentas para testes mais conhecidas conseguem cuidar dos cálculos envolvidos na execução dos experimentos, porém a pessoa projetista de testes deve ser capaz de fornecer as variáveis …</p>
+      <div>
+        <a class="button-primary" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-5/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">Como escolher o melhor gráfico?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

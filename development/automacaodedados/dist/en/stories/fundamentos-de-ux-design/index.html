@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>UX Design: behind the curtains of experience design | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="UX Design: behind the curtains of experience design | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/fundamentos-de-ux-design/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="UX Design: behind the curtains of experience design | Data Automation">
+<meta property="og:description" content="UX Design: behind the curtains of experience design | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-12-01 09:16:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-01 09:16:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="6 minutes" />
+
+<meta property="article:tag" content="Design" />
+<meta property="article:section" content="Design" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/fundamentos-de-ux-design/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/fundamentos-de-ux-design/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Product prototyping process diagram.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/fundamentos-de-ux-design/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/fundamentos-de-ux-design/images/thumbnail_hu7b520a0c0c4dc08e2280f7758a43dc35_78839_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-12-01 09:16:00 &#43;0000 UTC" itemprop="datePublished">01/12/2017 09:16:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/design" itemprop="articleSection">design</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">UX Design: behind the curtains of experience design</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">The phrase 'a good design is invisible' surfaces with some frequency when searched online. Good designs are invisible when experiences are fluid. There are people that dedicate their careers to make memorable experiences, but we all are experience designers. We just don&rsquo;t know it yet</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/fundamentos-de-ux-design/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">UX Design: behind the curtains of experience design</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 6 minutes</strong>
+        <p>Published on December 01, 2017 and updated on November 01, 2021.</p>
+<p>If you had the chance to read some of the previous posts on this blog, you&rsquo;ve noticed that the topics are mainly related to systems integration, data analysis, experiment design, conversion optimization and data science. What does a post about design have to do with those topics? Simple. Everything&hellip; As technical as data analysis and related topics may be, at the end of the day we serve a greater purpose by delivering value to someone. Design is a way of thinking that connect us to such purpose. I&rsquo;ll explain what I understand that a designer is and how tools that are used by UX designers have use for data analysts.</p>
+<p>The word design is related to build. To build is to make something tangible, which is related to innovation. <a href="http://assets.perestroika.com.br.s3.amazonaws.com/vlef/vlef.pdf" target="_blank" rel="noopener">A possible definition for innovation is to materialize</a>. Innovation is not related to new and also differ from terms like imagination or idea. The definitions are:</p>
+<ul>
+<li>Imagination: thinking about things that cannot be materialized and have no use in real world;</li>
+<li>Idea: thinking about things that can be materialized and have use in real world;</li>
+<li>Innovation: materializing things that can be materialized and have use in real world.</li>
+</ul>
+<p>Design is about building for yourself and others. Experience design is about building experiences for yourself and others.</p>
+<p>Experience is related to knowledge. Experiences change people. Experience designers within an organization guided by its purpose build experiences that make people <strong>better versions of themselves</strong>.</p>
+<h2 id="facets-of-experience-designers">Facets of experience designers</h2>
+<p>No matter the hard skills, designers have something in common: <strong>empathy</strong>. Empathy is the way by which someone feels the emotions of others, putting oneself in another person&rsquo;s shoes. It is a bridge. If empathy is born with us or if it is developed as we live is up for the debate. What is known is that designers have the ability to be others, to some degree.</p>
+<p>And how UX designers&rsquo;s purpose materialize on a day to day basis? Building products that deliver experiences. As simpler as the answer is, what happens behind the curtains makes things a little more complicated. Hardly a UX designer will master every skill related to the field, and this is why there are different types of designers inside the umbrella of UX design. Let&rsquo;s see the most common specializations.</p>
+<h3 id="ux-researcher">UX Researcher</h3>
+<p>A UX researcher gets to know people. It uses tools and processes to know, learn and understand people in order to become them. This work results in a bridge by which the researcher and other people can relate with someone in common. Usually called <strong>personas</strong>, these bridges are archetypes that represent groups of people. They think, act, desire, have needs and deceptions just like us. Personas are the walk in door to enter into someone&rsquo;s world. To get to the definition of a persona, UX researchers plan, execute and analyze results from research with people using many research methods. There are many tools to create and conduct research, but there is no single absolute method to conduct them. UX researchers must find the best tool to collect the data using the resources that are available. Research have at least three groups:</p>
+<ul>
+<li>Structured: structured research follow pre established scripts;</li>
+<li>Semi structured: there are scripts, but the researcher may deviate from it along the research;</li>
+<li>No structure: there is no script. Researchers orient themselves based on the objective to be achieved.</li>
+</ul>
+<p>Research can be divided in two types:</p>
+<ul>
+<li>Exploratory: done to know people;</li>
+<li>Validate: test if what was developed match expectations.</li>
+</ul>
+<p>Questions done during research can be of three types:</p>
+<ul>
+<li>Open: accept answers with no restraints;</li>
+<li>Semi open: accept answers with some restrictions;</li>
+<li>Closed: answers are predefined.</li>
+</ul>
+<p>Research methods are:</p>
+<ul>
+<li>In person interview, online or by phone: interviews can be quick or detailed;</li>
+<li>Research form: online or field forms;</li>
+<li>Pool questionnaire: research with samples;</li>
+<li>Guerrilla: quick field research;</li>
+<li>Focus groups: research with groups;</li>
+<li>Usability test: field testing prototypes;</li>
+<li>Card sorting: study the way people organize things.</li>
+</ul>
+<p>UX researchers can also have two specialties depending on the organization:</p>
+<ul>
+<li>Exploratory research specialist;</li>
+<li>Validation specialist.</li>
+</ul>
+<h2 id="information-architect">Information architect</h2>
+<p>There are job descriptions for information architects that ask for graduations on librarianship or correlated areas, which are mainly about data organization and cataloging. Information architects organize the different systems that build products to be accessible, simple to use and deliver perceived value. For digital products, there are four systems:</p>
+<ul>
+<li>Organizational system: component and content organization;</li>
+<li>Navigational system: navigation paths and how to get to the perceived value;</li>
+<li>Nominal system: signs and vocabulary used;</li>
+<li>Search system: efficiency and efficacy of search methods.</li>
+</ul>
+<p>Information architects deliver organization diagrams for each system based on characteristics of each persona designed by UX researchers. It can also deliver prototypes with so called <strong>low fidelity</strong> to be testes on field. Low fidelity prototypes are concepts of something, not yet finished. They are built fast and its sole purpose is to be used to validate specific experiences within a product. The opposite of a low fidelity prototype is the <strong>high fidelity</strong> prototype. This prototype is close to the final product, and it is used to gather data on how the final product will be used. Prototypes can take on many different shapes: they can be everything from a hand draw sketch on a notepad to a theatrical performance simulating specific product usages.</p>
+<h3 id="ui-designer">UI Designer</h3>
+<p>Interface designers use the available knowledge on personas and the four systems to create concepts of the end product. UI Designers deliver high fidelity prototypes and the components that were used to built it. Interface designers can build reusable components to ease building new prototypes. They can also use tools such as <a href="https://origami.design" target="_blank" rel="noopener">Origami</a>, <a href="https://framer.com" target="_blank" rel="noopener">Framer</a> or <a href="https://invisionapp.com" target="_blank" rel="noopener">Invision</a> to build browseable prototypes. Some companies differentiate UI designers in two:</p>
+<ul>
+<li>One which create interfaces;</li>
+<li>One which design prototypes.</li>
+</ul>
+<p>It is important to note that, about design as an aesthetic concept, there are visual designers and graphical designers. Visual designers create graphical elements related to branding, and one of its deliverables is the brand style guide. Graphical designers, on the other hand, create graphics to be used on digital and physical surfaces.</p>
+<h3 id="ux-writer">UX Writer</h3>
+<p>Although less common, there are companies that search for designers with graduations on journalism or languages. These are specialists with knowledge on persuasive writing and are able to deliver the right content at the right time. UX Writers adjust content by variables like device type, purchase intention, product type and many more.</p>
+<p>In practice, UX designers have some knowledge on all areas, but specialize in one or two. In most organizations, UX designers have more than one attribution on a day to day basis, and it is common that they know different techniques to deliver their work.</p>
+<h2 id="in-the-end-it-is-all-about-learning">In the end, it is all about learning</h2>
+<p>Just like data analysts, UX designers are learning all the time. They learn new things about people, about the organization that they work for and about the business that they&rsquo;re helping to build. Data analysts should also learn about the organization and the people that it serve, so that they don&rsquo;t lose sight of its purpose. UX research techniques are very useful to collect quantitative data that can explain why observed results on analytics and testing tools are the way they are. Design, by the definition presented at the beginning of the post, is present across every steps of an experiment, from planning to learning.</p>
+<p>Design is invisible, yet leave visible outcomes. The funniest thing about this is that we all do design. At every moment.</p>
+<p>Let&rsquo;s build experiences!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

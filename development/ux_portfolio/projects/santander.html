@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Santander Mobile - My work with digital products - Henrique Freitas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:900|Roboto+Condensed" rel="stylesheet">
+        <link rel="stylesheet" href="../css/app.css">
+    </head>
+    <body>
+        <div class="modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-labelledby="portfolio-item-title">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="portfolio-item-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <img id="modal-img" src="" alt="" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header id="page-header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="../index.html" class="navbar-brand">Henrique Freitas</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="main-nav">
+                        <ul class="nav navbar-nav" role="navigation">
+                            <li><a href="../index.html#latest-work">Latest work</a></li>
+                            <li><a href="../index.html#about">About me</a></li>
+                            <li><a href="../index.html#testimonials">Testimonials</a></li>
+                            <li><a href="../index.html#hire">Hire</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" role="navigation">
+                            <li><a href="../portfolio.html">Portfolio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <section class="portfolio-items portfolio-section container">
+                <header>
+                    <ol class="breadcrumb">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../portfolio.html">Portfolio</a></li>
+                        <li class="active"><span>Santander Mobile</span></li>
+                    </ol>
+                    <hgroup>
+                        <h1>Santander Mobile</h1>
+                        <h2>What is it: A complete redesign of the payment flow of the Santander internet banking mobile application.</h2>
+                    </hgroup>
+                </header>
+                <h3>Challenge</h3>
+                <p>Santander is one of the largest banks in Brazil. They have an internet banking through which users can do a variety of transactions without having to go to an agency. One of the most common transactions is to pay accounts. With the rise of mobile applications and the internet banking for smartphones and tablets the transaction had some changes to use resources available on those devices but the process remained the same. Digital banks arosed and redefined the banking institutions, as well as the internet banking, simplifying financial management. The traditional banks are feeling the pressure to innovate and they're working to stay competitive in the new reality. Recently, some of the major banks in Brazil announced the <a href="http://conteudo.startse.com.br/mercado/juniorboneli/bancos-se-rendem-ao-sucesso-do-nubank-e-fortalecem-area-de-inovacao/" target="_blank">creation of innovative departments</a>. Given this scenario and the fact that I've had trouble trying to use the mobile internet banking, I've proposed a solution to change significantly one of the most used transactions and make the internet banking stay competitive against the digital banks.</p>
+                <h3>Solution</h3>
+                <p>The mobile application was redesigned to simplify the transactions. The main goal was to reduce the complexity of the payment flow on the app. Since the screens are smaller users can't see much of the content they see on wider screens so the content was reorganized to be shown in small and meaningful chunks without scrolling. Many links in the web application go to the same places, these were removed from the mobile application. Another main change is that the application is strongly tied to the Human Interface Guidelines developed by Apple. The guideline provided many elements already familiar to users that were tested by the company and thus reducing the cognitive load to understand how the application works. The main screen displays all the available options in a list format with a comfortable amount of space to hit each block with the thumb. The most common options were placed at the bottom of the list, being more accessible to the thumbs. Tabs were avoided to reduce the effort to reach them and to avoid tab horizontal scrolling. Another major change was the removal of the security card, a card with numbers given by the bank to use before finishing each transaction. To replace this interaction, the new application asks for the password using the same application keyboard used to log in into the system.</p>
+                <div class="alert alert-success">
+                    <strong>Achievments: </strong>
+                    <ul>
+                        <li>It is easier and more intuitive to make payments;</li>
+                        <li>Less cognitive efforts for the users by having known elements of their operational systems;</li>
+                    </ul>
+                </div>
+                <h3>Process</h3>
+                <p>The process was divided in two steps: research and development. I've started the research thinking about the details of my own process when making a payment through the app. Then I watched another two people on my social circles to perform the same action to see how they do it, without explicitly saying that I was performing a research. I was able to register their actions and some thoughts when trying to perform the desired action and gather data to build a more assertive solution.</p>
+                <p>After the research phase I've designed wireframes using some of the content already available on the internet banking. I've created a content inventory and removed what was redundant, as well as unnecessary information to pay an account. I've tried some arrangements until I was able to place all the information needed at each screen without scrolling and helping to tell a story, which is a way to say to users that they're performing a payment process and some information are required. After visualizing the wireframes done, I've designed a mock-up using the Human Interface Guidelines and the brand styleguide.</p>
+                <h3>Result</h3>
+                <p>The final product has a higher affordance and it is easier to navigate across the steps of the process, as all screens have indicators to go back and forward using elements of the Human Interface Guideline. The security card was removed so users don't need to carry a card just to use the internet banking. Fields to specify who's receiving and who's paying the account were removed as these can be extracted from the account after scanning the barcode. The receipt can be sent to an email with one tap and if an e-mail isn't registered it is easier to register without leaving the receipt screen. Important moments in the process have big and accessible buttons to confirm and cancel the operation, making it easy for the user to undo any mistakes and aware him that He's about to perform an important operation, one that can cause trouble if done wrong.</p>
+                <div class="alert alert-info">
+                    <strong>Interaction design: </strong><a href="https://invis.io/ZH9LBBPTB" target="_blank">https://invis.io/ZH9LBBPTB</a>
+                </div>
+                <div class="row">
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/login_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/login_ios.png" alt="Santander Mobile - Social number | Santander Mobile - CPF" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Social number</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/senha_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/senha_ios.png" alt="Santander Mobile - Password | Santander Mobile - Senha" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Password</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/tela_principal_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/tela_principal_ios.png" alt="Santander Mobile - Home screen | Santander Mobile - Tela principal" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Home</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/pagamentos_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/pagamentos_ios.png" alt="Santander Mobile - Payments | Santander Mobile - Pagamentos" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Payments</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/pagar_conta_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/pagar_conta_ios.png" alt="Santander Mobile - Barcode | Santander Mobile - Código de barras" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Barcode</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/codigo_de_barras_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/codigo_de_barras_ios.png" alt="Santander Mobile - Scan barcode | Santander Mobile - Escanear código de barras" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Scan barcode</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/dados_do_boleto_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/dados_do_boleto_ios.png" alt="Santander Mobile - Payment data | Santander Mobile - Dados do pagamento" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Payment data</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/confirmar_senha_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/confirmar_senha_ios.png" alt="Santander Mobile - Confirm password | Santander Mobile - Confirmar senha" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Confirm</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/pagamento_realizado_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/pagamento_realizado_ios.png" alt="Santander Mobile - Payment confirmed | Santander Mobile - Pagamento confirmado" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Confirmed</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/mockup/email_enviado_ios.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/mockup/thumbnail/email_enviado_ios.png" alt="Santander Mobile - Sent email | Santander Mobile - Email enviado" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Sent email</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/initial_screen.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/initial_screen.png" alt="Santander Mobile - Social number | Santander Mobile - CPF" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Social number</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/password.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/password.png" alt="Santander Mobile - Password | Santander Mobile - Senha" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Password</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/main_screen.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/main_screen.png" alt="Santander Mobile - Home screen | Santander Mobile - Tela principal" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Home screen</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/pagamentos.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/pagamentos.png" alt="Santander Mobile - Payments | Santander Mobile - Pagamentos" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Payments</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/pay_invoice.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/pay_invoice.png" alt="Santander Mobile - Barcode | Santander Mobile | Código de barras" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Barcode</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/invoice_data.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/invoice_data.png" alt="Santander Mobile - Payment data | Santander Mobile - Dados do pagamento" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Payment data</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/confirm_password.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/confirm_password.png" alt="Santander Mobile - Confirm password | Santander Mobile - Confirmar senha" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Confirm</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/payment_confirmed.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/payment_confirmed.png" alt="Santander Mobile - Payment confirmed | Santander Mobile - Pagamento confirmado" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Confirmed</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/visualize_confirmation.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/visualize_confirmation.png" alt="Santander Mobile - Visualize receipt | Santander Mobile - Visualizar comprovante" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Receipt</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/santander_redesign/wireframe/sign_up_email.png">
+                            <div>
+                                <img src="../assets/images/product/santander_redesign/wireframe/thumbnail/sign_up_email.png" alt="Santander Mobile - Register email | Santander Mobile - Cadastrar email" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Register email</strong>
+                        </a>
+                    </div> 
+                </div>
+            </section>
+            <footer id="site-footer" class="section">
+                <div class="container">
+                    <strong><a href="../index.html" title="Go to the home page">Henrique Freitas</a></strong>
+                    <div class="footer-links">
+                        <a href="../index.html#hire">Hire me</a>
+                        <a href="conversion-chef.html">Next project &gt;&gt;</a>
+                        <a href="musicar.html">Previous project &lt;&lt;</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </footer>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="../js/app.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-87608325-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

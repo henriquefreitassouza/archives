@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{ if eq .Kind "term"}}
+    {{ partial "components/banner.html" (printf "%s: %s" (T "all_about_taxonomy") .Title) }}
+  {{ else }}
+    {{ partial "components/banner.html" (T "category_title") }}
+  {{ end }}
+  <div class="container container-box mx-auto">
+    <div class="lg:flex lg:flex-wrap lg:justify-start">
+      {{ if gt (len .RegularPages) 0 }}
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">{{ T "latest_posts" }}</span>
+        {{ range .Paginator.Pages }}
+          {{ partial "components/post_thumbnail.html" . }}
+        {{ end }}
+        {{ if gt .Paginator.TotalPages 1 }}
+          {{ partial "components/pagination" .Paginator }}
+        {{ end }}
+      {{ else }}
+        {{ partial "components/taxonomy.html" (dict "tx" "categories" "tm" .) }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

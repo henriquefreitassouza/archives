@@ -1,0 +1,28 @@
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">{{ T "category_title" }}</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      {{ range .Site.Taxonomies.categories }}
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="{{ .Page.RelPermalink }}" itemprop="item">
+          <span class="text-white" itemprop="name">{{ .Page.Title }}</span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">{{ T "footer_title_2" }}</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      {{ range first 3 (.Site.RegularPages).ByPublishDate.Reverse }}
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="{{ .RelPermalink }}" itemprop="item">
+          <span class="text-white" itemprop="name">{{ .Title }}</span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</div>

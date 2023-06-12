@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>Automatic workflow to develop plugins and themes for WordPress | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Automatic workflow to develop plugins and themes for WordPress | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="Automatic workflow to develop plugins and themes for WordPress | Data Automation">
+<meta property="og:description" content="Automatic workflow to develop plugins and themes for WordPress | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2018-09-15 16:29:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-12 16:29:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="26 minutes" />
+
+<meta property="article:tag" content="Development" />
+<meta property="article:section" content="Development" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Open terminal running Gulp tasks and, on the right side, WordPress logo.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/workflow-para-desenvolvimento-wordpress/images/thumbnail_huee065fcd8bcd8b13505bcfc59ae5b7fd_68810_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2018-09-15 16:29:00 &#43;0000 UTC" itemprop="datePublished">15/09/2018 16:29:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/development" itemprop="articleSection">development</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Automatic workflow to develop plugins and themes for WordPress</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">A good workflow can reduce hours with project maintenance in WordPress. This post will present one possible way to organize a project using templates and Gulp, a task runner.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/workflow-para-desenvolvimento-wordpress/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Automatic workflow to develop plugins and themes for WordPress</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 26 minutes</strong>
+        <p>Published on September 15, 2018 and updated on November 12, 2021.</p>
+<p>Updates November 12, 2021:</p>
+<ul>
+<li>By the time this post was updated, the most recent stable version of WordPress is 5.8.2. Starting from version 5, the default page editor in WordPress is Gutenberg;</li>
+<li>Gulp tasks are now declared using the command exports, available on Javascript ES6. Tasks are functions declared with a callback passed as a parameter. This callback is a function that, when invoked, send Gulp a signal to mark the task as finished. This is done so the functions serial and parallel work properly. Those functions manage the execution of multiple tasks, which can be done sequentially or simultaneous. Using the method task is now discouraged.</li>
+</ul>
+<p><strong>SPOILER ALERT: this post contains lines of code! I&rsquo;ll assume that you&rsquo;re familiar with software development in WordPress, know how to use Node Package Manager (NPM) and know about task runners.</strong></p>
+<p>If there is one thing that have no apparent &ldquo;one size fits all&rdquo; solution, (<a href="https://developer.wordpress.org/themes/basics/organizing-theme-files/" target="_blank" rel="noopener">or maybe have, to some extent</a>) is to organize the development of WordPress themes and plugins. There are at least dozens of possible ways to organize files for production. I&rsquo;ll explain here the way I usually organize project files, something that I believe it is fundamental to create a default deployment process, to ease communication with all developers and to maintain the project in the future.</p>
+<p>I&rsquo;ll split the subject into the following topics:</p>
+<ul>
+<li>Download and installation of plugin and theme boilerplates;</li>
+<li>Creating project files and folders;</li>
+<li>Creating project packages using Node Package Manager (NPM);</li>
+<li>Download Gulp and project dependencies;</li>
+<li>Setting up tasks to compile all files and generate deploy verions.</li>
+</ul>
+<h2 id="wordpress-maintenance">WordPress maintenance</h2>
+<p>Keep WordPress updated and with no errors is quite complicated. This is because many components are developed by different people, independent from one another, and available for download as plugins and themes. In order to make the entire ecosystem consistent, <a href="https://automattic.com/" target="_blank" rel="noopener">Automattic</a> enforces a series of rules when creating <a href="https://developer.wordpress.org/themes/release/theme-review-guidelines/" target="_blank" rel="noopener">themes</a> and <a href="https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/" target="_blank" rel="noopener">plugins</a> which must be followed before being submitted to the respository at <a href="https://wordpress.org/themes/" target="_blank" rel="noopener">WordPress.org</a>. This helps, but plugins and themes can still be created using technologies that aren&rsquo;t compatible with one another, creating conflicting dependencies. I had the experience of creating a plugin that worked fine with all WordPress versions that made use of the default editor, <a href="https://codex.wordpress.org/TinyMCE" target="_blank" rel="noopener">TinyMCE</a> (all up to 3.1), but breaks when installing <a href="https://wordpress.org/gutenberg/" target="_blank" rel="noopener">Gutenberg</a> and using <a href="https://developer.wordpress.org/rest-api/" target="_blank" rel="noopener">WP REST API</a> with Javascript at the same time.</p>
+<p>To avoid incompatibility issues, I usually try to figure out what plugins will be required for the project. I don&rsquo;t specify a magic number, but try to go for the least amount of dependencies. Having understood what is that will be required and what will be developed, its time to setup a boilerplate for each plugin and theme.</p>
+<h2 id="boilerplates">Boilerplates</h2>
+<p>I never begin developing a plugin or theme from scratch. I&rsquo;ll always start from a pre defined structure called boilerplate: a organization of files and folders not unlike something that would be adopted for modern software development, but that also follows Automattic&rsquo;s rules to publish the work on the official repositories. There are boilerplates for themes and plugins.</p>
+<h2 id="theme-boilerplate">Theme boilerplate</h2>
+<figure >
+  
+  <img data-src="images/figure1-underscores-website.webp" class="lazy" alt="Underscores home page with advanced options being displayed." title="Underscores home page with advanced options being displayed." />
+  
+  
+  <figcaption>
+    <p>Underscores home page with advanced options being displayed. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Automattic itself, under its <a href="https://themeshaper.com/" target="_blank" rel="noopener">theme development department</a>, provide a boilerplate, called _s (<a href="https://underscores.me/" target="_blank" rel="noopener">Underscores</a>). Upon opening Underscores website, just write the name of the theme and hit &ldquo;Generate&rdquo;. A zipped file will be downloaded into your machine. By uploading this file into the themes folder of your WordPress installation, which can be done by on theme manager at the administrative panel or by copying and pasting the unzipped folder into wp-content/themes (or the default themes directory), the new theme will be installed at WordPress. This boilerplate not only speeds up the process of setting up some files like functions.php or style.css, but also creates some other .php files with separate responsibilities to ease both understanding and maintaining the project.</p>
+<p>Below the theme name input there is a link to show advanced options. Hitting this link will show additional options to customize the theme, such as a slug to identify the theme, as well as information about the author a description. You can also create a boilerplate ready to work with <a href="https://woocommerce.com/" target="_blank" rel="noopener">WooCommerce</a> and build a boilerplate that use Sass as the CSS pre processor.</p>
+<figure >
+  
+  <img data-src="images/figure2-underscores-project-structure.webp" class="lazy" alt="Files and folders at the root of Underscores boilerplate with _sassify! selected." title="Files and folders at the root of Underscores boilerplate with _sassify! selected." />
+  
+  
+  <figcaption>
+    <p>Files and folders at the root of Underscores boilerplate with _sassify! selected. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>All themes requires two files to work: functions.php and style.css. These two were already created, along with others to render pages such as search results, blog posts and headers and footer for the entire website. Some features were already created on different files and referenced on functions.php. All files that are loaded on functions.php were created inside <strong>inc</strong>. There is a <strong>js</strong> folder with some default scripts to include accessibility, mobile navigation and load some <a href="https://developer.wordpress.org/themes/customize-api/" target="_blank" rel="noopener">Customizer</a> features. The folder <strong>languages</strong> stores translation files, <strong>layouts</strong> contains style sheets and currently have two CSS files to style the main area and a sidebar. Folder <strong>sass</strong> was included when selecting _sassify! and includes .scss files with reset styles and default styles for elements like buttons. The last folder, <strong>template-parts</strong> house templates for pages such as posts, page not found and search results.</p>
+<p>The content within these folders are referenced by files that are on the root folder of the theme. The following files include resources from template-parts to render the final pages:</p>
+<ul>
+<li>archive.php;</li>
+<li>index.php;</li>
+<li>page.php;</li>
+<li>search.php;</li>
+<li>single.php.</li>
+</ul>
+<p>Files header.php and footer.php build the default header and footer, shown on all pages. Screenshot.php is a thumbnail image that is show on the theme management section of the administrative panel. The default image that is downloaded with the boilerplate is transparent and its dimensions are 1200 x 900 pixels.</p>
+<h2 id="plugin-boilerplate">Plugin boilerplate</h2>
+<figure >
+  
+  <img data-src="images/figure3-plugin-boilerplate-generator.webp" class="lazy" alt="Boilerplate wppb home page." title="Boilerplate wppb home page." />
+  
+  
+  <figcaption>
+    <p>Boilerplate wppb home page. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Just like themes, plugins also have boilerplates. The most used was created in 2011 by developer <a href="https://github.com/tommcfarlin/" target="_blank" rel="noopener">Tom McFarlin</a>, currently maintained by <a href="https://github.com/DevinVinson/" target="_blank" rel="noopener">Devin Vinson</a>. This boilerplate is <a href="https://github.com/DevinVinson/WordPress-Plugin-Boilerplate" target="_blank" rel="noopener">hosted on Github</a> and it is used as a template for online boilerplate generators, which works similarly to Underscores. One of these boilerplates is <a href="https://wppb.me/" target="_blank" rel="noopener">WordPress Plugin Boilerplate Generator, or wppb</a> maintained by developer <a href="https://enriquechavez.co/" target="_blank" rel="noopener">Enrique Chávez</a>, supported by Devin Vinson.</p>
+<p>Upon filling all required information and hitting &ldquo;Build Plugin&rdquo;, a zipped file will be downloaded into your machine.</p>
+<figure >
+  
+  <img data-src="images/figure4-plugin-boilerplate-folder-structure.webp" class="lazy" alt="Files and folders at the root section of the boilerplate plugin structure." title="Files and folders at the root section of the boilerplate plugin structure." />
+  
+  
+  <figcaption>
+    <p>Files and folders at the root section of the boilerplate plugin structure. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This plugin is ready to be installed on WordPress by uploading it using the administrative panel or by copying and pasting the unzipped files to wp-content/plugins (or the default plugin directory).</p>
+<p>A plugin needs two things to be recognized as a plugin: a .php file with a comment and <a href="https://developer.wordpress.org/plugins/hooks/" target="_blank" rel="noopener">hooks</a> that connect it to the Core. The boilerplate already took care of this and provided several folders and files to organize the plugin. Files that will be used on the administrative panel and the front end are inside <strong>admin</strong> and <strong>public</strong>, respectively. All configuration options and hooks are created inside <strong>includes</strong>, and translation files are stored inside <strong>languages</strong>.</p>
+<p>Each boilerplate generated on wppb will create a file named after the given slug identifier. This file declares on its header all information that will be presented in the administrative panel. Description is a field to describe what the plugin does and how to use it. The root also contains a index.php with no content and a uninstall.php, which can be used to configure tasks to be done when uninstalling the plugin.</p>
+<p>Although this boilerplate have many configurations out of the box, we still have to edit some files. We&rsquo;ll be working with five files to build the features:</p>
+<ul>
+<li><strong>class-plugin-name.php</strong>, inside includes. This file manage all hooks and functions created on other configuration files;</li>
+<li><strong>class-plugin-name-admin.php</strong>, inside admin. This file contains all functions that will configure the plugin in the administrative panel;</li>
+<li><strong>plugin-name-admin-display.php</strong>, inside admin/partials. This file renders HTML inside the administrative panel;</li>
+<li><strong>class-plugin-name-public.php</strong>, inside public. This file contains all functions that will be executed on the front end;</li>
+<li><strong>plugin-name-public-display.php</strong>, inside public/partials. This file render HTML on the front end.</li>
+</ul>
+<p>Where &ldquo;plugin-name&rdquo; is the name given on slug when creating the boilerplate using wppb.</p>
+<h2 id="before-moving-on-a-word-on-boilerplates">Before moving on, a word on boilerplates</h2>
+<p>Boilerplates can be very useful to quickly initiate a project, since basic setup is done and is recognized by WordPress without a single line of code. However, they are built focusing on the development and maintenance of complex projects with many features. For simple plugins and themes, a boilerplate may not be that useful. For plugins and themes that also use CSS frameworks, the default organization for styles may not be the most adequate. It is up to the developer to use a boilerplate or not and also if it makes sense to use the default structure.</p>
+<h2 id="organizing-a-new-project">Organizing a new project</h2>
+<p>Usually when developing a WordPress theme, developers will create personalized posts, templates and taxonomies. This can be done in multiple ways:</p>
+<ul>
+<li>Adding all custom functionality in functions.php;</li>
+<li>Creating a plugin that will add all custom functionality to the theme.</li>
+</ul>
+<p>Both approaches have their pros and cons, and there is not single way to do it. This is another development decision. I usually create a plugin that will add extra functionality to the theme. I like this approach, as I can separate concerns when working with themes and plugins, and no content will be lost when switching themes. Following this approach, it is necessary to ensure that the plugin will be compatible with new themes.</p>
+<p>To organize the workspace, I start by creating a folder that will store all plugins and themes being developed for any given company. Inside this folder I create a folder with the name of the plugin and then two others, one called plugins and the other called themes. Inside plugins, two more folders are created: one called <strong>src</strong> and one called <strong>dist</strong>. The folder src will host development files while dist will contain files that are ready to be deployed. All files that were creating using the boilerplate generator will be stored on src. The same basic structure is applied to the themes folder, in which I create both folders src and dist and copy all theme boilerplate files into src. The following structure will be in place:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">company-name/
+company-name/plugins/
+company-name/plugins/plugin-name/
+company-name/plugins/plugin-name/src/
+company-name/plugins/plugin-name/dist/
+company-name/themes/
+company-name/themes/theme-name/
+company-name/themes/theme-name/src/
+company-name/themes/theme-name/dist/</code></pre></td></tr></table>
+</div>
+</div>
+<p>Where company-name is the name of the company for which plugins and themes will be developed, plugin-name is the name of the plugin and theme-name is the name of the theme.</p>
+<h2 id="npm-and-gulp-automating-file-preparation-tasks">NPM and Gulp: automating file preparation tasks</h2>
+<p>To reduce the final size of plugins and themes, I usually do the following:</p>
+<ul>
+<li>Concatenate similar files into one to reduce the amount of requests whenever possible;</li>
+<li>Remove all white spaces and line breaks from scripts and style sheets;</li>
+<li>Lower the quality of images to reduce file sizes;</li>
+<li>Load vendor libraries into the project;</li>
+<li>Compile .scss files into .css ones.</li>
+</ul>
+<p>Doing each one of those tasks manually can take a considerable amount of time. This is why I use <a href="https://gulpjs.com/" target="_blank" rel="noopener">Gulp</a> to automate them. Gulp is a task runner and it is designed to automate common tasks that are not related to software development, so the developer can focus on coding. Gulp is available as a package at <a href="https://www.npmjs.com/" target="_blank" rel="noopener">Node Package Manager, or NPM</a>. NPM is a package manager with many open source libraries available to use. NPM, in turn, is the package manager that run with <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a>, a Javascript server. In order to install Gulp it is necessary to have NPM installed, which in turn requires Node.js. Upon downloading and installing Node.js in your machine, NPM will be installed automatically.</p>
+<p>Once the folder structure is ready, I create a new package for each folder named theme-name and plugin-name. To do that, I open a terminal, navigate to each directory and execute the following command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm init</code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure5-npm-init.webp" class="lazy" alt="Creating a new package inside plugin folder." title="Creating a new package inside plugin folder." />
+  
+  
+  <figcaption>
+    <p>Creating a new package inside plugin folder. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This command will ask for some information about the package. A file called package.json is created once the package is configured. This file specify all dependencies that this package &ndash; the plugin or theme &ndash; have. By now there is no dependency, but as new packages get installed, they will appear inside this file as dependencies for the project. I&rsquo;ve started by creating a package inside the plugins folder, but there is no right order. After repeating the previous steps to create a package inside the theme folder, a package.json will be available in this folder as well. I create a package for each theme and plugin that will be developed for the company, this being done so each project is managed independently from one another.</p>
+<p>The next step is to install Gulp, which can be done with the following command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install --g gulp-cli
+npm install --save-dev gulp</code></pre></td></tr></table>
+</div>
+</div>
+<p>Gulp was installed using the flag --g, which instructs NPM to install this package globally. Since Gulp have a command line interface, the installation is done globally so Gulp executable is installed in a directory that is already listed on the PATH variable, which allows Gulp to be called from a command line in any directory.</p>
+<p>Note that a new folder was created in the same directory in which folder src and dist were created previously. This folder is called <strong>node_modules</strong> and contains all dependencies not only from the package that we&rsquo;re developing, but from all packages that are being used. If, for instance, this package is dependent of a package A and this package A also depends from a package B, both packages will be listed on node_modules. Also note that Gulp was downloaded using the flag --save-dev, which marks this package as being a development dependency, not being necessary for end users. This prevents this package from being bundled with production files, and differentiate development and production projects. NPM have at least three scopes to manage packages:</p>
+<ul>
+<li><strong>Global</strong>: global packages can be referenced on all projects;</li>
+<li><strong>Local</strong>: this is the default scope when running npm install;</li>
+<li><strong>Development</strong>: this is the scope set when using the flag --save-dev. Packages marked as development dependencies are used only during development. Other people that make use of this package downloading it by running npm install will not download packages listed as development dependencies. Packages marked with --save-dev will have a dedicated section on package.json.</li>
+</ul>
+<p>Gulp and any other package should be installed for each plugin and theme. The command line interface is installed only once.</p>
+<h2 id="gulpfilejs-configuration">Gulpfile.js configuration</h2>
+<p>In order to run, Gulp needs one file called gulpfile.js. This file will contain all tasks that Gulp will run when project files are modified and it should be located in the root of the project, which in this case is are the folders that house the directories src, dist and node_modules. All dependencies that Gulp needs to automate tasks such as concatenation, minification and compilation of Sass files will also be loaded on gulpfile.js.</p>
+<p>Since we&rsquo;ll load third party packages into gulpfile.js, we&rsquo;ll have to download them using NPM. Each project will have its own dependencies. For this project, I&rsquo;ll load some libraries which I&rsquo;ve been working with recently. To do that, we&rsquo;ll run npm install in a terminal to download the following packages:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install --save-dev gulp-sass gulp-autoprefixer gulp-uglify gulp-cssnano gulp-rename merge2</code></pre></td></tr></table>
+</div>
+</div>
+<p>Several development dependencies were separated by spaces after the flag --save-dev. These are:</p>
+<ul>
+<li>Sass (gulp-sass): compile all .scss files into .css ones;</li>
+<li>Autoprefixer (gulp-autoprefixer): add browser extensions to CSS selectors as needed, such as -webkit, -o, -ms or -moz. This plugin use <a href="https://caniuse.com/" target="_blank" rel="noopener">Caniuse</a> as reference;</li>
+<li>Uglify (gulp-uglify): minify Javascript files;</li>
+<li>Css Nano (gulp-cssnano): minify CSS files;</li>
+<li>Rename (gulp-rename): rename files;</li>
+<li>Merge (merge2): manage multiple task streams simultaneously.</li>
+</ul>
+<p>Update November 11, 2021: Gulp now have two methods called serial and parallel that can be used to manage multiple tasks. These can be used in favor of Merge.</p>
+<p>With all dependencies downloaded, we can load them into gulpfile.js and setup all tasks that should be automatically executed. Starting with the plugin, create a file at the root (where folders src, dist, node_modules and package.json are) called gulpfile.js. Write the following code inside this newly created file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sass&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">autoprefixer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-autoprefixer&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-uglify&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cssnano</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-cssnano&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">rename</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-rename&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">merge</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;merge2&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">directories</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;./src/&#39;</span><span class="p">,</span>
+  <span class="nx">dist</span><span class="o">:</span> <span class="s1">&#39;./dist/&#39;</span><span class="p">,</span>
+  <span class="nx">node_modules</span><span class="o">:</span> <span class="s1">&#39;./node_modules/&#39;</span>
+<span class="p">};</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>All dependencies are loaded using a function called require and stored on variables for later use. A variable called directories was declared an stores an object referencing the locations of src, dist and node_modules starting from the root. This is optional, I like using it to organize all directories that are constantly referenced by tasks.</p>
+<p>The next step is to create all tasks. The first task I usually create is one called skeleton: this task will load everything that is ready for production into the dist folder and creates the entire project structure.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;build-skeleton&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.php&#39;</span><span class="p">,</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.txt&#39;</span><span class="p">,</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.pot&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">dist</span><span class="p">));</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Update November 11, 2021: <a href="https://gulpjs.com/docs/en/api/task/" target="_blank" rel="noopener">Using task is deprecated</a>. Tasks should be created as functions and exported. These functions shouldn&rsquo;t return Gulp streams, rather they should invoke a callback method that is passed as a parameter to the function. The previous function, if rewritten using the convention that is adopted by the time of this update, becomes:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">build_skeleton</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.php&#39;</span><span class="p">,</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.txt&#39;</span><span class="p">,</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.pot&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">dist</span><span class="p">));</span>
+
+  <span class="nx">cb</span><span class="p">();</span>
+<span class="p">};</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Gulp uses <a href="https://en.wikipedia.org/wiki/Glob_%28programming%29" target="_blank" rel="noopener">Glob</a> syntax to find files and folders. The array of patterns passed on gulp.src matches files with extensions .php, .txt and .pot inside the root folder and any folder below it, and place them on the directory listed at directories.dist. This function returns an &ldquo;execution stream&rdquo; associated with a task, signaling other tasks when it is done. This is useful to build a workflow with task dependencies. In this instance, I need vendor Javascript and CSS to be loaded before building the final scripts and style sheets.</p>
+<p>Moving on, we&rsquo;ll create a task to compile all Javascript files and place them on dist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;build-script&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">scripts_admin</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;admin/js/plugin-name-admin.js&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;admin/js&#39;</span><span class="p">));</span>
+
+  <span class="kd">var</span> <span class="nx">scripts_public</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;public/js/plugin-name-public.js&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;public/js&#39;</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">scripts_admin</span><span class="p">,</span> <span class="nx">scripts_public</span><span class="p">);</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Since we&rsquo;re not going to use third party Javascript libraries, there is no task configured to load them into the project. If that was the case, then this task would have to be created and setup to run before the task that compiles all scripts. When the plugin boilerplate was generated, some Javascript and CSS files were created and named &ldquo;plugin-name-admin.js&rdquo;, &ldquo;plugin-name-admin.css&rdquo;, &ldquo;plugin-name-public.js&rdquo; and &ldquo;plugin-name-public.css&rdquo;, where plugin-name is the slug that was given for the plugin on wppb&rsquo;s boilerplate generator.</p>
+<p>Task build-script will:</p>
+<ul>
+<li>Load Javascript files on folders named js, which are located on directories admin and public;</li>
+<li>Minify all Javascript files;</li>
+<li>Add suffix &ldquo;.min&rdquo; on all files;</li>
+<li>Copy resulting files into directories dist, admin/js and public/js respectively;</li>
+<li>Return the stream that is created when combining the streams referenced on scripts_admin and scripts_public.</li>
+</ul>
+<p>Note that we&rsquo;re not returning the gulp object itself, it was stored on scripts_admin and scripts_public. Both streams are returned inside of a merge object, that will manage task dependencies. Another thing: the method src that is being called from gulp receives an array with only one item. This method can also accept strings, so this snippet of code could have been written the following way:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;admin/js/plugin-name.js&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(...));</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>I usually pass lists as parameters to maintain code consistency;</p>
+<p>We&rsquo;ll do something similar to process CSS files. The plugin boilerplate is not ready to work with Sass, so there is no specific directory to work with it. What I usually do is erase the css folder and its contents, and create a new folder called scss, and I do this inside both the admin and public directories. These folders will hold all .scss files, as well as folders for partials, mixins, variables etc. Both admin and public folder will also have files called plugin-name-admin.css and plugin-name-public.css respectively. I delete both files and create new ones using Sass, keeping the names, adding .min as a suffix and a css directory inside dist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;build-style&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">admin_style</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;admin/scss/plugin-name.admin.scss&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">autoprefixer</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">cssnano</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;admin/css&#39;</span><span class="p">));</span>
+
+  <span class="kd">var</span> <span class="nx">public_style</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;public/scss/plugin-name.public.scss&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">autoprefixer</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">cssnano</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;public/css&#39;</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">admin_style</span><span class="p">,</span> <span class="nx">public_style</span><span class="p">);</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This task will:</p>
+<ul>
+<li>Search for styles called plugin-name.admin.scss and plugin-name.public.scss inside a scss folder on directories admin and public, respectively;</li>
+<li>Compile all files into .css ones;</li>
+<li>Add browser extensions to CSS selectors as needed;</li>
+<li>Minify all .css files;</li>
+<li>Add suffix .min to all file names;</li>
+<li>Place all files into admin/css and public/css inside directories admin and public, respectively;</li>
+<li>Return the combined stream.</li>
+</ul>
+<p>With all tasks created, it is time to setup Gulp to execute them. I do this in three steps:</p>
+<ul>
+<li>Creating a task that invoke build-skeleton, copying all files to dist;</li>
+<li>Creating a task that copies everything that&rsquo;s in dist to the location of the WordPress installation;</li>
+<li>Setting up Gulp&rsquo;s default task to run the previous tasks and monitor all files for changes.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;build-project&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;build-skeleton&#39;</span><span class="p">,</span> <span class="s1">&#39;build-script&#39;</span><span class="p">,</span> <span class="s1">&#39;build-style&#39;</span><span class="p">]);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Update November 12, 2021: Gulp tasks now must be declared with a new syntax:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">build_project</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">serial</span><span class="p">([</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">parallel</span><span class="p">([</span><span class="s1">&#39;build_skeleton&#39;</span><span class="p">]),</span>
+  <span class="s1">&#39;build_script&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;build_style&#39;</span>
+<span class="p">]);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Tasks are called on a terminal the same way.</p>
+<p>An array containing the names of tasks that were previously created and a callback function are passed to build-project. This array indicates that the task build-project can only be executed after build-skeleton, build-script and build-style. Since there is no callback function, nothing will be done after all tasks are finished. A workflow that calls all the other tasks was made using build-project. After build-project finishes, dist should contain all files that will be put on production.</p>
+<p>To test everything, open a terminal and navigate to the directory in which the gulpfile.js is located (this should be the root of the plugin folder). Type:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">gulp build-project</code></pre></td></tr></table>
+</div>
+</div>
+<p>After seeing the process done on the terminal, the dist folder should be populated with all files that are ready to be copied.</p>
+<figure >
+  
+  <img data-src="images/figure6-gulp-workflow-running.webp" class="lazy" alt="All tasks were executed as planned." title="All tasks were executed as planned." />
+  
+  
+  <figcaption>
+    <p>All tasks were executed as planned. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Navigate into dist and check the contents of admin and public. Note that there&rsquo;s a css folder and the file inside this folder is the compiled .css, not the .scss that was created during development. There is no scss folder inside dist. Also note that all css and js files have a .min suffix on their names.</p>
+<p>The next step is to copy all files on dist to the directory in which WordPress is installed.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;build-project-on-stage&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;build-project&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">directories</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;**/*&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;/installation/directory/wordpress/wp-content/plugins/plugin-name&#39;</span><span class="p">));</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>I&rsquo;ll assume that your WordPress installation is configured to use the default folder for plugins, wp-content/plugins. If it&rsquo;s not the case, the directory must be changed to the plugin installation path. A folder called plugin-name will be created if not exists and all files within dist will be placed inside this folder. The contents of build-project-on-stage will only be executed after build-project is finished.</p>
+<p>As a final step, we&rsquo;ll configure Gulp&rsquo;s default task, called default, to execute all previous tasks and watch all development files for change. Once a file is modified, all tasks will be executed.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;build-project-on-stage&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="nx">directories</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;build-project-on-stage&#39;</span><span class="p">]);</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Gulp tries to run a task called default in case the command gulp runs without specifying a task. This task is configured to watch the directory specified on directories.src and everything inside it for file changes. Once a change is detected, this task will call another task, build-project-on-stage, triggering the entire chain of tasks we&rsquo;ve built, and once all tasks are done, Gulp will watch all files for new changes.</p>
+<p>We&rsquo;re almost done! But we created an issue when adding the suffix .min to the files inside the plugin folder.</p>
+<p>Do you remember that we added a .min suffix on files &ldquo;plugin-name-admin.js&rdquo;, &ldquo;plugin-name-public.js&rdquo;, &ldquo;plugin-name-admin.css&rdquo; and &ldquo;plugin-name-public.css&rdquo;? When this was done, references to the previous files were lost and the plugin is trying to load them. We need to change some configurations inside the newly created plugin to reference these files with .min extensions added.</p>
+<p>To do that, open the file plugin-name-admin.php, being plugin-name the name that was given to the plugin. There are two methods declared in this file: enqueue-styles and enqueue-scripts. These methods are associated with a hook called admin_enqueue_scripts, inside includes/class-plugin-name.php. Note that the method enqueue_styles that is declared on the file we&rsquo;ve just opened invokes a function called wp_enqueue_style, which is part of the Core, to load a CSS style sheet.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">wp_enqueue_style</span><span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">plugin_name</span><span class="p">,</span> <span class="nx">plugin_dir_url</span><span class="p">(</span> <span class="no">__FILE__</span> <span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;css/plugin-name-admin.css&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">version</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span> <span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>We need to add .min to the CSS file that is being loaded. This reference will be updated to plugin-name-admin.min.css.</p>
+<p>Similarly, enqueue_scripts search for a Javascript file that does not contain a .min extension using wp_enqueue_script.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">wp_enqueue_script</span><span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">plugin_name</span><span class="p">,</span> <span class="nx">plugin_dir_url</span><span class="p">(</span> <span class="no">__FILE__</span> <span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;js/plugin-name-admin.js&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span> <span class="s1">&#39;jquery&#39;</span> <span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">version</span><span class="p">,</span> <span class="k">false</span> <span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The new referenced file will have a .min extension, and its name will be plugin-name-admin.min.js.</p>
+<p>We also have to change all CSS file names that inside public, editing the file plugin-name-public.php. This file have the same functions enqueue_styles and enqueue_scripts that reference a hook inside includes/class-plugin-name.php. The file names that have to be edited are plugin-name-public.css and plugin-name.js.</p>
+<p>Now we&rsquo;re done! The automation is done and once developers get to work on this plugin, they just have to open a terminal, browse to the root folder of the project, where a gulpfile.js file is located, and type gulp. Simple as that! All files will be loaded into dist. In order to have all files automatically copied into the WordPress installation directory, just open the gulpefile.js and add the directory in which WordPress is installed and all files will be also copied into this directory each time they&rsquo;re changed. The method watch will keep an eye for file changes and upload the latest versions into the server automatically.</p>
+<p>Let&rsquo;s review all steps to setup a WordPress development environment with a theme and plugin:</p>
+<ul>
+<li>We&rsquo;ve downloaded a theme boilerplate and a plugin boilerplate;</li>
+<li>We&rsquo;ve copied both boilerplates to company-name/plugins/plugin-name/src and company-name/themes/theme-name/src;</li>
+<li>We&rsquo;ve created folders called dist next to both src folder, one for plugins and another one for themes;</li>
+<li>We&rsquo;ve installed Node.js and NPM;</li>
+<li>We&rsquo;ve created a package on the root folder of plugins and themes using npm init;</li>
+<li>We&rsquo;ve installed Gulp command line interface globally using NPM;</li>
+<li>We&rsquo;ve installed Gulp and several development dependencies using NPM;</li>
+<li>We&rsquo;ve create a file called gulpfile.js at the root of plugins and created all tasks to be executed;</li>
+<li>We&rsquo;ve setup Gulp to watch all files inside src for changes, then transfer their latest versions to dist and also to the folder in which WordPress is installed;</li>
+<li>We&rsquo;ve updated all references to script and style sheet files inside class-plugin-name-admin.php and class-plugin-name-public.php for the new ones that were compiled by Gulp.</li>
+</ul>
+<p>Now it is done! The plugin is ready to be installed on WordPress. We&rsquo;ve done the steps to setup a plugin project, but I also do that for themes and any other projects for whichever company I&rsquo;m working with. Although the process is the same, each project will have its own dependencies, and each gulpfile.js will be unique. Another thing to have in mind is the usage of CSS and Javascript frameworks. In our example we haven&rsquo;t used anything other than what came in each boilerplate and what&rsquo;s already available on the Core, but if that was the case, we would have to load all vendor libraries inside the dist folder. When working with a library such as Bootstrap, for instance, I download it using NPM, create one or more .scss files that import only the components that will be used, and at the CSS compiling task, I reference these components inside node_modules, which will then be bundled into the final CSS file after being compiled by Gulp. Another example of external files being used inside a project is when using Underscores boilerplate. Inside the js folder, which is located at the root, there are three files: customizer.js, navigation.js and skip-link-focus-fix.js. These files are called depending on what page is requested. When on the administrative panel, for instance, customizer.js is loaded, but not on the front end. I usually include these scripts when setting up a task to compile scripts, but I create multiple files since it doesn&rsquo;t make much sense loading all files on every page.</p>
+<p>With each project configured, the folder company-name/plugins will have one project for each plugin and company-name/themes will have one project for each theme.</p>
+<h2 id="setting-up-git">Setting up Git</h2>
+<p>Git repositories can be created inside company-name, which will bundle all plugins and themes inside a single repository, or inside each plugin or theme being developed. I think that for a small project, maintained by a single developer, makes sense to aggregate all projects inside a single repository. Since this rarely will be the case, I recommend setting up a repository for each project. This way each developer clone only the files that he or she will be working with, and the risk of file versions clashing with one another in case there&rsquo;s more than one developer updating files in the same repository is smaller. There is one advantage, though, in working with a single repository: keeping the file structure for plugins and themes presented throughout this post, assuming that all projects were created on the same machine. In a day to day basis, though, it is probable that each project will have its own repository and the structure presented here may only serve as a guide to work with multiple themes and plugins in a single machine.</p>
+<p>To finish it all, I usually create a file called .gitignore at the root of the repository, which will instruct Git to ignore files that shouldn&rsquo;t be uploaded. There will be at least one line in this file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext">**/node_modules</code></pre></td></tr></table>
+</div>
+</div>
+<p>Just like Gulp, Git uses Glob to find files and folders. This line instructs Git to ignore node_modules and everything inside it, since this folder doesn&rsquo;t need to be packed with any project. All packages are referenced on package.json and these references are enough to download the entire folder again when needed. After downloading this project, one should run npm init to download node_modules. End users will only use what&rsquo;s inside dist.</p>
+<h2 id="this-is-the-right-way-to-setup-a-workflow">This is the right way to setup a workflow?</h2>
+<p>There are many ways to organize files and folders to ease development. There is not a single right way to do it and the official instructions on WordPress websites don&rsquo;t cover many scenarios, leaving room for creativity. Setting up a project like this can be a bit overwhelming at first, but in the long run it will be for the best, particularly when editing this project months later.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>You will probably make extensive use of the documentations for all tools used throughout this post. <a href="https://codex.wordpress.org/Developer_Documentation" target="_blank" rel="noopener">WordPress</a>, <a href="https://docs.npmjs.com/" target="_blank" rel="noopener">NPM</a> and <a href="https://github.com/gulpjs/gulp/blob/master/docs/README.md" target="_blank" rel="noopener">Gulp</a> documentation pages will be your frieds along the way. <a href="https://stackoverflow.com/" target="_blank" rel="noopener">StackOverflow</a> will also be an invaluable resource to fight against enigmatic errors that will appear throughout the journey.</p>
+<p>Expanding the topic, <a href="https://sass-lang.com/guide" target="_blank" rel="noopener">Sass</a> is a interesting technology to know, as well as how to integrate frameworks such as <a href="https://getbootstrap.com/docs/4.1/getting-started/theming/" target="_blank" rel="noopener">Bootstrap</a> with Sass using the library <a href="https://www.npmjs.com/package/gulp-sass" target="_blank" rel="noopener">gulp-sass</a>. Talking about NPM libraries, each one have its documentation page and a lot of options that haven&rsquo;t explored.</p>
+<p>Let&rsquo;s organize the house!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/sites-estaticos-com-jekyll/images/thumbnail_hu50a9df54572a0d42146a8328e4f78410_32852_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-01-01 19:47:00 &#43;0000 UTC">01/01/2018 19:47:00</time>
+      </div>
+      <a href="/en/categories/development" class="badge" itemprop="articleSection">development</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Static sites with Jekyll and Github Pages</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Websites are rarely built from scratch. There are many tools and frameworks which provide built in structures to build and publish websites on the internet. This post will present Jekyll, a static …</p>
+      <div>
+        <a class="button-primary" href="/en/stories/sites-estaticos-com-jekyll/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

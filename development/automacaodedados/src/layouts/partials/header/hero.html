@@ -1,0 +1,58 @@
+{{/*  This partial must receive a dictionary as an argument, consisting of keys p: page and k: parent's kind. */}}
+
+{{ if or (not (isset . "p")) (not (isset . "k")) }}
+  {{ errorf "You must pass an dictionary containing keys p and k, containing a single page and the parent's kind property respectively. "}}
+{{ else }}
+  {{ $author := index .p.Site.Data.authors (.p.Params.author | default "automacaodedados") }}
+  {{ $category := .p.Param "categories" }}
+  {{ $category := index ($category) 0 }}
+  {{ $categories_page := path.Join "categories/" $category | lower }}
+  {{ $image := .p.Resources.GetMatch "images/thumbnail.jpg" }}
+<div class="relative py-8">
+  {{ if $image }}
+    {{ $image := $image.Fill "1024x400" }}
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('{{ $image.RelPermalink }}');"></div>
+  {{ end }}
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        {{ if $image }}
+        <address class="text-white text-base" itemprop="author">{{ $author.name }}</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="{{ .p.PublishDate }}" itemprop="datePublished">{{ dateFormat "02/01/2006 15:04:05" .p.PublishDate }}</time>
+        {{ else }}
+        <address class="text-base dark:text-white" itemprop="author">{{ $author.name }}</address>
+        <time class="text-base dark:text-white lg:ml-2" pubdate datetime="{{ .p.PublishDate }}" itemprop="datePublished">{{ dateFormat "02/01/2006 15:04:05" .p.PublishDate }}</time>
+        {{ end }}
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="{{ $categories_page | relLangURL }}" itemprop="articleSection">{{ lower $category }}</a>
+    </div>
+    <div class="flex flex-col px-2">
+      {{ if $image }}
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">{{ .p.Title }}</h1>
+      </div>
+      <div>
+        {{ if eq .k "home" }}
+        <p class="text-white text-2xl mb-6" itemprop="abstract">{{ .p.Summary }}</p>
+        <a class="button-primary" href="{{ .p.RelPermalink }}">{{ T "read_more" }}</a>
+        {{ else }}
+        <p class="text-white text-2xl" itemprop="abstract">{{ .p.Summary }}</p>
+        {{ end }}
+      </div>
+      {{ else }}
+      <div class="">
+        <h1 class="text-5xl break-words dark:text-white lg:text-6xl lg:break-normal" itemprop="headline">{{ .p.Title }}</h1>
+      </div>
+      <div class="">
+        {{ if eq .k "home" }}
+        <p class="text-2xl mb-6 dark:text-white" itemprop="abstract">{{ .p.Summary }}</p>
+        <a class="button-primary dark:ring-offset-secondary" href="{{ .p.RelPermalink }}">{{ T "read_more" }}</a>
+        {{ else }}
+        <p class="text-2xl dark:text-white" itemprop="abstract">{{ .p.Summary }}</p>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}

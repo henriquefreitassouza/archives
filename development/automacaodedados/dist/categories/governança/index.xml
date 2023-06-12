@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Governança on Automação de Dados</title>
+    <link>https://www.automacaodedados.com.br/categories/governan%C3%A7a/</link>
+    <description>Recent content in Governança on Automação de Dados</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 20 Dec 2021 06:37:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/categories/governan%C3%A7a/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>O Metaverso pós Meta</title>
+      <link>https://www.automacaodedados.com.br/stories/o-metaverso-pos-meta/</link>
+      <pubDate>Mon, 20 Dec 2021 06:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/o-metaverso-pos-meta/</guid>
+      <description>A troca de nome de Facebook para Meta representa um marco na história de uma tecnologia que já possui algumas décadas, mas o quão impactante é essa mudança para o desenvolvimento do metaverso?</description>
+    </item>
+    
+    <item>
+      <title>Construção da identidade no espaço virtual</title>
+      <link>https://www.automacaodedados.com.br/stories/construcao-da-identidade-no-espaco-virtual/</link>
+      <pubDate>Sat, 05 Jun 2021 13:50:35 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/construcao-da-identidade-no-espaco-virtual/</guid>
+      <description>Em poucas décadas, diversos aspectos da vida em sociedade foram transformados por tecnologias da informação, cujo desenvolvimento está concentrado nas mãos de poucos. O que pode ser feito para garantir que haja participação popular na construção de uma sociedade virtual segura e igualitária?</description>
+    </item>
+    
+  </channel>
+</rss>

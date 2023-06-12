@@ -1,0 +1,56 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+{% set base_url = base_url ? base_url : '/' %}
+
+<!DOCTYPE html>
+<html lang="{{ site.default_lang }}">
+  <head>
+  {% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title | e('html') }} - {% endif %}{{ site.title | e('html') }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'partials/metadata.html.twig' %}
+    <link rel="icon" type="image/x-icon" href="{{ url('theme://public/img/favicon.ico') }}" />
+    <link rel="canonical" href=" {{ page.url(true, true) }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="preload" as="style" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P89KSJ8');</script>
+    <!-- End Google Tag Manager -->
+  {% endblock head %}
+
+  {% block stylesheets %}{% endblock stylesheets %}
+
+  {% block javascript %}
+    {% do assets.addJs('theme://public/js/dash.js', {'group': 'bottom'}) %}
+  {% endblock javascript %}
+
+  {% block assets deferred %}
+    {{ assets.css() | raw }}
+    {{ assets.js() | raw }}
+  {% endblock %}
+  </head>
+
+  <body class="{{ page.header.body_classes }}">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P89KSJ8"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <div class="dd-tile dd-tile--dark"></div>
+    {% include 'partials/header.html.twig' %}
+    <section id="dd-main" class="dd-main">
+      {% block content %}{% endblock %}
+    </section>
+    <section id="dd-cta" class="dd-cta">
+      {% block cta %}{% endblock %}
+    </section>
+    {% include 'partials/footer.html.twig' %}
+    {% block bottom %}
+      {{ assets.js('bottom') | raw }}
+    {% endblock %}
+  </body>
+</html>

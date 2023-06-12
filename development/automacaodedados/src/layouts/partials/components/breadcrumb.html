@@ -1,0 +1,32 @@
+<nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    {{ template "breadcrumbnav" (dict "p1" . "p2" .) }}
+  </ul>
+</nav>
+
+{{ define "breadcrumbnav" }}
+  {{ if .p1.Parent }}
+    {{ template "breadcrumbnav" (dict "p1" .p1.Parent "p2" .p2 )  }}
+  {{ else if not .p1.IsHome }}
+    {{ template "breadcrumbnav" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+  {{ end }}
+
+  {{ if eq .p1 .p2 }}
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="{{ .p1.Permalink | relURL }}" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">{{ .p1.Title }}</span>
+    </a>
+  </li>
+  {{ else }}
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="{{ .p1.Permalink | relURL }}" itemprop="item">
+      {{ if .p1.IsHome }}
+      <span class="text-white" itemprop="name">Home</span>
+      {{ else }}
+        <span class="text-white" itemprop="name">{{ .p1.Title }}</span>
+      {{ end }}
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  {{ end }}
+{{ end }}

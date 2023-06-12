@@ -1,0 +1,17 @@
+{{ define "head" }}
+<link rel="preload" as="script" href="/js/search.min.js" />
+{{ end }}
+{{ define "main" }}
+{{ partial "components/banner.html" "" }}
+<div class="container container-box mx-auto" itemscope itemtype="https://schema.org/SearchResultsPage">
+  <div id="search-results" class="lg:flex lg:flex-wrap lg:justify-start" aria-live="assertive" aria-atomic="true" itemscope itemtype="https://schema.org/PublicationVolume">
+    <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white" id="search-title"></span>
+    <p class="px-2 mb-0 dark:text-white" id="search-text"></p>
+  </div>
+</div>
+{{ end }}
+{{ define "foot" }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" async></script>
+<script src="https://unpkg.com/lunr/lunr.js" async></script>
+<script src="/js/search.min.js"></script>
+{{ end }}

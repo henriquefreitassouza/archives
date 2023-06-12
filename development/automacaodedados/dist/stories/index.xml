@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Todas as histórias on Automação de Dados</title>
+    <link>https://www.automacaodedados.com.br/stories/</link>
+    <description>Recent content in Todas as histórias on Automação de Dados</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 20 Dec 2021 06:37:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/stories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>O Metaverso pós Meta</title>
+      <link>https://www.automacaodedados.com.br/stories/o-metaverso-pos-meta/</link>
+      <pubDate>Mon, 20 Dec 2021 06:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/o-metaverso-pos-meta/</guid>
+      <description>A troca de nome de Facebook para Meta representa um marco na história de uma tecnologia que já possui algumas décadas, mas o quão impactante é essa mudança para o desenvolvimento do metaverso?</description>
+    </item>
+    
+    <item>
+      <title>Construção da identidade no espaço virtual</title>
+      <link>https://www.automacaodedados.com.br/stories/construcao-da-identidade-no-espaco-virtual/</link>
+      <pubDate>Sat, 05 Jun 2021 13:50:35 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/construcao-da-identidade-no-espaco-virtual/</guid>
+      <description>Em poucas décadas, diversos aspectos da vida em sociedade foram transformados por tecnologias da informação, cujo desenvolvimento está concentrado nas mãos de poucos. O que pode ser feito para garantir que haja participação popular na construção de uma sociedade virtual segura e igualitária?</description>
+    </item>
+    
+    <item>
+      <title>Como escolher o melhor gráfico?</title>
+      <link>https://www.automacaodedados.com.br/stories/como-escolher-o-melhor-grafico/</link>
+      <pubDate>Sun, 06 Dec 2020 09:39:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/como-escolher-o-melhor-grafico/</guid>
+      <description>Gráficos tornam dados acessíveis para diferentes audiências, e podem contar as mais variadas histórias, mas como escolher o melhor gráfico para contar uma história?</description>
+    </item>
+    
+    <item>
+      <title>Configurando Metabase e PostgreSQL no Docker</title>
+      <link>https://www.automacaodedados.com.br/stories/configurando-metabase-e-postgresql-no-docker/</link>
+      <pubDate>Tue, 17 Nov 2020 09:10:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/configurando-metabase-e-postgresql-no-docker/</guid>
+      <description>Como elaborar uma arquitetura de serviços simples, de fácil manutenção e portátil utilizando o Docker? Ao longo deste post, você vai descobrir como fazer isso integrando um banco de dados PostgreSQL ao Metabase</description>
+    </item>
+    
+    <item>
+      <title>RD Station e Google Sheets Parte 2 - Migrando para a AWS</title>
+      <link>https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets-na-aws/</link>
+      <pubDate>Thu, 03 Sep 2020 19:23:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets-na-aws/</guid>
+      <description>Já vimos neste blog como fazer para enviar leads do RD Station para uma planilha automaticamente. Agora vamos ver como enviar estes mesmos leads para um banco de dados hospedado na AWS</description>
+    </item>
+    
+    <item>
+      <title>O que faz a pessoa analista de dados?</title>
+      <link>https://www.automacaodedados.com.br/stories/o-que-faz-a-pessoa-analista-de-dados/</link>
+      <pubDate>Sun, 16 Feb 2020 11:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/o-que-faz-a-pessoa-analista-de-dados/</guid>
+      <description>Analista de dados, cientista de dados, engenheiro de dados&amp;hellip; São diversos as profissões que atuam com dados. Neste post, vamos entender o que faz e o que entrega uma pessoa analista de dados, e como ela se relaciona com os demais agentes das áreas de dados</description>
+    </item>
+    
+    <item>
+      <title>Você usa gerenciadores de tags para tudo?</title>
+      <link>https://www.automacaodedados.com.br/stories/voce-usa-gerenciadores-de-tags-para-tudo/</link>
+      <pubDate>Mon, 20 May 2019 20:05:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/voce-usa-gerenciadores-de-tags-para-tudo/</guid>
+      <description>Gerenciadores de tags são uma mão na roda para administrar scripts e evitar conflitos entre times de marketing e desenvolvimento. Todo trecho de código injetado na página está em um mesmo lugar e a manutenção do código fica bem mais simples. Uma belezinha! Agora, o que acontece quando você recebe um visitante em seu site que está usando um bloqueador de anúncios?</description>
+    </item>
+    
+    <item>
+      <title>Negócios de impacto socioambiental x negócios repetíveis e escaláveis</title>
+      <link>https://www.automacaodedados.com.br/stories/negocios-de-impacto-x-negocios-repetiveis-e-escalaveis/</link>
+      <pubDate>Thu, 02 May 2019 14:43:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/negocios-de-impacto-x-negocios-repetiveis-e-escalaveis/</guid>
+      <description>Existe o primeiro setor, formado pelas instituições governamentais, o segundo setor, formado pela iniciativa privada, e o terceiro setor, formado por organizações sem fins lucrativos. Uma parte do segundo setor tenta se desvincilhar e ir para o terceiro, formando o o chamado setor 2.5. O que são estas empresas e como se diferem do segundo setor tradicional?</description>
+    </item>
+    
+    <item>
+      <title>As pessoas por trás das personas</title>
+      <link>https://www.automacaodedados.com.br/stories/as-pessoas-por-tras-das-personas/</link>
+      <pubDate>Sun, 21 Apr 2019 22:43:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/as-pessoas-por-tras-das-personas/</guid>
+      <description>O consumidor de hoje é muito diferente de um que viveu em décadas passadas. Ao longo deste post, vamos conhecer alguns marcos importantes na mudança de comportamento de consumo para entender como conquistar e fidelizar consumidores que prezam por muito mais do que qualidade.</description>
+    </item>
+    
+    <item>
+      <title>O dia em que o marketing saiu dos trilhos</title>
+      <link>https://www.automacaodedados.com.br/stories/o-dia-em-que-o-marketing-saiu-dos-trilhos/</link>
+      <pubDate>Tue, 16 Apr 2019 19:11:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/o-dia-em-que-o-marketing-saiu-dos-trilhos/</guid>
+      <description>A popularização da internet, de novos meios de consumo e de novas tecnologias transformaram departamentos de marketing. Hoje é possível rastrear o retorno sobre o investimento de cada centavo investido, mas este poder foi conquistado sem que suas implicações éticas tivessem sido propriamente debatidas. Estamos usando marketing digital da maneira correta para gerar valor para pessoas?</description>
+    </item>
+    
+    <item>
+      <title>Páginas de agradecimento dinâmicas no RD Station</title>
+      <link>https://www.automacaodedados.com.br/stories/paginas-de-agradecimento-dinamicas-no-rd-station/</link>
+      <pubDate>Sun, 10 Feb 2019 21:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/paginas-de-agradecimento-dinamicas-no-rd-station/</guid>
+      <description>Como fazer com que as páginas de agradecimento do RD Station mostrem informações personalizadas com base em dados passados pelos leads?</description>
+    </item>
+    
+    <item>
+      <title>Workflow automático para desenvolvimento de temas e plugins no WordPress</title>
+      <link>https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/</link>
+      <pubDate>Sat, 15 Sep 2018 16:29:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/</guid>
+      <description>Um fluxo de trabalho bem montado pode economizar horas de manutenções futuras em projetos WordPress. Este post vai apresentar uma possível organização de projeto utilizando templates e o gerenciador de tarefas Gulp.</description>
+    </item>
+    
+    <item>
+      <title>RD Station e Google Sheets: exportação automática de leads para planilhas</title>
+      <link>https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets/</link>
+      <pubDate>Sun, 02 Sep 2018 14:07:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets/</guid>
+      <description>Saiba como enviar dados de leads automaticamente para planilhas no Google Sheets a partir do software de automação de marketing RD Station.</description>
+    </item>
+    
+    <item>
+      <title>APIs e carrinhos de supermercado</title>
+      <link>https://www.automacaodedados.com.br/stories/apis-e-carrinhos-de-supermercado/</link>
+      <pubDate>Wed, 04 Jul 2018 21:20:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/apis-e-carrinhos-de-supermercado/</guid>
+      <description>O que é uma API e para que serve? Este post vai introduzir o conceito sem entrar em aspectos técnicos.</description>
+    </item>
+    
+    <item>
+      <title>Google Apps Script com OAuth2</title>
+      <link>https://www.automacaodedados.com.br/stories/google-apps-script-com-oauth2/</link>
+      <pubDate>Mon, 29 Jan 2018 14:42:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/google-apps-script-com-oauth2/</guid>
+      <description>O Google Apps Script possui uma variedade de recursos que torna os aplicativos do Google ainda mais poderosos. Um destes recursos permite que aplicativos do Google possam se conectar a fontes externas. Ao longo deste post, este recurso será apresentado, com foco em APIs que utilizam o protocolo OAuth2 para autenticação.</description>
+    </item>
+    
+    <item>
+      <title>Sites estáticos com Jekyll e Github Pages</title>
+      <link>https://www.automacaodedados.com.br/stories/sites-estaticos-com-jekyll/</link>
+      <pubDate>Mon, 01 Jan 2018 19:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/sites-estaticos-com-jekyll/</guid>
+      <description>Sites são raramente construídos do zero. Há uma infinidade de ferramentas e frameworks que oferecem estruturas prontas para construir e publicar sites na internet. Este post vai apresentar o Jekyll, um gerador de sites estáticos, e como usá-lo em conjunto com o Github Pages para publicar sites sem custo algum.</description>
+    </item>
+    
+    <item>
+      <title>Pesquisas exploratórias para descoberta de personas</title>
+      <link>https://www.automacaodedados.com.br/stories/fundamentos-da-pesquisa-exploratoria/</link>
+      <pubDate>Thu, 21 Dec 2017 21:04:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/fundamentos-da-pesquisa-exploratoria/</guid>
+      <description>Personas são muito usadas como norte para a produção de produtos e serviços desejados. Ter uma definição de persona ajuda a definir não só a direção do produto, mas outros processos ligados a satisfação das pessoas como a comunicação e o suporte. Mapear personas, no entanto, é um trabalho que exige pesquisa. Como usar métodos de pesquisa para descobrir quem são as personas de uma organização?</description>
+    </item>
+    
+    <item>
+      <title>Experimentos científicos no mundo dos negócios</title>
+      <link>https://www.automacaodedados.com.br/stories/experimentacao-no-mundo-dos-negocios/</link>
+      <pubDate>Wed, 20 Dec 2017 09:51:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/experimentacao-no-mundo-dos-negocios/</guid>
+      <description>No universo acadêmico o aprendizado é obtido por meio de testes em laboratórios, ambientes controlados que facilitam a separação de causas e efeitos. O conhecimento resultante é confiável; o método de produção é auditável e replicável. É possível transportar métodos de geração de conhecimento da academia para o ambiente de negócios e obter conhecimento com o mesmo nível de qualidade para tomar decisões?</description>
+    </item>
+    
+    <item>
+      <title>Os fundamentos das APIs</title>
+      <link>https://www.automacaodedados.com.br/stories/fundamentos-das-apis/</link>
+      <pubDate>Tue, 12 Dec 2017 21:34:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/fundamentos-das-apis/</guid>
+      <description>APIs são extremamente úteis para automatizar processos e personalizar fluxos de trabalho. Do ponto de vista técnico, contribuem para o desenvolvimento de aplicações distribuídas. Saber trabalhar com APIs é fundamental para criar aplicações que sejam capazes de se comunicar com o mundo exterior.</description>
+    </item>
+    
+    <item>
+      <title>Calculadora para testes com amostras online</title>
+      <link>https://www.automacaodedados.com.br/stories/calculadora-de-significancia-estatistica-para-testes-ab/</link>
+      <pubDate>Wed, 06 Dec 2017 11:36:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/calculadora-de-significancia-estatistica-para-testes-ab/</guid>
+      <description>Construí uma calculadora para testes com amostras online. Ela retorna o tamanho da amostra necessária para o teste, a duração estimada de dias para que o teste seja concluído e a significância estatística de todas as variações. Explicarei neste post como esta calculadora funciona e como usá-la.</description>
+    </item>
+    
+    <item>
+      <title>SEO &#43; CRO: otimização de ponta a ponta</title>
+      <link>https://www.automacaodedados.com.br/stories/seo-e-cro/</link>
+      <pubDate>Sun, 03 Dec 2017 08:34:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/seo-e-cro/</guid>
+      <description>Buscadores como o Google vão muito além de palavras chave para exibir resultados para cada busca feita. Diversas técnicas são empregadas para fazer os melhores resultados chegarem para as pessoas certas no momento certo. Na ponta do marketing corporativo, profissionais de SEO trabalham para garantir presença no topo das páginas, resultando em mais visitas no site. E depois disso, acontece o quê?</description>
+    </item>
+    
+    <item>
+      <title>UX Design: por trás da projeção de experiências</title>
+      <link>https://www.automacaodedados.com.br/stories/fundamentos-de-ux-design/</link>
+      <pubDate>Fri, 01 Dec 2017 09:16:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/fundamentos-de-ux-design/</guid>
+      <description>A frase &amp;ldquo;um bom design é invisível&amp;rdquo; surge com certa frequência quando pesquisada em um buscador. Um bom design é invisível quando torna uma experiência de uso fluída. Há pessoas que dedicam carreiras profissionais inteiras para tornar experiências de uso o mais significativas possível, mas somos todas e todos designers de experiências. Só não sabemos disso ainda</description>
+    </item>
+    
+    <item>
+      <title>Lidando com diferenças nas ferramentas de testes e de analytics</title>
+      <link>https://www.automacaodedados.com.br/stories/dados-de-testes-ab-no-google/</link>
+      <pubDate>Thu, 30 Nov 2017 08:39:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/dados-de-testes-ab-no-google/</guid>
+      <description>O número de visitantes ou sessões que ferramentas de testes online mostram é diferente do número reportado em ferramentas de analytics, mesmo que o teste esteja rodando com 100% do tráfego. As vezes a diferença é tal que levanta dúvidas sobre qual o conjunto de números de acessos e conversões que devem ser considerados. Como então fazer com que essa discrepância seja a menor possível?</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Configuração das ferramentas</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</link>
+      <pubDate>Wed, 29 Nov 2017 09:12:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</guid>
+      <description>Configurar testes com amostras online requer alguns cuidados. Configurações erradas podem invalidar os achados do estudo e levar negócios a tomarem decisões com base em dados inverídicos – o que é potencialmente pior do que não ter dados.</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - P-valor, alfa, beta e tamanho do efeito</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</link>
+      <pubDate>Mon, 27 Nov 2017 09:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</guid>
+      <description>As ferramentas para testes mais conhecidas conseguem cuidar dos cálculos envolvidos na execução dos experimentos, porém a pessoa projetista de testes deve ser capaz de fornecer as variáveis matemáticas que compõem estes cálculos. Explicarei quais são estas variáveis e como elas se relacionam para gerar o resultado de um teste.</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Histogramas e curvas de densidade</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</link>
+      <pubDate>Sun, 26 Nov 2017 09:59:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</guid>
+      <description>Ao longo de um teste, várias amostras são obtidas e suas taxas de conversão são calculadas. O próximo passo é agrupar e classificar esses dados de tal forma que seja possível tirar as informações necessárias para inferir dados sobre toda a população. Como exatamente isso acontece e qual sua importância para a execução de testes?</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Amostras e probabilidades</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</link>
+      <pubDate>Fri, 24 Nov 2017 11:21:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</guid>
+      <description>Como garantir que o resultado de um teste de hipóteses com amostras é representativo da população estudada?</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Hipóteses</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</link>
+      <pubDate>Thu, 23 Nov 2017 11:07:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</guid>
+      <description>Existem vários tipos de testes baseados em amostragens, e neste post será apresentado o mais comum quando se fala em testes com amostras online, como o A/B: testes baseados em hipóteses.</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - A importância de saber estatística</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</link>
+      <pubDate>Wed, 22 Nov 2017 10:35:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</guid>
+      <description>Você costuma fazer testes do tipo A/B, split ou outros e se pergunta se os dados que a ferramenta de testes fornece são válidos? Se a resposta é não, você deveria.</description>
+    </item>
+    
+    <item>
+      <title>A parte de otimização em CRO</title>
+      <link>https://www.automacaodedados.com.br/stories/a-parte-de-otimizacao-em-cro/</link>
+      <pubDate>Tue, 21 Nov 2017 06:42:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/a-parte-de-otimizacao-em-cro/</guid>
+      <description>Por melhor que seja uma experiência de compra, há sempre espaço para melhorias. Essa é, ao menos, uma das premissas de quem trabalha com CRO, ou Conversion Rate Optimization. Saiba o que é CRO e como aplicar técnicas de otimização de conversões para encontrar pontos de melhoria em produtos digitais.</description>
+    </item>
+    
+    <item>
+      <title>Uma introdução ao Google Apps Script</title>
+      <link>https://www.automacaodedados.com.br/stories/uma-introducao-ao-google-apps-script/</link>
+      <pubDate>Mon, 20 Nov 2017 15:05:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/uma-introducao-ao-google-apps-script/</guid>
+      <description>Em um post anterior falei brevemente sobre o Google Apps Script, uma ferramenta capaz de enriquecer as funcionalidades dos demais aplicativos do Google. Neste post, farei sua apresentação formal e vou mostrar como utilizá-la para automatizar tarefas de coleta e tratamento de dados.</description>
+    </item>
+    
+    <item>
+      <title>Geração de relatórios automatizados por APIs</title>
+      <link>https://www.automacaodedados.com.br/stories/geracao-de-relatorios-automatizados-por-apis/</link>
+      <pubDate>Sun, 19 Nov 2017 13:13:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/geracao-de-relatorios-automatizados-por-apis/</guid>
+      <description>Recentemente me envolvi em um projeto em que eu precisava construir um repositório de dados para alimentação de relatórios. As fontes que continham as informações de interesse estavam espalhadas em pelo menos 6 sistemas diferentes e juntar essas informações semanalmente demandava um bom tempo. Este post descreve a solução que encontrei para tornar este tempo mais produtivo.</description>
+    </item>
+    
+    <item>
+      <title>Growth Value</title>
+      <link>https://www.automacaodedados.com.br/stories/growth-value/</link>
+      <pubDate>Fri, 17 Nov 2017 20:36:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/growth-value/</guid>
+      <description>O que é Growth Value?</description>
+    </item>
+    
+  </channel>
+</rss>

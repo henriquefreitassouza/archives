@@ -1,0 +1,53 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set limit = 3 %}
+{% set options = {'items': {'@taxonomy': {'category': page.taxonomy.category}}, 'order': {'by': 'date', 'dir': 'desc'}, 'limit': limit} %}
+{% set collection = page.collection(options) %}
+
+{% block stylesheets %}
+  {% do assets.addCss('theme://public/css/dash-blog.css') %}
+  {{ parent() }}
+{% endblock stylesheets %}
+
+{% block javascript %}
+  {{ parent() }}
+  {% do assets.addJs('theme://public/js/dash-blog.js', {'group': 'bottom'}) %}
+{% endblock %}
+
+{% block content %}
+<section class="dd-section">
+  <div class="dd-section--container">
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12">
+          {% if config.plugins.breadcrumbs.enabled %}
+            {% include 'partials/breadcrumbs.html.twig' %}
+          {% endif %}
+
+          {% include 'partials/item_post.html.twig' with {'page': page} %}
+          {% if collection | length > 1 %}
+          <div class="dd-similar">
+            <div class="dd-similar__header">
+              <div class="dd-similar__header-title dd-title dd-title--centered">
+                <h2>Veja outros posts desta categoria</h2>
+              </div>
+            </div>
+            <div class="dd-similar__body">
+              {% for child in collection %}
+                {% if child.title != page.title %}
+                  {% include 'partials/search_list.html.twig' with {'page': child, 'truncate': true} %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block cta %}
+  {% include 'partials/cta.html.twig' %}
+{% endblock %}

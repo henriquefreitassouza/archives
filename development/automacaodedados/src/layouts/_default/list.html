@@ -1,0 +1,22 @@
+{{ define "main" }}
+  {{ $top_three := first 3 (where .Site.RegularPages "Params.categories" "!=" nil).ByPublishDate.Reverse }}
+  {{ if ne $top_three nil }}
+    {{ partial "header/hero_list.html" (dict "s" . "p" $top_three) }}
+  {{ end }}
+  <div class="container container-box mx-auto">
+    <main itemscope itemtype="https://schema.org/PublicationVolume">
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        {{ if gt (len .Site.RegularPages) 0 }}
+          {{ range where .Paginator.Pages "Params.categories" "!=" nil }}
+            {{ partial "components/post_thumbnail.html" . }}
+          {{ end }}
+          {{ if gt .Paginator.TotalPages 1 }}
+            {{ partial "components/pagination" .Paginator }}
+          {{ end }}
+        {{ else }}
+        <p>{{ T "no_posts" }}</p>
+        {{ end }}
+      </div>
+    </main>
+  </div>
+{{ end }}

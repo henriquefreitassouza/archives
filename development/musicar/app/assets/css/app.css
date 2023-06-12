@@ -1,0 +1,288 @@
+/* Header section */
+
+@font-face {
+    font-family: 'cantarell';
+    src: url('fonts/Cantarell/Cantarell-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'cantarell-bold';
+    src: url('fonts/Cantarell/Cantarell-Bold.ttf');
+}
+
+* {
+    font-family: 'cantarell', arial, sans-serif;
+}
+
+.clear {
+    clear: both;
+}
+
+.hidden {
+    display: none;
+}
+
+.page-title {
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    color: #ffffff;
+    margin: 100px auto;
+}
+
+.page-title span {
+    color: #e3aa01;
+}
+
+.section-title {
+    font-size: 60px;
+    margin: auto auto 100px auto;
+}
+
+.lead-featured {
+    font-size: 48px;
+    color: #e3aa01;
+}
+
+.lead {
+    font-size: 24px;
+    line-height: 2em;
+}
+
+.lead-1 {
+    color: #ffffff;
+}
+
+.lead-2 {
+    color: #999999;
+}
+
+.form-submit, .submit {
+    height: auto;
+    line-height: auto;
+}
+
+.form-submit {
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 36px;
+    width: 100%;
+    display: block;
+}
+
+.submit {
+    font-size: 24px;
+    text-transform: uppercase;
+    padding: 36px;
+    margin: 100px auto 0;
+    width: 50%;
+}
+
+.submit-block {
+    display: block;
+    width: 100%;
+    margin: 100px auto;
+}
+
+.featured {
+    font-size: 24px;
+}
+
+.featured-1 {
+    color: #999999;
+}
+
+.featured-2 {
+    color: #ffffff;
+}
+
+.loader-lightbox {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.site-loader {
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    margin-left: -32px;
+    margin-top: -32px;
+}
+
+#hero {
+    background: #012b3b url('../img/hero_banner_background.png') no-repeat top center;
+    background-size: cover;
+}
+
+#hero #header {
+    padding-top: 140px;
+}
+
+#sign-up {
+    background-color: #fff;
+    padding: 60px 40px 60px 40px;
+}
+
+#sign-up .input {
+    
+}
+
+#sign-up .input input {
+    font-size: 1.5rem;
+}
+
+/* Mailchimp input */
+
+div .mce_inline_error {
+    margin-bottom: 40px;
+}
+
+#main-menu {
+    height: 160px;
+}
+
+.menu-wrapper {
+    background-color: #ffffff;
+}
+
+.menu-wrapper ul {
+    margin: auto;
+}
+
+.mobile-nav-button {
+    color: #bbbbbb;
+    margin: auto;
+}
+
+.menu-wrapper ul li a {
+    color: #bbbbbb !important;
+    font-size: 24px;
+}
+
+.container-section {
+    padding: 140px 0 140px 0;
+}
+
+.section-title-no-bg {
+    color: #2dc5ee;
+}
+
+.section-title-bg {
+    color: #ffffff;
+}
+
+#container-2 {
+    background: #0d6bb3 url('../img/background_1.png') no-repeat center center;
+    background-size: cover;
+}
+
+#container-4 {
+    background: #fcd20e url('../img/background_2.png') no-repeat center center;
+    background-size: cover;
+}
+
+.service-cost {
+    margin: 60px auto;
+}
+
+#social-media {
+    margin: 60px auto 138px;
+}
+
+#social-media a:first-child {
+    margin: 0 10px 0 0;
+}
+
+#social-media a:last-child {
+    margin: 0 0 0 10px;
+}
+
+#footer-separator {
+    height: 3px;
+    background-color: #ffffff;
+}
+
+#footer {
+    margin: 60px auto 0;
+}
+
+#partners {
+    max-width: 700px;
+    margin: auto;
+}
+#container-4 { 
+    padding-bottom: 60px;
+}
+
+/* desktop and beyond */
+@media screen and (min-width: 993px) {
+    
+}
+
+/* tablet and smartphone */
+@media screen and (max-width: 992px) {
+    .form-submit {
+        font-size: 24px;    
+    }
+    
+    #main-menu {
+        position: absolute;
+        top: 0;
+        height: 80px;
+    }
+    
+    #main-menu ul li {
+        text-align: center;
+    }
+    
+    #main-menu ul li:first-child {
+        background-color: #0f143e;    
+    }
+    
+    #main-menu ul li img {
+        margin-top: 10px;
+    }
+    
+    #main-menu ul li a {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px;
+        height: auto;
+        line-height: auto;
+    }
+}
+
+/* tablet */
+@media screen and (min-width: 601px) and (max-width: 992px) {
+
+}
+
+/* smartphone */
+@media screen and (max-width: 600px) {
+    #sign-up .input input {
+        font-size: 1.3rem;
+    }
+    
+    .submit {
+        margin: 20px auto 0;
+        font-size: 16px;
+    }
+    
+    .section-title {
+        font-size: 48px;
+        margin:0 0 40px 0;
+    }
+    
+    .container-section {
+        padding: 40px 0 40px 0;
+    }
+    
+    #partners div {
+        margin: 10px auto;
+    }
+}

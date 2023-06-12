@@ -1,0 +1,14 @@
+{{/* This component requires a dictionary containing keys tx: taxonomy and tm: context of terms. */}}
+{{ if or (not (isset . "tx")) (not (isset . "tm")) }}
+  {{ errorf "You must pass an dictionary containing keys tx and tm, containing the name of the taxonomy and the context with that taxonomy's terms, respectively."}}
+{{ else }}
+  {{ if isset .tm.Site.Taxonomies .tx }}
+    <div class="flex flex-wrap justify-start">
+    {{ range $term, $term_posts := (index .tm.Site.Taxonomies .tx) }}
+      <div class="p-2">
+        <a class="badge dark:ring-offset-secondary" href="{{ .Page.RelPermalink }}">{{ $term }}</a>
+      </div>
+    {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

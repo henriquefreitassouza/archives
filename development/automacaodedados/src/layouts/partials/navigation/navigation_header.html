@@ -1,0 +1,18 @@
+<div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          {{ range .Site.Menus.header }}
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="{{ .URL | relLangURL }}" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">{{ .Name }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </nav>
+      {{ partial "components/inline_search.html" . }}
+    </div>
+  </div>
+</div>

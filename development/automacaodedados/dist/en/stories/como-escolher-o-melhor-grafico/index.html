@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>How to choose the best chart? | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="How to choose the best chart? | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/como-escolher-o-melhor-grafico/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="How to choose the best chart? | Data Automation">
+<meta property="og:description" content="How to choose the best chart? | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2020-12-06 09:39:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-20 09:39:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="9 minutes" />
+
+<meta property="article:tag" content="Visualization" />
+<meta property="article:section" content="Visualization" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/como-escolher-o-melhor-grafico/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/como-escolher-o-melhor-grafico/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Different types of charts side by side">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/como-escolher-o-melhor-grafico/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/como-escolher-o-melhor-grafico/images/thumbnail_hu645f783e1f75aab460e7270b672b7e37_39577_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2020-12-06 09:39:00 &#43;0000 UTC" itemprop="datePublished">06/12/2020 09:39:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/visualization" itemprop="articleSection">visualization</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">How to choose the best chart?</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Charts make data accessible for different audiences, and can tell a variety of stories, but how to choose the best chart to tell a story?</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/como-escolher-o-melhor-grafico/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">How to choose the best chart?</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 9 minutes</strong>
+        <p>Published on December 06, 2020 and updated on November 20, 2021.</p>
+<h2 id="know-your-data">Know your data</h2>
+<p>In a few words, the best chart is the one that tells the story that needs to be told. To tell this story, though, we need to know it. In the context of data, what is the information that needs to be communicated and how it is organized? Appropriated tabulation is important to ensure the correct presentation of a chart. Look at the following table:</p>
+<figure >
+  
+  <img data-src="images/figure1-untidy-table.webp" class="lazy" alt="Table with information about students." title="Table with information about students." />
+  
+  
+  <figcaption>
+    <p>Table with information about students. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This table can be easily converted into a chart that shows scores by individual or age. Now look at the following table:</p>
+<figure >
+  
+  <img data-src="images/figure2-tidy-table.webp" class="lazy" alt="Table with information about students, but this time there&#39;s one information in each column." title="Table with information about students, but this time there&#39;s one information in each column." />
+  
+  
+  <figcaption>
+    <p>Table with information about students, but this time there&#39;s one information in each column. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Both tables have the same information, scores by question. The second format, though, is harder to visualize in a spreadsheet software. This second table is arranged in a format called <strong>tidy</strong>, that follows three rules:</p>
+<ul>
+<li>Each column contains only one variable;</li>
+<li>Each row contains one observation;</li>
+<li>Each cell contains only one value.</li>
+</ul>
+<p>Tidy arrangements are important for exploratory analysis and to feed machine learning algorithms. Visualizing data in this format is easy with data manipulation tools, such as Pandas, which will be used to present the charts used in this post. The first table that was shown, with a spread column arrangement, or <strong>untidy</strong>, is better understood by people and more easily visualized in charts.</p>
+<h2 id="criteria-for-choosing-the-best-chart">Criteria for choosing the best chart</h2>
+<p>With data available and tabulated, it is time to build the chart. Choosing the best chart <a href="https://towardsdatascience.com/data-visualization-101-how-to-choose-a-chart-type-9b8830e558d6" target="_blank" rel="noopener">involves more than just knowing the message to be sent</a>:</p>
+<ul>
+<li>Familiarity from the audience with charts;</li>
+<li>Amount of data classifications;</li>
+<li>Data type (discrete or continuous);</li>
+<li>Relationship between data.</li>
+</ul>
+<h3 id="familiarity-from-the-audience-with-charts">Familiarity from the audience with charts</h3>
+<p>Knowing first hand how much the audience knows how to read charts can help when choosing the one that&rsquo;s best suited to communicate the message. Audience size also should be considered, given that charts with many elements may not be well presented on big screens like projectors.</p>
+<h3 id="amount-of-data-classifications">Amount of data classifications</h3>
+<p>The amount of classifications is another important factor, since too many divisions can make some charts hard to visualize, such as the pizza chart.</p>
+<h3 id="data-type-discrete-or-continuous">Data type (discrete or continuous)</h3>
+<p>Data can assume <strong>discrete</strong> or <strong>continuous</strong> values. A discrete data is one that can have values in a finite set of options. In the tidy table presented before, the column Questão (question) have discrete data. Columns age and score carry continuous data, since they can assume any value. Note that, in some tables, numeric variables can be discrete. Taking for example the column Questão (question), the data could have been presented only by a number and not with a preceding letter Q. The data then would be numeric, but discrete.</p>
+<h3 id="relationship-between-data">Relationship between data</h3>
+<p>If there&rsquo;s a continuity relationship between data, some charts are more suited to visualize this relationship, like the line chart. Data that can be described by a common characteristic, like time, possibly is related. One example of this relationship is the value of a company share each day. One example of data that has no relationship is the data presented on both tables of this post. Questions can be compared in a chart, but questions have no relation to one another.</p>
+<h2 id="chart-types">Chart types</h2>
+<p>When considering the factors to choose the best chart, the number of options should diminish, but still there may be many good candidates to build the visualization with. It is important to know the characteristics of each chart to base the choice.</p>
+<h3 id="bar-chart">Bar chart</h3>
+<figure >
+  
+  <img data-src="images/figure3-bar-chart.webp" class="lazy" alt="Bar chart." title="Bar chart." />
+  
+  
+  <figcaption>
+    <p>Bar chart. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This type of chart is useful to group elements around a common metric, like a count, a sum or an average. This characteristic makes this chart useful to <strong>compare</strong>.</p>
+<ul>
+<li>Amount of data classifications: few. Although there is no exact number of categories, I have as a reference the default number of bars to be shown on Google Data Studio, which is <strong>10</strong>;</li>
+<li>Type of data (discrete or continuous): discrete;</li>
+<li>Relationship between data: not related.</li>
+</ul>
+<h3 id="line-chart">Line chart</h3>
+<figure >
+  
+  <img data-src="images/figure4-line-chart.webp" class="lazy" alt="Line chart." title="Line chart." />
+  
+  
+  <figcaption>
+    <p>Line chart. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The line chart is useful to identify <strong>trends</strong>, and it is a good choice when it is important to understand the fluctuations between a dot in the chart compared to the other ones.</p>
+<ul>
+<li>Amount of data classifications: few;</li>
+<li>Type of data (discrete or continuous): continuous;</li>
+<li>Relationship between data: related.</li>
+</ul>
+<h3 id="pizza-chart">Pizza chart</h3>
+<figure >
+  
+  <img data-src="images/figure5-pizza-chart.webp" class="lazy" alt="Pizza chart." title="Pizza chart." />
+  
+  
+  <figcaption>
+    <p>Pizza chart. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The pizza chart have a particular use: <strong>observe the parts of a whole</strong>. This chart is useful to understand the classification of data when there are just a few categories.</p>
+<ul>
+<li>Amount of data classifications: very few. There is no right number to be considered as limit for this type of chart, but I usually go with <strong>2</strong> slices;</li>
+<li>Type of data (discrete or continuous): discrete;</li>
+<li>Relationship between data: not related.</li>
+</ul>
+<h3 id="histogram">Histogram</h3>
+<figure >
+  
+  <img data-src="images/figure6-histogram-chart.webp" class="lazy" alt="Histogram." title="Histogram." />
+  
+  
+  <figcaption>
+    <p>Histogram. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The histogram is similar to the bar chart, but its function is to categorize continuous variables. It is suited for <strong>visualizing data distributions</strong>. This chart is useful to understand how a data set is spread, or distributed. The data is categorized in intervals, or bins, and the quantity of bins is determined when constructing the chart. A word of caution when using this chart: a biased choice of bins, or binning bias. Visualizing the chart with too few or too many bins may not yield a representative distribution, and valuable information can be lost. It is a good idea to create this chart a couple of times, with different quantities of bins, to know the best amount of bins that represent the data.</p>
+<ul>
+<li>Amount of data classifications: one;</li>
+<li>Type of data (discrete or continuous): continuous;</li>
+<li>Relationship between data: not related.</li>
+</ul>
+<h3 id="scatter-plot">Scatter plot</h3>
+<figure >
+  
+  <img data-src="images/figure7-scatter-plot-chart.webp" class="lazy" alt="Scatter plot." title="Scatter plot." />
+  
+  
+  <figcaption>
+    <p>Scatter plot. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This chart is used to <strong>visualize the relationship between two continuous data sets</strong>. It is useful to visually understand how two variables move together. The scatter plot is able to accept a third dimension by using resources such as colors, forms, opacity or element size to distinguish categories inside each dot. Using the tables previously presented in this post, we can build a scatter plot from people that answered questions 1 and 2, arranged on axis X and Y (first and second dimensions). By dividing respondents by sex and assigning one color for each sex, for instance, dots will be rendered on the screen according to each sex, and this is the third dimension (color).</p>
+<ul>
+<li>Amount of data classifications: one;</li>
+<li>Type of data (discrete or continuous): continuous;</li>
+<li>Relationship between data: not related.</li>
+</ul>
+<h3 id="box-plot">Box plot</h3>
+<figure >
+  
+  <img data-src="images/figure8-box-plot-chart.webp" class="lazy" alt="Box plot." title="Box plot." />
+  
+  
+  <figcaption>
+    <p>Box plot. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Just like the histogram, this chart also allows to <strong>visualize the distribution of sets of data</strong>, but it shows more information about the distribution and allows to categorize the data set. If using a histogram I can show the distribution of respondent&rsquo;s ages for people that answered each question in the previous tables, for instance, using a box plot I can represent this same distribution divided by sex.</p>
+<p>The area of the box represents the biggest volume of data, the place at which most data is concentrated. The line inside the box is the distribution median. The lines, or whiskers, that extend the box are sets of data that are farther from the median. The interval between the end of each line and the borders of the box, and the interval between the borders of the box and the median are called quartiles, and each quartile have a fixed size. The first quartile (Q1), which spread from the end of the left line (where the smallest numbers on the distribution are) to the beginning of the left border of the box, concentrate 25% of all data. The interval between the borders of the box is the second quartile (Q2), which concentrates 50% of data. The median separates the box in two halfes, and each half represents 25% of data. Finally, the interval between the right border of the box and the end of the right line, which are the biggest numbers of the distribution, or the third quartile (Q3), concentrate the last 25% of data. The area of the box between the first and third quartiles is called interquartile range (IQR).</p>
+<p>This chart can also show extreme values, which are values very high or very low in relation to the data set. These data are called outliers and appear as dots beyond the lines. The definition of which dots surpass the left line follow the formula Q1 - 1.5 * IQR and for the right line is Q3 + 1.5 * IQR. Any data points that are less than or greater than the number calculated in these formulas will be presented as extreme data points.</p>
+<ul>
+<li>Amount of data classifications: few;</li>
+<li>Type of data (discrete or continuous): continuous;</li>
+<li>Relationship between data: not related.</li>
+</ul>
+<h2 id="area-chart">Area chart</h2>
+<figure >
+  
+  <img data-src="images/figure9-area-chart.webp" class="lazy" alt="Area chart." title="Area chart." />
+  
+  
+  <figcaption>
+    <p>Area chart. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This chart <strong>show the distribution of a data set</strong>, just like the histogram and the box plot. While the histogram is useful to categorize continuous sets of data, area charts are useful to visualize fluctuations on the distribution of data without the binning bias. This chart is used to visually present the magnitude of changes in the data set, represented by the area below the curve.</p>
+<ul>
+<li>Amount of data classifications: few;</li>
+<li>Type of data (discrete or continuous): continuous;</li>
+<li>Relationship between data: not related.</li>
+</ul>
+<h3 id="heat-map">Heat map</h3>
+<figure >
+  
+  <img data-src="images/figure10-heatmap-chart.webp" class="lazy" alt="Heat map." title="Heat map." />
+  
+  
+  <figcaption>
+    <p>Heat map. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>This chart is the union between two histograms: one in the X axis and the other on the Y axis, forming a table with cells of equal size. This chart is used to <strong>show correlation between many variables</strong> using a color system. This chart is useful to visualize, in a single image, many correlations at once, without the need to create many scatter plots individually for each pair of variables. This chart doesn&rsquo;t show the shared movement between variables, instead, it shows the strength of the correlation using the chosen correlation metric.</p>
+<ul>
+<li>Amount of data classifications: a lot;</li>
+<li>Type of data (discrete or continuous): continuous;</li>
+<li>Relationship between data: not related.</li>
+</ul>
+<h2 id="chart-composition">Chart composition</h2>
+<p>In 2014, researcher Tamara Munzner published a book called Visualization Analysis and Design, which states that certain visual elements are better suited than others to communicate messages. The researcher was able to classify these elements in order based on the effectiveness of each element to convey information. Elements that are more effective to transmit <strong>ordered</strong> information are:</p>
+<ol>
+<li>Position;</li>
+<li>Width;</li>
+<li>Angle;</li>
+<li>Area;</li>
+<li>Depth;</li>
+<li>Lightning;</li>
+<li>Saturation;</li>
+<li>Curvature;</li>
+<li>Volume.</li>
+</ol>
+<p>And to transmit <strong>categorical</strong> information:</p>
+<ol>
+<li>Spatial position;</li>
+<li>Color;</li>
+<li>Movement;</li>
+<li>Shape.</li>
+</ol>
+<figure >
+  
+  <img data-src="images/figure11-cleveland-and-mcgill-element-perception.webp" class="lazy" alt="Classification of shapes and colors in a scale of effectiveness to communicate information." title="Classification of shapes and colors in a scale of effectiveness to communicate information." />
+  
+  
+  <figcaption>
+    <p>Classification of shapes and colors in a scale of effectiveness to communicate information. Source: University of Iowa.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Consider using these elements of effectiveness as part of the criteria when choosing the chart to be used.</p>
+<h2 id="choosing-the-best-chart">Choosing the best chart</h2>
+<p>These are just some chart types, but there are many others like the waterfall chart or polar chart. The charts presented in this post should support daily operational necessities of a company. Choosing between one and another will depend on the characteristics of the data and the audience that will receive the message, and one chart may not be enough to tell the entire story.</p>
+<p>To see how I created these charts, access <a href="https://github.com/henriquefreitassouza/data/blob/main/fundamentals_eda/Tipos%20de%20Gr%C3%A1ficos.ipynb" target="_blank" rel="noopener">this notebook</a>, created on Jupyter Lab and hosted on <a href="https://github.com/henriquefreitassouza" target="_blank" rel="noopener">my Github</a>.</p>
+<p>Let&rsquo;s visualize data!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

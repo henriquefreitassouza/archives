@@ -1,0 +1,18 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.cs-input {
+  &__group {
+    margin-bottom: 0.5rem;
+
+    input[type=text], textarea {
+      width: 100%;
+    }
+
+    &-checkbox {
+      margin: 0.3rem;
+    }
+  }
+}

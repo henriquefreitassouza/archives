@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Bungee Regular';
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: local('Bungee Regular'), url('/fonts/Bungee-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat Regular';
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: local('Montserrat Regular'), url('/fonts/Montserrat-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Montserrat Bold';
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: local('Montserrat Bold'), url('/fonts/Montserrat-Bold.woff') format('woff');
+}

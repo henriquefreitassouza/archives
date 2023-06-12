@@ -1,0 +1,31 @@
+@mixin add-csacademy-colors() {
+  @if map-has-key($csacademy-palette, 'primary') {
+    $csacademy-primary-color: map-get($csacademy-palette, primary) !global;
+  } @else {
+    $csacademy-primary-color: #6FCACF !global;
+  }
+
+  @if map-has-key($csacademy-palette, 'secondary') {
+    $csacademy-secondary-color: map-get($csacademy-palette, secondary) !global;
+  } @else {
+    $csacademy-secondary-color: #424F4F !global;
+  }
+
+  @if map-has-key($csacademy-palette, 'light') {
+    $csacademy-light-color: map-get($csacademy-palette, light) !global;
+  } @else {
+    $csacademy-light-color: #B0D1D3 !global;
+  }
+
+  @if map-has-key($csacademy-palette, 'medium') {
+    $csacademy-medium-color: map-get($csacademy-palette, medium) !global;
+  } @else {
+    $csacademy-medium-color: #54989C !global;
+  }
+
+  @if map-has-key($csacademy-palette, 'dark') {
+    $csacademy-dark-color: map-get($csacademy-palette, dark) !global;
+  } @else {
+    $csacademy-dark-color: #2B4E4F !global;
+  }
+}

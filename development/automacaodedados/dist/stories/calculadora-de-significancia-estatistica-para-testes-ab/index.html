@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Calculadora para testes com amostras online | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Calculadora para testes com amostras online | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/calculadora-de-significancia-estatistica-para-testes-ab/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Calculadora para testes com amostras online | Automação de Dados">
+<meta property="og:description" content="Calculadora para testes com amostras online | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-12-06 11:36:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-03 11:36:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="10 minutos" />
+
+<meta property="article:tag" content="Estatística" />
+<meta property="article:section" content="Estatística" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/calculadora-de-significancia-estatistica-para-testes-ab/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/calculadora-de-significancia-estatistica-para-testes-ab/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Configurações da calculadora para testes com amostras, feita no Google Sheets">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/calculadora-de-significancia-estatistica-para-testes-ab/images/thumbnail_hu445bb0ea2c66d3cb7c1eb80c74a417bb_106746_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-12-06 11:36:00 &#43;0000 UTC" itemprop="datePublished">06/12/2017 11:36:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/estat%c3%adstica" itemprop="articleSection">estatística</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Calculadora para testes com amostras online</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Construí uma calculadora para testes com amostras online. Ela retorna o tamanho da amostra necessária para o teste, a duração estimada de dias para que o teste seja concluído e a significância estatística de todas as variações. Explicarei neste post como esta calculadora funciona e como usá-la.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/calculadora-de-significancia-estatistica-para-testes-ab/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Calculadora para testes com amostras online</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 10 minutos</strong>
+        <p>Publicado em 06/12/2017 e atualizado em 03/11/2021.</p>
+<p>Ao longo da <a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-1/" >série de posts sobre estatística para testes</a>, foram apresentados vários conceitos de estatística inferencial que são usados em aplicações envolvendo testes com amostras. Com esta calculadora, tudo o que foi apresentado na série será posto em prática.</p>
+<h2 id="configurações">Configurações</h2>
+<figure >
+  
+  <img data-src="images/figure1-calculator-configurations.webp" class="lazy" alt="Configurações da calculadora de testes com amostras." title="Configurações da calculadora de testes com amostras." />
+  
+  
+  <figcaption>
+    <p>Configurações da calculadora de testes com amostras. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Essa é a parte editável da calculadora. Os parâmetros são:</p>
+<ul>
+<li>Número de variações (controle + tratamentos): o número de divisões do grupo de estudo, sendo o número composto pelo grupo de controle mais todos os grupos de tratamentos;</li>
+<li>Caudas: informa se o teste é em uma ou nas duas caudas da distribuição normal. Esse parâmetro define se α (alfa) será distribuído entre as extremidades da distribuição. Em termos práticos, define se a pessoa projetista de testes quer ver tanto pioras quanto melhoras na performance do grupo de tratamento em relação ao grupo de controle ou quer ver apenas melhoras. Se forem duas caudas, alfa será α / 2;</li>
+<li>Significância estatística (1 - α): o intervalo de confiança nos resultados obtidos, ou a probabilidade de corretamente rejeitar a hipótese nula;</li>
+<li>Poder estatístico (1 - β): a probabilidade de encontrar o efeito esperado. Em termos estatísticos é a probabilidade de corretamente aceitar a hipótese alternativa. A larga maioria das calculadoras e ferramentas de teste usa 80% de poder estatístico (e consequentemente, 20% de probabilidade de falso negativo). β é a letra grega que representa beta;</li>
+<li>Taxa de conversão atual: a taxa de conversão média do evento em estudo;</li>
+<li>Efeito mínimo detectável: o tamanho da diferença entre os grupos de estudo que o pesquisador quer ver. Útil para ignorar diferenças muito pequenas, que possivelmente não valem o esforço de implementação mesmo em caso de vitória do grupo de tratamento;</li>
+<li>Média de sessões / usuários por dia: essa média é a de pessoas que passam pela página que está sendo trabalhada. O número serve para calcular a quantidade de dias necessários para o teste;</li>
+<li>Percentual de sessões / usuários incluídos no teste: percentual do tráfego do site que participará do teste.</li>
+</ul>
+<p>As configurações de Erro e Z-score são usadas para os demais cálculos. O erro tira o alfa da significância estatística com a equação <strong>1 - (1 - α)</strong>, onde 1 - α é a significância estatística. Os z-scores de alfa e beta são usados para calcular o tamanho da amostra.</p>
+<p>Para cada divisão do grupo de estudo, os parâmetros são:</p>
+<ul>
+<li>Número de sessões / usuários: número de visitantes que passaram por cada uma das variações do teste. Note que fica a cargo da pessoa projetista de testes usar usuários únicos, sessões ou visitas. Ferramentas de testes costumam usar sessões, mas dependendo do tipo de negócio o número de sessões pode divergir muito do número de usuários;</li>
+<li>Número de conversões: número de eventos de conversão em cada variação.</li>
+</ul>
+<p>Esta calculadora compara até 4 variações (controle + três tratamentos), mas se o teste possuir menos, basta configurar o número de variações e os dados de acesso / conversões de acordo e deixar em branco o que não for usado.</p>
+<h2 id="z-scores">Z-scores</h2>
+<figure >
+  
+  <img data-src="images/figure2-z-score-one-two-tails.webp" class="lazy" alt="Z-scores de alfa e beta com uma e duas caudas." title="Z-scores de alfa e beta com uma e duas caudas." />
+  
+  
+  <figcaption>
+    <p>Z-scores de alfa e beta com uma e duas caudas. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Essa tabela de z-scores é usada apenas para calcular o tamanho da amostra com uma e duas caudas. Ferramentas e calculadoras de testes com amostras não mostram esta tabela. Com base na seleção dos níveis de significância estatística e poder estatístico, uma consulta é feita nessa tabela para retornar os z-scores correspondentes.</p>
+<h2 id="tamanho-da-amostra">Tamanho da amostra</h2>
+<figure >
+  
+  <img data-src="images/figure3-sample-size-estimator.webp" class="lazy" alt="Tamanho da amostra por variação, total e estimativa de dias para a realização do teste." title="Tamanho da amostra por variação, total e estimativa de dias para a realização do teste." />
+  
+  
+  <figcaption>
+    <p>Tamanho da amostra por variação, total e estimativa de dias para a realização do teste. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O tamanho de amostra é calculado usando a equação <strong>numerador * (σ / (p * efeito))</strong>, onde numerador é <strong>2 * (α + β)²</strong>, p é a taxa de conversão atual e efeito é o efeito mínimo detectável, ou o tamanho da mudança que o pesquisador deseja ver entre os grupos de estudo de controle e tratamentos. A letra σ é o desvio padrão amostral. O numerador que compõe a fórmula de cálculo de tamanho de amostra é definido na <a href="http://www.vanbelle.org/chapters/webchapter2.pdf" target="_blank" rel="noopener">equação de Lehr</a>, uma equação para cálculo de tamanho de amostra, e a larga maioria das calculadoras e ferramenta assume o número 16. Para que o numerador seja 16, α precisa ser 0,05 e β precisa ser 0,2. Em outras palavras, significância estatística deve ser 95% e poder estatístico deve ser 80%. O valor exato que a equação do numerador produz com esses parâmetros é 15,68. O número é, então, arrendondado para 16. Esta calculadora calcula o numerador sem usar a regra dos 16, como é conhecida, o que faz com que o tamanho da amostra discorde das demais calculadoras e ferramentas.</p>
+<p>Ao lado do tamanho da amostra por variação é mostrado o tamanho da amostra usada no teste. O número varia conforme o tráfego que será considerado para o teste.</p>
+<p>O tamanho do grupo de estudo é a multiplicação do tamanho da amostra pelo número de variações. Se não for usado 100% do tráfego para o teste é usada a equação <strong>((((1 - tráfego) * amostra) + (amostra * tráfego)) * variações) - 1</strong>, onde tráfego é o percentual do tráfego do site a participar do teste, amostra é o tamanho da amostra <strong>por variação</strong> e variações é o número de variações do teste (controle + tratamentos). A subtração de 1 no final aproxima o tamanho do tráfego total com a soma de cada variação.</p>
+<p>Estimativa de dias para o teste é a divisão do tamanho total do grupo de estudo pelo número médio de visitantes, considerando o tráfego que será usado para o teste. Note que essa estimativa pode diferir bastante do número de dias estimado em outras calculadoras. A <a href="https://vwo.com/ab-split-test-duration/" target="_blank" rel="noopener">calculadora de duração estimada da VWO</a> por exemplo, estima que um teste dure 37 dias se usados estes parâmetros:</p>
+<ul>
+<li><em>Estimated existing conversion rate</em>: 30%;</li>
+<li><em>Minimum improvement in conversion rate you want to detect</em>: 10%;</li>
+<li><em>Number of variations / combinations (including control)</em>: 2;</li>
+<li><em>Average number of daily visitors</em>: 1000;</li>
+<li><em>Percent visitor included in test</em>: 20%.</li>
+</ul>
+<p>A calculadora que criei estima que o número de dias seja 49 com duas caudas e 29 com uma cauda, usando os mesmos parâmetros. Isso acontece por conta da forma como o numerador é calculado, dispensando a regra dos 16, e o fato de o número de caudas ser assumido na calculadora da VWO.</p>
+<h2 id="cálculos">Cálculos</h2>
+<figure >
+  
+  <img data-src="images/figure4-p-value-calculation.webp" class="lazy" alt="Cálculo das métricas até chegar em p-valor e z-score." title="Cálculo das métricas até chegar em p-valor e z-score." />
+  
+  
+  <figcaption>
+    <p>Cálculo das métricas até chegar em p-valor e z-score. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Com os dados de configuração, as equações serão executadas e os valores de resposta obtidos. Estes cálculos são:</p>
+<ul>
+<li>Taxa de conversão: proporção de cada variação que executou o evento de conversão. A equação usada foi <strong>p = s / t</strong>, onde p é a proporção, s é o número de conversões e t é o tamanho do grupo de estudo de cada variação;</li>
+<li>Diferença para o grupo de controle: diferença na taxa de conversão entre cada tratamento e o grupo de controle. A equação usada foi <strong>(p1 / p0) - 1</strong> onde p1 é a proporção para o grupo de tratamento, p0 é a proporção para o grupo de controle e - 1 é uma transformação aplicada ao inverso do quociente (o resultado da divisão). Essa transformação resulta na diferença entre as taxas de conversão;</li>
+<li>Variância: medida de dispersão dos dados na distribuição. A equação usada é <strong>σ² = p * (1 - p)</strong>, onde σ² é a variância. O cálculo é uma multiplicação entre a proporção e sua inversão. A letra grega σ chama-se sigma;</li>
+<li>Desvio padrão: raiz quadrada da variância. Tirar a raiz funciona como uma espécie de “correção” do número, que melhor reflete a dispersão dos dados na distribuição. A equação usada é <strong>σ = √σ²</strong>, onde σ é o desvio padrão;</li>
+<li>Erro padrão: similar ao desvio padrão, porém a dispersão é calculada em relação a média populacional. Particularmente útil para determinar uma medida de desvio padrão quando há dois ou mais grupos de amostras sendo estudados, como é o caso de testes com amostras online. No erro padrão, as médias de todas as variações são levadas em consideração para determinar a média dessas médias e calcular o desvio a partir dela. A equação usada é <strong>σx̄ = σ / √n</strong>, onde σx̄ é o erro padrão e n é o tamanho da amostra. O símbolo x̄ representa uma média amostral;</li>
+<li>Z-score: a quantidade de desvios padrão em relação a média. A equação tradicional do z-score é <strong>z = (x - μ) / σ</strong>, onde z é o z-score, x é uma proporção individual (nesse caso, o valor de p) e μ é a média populacional. Como a média populacional é desconhecida, há mais de um grupo de estudo e precisamos normalizar as medidas de desvio em uma só para sobreposição das distribuições normais, a equação usada fica <strong>(p1 - p0) / √(σx̄0² + σx̄1²)</strong>, onde p1 é a proporção do grupo de tratamento, p0 é a proporção do grupo de controle, σx̄0² é o erro padrão do grupo de controle ao quadrado e σx̄1² é o erro padrão do grupo de tratamento ao quadrado;</li>
+<li>P-valor: considerando que a hipótese nula é verdadeira, é a probabilidade de obter um efeito extremo. Em outras palavras, a probabilidade de encontrar uma anomalia nos dados se nenhuma mudança tiver sido feita no grupo de estudo. A hipótese é a de que a probabilidade de encontrar tal anomalia é baixa então se esse número for pequeno, chances são de que a anomalia foi causada por uma indução de comportamento por parte do pesquisador. A equação é <strong>1 - NORMSDIST(ABS(z))</strong>, onde NORMDIST é a função de cálculo de uma distribuição normal cumulativa no Google Sheets. Como a proporção é uma variável contínua (pode assumir valores infinitos), a função que explica estes dados é cumulativa. ABS é a função de módulo do Google Sheets, ela transforma o número em um número positivo, pois p-valor é um número entre 0 e 1. O cálculo de z na distribuição normal retorna a área coberta pelo valor de z. O p-valor é o inverso desse número e representa a área que vai de uma das extremidades da distribuição normal até o ponto definido em p-valor, por isso a subtração de 1 no início da equação.</li>
+</ul>
+<h2 id="resultados">Resultados</h2>
+<figure >
+  
+  <img data-src="images/figure4-p-value-calculation.webp" class="lazy" alt="Configurações da calculadora de significância estatística." title="Configurações da calculadora de significância estatística." />
+  
+  
+  <figcaption>
+    <p>Configurações da calculadora de significância estatística. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Essa seção mostra os resultados dos cálculos executados. Ela mostra os valores de α e β, se o resultado é estatisticamente significante e o intervalo de confiança. Sobre α, é aplicada a chamada correção de Bonferroni quando há mais de duas variações em um teste. A cada variação adicionada em um teste multivariável, as chances de um erro do tipo I (falso positivo) aumentam. A correção de Bonferroni é uma de várias formas de lidar com a inflação de α e a equação é <strong>α / variações</strong>, onde variações é o número de variações do teste (controle + tratamentos). A correção de Bonferroni é dita conservadora pois diminui α, o que requer uma amostra maior para atingir a significância estatística.</p>
+<p>Por fim, a calculadora informa se é possível parar o teste ou não. A equação verifica o número de variações que o teste possui e verifica se foram atingidas duas condições:</p>
+<ul>
+<li>Se o tamanho total do grupo de estudo que passou pelo teste é maior ou igual ao tamanho da amostra calculada;</li>
+<li>Se todos os tratamentos possuem significância estatística maior ou igual a definida nas configurações.</li>
+</ul>
+<p>Se o teste é multivariável, a significância estatística é verificada após a correção de Bonferroni.</p>
+<h2 id="leitura-complementar">Leitura complementar</h2>
+<p>Há várias calculadoras online para cálculo de tamanho de amostra, significância estatística e duração de teste. Cada calculadora assume alguns valores para que a pessoa projetista de testes não tenha que se preocupar com a estatística por trás dela. Esta calculadora é diferente, pois não assume valor algum nos cálculos feitos.</p>
+<p>As calculadoras que usei de referência foram:</p>
+<ul>
+<li><a href="https://vwo.com/ab-split-test-duration/" target="_blank" rel="noopener">Calculadora de duração de testes da VWO</a>;</li>
+<li><a href="https://vwo.com/blog/ab-testing-significance-calculator-spreadsheet-in-excel/" target="_blank" rel="noopener">Calculadora de significância estatística da VWO</a>;</li>
+<li><a href="#ZgotmplZ" target="_blank" rel="noopener">Calculadora de duração de testes da VWO - Excel</a>;</li>
+<li><a href="https://medium.com/@rikhigham/a-free-excel-p-value-significance-calculator-ebaae9dc8c68" target="_blank" rel="noopener">Calculadora de significância estatística do Rik Higham</a>;</li>
+<li><a href="https://www.evanmiller.org/ab-testing/sample-size.html" target="_blank" rel="noopener">Calculadora de tamanho de amostra do Evan Miller</a>.</li>
+</ul>
+<p>Caso precise refrescar a memória quanto aos conceitos matemáticos, leia minha série de posts sobre o assunto:</p>
+<ul>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-1/" >A importância de entender estatística para testes</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-2/" >Hipóteses</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" >Probabilidades</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-4/" >Histogramas e curvas de densidade</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-5/" >P-valor, alfa, beta e tamanho do efeito</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-6/" >Setup de testes e configuração de calculadoras</a>.</li>
+</ul>
+<p>Bora calcular significâncias estatísticas, tamanhos de amostra e durações estimadas para teste!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">Leia também estas histórias</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-6/images/thumbnail_hu8efac969a2e378d483f761e54d87fc3a_81326_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-29 09:12:00 &#43;0000 UTC">29/11/2017 09:12:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Estatística para testes - Configuração das ferramentas</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Configurar testes com amostras online requer alguns cuidados. Configurações erradas podem invalidar os achados do estudo e levar negócios a tomarem decisões com base em dados inverídicos – o que é …</p>
+      <div>
+        <a class="button-primary" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-6/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-5/images/thumbnail_hu736ab047195c247913f95fd813824efd_30026_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-27 09:47:00 &#43;0000 UTC">27/11/2017 09:47:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Estatística para testes - P-valor, alfa, beta e tamanho do efeito</h2>
+      <p class="mb-6 text-white" itemprop="abstract">As ferramentas para testes mais conhecidas conseguem cuidar dos cálculos envolvidos na execução dos experimentos, porém a pessoa projetista de testes deve ser capaz de fornecer as variáveis …</p>
+      <div>
+        <a class="button-primary" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-5/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-4/images/thumbnail_hu50fb275cbf52d4888e4a49f439717ebb_46228_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-26 09:59:00 &#43;0000 UTC">26/11/2017 09:59:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Estatística para testes - Histogramas e curvas de densidade</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Ao longo de um teste, várias amostras são obtidas e suas taxas de conversão são calculadas. O próximo passo é agrupar e classificar esses dados de tal forma que seja possível tirar as informações …</p>
+      <div>
+        <a class="button-primary" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-4/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">Como escolher o melhor gráfico?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>RD Station e Google Sheets: exportação automática de leads para planilhas | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="RD Station e Google Sheets: exportação automática de leads para planilhas | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="RD Station e Google Sheets: exportação automática de leads para planilhas | Automação de Dados">
+<meta property="og:description" content="RD Station e Google Sheets: exportação automática de leads para planilhas | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2018-09-02 14:07:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-10 14:07:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="19 minutos" />
+
+<meta property="article:tag" content="Automação" />
+<meta property="article:section" content="Automação" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Logotipos do RD Station e do Google Sheets.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC" itemprop="datePublished">02/09/2018 14:07:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/automa%c3%a7%c3%a3o" itemprop="articleSection">automação</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">RD Station e Google Sheets: exportação automática de leads para planilhas</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Saiba como enviar dados de leads automaticamente para planilhas no Google Sheets a partir do software de automação de marketing RD Station.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/rd-station-e-google-sheets/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">RD Station e Google Sheets: exportação automática de leads para planilhas</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 19 minutos</strong>
+        <p>Publicado em 02/09/2018 e atualizado em 10/11/2021.</p>
+<p><strong>ALERTA DE SPOILER: este post contém linhas de código! Vou assumir que você tem familiaridade com o básico de Javascript, sabe o que é uma API e o que é JSON.</strong></p>
+<p>Atualizações 04/09/2020:</p>
+<ul>
+<li>Este post agora possui uma parte 2: <a href="/stories/rd-station-e-google-sheets-na-aws/" >RD Station e Google Sheets Parte 2 - Migrando para a AWS</a>;</li>
+<li>A <a href="https://zapier.com/pricing" target="_blank" rel="noopener">tabela de preços do Zapier</a> mudou. O plano que suporta 3.000 chamadas à API não existe mais, agora existe um com até 2.000 chamadas e o plano seguinte vai para 5.000 chamadas;</li>
+<li><a href="https://developers.google.com/apps-script/guides/v8-runtime" target="_blank" rel="noopener">O Google Apps Script agora suporta a engine V8</a>, o que permite a criação de aplicativos que utilizem a sintaxe moderna de JavaScript em ES6. Nem todos os recursos do ES6 são suportados até a data de atualização deste post;</li>
+<li>O formato do webhook do RD Station <a href="https://developers.rdstation.com/pt-BR/migration/webhooks" target="_blank" rel="noopener">irá mudar</a>;</li>
+<li>Não existe mais distinção entre fluxos de automação paralelos e gerenciais. Todo fluxo de automação é paralelo;</li>
+<li>O limite atual de células em uma planilha do Google Sheets é de <a href="https://support.google.com/drive/answer/37603?hl=en" target="_blank" rel="noopener">5.000.000</a>.</li>
+</ul>
+<p>Atualizações 10/11/2021:</p>
+<ul>
+<li>O Google Apps Script passou por novas modificações, incluíndo a forma como novos projetos são criados a partir de outros aplicativos do Google. O novo caminho para acessar o Google Apps Script é em Extensions &gt; Apps Script;</li>
+<li>O RD Station está utilizando OAuth2 como protocolo de autenticação em sua API;</li>
+<li>O criador de fluxo de automações do RD Station possui uma nova interface e a opção de disparo de webhook se chama &ldquo;Enviar Leads para Integração&rdquo;;</li>
+<li>A estrutura do webhook se mantém a mesma de quando o post foi publicado;</li>
+<li>O processo de publicação de <em>web apps</em> no Google Apps Script agora é feito pelo botão &ldquo;Deploy&rdquo;, no canto superior direito da interface.</li>
+</ul>
+<h2 id="por-que-planilhas">Por que planilhas?</h2>
+<p>Exportar dados de uma fonte para outra é tarefa comum quando se trata de agrupar conjuntos de dados para análise ou visualização. Agregadores de dados bem conhecido são as planilhas eletrônicas – os Exceis e Sheets da vida. Planilhas são convenientes para armazenar, manipular e visualizar dados das mais diversas naturezas em formato tabular. São fáceis de entender e sua organização gera um padrão de comunicação entre pessoas e também entre ferramentas, por isso ainda não deram lugar a ferramentas mais robustas e inteligentes para o mesmo fim. Se você não vive sem suas planilhas de métricas sabe bem do que estou falando. Agora, é sabido que planilhas não são nada sem dados e que uma parte considerável do nosso tempo é gasto preenchendo células nos locais corretos para gerar as informações que nos levarão aos valiosos insights. Diminuir este tempo, então, significa ter mais tempo para se preocupar com análise. Ferramentas como Zapier e Pluga facilitam a vida nesse sentido, já que possuem conectores com centenas de outras ferramentas e uma interface amigável para a criação de fluxos de dados entre elas. Por que então não usá-las?</p>
+<p>A escolha do plano de uso destas ferramentas depende da quantidade de chamadas feitas a elas. Um plano inicial para processar uma quantidade pequena de dados pode dar conta do recado a um custo baixo, porém, quanto maior a base, maior deverá ser o plano da ferramenta de integração (para referência, no momento da escrita deste texto, em Agosto de 2018, o Zapier cobra USD 62,50 mensais para até 3.000 chamadas em seu plano professional. Acima disso o plano passa a ser o professional plus, cujo preço sobe para USD 156,25. Com base nisso, vou considerar que 3.000 chamadas é pouco, mas entendo que depende do contexto de cada empresa e da existência de caixa para pagar essa mensalidade. Considere que, na aplicação de automatizar o envio de de leads para uma ferramenta externa, uma chamada significa enviar um lead para esta ferramenta, nesse caso uma planilha. Com o plano professional do Zapier, no máximo 3.000 leads poderão ser entregues para a planilha mensalmente).</p>
+<figure >
+  
+  <img data-src="images/figure1-zapier-price-plans-august-2018.webp" class="lazy" alt="Planos e recursos do Zapier em Agosto de 2018." title="Planos e recursos do Zapier em Agosto de 2018." />
+  
+  
+  <figcaption>
+    <p>Planos e recursos do Zapier em Agosto de 2018. Fonte: Zapier.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O tamanho do plano limita a integração pelo número de chamadas feitas na ferramenta, e o que exceder o limite fica pendurado em uma fila esperando o reinício da contagem de chamadas ou o pagamento de um plano maior. Isso ainda pode ser aceitável para alimentar planilhas cujo consumo tem data definida, mas análises <em>ad hoc</em>, que podem forçar atualizações de dados não programadas, podem ser deixadas de lado para não estourar o plano da ferramenta. Outra desvantagem é contar com este tipo de integração para ações sazonais, como co-marketing ou presença em eventos, onde geralmente as empresas recebem um volume grande de leads. Se não for previsto, este volume de entrada anormal pode gerar surpresas e estourar o plano, fazendo com que a integração deixe de funcionar. Em outras palavras: escalar pode ser um problema. Mais um ponto: durante a construção da integração será necessário testá-la. Uma vez que a integração esteja em produção, cada chamada a ela consome do plano, mesmo que seja uma chamada de teste. Há outra maneira de fazer esta integração, contornando os problemas apresentados.</p>
+<h2 id="a-receita-não-mais-secreta-por-trás-da-integração">A receita <del>não mais</del> secreta por trás da integração</h2>
+<p>A partir do plano PRO, o <a href="https://www.rdstation.com/" target="_blank" rel="noopener">RD Station</a> possui recursos para que pessoas desenvolvedoras possam criar integrações entre a ferramenta de automação de marketing e outras ferramentas. Estes recursos são chamados de APIs e webhooks, interfaces – ou portas – que permitem o tráfego de dados para dentro e para fora da ferramenta. APIs permitem a comunicação com o RD Station por meio de interfaces de programação, enquanto webhooks são notificadores de eventos que enviam dados para fontes determinadas. Caso queira entender melhor o que é uma API, veja estes posts:</p>
+<ul>
+<li><a href="/stories/apis-e-carrinhos-de-supermercado/" >APIs e carrinhos de supermercado</a> (sem jargões técnicos);</li>
+<li><a href="/stories/fundamentos-das-apis/" >Fundamentos das APIs</a> (com jargões técnicos).</li>
+</ul>
+<p>Neste post, vamos utilizar <strong>webhooks</strong>.</p>
+<p>Para que um webhook envie dados para algum lugar, ele precisa de duas informações:</p>
+<ul>
+<li>Um endereço para onde os dados devem ser enviados;</li>
+<li>Qual o gatilho que, quando disparado, vai acionar o webhook.</li>
+</ul>
+<p>Este endereço precisa ser uma URL que esteja preparada para receber os dados do webhook.</p>
+<p>A ação que dispara o webhook é chamada de gatilho, é algo que precisa acontecer para, só então, o webhook mandar os dados para o endereço. Este gatilho é configurado na ferramenta que dispara o webhook. Neste caso, o RD Station.</p>
+<p>Hora de falar um pouco sobre o lado da planilha para então colocar-mos a mão na massa!</p>
+<h2 id="planilhas-com-scripts">Planilhas com scripts?</h2>
+<p>Desenvolver scripts em planilhas não é algo novo. <a href="https://www.oreilly.com/library/view/vb-vba/1565923588/1565923588_ch01-6-fm2xml.html" target="_blank" rel="noopener">O VBA no Excel está aí para provar</a>. Faremos algo nesta linha, mas usando outro software de gestão de planilhas, outra ferramenta de scripts e outra linguagem de programação. O software de gestão de planilhas é o <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Google Sheets</a>, a ferramenta de scripts é o <a href="/stories/uma-introducao-ao-google-apps-script/" >Google Apps Script</a> e a linguagem de programação é Apps Script, criada pelo Google e baseada em JavaScript. A similaridade de Apps Script com JavaScript tem um benefício imediato: JavaScript é uma linguagem usada em aplicações web, portanto, quem já desenvolve em JavaScript não precisa aprender uma linguagem nova, e quem aprende Apps Script pode aproveitar o conhecimento para desenvolver para a web com JavaScript. Quanto ao software gerenciador de planilhas, uma vantagem em trabalhar especificamente com o Google Sheets está no fato de a ferramenta estar na nuvem e configurada para trabalhar com o recebimento de dados de outras ferramentas. Isso significa que não precisamos escrever código para “abrir uma porta” por onde os dados podem entrar porque isso já foi feito.</p>
+<h2 id="mão-na-massa-a-configuração-da-planilha">Mão na massa: a configuração da planilha</h2>
+<p>Vamos começar pelo Google Sheets. Crie uma planilha em sua conta. Com a planilha criada, acesse o menu Tools e clique em Script Editor.</p>
+<figure >
+  
+  <img data-src="images/figure2-google-sheets-script-editor.webp" class="lazy" alt="Opção editor de scripts no menu ferramentas do Google Sheets em Agosto de 2018." title="Opção editor de scripts no menu ferramentas do Google Sheets em Agosto de 2018." />
+  
+  
+  <figcaption>
+    <p>Opção editor de scripts no menu ferramentas do Google Sheets em Agosto de 2018. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>A interface do Google Apps Script será mostrada.</p>
+<figure >
+  
+  <img data-src="images/figure3-google-apps-script-editor.webp" class="lazy" alt="Editor de scripts do Google Apps Script aberto." title="Editor de scripts do Google Apps Script aberto." />
+  
+  
+  <figcaption>
+    <p>Editor de scripts do Google Apps Script aberto. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O Google Apps Script se divide em três principais seções: o menu de ferramentas, no topo, o painel de arquivos do projeto, à esquerda, e a interface de escrita de código, à direita. A <a href="https://developers.google.com/apps-script/reference/" target="_blank" rel="noopener">documentação</a> é um bom ponto de partida para se familiarizar com o editor e com a linguagem.</p>
+<p>O primeiro passo será informar para o Google Apps Script (que a partir de agora vou chamar apenas de GAS) que o script deverá receber e tratar dados externos, ou, se comunicar com o mundo externo. Nos termos do GAS, o script será um aplicativo web (<em>web app</em>). Para fazer isto, apague a função padrão, criada junto com o arquivo Code.gs, e crie duas outras, chamadas doGet e doPost. Ambas recebem um argumento “e” que representa os dados recebidos pelo script.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">doGet</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Todo
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">doPost</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Todo
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>A função doGet recebe dados que são passados como parâmetros na URL do script. Se, por exemplo, o endereço do script for <a href="https://script.google.com/d/id_do_script/exec?nome=Henrique&amp;cargo=cientista_de_dados">https://script.google.com/d/id_do_script/exec?nome=Henrique&amp;cargo=cientista_de_dados</a>, o que está à direita do sinal de interrogação são os parâmetros passados na forma de chave=valor, separados por um sinal de igual. A primeira chave, no exemplo, é “nome” e contém o valor “Henrique”. Conjuntos de chave / valor são separados por <em>ampersands</em>, ou “e comercial” (&amp;).</p>
+<figure >
+  
+  <img data-src="images/figure4-doget-dopost-functions.webp" class="lazy" alt="Funções doPost e doGet declaradas no script." title="Funções doPost e doGet declaradas no script." />
+  
+  
+  <figcaption>
+    <p>Funções doPost e doGet declaradas no script. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Para ser caracterizado como um <em>web app</em>, o script só precisa de uma das funções. Declaramos a doGet apenas para tratar a saída caso o endereço do script seja acessado usando o método GET (improvável, mas possível). Se a função não estivesse declarada, um acesso direto a URL do script iria mostrar uma mensagem como &ldquo;O script terminou a execução e não há nada a ser exibido na saída&rdquo;. Com a função declarada e sem nada dentro, o script irá mostrar uma tela em branco. Manteremos desta forma.</p>
+<p>A função que vai receber e tratar os dados do RD Station é a doPost. Ela recebe dados passados no corpo de uma mensagem que trafega pela web usando o método POST.</p>
+<p>Para começar, vamos escrever o código que irá tratar os dados e exibi-los na planilha. Dentro da função doPost escreva o seguinte trecho de código:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="c1">// Verifica se a chamada POST veio com dados no corpo e se os dados estão no formato correto
+</span><span class="c1"></span><span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">postData</span><span class="p">.</span><span class="nx">contents</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">postData</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;application/json&#39;</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">// Caso existam dados eles virão em formato JSON e é necessário transformar estes dados para usá-los no aplicativo
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">lead</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">postData</span><span class="p">.</span><span class="nx">contents</span><span class="p">);</span>
+
+  <span class="c1">// Chama uma função para gravar o lead na planilha. Esta função será criada
+</span><span class="c1"></span>  <span class="nx">gravarMensagem</span><span class="p">(</span><span class="nx">lead</span><span class="p">);</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>O que este código está fazendo, em sequência:</p>
+<ul>
+<li>Verifica se o parâmetro definido na função POST está com dados, e também se o tipo de informação que está vindo para o script é JSON. Se estiver, significa que o webhook conseguiu acessar a URL e entregar os dados do lead;</li>
+<li>Caso os dados estejam no parâmetro, faz o chamado <em>parse</em> deles, que é a transformação do objeto que chegou em formato de texto para o formato de objeto do Javascript. O Apps Script usa a mesma classe e método do JavaScript para tratar este texto JSON. O <em>parse</em> é feito usando JSON.parse() e o método recebe o texto que será tratado, que neste caso é o texto que veio do webhook. O texto tratado é armazenado na variável lead;</li>
+<li>A linha seguinte chama a função gravarMensagem e recebe um argumento. Passamos o lead que foi recebido e tratado.</li>
+</ul>
+<p>O passo seguinte é criar a função gravarMensagem. Escreva o seguinte trecho de código no mesmo arquivo:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">gravarMensagem</span><span class="p">(</span><span class="nx">mensagem</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Abre a planilha e seleciona a aba Sheet1
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">celulas</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getActiveSpreadsheet</span><span class="p">().</span><span class="nx">getSheetByName</span><span class="p">(</span><span class="s1">&#39;Sheet1&#39;</span><span class="p">);</span>
+
+  <span class="c1">// Seleciona as células que conterão o cabeçalho. Em ordem, os parâmetros são: primeira linha, primeira coluna, última linha, última coluna. Os parâmetros vão formar uma área com todas as células contidas entre os extremos indicados
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">cabecalho</span> <span class="o">=</span> <span class="nx">celulas</span><span class="p">.</span><span class="nx">getRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+
+  <span class="c1">// Escreve os nomes das colunas nas células de cabeçalho
+</span><span class="c1"></span>  <span class="nx">cabecalho</span><span class="p">.</span><span class="nx">setValues</span><span class="p">([[</span><span class="s1">&#39;Nome&#39;</span><span class="p">,</span> <span class="s1">&#39;Email&#39;</span><span class="p">,</span> <span class="s1">&#39;Data de Criação&#39;</span><span class="p">,</span> <span class="s1">&#39;Empresa&#39;</span><span class="p">,</span> <span class="s1">&#39;Origem da Primeira Conversão&#39;</span><span class="p">,</span> <span class="s1">&#39;Estágio no Funil&#39;</span><span class="p">,</span> <span class="s1">&#39;Lead Scoring&#39;</span><span class="p">,</span> <span class="s1">&#39;Interesse&#39;</span><span class="p">]]);</span>
+
+  <span class="c1">// Cria uma trava que impede que dois ou mais usuários executem o script simultaneamente
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">trava</span> <span class="o">=</span> <span class="nx">LockService</span><span class="p">.</span><span class="nx">getScriptLock</span><span class="p">();</span>
+
+  <span class="c1">// Espera 1 segundo até que as linhas de código a seguir terminem
+</span><span class="c1"></span>  <span class="nx">trava</span><span class="p">.</span><span class="nx">waitLock</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+  <span class="c1">// Navega pelos dados enviados pelo webhook
+</span><span class="c1"></span>  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// Escreve os dados na planilha
+</span><span class="c1"></span>    <span class="nx">celulas</span><span class="p">.</span><span class="nx">appendRow</span><span class="p">([</span><span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">name</span><span class="p">,</span>
+                       <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">email</span><span class="p">,</span>
+                       <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">created_at</span><span class="p">,</span>
+                       <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">company</span><span class="p">,</span>
+                       <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">first_conversion</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span>
+                       <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">lead_stage</span><span class="p">,</span>
+                       <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">fit_score</span><span class="p">,</span>
+                       <span class="nx">mensagem</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">interest</span><span class="p">]);</span>
+
+    <span class="c1">// Atualiza a planilha com a nova linha
+</span><span class="c1"></span>    <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">flush</span><span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Desativa a trava do script para que possa receber outras mensagens do webhook
+</span><span class="c1"></span>  <span class="nx">trava</span><span class="p">.</span><span class="nx">releaseLock</span><span class="p">();</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Os espaços e comentários dão a impressão de que o código é longo, mas em realidade ele é bem simples:</p>
+<ul>
+<li>Abre a planilha associada ao script e seleciona a aba com o nome Sheet1. SpreadsheetApp é o nome da classe que gerencia planilhas e o funcionamento dela pode ser consultado na documentação do GAS;</li>
+<li>Seleciona as linhas da planilha que conterão o cabeçalho. Para escrever na planilha usando a classe SpreadsheetApp é necessário antes selecionar a ou as células que terão novos valores. Há muitas outras propriedades que podemos extrair dos leads, incluindo campos personalizados. Para deixar o exemplo simples, selecionamos apenas algumas das propriedades padrão da ferramenta;</li>
+<li>Escreve as colunas do cabeçalho na primeira linha da planilha. O argumento do método setValues recebe uma lista com duas dimensões, por isso os valores são passados dentro de uma lista multidimensional;</li>
+<li>Se o fluxo de automação do RD Station tiver como critério de entrada ser novo ou já existir em uma lista de segmentação, todos os leads existentes na lista serão enviados simultaneamente para a planilha, ou em intervalos muito curtos de tempo. Isso gera um problema, pois o script não consegue gerenciar o recebimento de muitas mensagens simultaneamente e acaba escrevendo uma linha por cima da outra, fazendo com que alguns registros sumam. Para contornar o problema, usamos a classe LockService, que faz a gestão de acessos simultâneos ao script;</li>
+<li>O método waitLock é usado para travar a seção do código que vem após ele, garantindo que apenas um acesso por vez seja feito. Os demais acessos entram em uma fila para serem processados conforme a trava vai sendo liberada;</li>
+<li>A navegação pelo objeto recebido do webhook será feita usando um laço do tipo for, cuja condição de término é que uma variável chamada i tenha valor igual ao total de leads enviados pelo webhook (tirando o caso em que o critério de entrada do fluxo de automação é ser novo ou existente em uma lista de segmentação, o webhook deve enviar apenas um lead, então o laço for normalmente vai ter sua variável i começando em 0 e terminando em 1);</li>
+<li>Para cada volta no laço, adiciona uma nova linha na planilha escrevendo os dados do lead. Repare que o objeto mensagem possui uma propriedade leads, que é uma lista. Para navegar nesta lista usamos a variável i que vai sendo alterada ao final de cada volta no laço. O método appendRow é inteligente o suficiente para descobrir qual a última linha preenchida e pular para a linha abaixo para escrever nas células, assim as informações de cabeçalho e leads anteriores não são sobrescritas;</li>
+<li>Após escrever a linha, a planilha é atualizada usando o método <em>flush</em> da classe SpreadsheetApp. As operações de escrita em células são agrupadas para serem feitas em conjuntos, melhorando a performance do <em>web app</em>. Neste caso precisamos que a linha seja gravada nas células da planilha imediatamente, pois essa operação precisa ser feita antes da liberação da trava;</li>
+<li>A trava é desfeita após a escrita e outros acessos podem ser feitos.</li>
+</ul>
+<p>Este código é executado a partir da função doPost sempre que um novo lead chega via webhook. Note que o cabeçalho é escrito sempre. Poderíamos ter feito uma verificação de existência do cabeçalho, mas para ficar simples vamos deixar desta forma. As linhas com os leads não são sobrescritas, graças a trava de segurança que foi feita para evitar múltiplos acessos dentro do laço.</p>
+<p>O passo seguinte é publicar o aplicativo. Publicar o aplicativo significa tornar o <em>web app</em> público, o que é necessário para que o RD Station consiga enviar os dados. Para publicar o aplicativo, acesse o menu Publish &gt; Deploy as a Web App. Especifique a versão do projeto (neste caso, New) e documente as mudanças ao longo da evolução do projeto. Nas permissões, use seu usuário para autorizar o script e informe que qualquer pessoa pode acessá-lo, mesmo um usuário anônimo, para que o RD Station consiga se conectar com o script. Ao clicar no botão “Deploy”, o GAS pedirá para que você autorize o script a escrever em planilhas e a receber dados de sistemas externos usando suas credenciais. Após a autorização, o aplicativo será publicado e uma URL pública será criada. É esta URL que vamos passar para o RD Station mais adiante.</p>
+<p>Atualização 10/11/2021: este procedimento agora é feito clicando no botão &ldquo;Deploy&rdquo;, na porção superior direita da tela. É necessário criar um novo <em>deploy</em>, clicar no ícone de engrenagem do tipo de <em>deploy</em> e selecionar a opção <em>web app</em>. O restante do preenchimento é idêntico ao método anterior e a URL pública do aplicativo é gerada após a publicação.</p>
+<figure >
+  
+  <img data-src="images/figure5-deploy-web-app.webp" class="lazy" alt="Tela de criação de novo deploy em Agosto de 2018." title="Tela de criação de novo deploy em Agosto de 2018." />
+  
+  
+  <figcaption>
+    <p>Tela de criação de novo deploy em Agosto de 2018. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<figure >
+  
+  <img data-src="images/figure6-web-app-url.webp" class="lazy" alt="Tela de web app publicado com o endereço público em Agosto de 2018." title="Tela de web app publicado com o endereço público em Agosto de 2018." />
+  
+  
+  <figcaption>
+    <p>Tela de web app publicado com o endereço público em Agosto de 2018. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O próximo passo é configurar o RD Station para enviar os dados para a planilha, mas antes vale um aviso: ao permitir que qualquer pessoa possa executar o script, uma brecha de segurança é aberta para que dados não intencionados sejam enviadas para o script. A princípio o script (no papel de servidor) está configurado para receber quaisquer requisições GET ou POST. É importante tratar os dados de entrada para ter certeza de que o retorno é o esperado.</p>
+<h2 id="mais-mão-na-massa-o-rd-station">Mais mão na massa: o RD Station</h2>
+<p>O RD Station permite Configurar webhooks de duas maneiras: usando o recurso de webhooks que está no menu Integrações, que aparece ao clicar / apertar o nome da conta na porção superior direita da tela ou usando os fluxos de automação. O que difere entre as formas de criar o webhook é que ao fazer a criação pelo menu de integrações, só é possível enviar leads via webhook após eventos de conversão ou nova oportunidade, enquanto pelos fluxos de automação é possível também esperar que entrem em uma lista de segmentação. Vou mostrar as duas formas, bem como quando usar uma e quando usar outra. Vamos começar pelo método de criar o webhook pelo menu de integrações. Ao abrir a página de integrações, a opção de configurar webhooks estará disponível junto com outras opções de integração. Aperte o botão “Configurar” ao lado da opção de webhooks para abrir a tela com a listagem dos webhooks criados e um botão no canto superior direito da tela para criar novos webhooks. Aperte este botão para abrir um popup com os dados a serem preenchidos.</p>
+<figure >
+  
+  <img data-src="images/figure7-rd-station-webhook.webp" class="lazy" alt="Tela de criação de novo webhook pelo menu Integrações em Agosto de 2018." title="Tela de criação de novo webhook pelo menu Integrações em Agosto de 2018." />
+  
+  
+  <figcaption>
+    <p>Tela de criação de novo webhook pelo menu Integrações em Agosto de 2018. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O nome do webhook é um identificador interno. A URL é o endereço para onde o webhook deve mandar os dados dos leads. Esta é a URL que foi gerada ao fazer a publicação do web app pelo GAS. O gatilho pode ser Conversão ou Oportunidade. Caso seja Oportunidade o campo abaixo some e é só salvar o webhook. Caso o gatilho seja a Conversão, você pode selecionar eventos de conversão específicos, útil para registrar apenas os leads que converterem em determinada landing page ou formulário. Se o campo ficar em branco, todas as conversões serão enviadas pelo webhook. Ao salvar o webhook, o RD Station iniciará o envio dos dados após o evento definido no gatilho acontecer.</p>
+<p>A segunda forma de criar um webhook é usando fluxos de automação. Usarei esta forma para fazer a integração neste post, pois o critério de seleção de leads para envio para a planilha é a entrada em uma lista de segmentação. A integração por fluxo permite adicionar etapas entre o evento que irá causar o disparo do webhook e o disparo em sí. Desta forma você pode, por exemplo, notificar um endereço de e-mail quando um lead for enviado, adicionar uma tag ou mudar o estagio do lead no funil.</p>
+<p>Para configurar o webhook por fluxos, vá em Relacionar &gt; Automação de Marketing e crie um novo fluxo de automação. Escolha entre o paralelo e o gerencial e dê um nome para o fluxo. Escolha o evento que dará início ao fluxo, que pode ser conversão ou entrada em uma lista de segmentação. Construa o fluxo de acordo com as suas necessidades e no final escolha a ação “Enviar para a URL (Integração)”. A URL a ser informada é a URL gerada na publicação do web app. A <a href="https://ajuda.rdstation.com.br/hc/pt-br/articles/115001273943" target="_blank" rel="noopener">documentação do RD Station para envio de webhooks por fluxos de automação</a> sugere criar uma espera de um minuto entre a entrada do lead no fluxo de automação e o envio dele para a URL de integração.</p>
+<p>Atualização 10/11/2021: O RD Station não suporta mais fluxos de automação gerenciais. Todo fluxo de automação é paralelo.</p>
+<figure >
+  
+  <img data-src="images/figure8-automation-flow-send-to-web-app.webp" class="lazy" alt="Fluxo de automação configurado para enviar dados para uma planilha em Agosto de 2018." title="Fluxo de automação configurado para enviar dados para uma planilha em Agosto de 2018." />
+  
+  
+  <figcaption>
+    <p>Fluxo de automação configurado para enviar dados para uma planilha em Agosto de 2018. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Atualização 10/11/2021: A interface do RD Station para criação de fluxos de automação é diferente da mostrada aqui, porém o procedimento é o mesmo.</p>
+<p>Ao finalizar, salve e ative o fluxo de automação. Neste ponto, a integração já deve funcionar e assim que um lead atende as condições do fluxo de automação ele será enviado para o script, que fará o tratamento da informação e o mostrará na planilha.</p>
+<figure >
+  
+  <img data-src="images/figure9-populated-spreadsheet.webp" class="lazy" alt="Dados de leads escritos nas células da planilha em Agosto de 2018." title="Dados de leads escritos nas células da planilha em Agosto de 2018." />
+  
+  
+  <figcaption>
+    <p>Dados de leads escritos nas células da planilha em Agosto de 2018. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Sempre que um novo lead entrar na lista, ele entrará também no fluxo de automação e será enviado para a planilha. Como usamos o método appendRow, o novo lead não irá sobrescrever dados existentes.</p>
+<p>Listas grandes podem demorar para serem escritas na planilha e uma sugestão para otimização é exportar manualmente a lista completa, importar para o Google Sheets e ligar a integração apenas para novos leads. O RD Station limita a quantidade de chamadas feitas a suas APIs e webhooks com base no plano contratado. Para referência, entrei em contato com o suporte no dia 30/08/2018 e fui informado que estes são os limites de envio:</p>
+<ul>
+<li>120 conversões por minuto nos planos Pro ou inferior;</li>
+<li>500 conversões por minuto no plano Enterprise.</li>
+</ul>
+<p>Estes limites são bem confortáveis para pequenas empresas que buscam ganhar escala e reduzir custos. Também é importante ter em mente a quantidade máxima de células que o Google Sheets pode ter, <a href="https://support.google.com/drive/answer/37603?hl=en" target="_blank" rel="noopener">que é 2.000.000</a>. Esse número é usado para determinar a quantidade de linhas e colunas que o arquivo pode ter. Quanto menor o número de colunas, maior o de linhas e vice versa.</p>
+<p>Atualização 10/11/2021. O limite atual de células é 5.000.000.</p>
+<p>Pronto! Sempre que um lead atender a determinadas condições dentro do RD Station, ele será enviado automaticamente para uma planilha.</p>
+<h2 id="leitura-adicional">Leitura adicional</h2>
+<p>Veja a parte 2 deste post e saiba como mandar os dados do RD Station para a AWS: <a href="/stories/rd-station-e-google-sheets-na-aws/" >RD Station e Google Sheets Parte 2 - Migrando para a AWS</a>.</p>
+<p>Bora automatizar!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">Leia também estas histórias</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC">17/11/2020 09:10:00</time>
+      </div>
+      <a href="/categories/automa%C3%A7%C3%A3o" class="badge" itemprop="articleSection">automação</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Configurando Metabase e PostgreSQL no Docker</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Como elaborar uma arquitetura de serviços simples, de fácil manutenção e portátil utilizando o Docker? Ao longo deste post, você vai descobrir como fazer isso integrando um banco de dados PostgreSQL …</p>
+      <div>
+        <a class="button-primary" href="/stories/configurando-metabase-e-postgresql-no-docker/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC">03/09/2020 19:23:00</time>
+      </div>
+      <a href="/categories/automa%C3%A7%C3%A3o" class="badge" itemprop="articleSection">automação</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station e Google Sheets Parte 2 - Migrando para a AWS</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Já vimos neste blog como fazer para enviar leads do RD Station para uma planilha automaticamente. Agora vamos ver como enviar estes mesmos leads para um banco de dados hospedado na AWS</p>
+      <div>
+        <a class="button-primary" href="/stories/rd-station-e-google-sheets-na-aws/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/apis-e-carrinhos-de-supermercado/images/thumbnail_hu46c54be97ab545b46d52504c6747000a_184568_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-07-04 21:20:00 &#43;0000 UTC">04/07/2018 21:20:00</time>
+      </div>
+      <a href="/categories/automa%C3%A7%C3%A3o" class="badge" itemprop="articleSection">automação</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">APIs e carrinhos de supermercado</h2>
+      <p class="mb-6 text-white" itemprop="abstract">O que é uma API e para que serve? Este post vai introduzir o conceito sem entrar em aspectos técnicos.</p>
+      <div>
+        <a class="button-primary" href="/stories/apis-e-carrinhos-de-supermercado/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">Como escolher o melhor gráfico?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{{ define "main" }}
+  {{ if gt (len .Site.RegularPages) 0 }}
+    {{ $latest := index (first 1 (where (where .Site.RegularPages "Params.featured" true).ByPublishDate.Reverse "Params.categories" "!=" nil)) 0 }}
+    {{ if ne $latest nil }}
+  <div itemscope itemtype="https://schema.org/Article">
+      {{ partial "header/hero.html" (dict "p" $latest "k" .Kind) }}
+  </div>
+    {{ end }}
+  {{ else }}
+    {{ partial "components/banner.html" (T "no_hero_posts") }}
+  {{ end }}
+  <div class="container container-box mx-auto">
+    <main itemscope itemtype="https://schema.org/PublicationVolume">
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        {{ if gt (len .Site.RegularPages) 0 }}
+        <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">{{ T "latest_posts" }}</span>
+          {{ range where .Paginator.Pages "Params.categories" "!=" nil }}
+            {{ partial "components/post_thumbnail.html" . }}
+          {{ end }}
+          {{ if gt .Paginator.TotalPages 1 }}
+            {{ partial "components/pagination" .Paginator }}
+          {{ end }}
+        {{ else }}
+        <p>{{ T "no_posts" }}</p>
+        {{ end }}
+      </div>
+    </main>
+  </div>
+{{ end }}

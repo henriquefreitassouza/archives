@@ -1,0 +1,47 @@
+{% set routes = ['/blog', '/search', '/category'] %}
+{% set blog = false %}
+
+{% for route in routes %}
+  {% if route in page.url %}
+    {% set blog = true %}
+  {% endif %}
+{% endfor %}
+
+<section id="dd-header" class="dd-section dd-header">
+  <div class="dd-section--container">
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12">
+          <nav class="dd-navigation navbar">
+            {% if blog %}
+            <div class="navbar-section">
+              <a href="{{ base_url ~ 'blog' }}" class="navbar-brand dd-navigation__brand">
+                <picture>
+                  <source type="image/webp" srcset="{{ url('theme://public/img/logo-data-to-dash.webp') }}" alt="{{ site.title }}">
+                  <img src="{{ url('theme://public/img/logo-data-to-dash.png') }}" alt="{{ site.title }}" />
+                </picture>
+                <span>Blog</span>
+              </a>
+            </div>
+            <div class="navbar-section">
+              {% include 'partials/navigation.html.twig' with {'blog': true, 'category': base_url ~ 'category'} %}
+            </div>
+            {% else %}
+            <div class="navbar-section">
+              <a href="{{ base_url }}" class="navbar-brand dd-navigation__brand">
+                <picture>
+                  <source type="image/webp" srcset="{{ url('theme://public/img/logo-data-to-dash.webp') }}" alt="{{ site.title }}">
+                  <img src="{{ url('theme://public/img/logo-data-to-dash.png') }}" alt="{{ site.title }}" />
+                </picture>
+              </a>
+            </div>
+            <div class="navbar-section">
+              {% include 'partials/navigation.html.twig' %}
+            </div>
+            {% endif %}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

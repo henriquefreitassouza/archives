@@ -1,0 +1,51 @@
+{{ define "main" }}
+{{ $title := .Title }}
+{{ $category := .Param "categories" | default nil }}
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+{{ if ne ($category) nil }}
+  {{ partial "header/hero.html" (dict "p" . "k" .Kind) }}
+{{ else }}
+  {{ partial "components/banner.html" $title }}
+{{ end }}
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      {{ partial "components/breadcrumb.html" . }}
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">{{ T "reading_time" }}: {{ .ReadingTime }} {{ if eq .ReadingTime 1 }}{{ T "minute" }}{{ else }}{{ T "minutes" }}{{ end }}</strong>
+        {{ .Content }}
+      </main>
+      <footer>
+        {{ partial "components/author.html" . }}
+      </footer>
+    </div>
+  </div>
+</article>
+{{ if ne ($category) nil }}
+  {{ $similar_posts := first 3 (where (.Site.GetPage "term" (index ($category) 0)).RegularPages "Title" "ne" $title).ByPublishDate.Reverse }}
+  {{ if gt (len ($similar_posts)) 0 }}
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">{{ T "more_stories" }}</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        {{ range $similar_posts }}
+          {{ partial "components/post_thumbnail.html" . }}
+        {{ end }}
+      </div>
+    </aside>
+  </div>
+</div>
+  {{ end }}
+{{ end }}
+{{ end }}
+{{ define "foot" }}
+<script src="/js/lazy.min.js" async></script>
+{{ end }}

@@ -1,0 +1,5 @@
+<ul class="dd-category nav">
+{% for cat in taxonomy.taxonomy()['category'] | keys %}
+  <li class="nav-item"><a href="{{ '/category/' ~ cat }}">{{ cat }}</a></li>
+{% endfor %}
+</ul>

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Workflow automático para desenvolvimento de temas e plugins no WordPress | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Workflow automático para desenvolvimento de temas e plugins no WordPress | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Workflow automático para desenvolvimento de temas e plugins no WordPress | Automação de Dados">
+<meta property="og:description" content="Workflow automático para desenvolvimento de temas e plugins no WordPress | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2018-09-15 16:29:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-12 16:29:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="27 minutos" />
+
+<meta property="article:tag" content="Programação" />
+<meta property="article:section" content="Programação" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Terminal aberto rodando um fluxo de trabalho feito no Gulp e, ao lado, o logotipo do WordPress.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/workflow-para-desenvolvimento-wordpress/images/thumbnail_huee065fcd8bcd8b13505bcfc59ae5b7fd_68810_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2018-09-15 16:29:00 &#43;0000 UTC" itemprop="datePublished">15/09/2018 16:29:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/programa%c3%a7%c3%a3o" itemprop="articleSection">programação</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Workflow automático para desenvolvimento de temas e plugins no WordPress</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Um fluxo de trabalho bem montado pode economizar horas de manutenções futuras em projetos WordPress. Este post vai apresentar uma possível organização de projeto utilizando templates e o gerenciador de tarefas Gulp.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/workflow-para-desenvolvimento-wordpress/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Workflow automático para desenvolvimento de temas e plugins no WordPress</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 27 minutos</strong>
+        <p>Publicado em 15/09/2018 e atualizado em 12/11/2021.</p>
+<p>Atualizações 12/11/2021:</p>
+<ul>
+<li>Na data de atualização deste post, a versão estável mais recente do WordPress é 5.8.2. A partir da versão 5, o editor de páginas padrão passou a ser o Gutenberg;</li>
+<li>A declaração de tarefas para o gulp é feita usando o comando exports, presente na especificação ES6 do Javascript. As tarefas são funções declaradas com um parâmetro <em>callback</em>, uma função que deve ser envocada para sinalizar ao Gulp o término da tarefa. A sinalização é utilizada para trabalhar com as funções <em>serial</em> e <em>parallel</em>, que permitem a execução de tarefas em sequência ou de forma simultânea, respectivamente. O uso do método task para a definição de tarefas é desencorajado.</li>
+</ul>
+<p><strong>ALERTA DE SPOILER: este post contém linhas de código! Vou assumir que você tenha familiaridade com desenvolvimento em WordPress, saber usar o Node Package Manager (NPM) e conhece gerenciadores de tarefas.</strong></p>
+<p>Se tem uma coisa que não parece ter uma forma correta de fazer (<a href="https://developer.wordpress.org/themes/basics/organizing-theme-files/" target="_blank" rel="noopener">ou tem, até certo ponto</a>) é organizar o desenvolvimento de um tema ou um <em>plugin</em> para WordPress. Há pelo menos dezenas de formas diferentes de preparar os arquivos para produção. Deixarei registrada a forma como eu organizo os projetos que desenvolvo, um processo que acredito ser fundamental para estabelecer um processo de produção padrão, uma comunicação uniforme entre as pessoas desenvolvedoras e a manutenção dos arquivos no futuro.</p>
+<p>Vou dividir o assunto nos seguintes tópicos:</p>
+<ul>
+<li>Download e instalação dos <em>boilerplates</em> de <em>plugins</em> e temas;</li>
+<li>Criação da estrutura de pastas dos projetos;</li>
+<li>Criação dos pacotes dos projetos com o Node Package Manager (NPM);</li>
+<li>Download do Gulp e dependências para os projetos;</li>
+<li>Configuração das tarefas para compilar os arquivos e gerar as versões de produção.</li>
+</ul>
+<h2 id="a-manutenção-do-wordpress">A Manutenção do WordPress</h2>
+<p>Manter o WordPress atualizado e livre de erros é um tanto complicado. Isso porque várias partes dele são feitas por diversas pessoas desenvolvedoras de forma independente, e disponibilizadas ao público como <em>plugins</em> e temas. Para garantir consistência em todo o ecossistema, a <a href="https://automattic.com/" target="_blank" rel="noopener">Automattic</a> impõe uma série de regras para a criação de <a href="https://developer.wordpress.org/themes/release/theme-review-guidelines/" target="_blank" rel="noopener">temas</a> e <a href="https://developer.wordpress.org/plugins/wordpress-org/detailed-plugin-guidelines/" target="_blank" rel="noopener">*plugins*</a> que a comunidade precisa seguir antes de terem seus trabalhos aprovados para serem exibidos nos repositórios online do <a href="https://wordpress.org/themes/" target="_blank" rel="noopener">WordPress.org</a>. Isso já ajuda, mas <em>plugins</em> e temas ainda podem ser feitos com tecnologias que conflitam entre si. Já tive até mesmo a experiência de desenvolver um <em>plugin</em> que funciona perfeitamente com versões do WordPress que usam o editor de páginas e posts nativo <a href="https://codex.wordpress.org/TinyMCE" target="_blank" rel="noopener">TinyMCE</a>, ou seja, todas pelo menos desde a versão 3.1, mas que certas partes deixam de funcionar quando faço a instalação do <em>plugin</em> <a href="https://wordpress.org/gutenberg/" target="_blank" rel="noopener">Gutenberg</a> e uso da <a href="https://developer.wordpress.org/rest-api/" target="_blank" rel="noopener">WP REST API</a> com Javascript.</p>
+<p>Para evitar ao máximo problemas de incompatibilidade, busco sempre entender em meus projetos quais os <em>plugins</em> necessários para o projeto. Não limito em um número específico, mas tento usar o mínimo de dependências externas. Com a definição do que vou usar de terceiros e o que vou desenvolver, trato de fazer a configuração dos <em>boilerplates</em> do tema e do <em>plugin</em>.</p>
+<h2 id="boilerplates">Boilerplates</h2>
+<p>Eu nunca inicio o desenvolvimento de um <em>plugin</em> ou tema do zero. Conto sempre com a ajuda dos tais <em>boilerplates</em>: estruturas de pastas e arquivos organizados de maneira mais condizente com as adotadas em outros projetos de software, mas que seguem as regras de publicação dos trabalhos nos repositórios oficiais da Automattic. Existem <em>boilerplates</em> para temas e para <em>plugins</em>.</p>
+<h3 id="boilerplate-para-temas">Boilerplate para temas</h3>
+<figure >
+  
+  <img data-src="images/figure1-underscores-website.webp" class="lazy" alt="Página inicial do boilerplate Underscores exibindo as opções avançadas." title="Página inicial do boilerplate Underscores exibindo as opções avançadas." />
+  
+  
+  <figcaption>
+    <p>Página inicial do boilerplate Underscores exibindo as opções avançadas. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>A própria Automattic, por meio de sua <a href="https://themeshaper.com/" target="_blank" rel="noopener">divisão responsável pelo desenvolvimento de temas</a>, mantém um boilerplate, chamado _s (<a href="https://underscores.me/" target="_blank" rel="noopener">Underscores</a>). Ao abrir o site do Underscores, basta escrever o nome do tema e apertar o botão &ldquo;Generate&rdquo;. Um arquivo compactado será enviado para a sua máquina. Ao fazer o upload deste arquivo para a pasta de temas do WordPress, seja pelo gerenciador de temas do painel administrativo ou copiando e colando a pasta descompactada para a wp-content/themes (ou o seu diretório padrão de temas), o tema será instalado no WordPress. Este <em>boilerplate</em> não só agiliza a criação de alguns arquivos como o functions.php ou o style.css, mas gera alguns outros arquivos .php com funções separadas para facilitar o entendimento e a manutenção do projeto.</p>
+<p>Abaixo do campo para digitar o nome do tema há um link para exibir opções avançadas. Ao apertar o link, opções para definir o <em>slug</em> (identificador) do tema, informações sobre o autor e descrição aparecem. Há opções para criar um <em>boilerplate</em> adaptado para temas que farão uso do <a href="https://woocommerce.com/" target="_blank" rel="noopener">WooCommerce</a> e criar folhas de estilo Sass.</p>
+<figure >
+  
+  <img data-src="images/figure2-underscores-project-structure.webp" class="lazy" alt="Arquivos e pastas na raiz do boilerplate criado no Underscores com a opção _sassify! selecionada." title="Arquivos e pastas na raiz do boilerplate criado no Underscores com a opção _sassify! selecionada." />
+  
+  
+  <figcaption>
+    <p>Arquivos e pastas na raiz do *boilerplate* criado no Underscores com a opção _sassify! selecionada. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Os arquivos essenciais para o funcionamento de um tema são o functions.php e o style.css. Estes dois já foram criados, bem como vários outros para renderizar diferentes páginas como a de resultados de busca, posts do blog e templates para cabeçalho e rodapé. O functions.php foi separado em blocos menores, e este arquivo faz o papel de agregador entre estes blocos. Os arquivos que compõem o functions.php ficam dentro do diretório <strong>inc</strong>. Há uma pasta <strong>js</strong> na raiz do tema com scripts para ajustes de acessibilidade, navegação mobile e funcionalidades do <a href="https://developer.wordpress.org/themes/customize-api/" target="_blank" rel="noopener">Customizer</a>. A pasta <strong>languages</strong> armazena os arquivos de tradução do tema, a <strong>layouts</strong> guarda folhas de estilo e já vem com dois arquivos CSS para configurar a exibição da área de conteúdo principal e a de barra lateral. A pasta <strong>sass</strong> foi incluída após marcar a opção &ldquo;_sassify!&rdquo; e inclui arquivos .scss com a redefinição dos estilos padrão dos navegadores e definição de estilos para alguns elementos, como botões. Por fim, a pasta <strong>template-parts</strong> possui os blocos dinâmicos de conteúdo de páginas, posts, página não encontrada e resultados de busca.</p>
+<p>Os conteúdos destas pastas são referenciados nos arquivos que estão na raiz do tema. Os seguintes arquivos fazem uso do conteúdo de template-parts para renderizar a página completa:</p>
+<ul>
+<li>archive.php;</li>
+<li>index.php;</li>
+<li>page.php;</li>
+<li>search.php;</li>
+<li>single.php.</li>
+</ul>
+<p>Os arquivos header.php e footer.php são o cabeçalho e o rodapé padrão do tema, presentes em todas as páginas. O screenshot.png é uma imagem a ser exibida no painel administrativo para o tema. A imagem que vem com o <em>boilerplate</em> é completamente transparente e possui 1200 x 900 pixels de dimensão.</p>
+<h3 id="boilerplate-para-plugins">Boilerplate para plugins</h3>
+<figure >
+  
+  <img data-src="images/figure3-plugin-boilerplate-generator.webp" class="lazy" alt="Página inicial do boilerplate wppb." title="Página inicial do boilerplate wppb." />
+  
+  
+  <figcaption>
+    <p>Página inicial do boilerplate wppb. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Assim como temas, <em>plugins</em> possuem seus <em>boilerplates</em>. O mais usado foi criado em 2011 pelo desenvolvedor <a href="https://github.com/tommcfarlin/" target="_blank" rel="noopener">Tom McFarlin</a> e hoje é mantido pelo <a href="https://github.com/DevinVinson/" target="_blank" rel="noopener">Devin Vinson</a>. O <em>boilerplate</em> está <a href="https://github.com/DevinVinson/WordPress-Plugin-Boilerplate" target="_blank" rel="noopener">hospedado no Github</a> e serve de base para geradores de <em>boilerplates</em> online, com funcionamento similar ao Underscores. Um destes projetos é o <a href="https://wppb.me/" target="_blank" rel="noopener">WordPress Plugin Boilerplate Generator, ou wppb</a>, mantido pelo desenvolvedor <a href="https://enriquechavez.co/" target="_blank" rel="noopener">Enrique Chávez</a> e com apoio do Devin Vinson.</p>
+<p>Ao preencher as informações do <em>plugin</em> e apertar o botão &ldquo;Build Plugin&rdquo;, um arquivo compactado será enviado para a sua máquina.</p>
+<figure >
+  
+  <img data-src="images/figure4-plugin-boilerplate-folder-structure.webp" class="lazy" alt="Arquivos e pastas na raiz do boilerplate para criação de plugins." title="Arquivos e pastas na raiz do boilerplate para criação de plugins." />
+  
+  
+  <figcaption>
+    <p>Arquivos e pastas na raiz do boilerplate para criação de *plugins*. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Este <em>plugin</em> já pode ser instalado no WordPress via painel administrativo fazendo o upload do arquivo compactado ou copiando os arquivos do <em>plugin</em> para a wp-content/plugins (ou o seu diretório de instalação de <em>plugins</em>).</p>
+<p>Um <em>plugin</em> precisa essencialmente de duas coisas para ser um <em>plugin</em>: um arquivo .php com um comentário e <a href="https://developer.wordpress.org/plugins/hooks/" target="_blank" rel="noopener">ganchos (*hooks*)</a> que o ligam ao <em>Core</em>. O <em>boilerplate</em> já deixa essa estrutura pronta e cria diversas outras pastas e arquivos para organizar o <em>plugin</em>. As pastas <strong>admin</strong> e <strong>public</strong> armazenam os arquivos que compõem as partes de administração pelo painel do WordPress e exibição pública do <em>plugin</em> no site, respectivamente. A pasta <strong>includes</strong> contém funções de configuração do <em>plugin</em> e definição de <em>hooks</em>. A pasta <strong>languages</strong> contém os arquivos de tradução do <em>plugin</em>.</p>
+<p>Cada <em>boilerplate</em> gerado pela ferramenta web vai criar um arquivo na raiz com o nome do <em>plugin</em>, definido no campo <em>slug</em>. Esse arquivo contém o cabeçalho do plugin, com as informações que serão exibidas no painel de administração do WordPress. O campo <em>description</em> possui um descritivo genérico, que precisa ser atualizado dentro do arquivo. A raiz ainda contém um arquivo index.php em branco e uninstall.php, que pode ser usado para realizar ações que devem ser executadas no ato da desinstalação do plugin.</p>
+<p>Embora este <em>boilerplate</em> seja bem completo, em geral cinco arquivos serão editados para construir e exibir as funcionalidades do plugin:</p>
+<ul>
+<li><strong>class-nome-do-plugin.php</strong>, dentro de includes. Este arquivo faz a gestão dos <em>hooks</em> e das funções definidas nos demais arquivos de configuração do plugin;</li>
+<li><strong>class-nome-do-plugin-admin.php</strong>, dentro de admin. Este arquivo define as funções usadas para gerenciar o <em>plugin</em> no painel administrativo;</li>
+<li><strong>nome-do-plugin-admin-display.php</strong>, dentro de admin/partials. Este arquivo renderiza HTML no painel administrativo;</li>
+<li><strong>class-nome-do-plugin-public.php</strong>, dentro de public. Este arquivo define as funções que serão executadas na parte pública do site;</li>
+<li><strong>nome-do-plugin-public-display.php</strong>, dentro de public/partials. Este arquivo renderiza HTML na parte pública do site.</li>
+</ul>
+<p>O termo &ldquo;nome-do-plugin&rdquo; é o nome definido no campo <em>slug</em> do gerador de <em>boilerplate</em> de <em>plugins</em> online.</p>
+<h2 id="antes-de-seguirmos-uma-palavrinha-sobre-os-boilerplates">Antes de seguirmos, uma palavrinha sobre os boilerplates</h2>
+<p><em>Boilerplates</em> podem ser muito úteis para iniciar um projeto rapidamente, pois a estrutura básica já está pronta e pode ser adicionada ao WordPress sem que uma linha de código seja escrita. Por outro lado, são organizados tendo em vista o desenvolvimento e a manutenção de projetos complexos com diversas funcionalidades. Para <em>plugins</em> e temas simples, um <em>boilerplate</em> pode não fazer muito sentido. Em <em>plugins</em> e temas que fazem uso de frameworks CSS, a estrutura de estilos pode também não ser a mais adequada. Cabe a quem está desenvolvendo optar pelo uso ou não de <em>boilerplates</em> e também se irá seguir com a estrutura padrão.</p>
+<h2 id="organização-de-um-novo-projeto">Organização de um novo projeto</h2>
+<p>Algo muito comum no desenvolvimento de um tema para WordPress é criar posts, templates e taxonomias personalizadas. Isso pode ser feito de múltiplas formas:</p>
+<ul>
+<li>Adicionando as funcionalidades no arquivo functions.php;</li>
+<li>Criando um <em>plugin</em> que adiciona as funcionalidades ao tema.</li>
+</ul>
+<p>As duas abordagens tem prós e contras, e não há um consenso sobre qual é a forma correta de fazer. Esta é outra decisão que cabe as pessoas desenvolvedoras. Eu costumo seguir o caminho de criar um <em>plugin</em> para desenvolver as funcionalidades do tema. Gosto desta abordagem, pois consigo trabalhar no tema de forma independente, sem perder conteúdo em uma eventual troca de tema. Seguindo por este caminho, é necessário garantir que o <em>plugin</em> seja compatível com novos temas.</p>
+<p>Para organizar o espaço de trabalho, eu crio uma pasta que vai armazenar todos os <em>plugins</em> e temas que estiver desenvolvendo para determinada empresa. Dentro desta pasta eu crio outras duas, uma chamada <em><strong>plugins</strong></em> e outra chamada <strong>temas</strong>. Dentro da pasta <em>plugins</em>, crio uma pasta com o nome do plugin e dentro dela outras duas: uma com o nome <strong>src</strong> e outra com o nome <strong>dist</strong>. A pasta src vai ter os arquivos usados em desenvolvimento e a pasta dist vai ter os arquivos que serão usados na versão em produção do <em>plugin</em>. Dentro de src eu coloco os arquivos do <em>boilerplate</em> que gerei online. Sigo a mesma estrutura para a pasta temas. Crio as pastas src e dist e copio os arquivos de dentro do <em>boilerplate</em> do tema para a pasta src. A estrutura de pastas segue este padrão:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">nome-da-empresa/
+nome-da-empresa/plugins/
+nome-da-empresa/plugins/nome-do-plugin/
+nome-da-empresa/plugins/nome-do-plugin/src/
+nome-da-empresa/plugins/nome-do-plugin/dist/
+nome-da-empresa/temas/
+nome-da-empresa/temas/nome-do-tema/
+nome-da-empresa/temas/nome-do-tema/src/
+nome-da-empresa/temas/nome-do-tema/dist/</code></pre></td></tr></table>
+</div>
+</div>
+<p>O termo nome-da-empresa é o nome da empresa para qual os <em>plugins</em> e temas serão criados, nome-do-plugin é o nome do <em>plugin</em> criado e nome-do-tema é o nome do tema criado.</p>
+<h2 id="npm-e-gulp-automatizando-as-tarefas-de-preparação-dos-arquivos">NPM e Gulp: automatizando as tarefas de preparação dos arquivos</h2>
+<p>Costumo fazer certos procedimentos para tornar temas e <em>plugins</em> mais leves:</p>
+<ul>
+<li>Concatenar arquivos similares em um só para carregamento único sempre que possível;</li>
+<li>Minificar arquivos para remover espaços entre linhas de código;</li>
+<li>Compactar imagens para reduzir o tamanho dos arquivos;</li>
+<li>Carregar as versões de produção de bibliotecas de terceiros dentro do meu código;</li>
+<li>Compilar os arquivos .scss para a saída em .css.</li>
+</ul>
+<p>Fazer estas coisas sempre que os arquivos são editados pode levar um tempo considerável. Para que eu não tenha que fazer isso manualmente, uso o <a href="https://gulpjs.com/" target="_blank" rel="noopener">Gulp</a>. O Gulp é um gerenciador de tarefas e sua função é automatizar tarefas comuns no desenvolvimento de software para que a pessoa desenvolvedora foque na escrita de código. O Gulp está disponível no <a href="https://www.npmjs.com/" target="_blank" rel="noopener">Node Package Manager, ou NPM</a>. O NPM é um gerenciador de pacotes que possui diversas bibliotecas de código aberto. O NPM, por sua vez, é o gerenciador de pacotes do <a href="https://nodejs.org/" target="_blank" rel="noopener">Node.js</a>, um ambiente de servidor que executa Javascript. Para instalar o Gulp é necessário ter o NPM e para instalar o NPM é necessário ter o Node.js. Ao baixar e instalar o Node.js para o seu sistema operacional, o NPM será instalado junto.</p>
+<p>Uma vez que a estrutura de pastas esteja pronta, crio um novo pacote dentro das pastas nome-do-tema e nome-do-plugin. Para isso, usando o console, eu navego até estes diretórios, um de cada vez, e crio o pacote usando o seguinte comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm init</code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure5-npm-init.webp" class="lazy" alt="Criação de um novo pacote na pasta do plugin." title="Criação de um novo pacote na pasta do plugin." />
+  
+  
+  <figcaption>
+    <p>Criação de um novo pacote na pasta do *plugin*. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O comando irá pedir algumas informações para configurar o pacote. Um arquivo chamado package.json é criado ao final da configuração do novo pacote. Este arquivo especifica as dependências do pacote criado. Por hora ele só vai conter os dados que foram passados pelo console no momento da criação, mas conforme novos pacotes forem sendo instalados, elas serão listadas no package.json como dependências para o projeto. Comecei criando o pacote pela pasta do <em>plugin</em>, mas a ordem é irrelevante. Após repetir o processo de criação de novo pacote na pasta do tema, um package.json será criado para este tema. Crio um pacote para cada tema e <em>plugin</em> presente na pasta de projetos da empresa, assim cada pacote é desenvolvido de maneira independente.</p>
+<p>O próximo passo é instalar o Gulp, o que pode ser feito com o comando a seguir:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install --g gulp-cli
+npm install --save-dev gulp</code></pre></td></tr></table>
+</div>
+</div>
+<p>A instalação do Gulp foi feita usando a <em>flag</em> --g, que diz que este pacote deve ser instalado globalmente. Como o Gulp possui uma interface de linha de comando, a instalação é feita globalmente para que o executável do Gulp seja instalado em um diretório que já está configurado para ser lido pela variável PATH, o que vai permitir que o Gulp seja chamado pela linha de comando a partir de qualquer diretório.</p>
+<p>Note que uma nova pasta apareceu no diretório onde estão as pastas src e dist criadas anteriormente. A pasta chama-se <strong>node_modules</strong> e contém todas as dependências não só do pacote que estamos desenvolvendo, mas de todos os pacotes que estamos usando. Se, por exemplo, o pacote depende de um pacote A e esse pacote A depende de um pacote B, ambos os pacotes estarão na pasta node_modules. Note também que baixei o pacote gulp com a <em>flag</em> --save-dev, o que marca o pacote como sendo uma dependência apenas para desenvolvimento, não sendo necessária para executar o pacote. Isso impede que este pacote seja colocado com os arquivos finais de produção. A separação de pacotes desta maneira torna o projeto final mais leve, ao eliminar o que não for necessário em produção, e distingue os projetos de produção e desenvolvimento. O NPM possui ao menos três escopos para gestão de pacotes:</p>
+<ul>
+<li><strong>Global</strong>: pacotes no escopo global podem ser referenciados em todos os projetos;</li>
+<li><strong>Local</strong>: este é o padrão usado pelo npm install;</li>
+<li><strong>Desenvolvimento</strong>: este é o escopo especificado por --save-dev. Pacotes marcados como dependências de desenvolvimento são usados apenas durante a construção do pacote. Outras pessoas que usarem este pacote e instalarem as dependências com npm install não baixarão os pacotes listados em dependências de desenvolvimento por padrão. Pacotes marcados com --save-dev ficarão em uma seção dedicada a dependências de desenvolvimento no package.json.</li>
+</ul>
+<p>A instalação do Gulp e dependências deverá ser feita para todos os outros <em>plugins</em> e temas. A interface de linha de comando precisa ser instalada apenas uma vez, então a instalação do gulp-cli não vai ser feita para os demais pacotes.</p>
+<h2 id="configuração-do-gulpfilejs">Configuração do gulpfile.js</h2>
+<p>Para que possa ser usado, o Gulp precisa ler as instruções de um arquivo chamado gulpfile.js. Esse arquivo irá conter a definição das tarefas que o Gulp deve executar sempre que os arquivos do projeto forem modificados. O gulpfile.js deve ser criado na raiz dos projetos, ou as pastas dos projetos que abrigam as pastas src, dist e node_modules. O gulpfile.js irá também carregar as dependências do gulp para realizar as ações que queremos, como concatenar arquivos, minificar e compilar arquivos Sass.</p>
+<p>Como faremos uso de pacotes de terceiros para configurar o gulpfile.js, teremos que carregá-las no pacote via NPM. Cada projeto terá as suas dependências. Para este projeto de exemplo, vou usar algumas com as quais tenho trabalhado em projetos recentes. Para isso, usando o console e o comando npm install vamos baixar os seguintes pacotes:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install --save-dev gulp-sass gulp-autoprefixer gulp-uglify gulp-cssnano gulp-rename merge2</code></pre></td></tr></table>
+</div>
+</div>
+<p>Diversas dependências de desenvolvimento foram separadas por espaços após a <em>flag</em> --save-dev. Elas são:</p>
+<ul>
+<li>Sass (gulp-sass): compila arquivos com extensão .scss em .css;</li>
+<li>Autoprefixer (gulp-autoprefixer): adiciona as extensões CSS específicas de cada navegador como -webkit, -o, -ms ou -moz conforme a necessidade. A consulta é feita no site <a href="https://caniuse.com/" target="_blank" rel="noopener">Caniuse</a>;</li>
+<li>Uglify (gulp-uglify): minifica arquivos Javascript;</li>
+<li>Css Nano (gulp-cssnano): minifica arquivos CSS;</li>
+<li>Rename (gulp-rename): renomeia arquivos;</li>
+<li>Merge (merge2): faz a gestão da execução de múltiplos <em>streams</em> de tarefas simultaneamente.</li>
+</ul>
+<p>Atualização 12/11/2021: O Gulp possui dois métodos chamados <em>serial</em> e <em>parallel</em> que podem ser utilizados para gerenciar a execução de múltiplas tarefas, dispensando o uso do pacote Merge.</p>
+<p>Com as dependências instaladas, podemos carregá-las no gulpfile.js e configurar as tarefas que devem ser executadas automaticamente. Começando pelo <em>plugin</em>, crie um arquivo na raiz do pacote (onde estão as pastas src, dist, node_modules e o arquivo package.json) chamado gulpfile.js. Escreva o seguinte dentro dele:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sass</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-sass&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">autoprefixer</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-autoprefixer&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">uglify</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-uglify&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">cssnano</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-cssnano&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">rename</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;gulp-rename&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">merge</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;merge2&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">diretorios</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;./src/&#39;</span><span class="p">,</span>
+  <span class="nx">dist</span><span class="o">:</span> <span class="s1">&#39;./dist/&#39;</span><span class="p">,</span>
+  <span class="nx">node_modules</span><span class="o">:</span> <span class="s1">&#39;./node_modules/&#39;</span>
+<span class="p">};</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>As dependências são carregadas com a função require em variáveis a serem referenciadas no restante do arquivo. Uma variável chamada &ldquo;diretorios&rdquo; foi criada e armazena um objeto contendo os caminhos para as pastas src, dist e node_modules a partir da raiz. Ela é opcional, gosto de usá-la apenas para organizar os diretórios que são constantemente usados pelas tarefas.</p>
+<p>O passo seguinte é criar as tarefas. A primeira coisa que faço é criar uma tarefa que chamo de esqueleto: essa tarefa coloca na pasta dist os arquivos que já estão prontos para serem usados em produção e cria a estrutura de pastas do projeto.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;construir-esqueleto&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.php&#39;</span><span class="p">,</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.txt&#39;</span><span class="p">,</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.pot&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">dist</span><span class="p">));</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Atualização 12/11/2021: <a href="https://gulpjs.com/docs/en/api/task/" target="_blank" rel="noopener">O uso do método task não é mais recomendado</a>. Tarefas devem ser criadas como funções e exportadas. Estas funções não devem retornar o stream Gulp, mas invocar um método de <em>callback</em> que é passado como parâmetro para a função. A mesma função reescrita seguindo a convenção adotada na data de atualização deste post fica:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">construir_esqueleto</span><span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.php&#39;</span><span class="p">,</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.txt&#39;</span><span class="p">,</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*.pot&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">dist</span><span class="p">));</span>
+
+  <span class="nx">cb</span><span class="p">();</span>
+<span class="p">};</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>O Gulp usa sintaxe <a href="https://en.wikipedia.org/wiki/Glob_%28programming%29" target="_blank" rel="noopener">Glob</a> para encontrar arquivos e pastas. O método src do objeto gulp é usado para buscar arquivos com extensões .php, .txt e .pot dentro do diretório raiz, e qualquer um abaixo dele, e colocá-los no diretório especificado dentro de diretorios.dist. Usamos <em>return</em> aqui para retornar o &ldquo;<em>stream</em> de execução&rdquo; da tarefa e assim deixar que outras tarefas saibam sobre sua execução. Isso é importante para montar uma fila de tarefas de forma a especificar as dependências entre tarefas. Por exemplo, preciso que os arquivos Javascript e CSS de terceiros que venha a usar estejam carregados antes de gerar os scripts e folhas de estilo finais.</p>
+<p>Seguindo, vamos criar uma tarefa para compilar os scripts Javascript e colocá-los na pasta dist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;construir-script&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">scripts_admin</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;admin/js/nome-do-plugin-admin.js&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;admin/js&#39;</span><span class="p">));</span>
+
+  <span class="kd">var</span> <span class="nx">scripts_publico</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;public/js/nome-do-plugin-public.js&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;public/js&#39;</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">scripts_admin</span><span class="p">,</span> <span class="nx">scripts_publico</span><span class="p">);</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Como não vamos usar bibliotecas Javascript externas, não há uma tarefa para carregá-las na pasta do projeto. Caso tivesse, essa tarefa precisaria ser criada e executada antes da tarefa de compilação dos scripts. Quando o <em>boilerplate</em> do <em>plugin</em> foi gerado, foram criados arquivos Javascript e CSS com os nomes &ldquo;nome-do-plugin-admin.js&rdquo;, &ldquo;nome-do-plugin-admin.css&rdquo;, &ldquo;nome-do-plugin-public.js&rdquo; e &ldquo;nome-do-plugin-public.css&rdquo;, sendo nome-do-plugin o nome do <em>plugin</em> definido no campo <em>slug</em> da página de geração de <em>boilerplates</em> do wppb.</p>
+<p>A tarefa construir-script irá:</p>
+<ul>
+<li>Carregar os arquivos Javascript que estão nas pastas js dos diretórios admin e public;</li>
+<li>Fazer a minificação dos arquivos Javascript;</li>
+<li>Adicionar o sufixo &ldquo;.min&rdquo; nos arquivos;</li>
+<li>Copiar os arquivos finais para os diretórios dist, admin/js e public/js respectivamente;</li>
+<li>Retornar a combinação dos <em>streams</em> de execução armazenadas nas variáveis scripts_admin e scripts_publico.</li>
+</ul>
+<p>Repare que não estamos usando o <em>return</em> direto no objeto gulp, estamos armazenando os streams nas variáveis scripts_admin e scipts_publico. Os dois streams são retornados dentro do objeto merge, que fará a gestão da execução das tarefas e irá garantir sua execução na ordem em que devem ser executadas. Outro ponto: no método src do objeto gulp estamos passando um <em>array</em> com apenas um item. O método também aceita strings, então este trecho de código poderia ter sido escrito da seguinte maneira:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;admin/js/nome-do-plugin.js&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(...));</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Costumo passar uma lista apenas para manter consistência de escrita entre as tarefas.</p>
+<p>Faremos um processo similar para preparar os arquivos CSS. O <em>boilerplate</em> do <em>plugin</em> não veio preparado para o desenvolvimento de Sass, então não há um diretório específico para trabalhar com arquivos Sass. O que costumo fazer é apagar a pasta e o conteúdo css, e no lugar crio uma chamada scss, tanto no diretório admin quanto no public. Dentro destas pastas serão colocados todos os arquivos com extensão .scss e as pastas com as <em>partials</em>, <em>mixins</em>, variáveis e etc. Na pasta também terá um arquivo com o nome nome-do-plugin-admin.css dentro do diretório admin e nome-do-plugin-public.css dentro do diretório public. Eu apago estes arquivos e gero outros usando Sass, mantendo o nome, o sufixo .min e mantenho o diretório css dentro de dist.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;construir-estilo&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">estilo_admin</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;admin/scss/nome-do-plugin.admin.scss&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">autoprefixer</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">cssnano</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;admin/css&#39;</span><span class="p">));</span>
+
+  <span class="kd">var</span> <span class="nx">estilo_publico</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;public/scss/nome-do-plugin.public.scss&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">sass</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">autoprefixer</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">cssnano</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+    <span class="nx">suffix</span><span class="o">:</span> <span class="s1">&#39;.min&#39;</span>
+  <span class="p">}))</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;public/css&#39;</span><span class="p">));</span>
+
+  <span class="k">return</span> <span class="nx">merge</span><span class="p">(</span><span class="nx">estilo_admin</span><span class="p">,</span> <span class="nx">estilo_publico</span><span class="p">);</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Esta tarefa irá:</p>
+<ul>
+<li>Buscar os estilos nome-do-plugin-admin.scss e nome-do-plugin-public.scss dentro dos diretórios admin e public, na pasta scss criada anteriormente;</li>
+<li>Compilar os arquivos em saídas .css;</li>
+<li>Adicionar as extensões de navegadores conforme a necessidade;</li>
+<li>Minificar os arquivos .css;</li>
+<li>Adicionar o sufixo .min nos nomes dos arquivos;</li>
+<li>Colocá-los nas pastas admin/css e public/css dentro dos diretórios admin e public;</li>
+<li>Retornar os <em>streams</em> de execução combinados.</li>
+</ul>
+<p>Com as tarefas prontas, é hora de configurar o gulp para executá-la. Faço isso em três etapas:</p>
+<ul>
+<li>Criando uma tarefa que chama a construir-esqueleto, copiando os arquivos para o diretório dist;</li>
+<li>Criando uma tarefa que pega tudo o que está no diretório dist e copia para o diretório de instalação do WordPress;</li>
+<li>Configurando a tarefa padrão do gulp para executar as duas tarefas anteriores e monitorar por mudanças nos arquivos de desenvolvimento;</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;configurar-projeto&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;construir-esqueleto&#39;</span><span class="p">,</span> <span class="s1">&#39;construir-script&#39;</span><span class="p">,</span> <span class="s1">&#39;construir-estilo&#39;</span><span class="p">]);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Atualização 12/11/2021: a declaração de tarefas no Gulp possui outra sintaxe:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">configurar_projeto</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">serial</span><span class="p">([</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">parallel</span><span class="p">([</span><span class="s1">&#39;construir_esqueleto&#39;</span><span class="p">]),</span>
+  <span class="s1">&#39;construir_script&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;construir_estilo&#39;</span>
+<span class="p">]);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>A forma como a tarefa é chamada no console se mantém igual.</p>
+<p>A tarefa configurar-projeto está recebendo um <em>array</em> com os nomes das tarefas criadas anteriormente e não uma função de <em>callback</em>. Este <em>array</em> indica que a tarefa configurar projeto só pode ser executada após as tarefas construir-esqueleto, construir-script e construir-estilo. Como não há uma função de callback, nada será feito após a execução das tarefas. A tarefa configurar-projeto é usada neste caso apenas como um atalho para executar as tarefas que criamos anteriormente. Após a tarefa configurar-projeto finalizar a execução, o diretório dist deverá estar com todos os arquivos que serão usados em produção.</p>
+<p>Para testar, abra um console e navegue até o diretório onde está o arquivo gulpfile.js (na raiz do <em>plugin</em>). Escreva:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">gulp configurar-projeto</code></pre></td></tr></table>
+</div>
+</div>
+<p>Após o console acusar a finalização do script, a pasta dist deverá estar com os arquivos que pedimos para serem copiados.</p>
+<figure >
+  
+  <img data-src="images/figure6-gulp-workflow-running.webp" class="lazy" alt="Tarefas executadas com sucesso." title="Tarefas executadas com sucesso." />
+  
+  
+  <figcaption>
+    <p>Tarefas executadas com sucesso. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Entre no diretório dist e abra as pastas admin e public. Repare que a pasta que está nestes diretórios se chama css e o arquivo dentro dela é o .css compilado, não o .scss que estamos trabalhando em desenvolvimento. A pasta scss não foi criada dentro do diretório dist. Note também que os nomes dos arquivos css e js nas duas pastas estão com o sufixo .min aplicados.</p>
+<p>O passo seguinte é pegar tudo o que está no diretório dist e copiar para o diretório de instalação do WordPress.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;configurar-projeto-em-stage&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;configurar-projeto&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span>
+    <span class="nx">diretorios</span><span class="p">.</span><span class="nx">dist</span> <span class="o">+</span> <span class="s1">&#39;**/*&#39;</span>
+  <span class="p">])</span>
+  <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;/diretorio/de/instalacao/do/wordpress/wp-content/plugins/nome-do-plugin&#39;</span><span class="p">));</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Assumo que os <em>plugins</em> da sua instalação do WordPress estejam dentro de uma pasta chamada wp-content/plugins. Se não for caso, o diretório deve ser o de instalação dos <em>plugins</em>. A pasta nome-do-plugin será criada se não existir e todos os arquivos de dist serão colocados lá dentro. A tarefa configurar-projeto-em-stage precisa que a configurar-projeto seja executada para só então executar o que está na função de callback.</p>
+<p>Por fim, vamos configurar a tarefa padrão do Gulp, a default, para executar as tarefas anteriores e monitorar os arquivos de desenvolvimento por mudanças. Sempre que algum arquivo for modificado, as tarefas são executadas novamente.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;configurar-projeto-em-stage&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">gulp</span><span class="p">.</span><span class="nx">watch</span><span class="p">(</span><span class="nx">diretorios</span><span class="p">.</span><span class="nx">src</span> <span class="o">+</span> <span class="s1">&#39;**/*&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;configurar-projeto-em-stage&#39;</span><span class="p">]);</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>A tarefa default é a que o Gulp chama se o comando gulp for digitado no console sem que o nome de uma ou mais tarefas tenha sido especificado. Esta tarefa está configurada para monitorar o diretório diretorios.src e tudo o que tiver dentro dele por mudanças nos arquivos. Caso uma mudança seja detectada, a tarefa irá executar configurar-projeto-em-stage, disparando toda a cadência de tarefas que criamos, e voltará a escutar por mudanças nos arquivos.</p>
+<p>Está quase tudo pronto! Há um problema que criamos ao adicionar o sufixo .min nos arquivos do <em>boilerplate</em> do plugin.</p>
+<p>Se lembra que mudamos os nomes dos arquivos &ldquo;nome-do-plugin-admin.js&rdquo;, &ldquo;nome-do-plugin-public.js&rdquo;, &ldquo;nome-do-plugin-admin.css&rdquo; e &ldquo;nome-do-plugin-public.css&rdquo; adicionando a extensão .min neles? Isso faz com que a referência a estes arquivos que o <em>plugin</em> está fazendo deixe de funcionar. Precisamos informar nas configurações do <em>plugin</em> que os novos arquivos possuem a extensão .min neles.</p>
+<p>Para fazer isso, abra o arquivo nome-do-plugin-admin.php, sendo nome-do-plugin o nome do <em>plugin</em> criado. Há dois métodos neste arquivo: enqueue-styles e enqueue-scripts. Esses métodos são associados ao <em>hook</em> admin_enqueue_scripts dentro de includes/class-nome-do-plugin.php. Repare que neste arquivo que está aberto, o método enqueue_styles chama a função wp_enqueue_style, do <em>Core</em>, para carregar uma folha de estilos CSS.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">wp_enqueue_style</span><span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">plugin_name</span><span class="p">,</span> <span class="nx">plugin_dir_url</span><span class="p">(</span> <span class="no">__FILE__</span> <span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;css/nome-do-plugin-admin.css&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">version</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span> <span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>O que precisa ser feito é adicionar o sufixo .min ao nome do arquivo css sendo carregado. Neste exemplo o nome do arquivo será nome-do-plugin-admin.min.css.</p>
+<p>De forma similar, o método enqueue_scripts faz a busca por um arquivo Javascript sem a extensão .min usando a função wp_enqueue_script.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="nx">wp_enqueue_script</span><span class="p">(</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">plugin_name</span><span class="p">,</span> <span class="nx">plugin_dir_url</span><span class="p">(</span> <span class="no">__FILE__</span> <span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;js/nome-do-plugin-admin.js&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span> <span class="s1">&#39;jquery&#39;</span> <span class="p">),</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">version</span><span class="p">,</span> <span class="k">false</span> <span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>O arquivo precisa ter o sufixo .min, de forma que seu nome passe a ser nome-do-plugin-admin.min.js.</p>
+<p>Precisamos ajustar também os nomes dos arquivos CSS e Javascript na pasta public, editando o arquivo nome-do-plugin-public.php. Ele possui as mesmas funções enqueue_styles e enqueue_scripts que são associadas a um <em>hook</em> no arquivo includes/class-nome-do-plugin.php. Os arquivos a serem buscados agora são nome-do-plugin-public.css e nome-do-plugin.js.</p>
+<p>Agora sim! A automação está feita e sempre que o desenvolvimento deste <em>plugin</em> for retomado, basta abrir um console, navegar até a pasta raiz do <em>plugin</em> onde o arquivo gulpfile.js está e escrever gulp. Simples assim! Os arquivos serão carregados no diretório dist. É necessário apenas abrir o gulpfile.js e trocar o diretório de instalação do WordPress para que os arquivos sejam automaticamente colocados lá a cada atualização. O método watch ficará de olho em mudanças nos arquivos para que sejam automaticamente carregados no servidor.</p>
+<p>Recapitulando a preparação do ambiente de desenvolvimento com um tema e um <em>plugin</em>:</p>
+<ul>
+<li>Baixamos os <em>boilerplates</em> de criação de temas e <em>plugins</em>;</li>
+<li>Copiamos os arquivos dos <em>boilerplates</em> para os diretórios nome-da-empresa/plugins/nome-do-plugin/src e nome-da-empresa/temas/nome-do-tema/src;</li>
+<li>Criamos ao lado dos diretórios src um diretório chamado dist, um dentro da pasta <em>plugins</em> e outro dentro da pasta temas;</li>
+<li>Instalamos o Node.js e o NPM;</li>
+<li>Dentro da pasta raiz do <em>plugin</em>, que até então continha as pastas src e dist, criamos um pacote com o comando npm init;</li>
+<li>Usamos o NPM para instalar a interface de linha de comando do gulp no escopo global;</li>
+<li>Usamos o NPM para instalar o Gulp e diversas dependências no projeto no escopo de desenvolvimento;</li>
+<li>Criamos na raiz do <em>plugin</em> um arquivo chamado gulpfile.js e escrevemos as tarefas que o Gulp deve executar;</li>
+<li>Configuramos o Gulp para escutar mudanças em quaisquer arquivos dentro da pasta src, e então copiá-los para a pasta dist e também para a pasta da instalação do WordPress;</li>
+<li>Alteramos os arquivos class-nome-do-plugin-admin.php e class-nome-do-plugin-public.php para informar onde estão os arquivos Javascript e CSS compilados pelas tarefas do Gulp.</li>
+</ul>
+<p>Agora sim! O <em>plugin</em> pode ser instalado no WordPress. Fizemos o procedimento para o projeto do <em>plugin</em>, mas também faço para o tema e quaisquer outros projetos dentro da pasta de projetos da empresa para a qual estou desenvolvendo os <em>plugins</em> e temas. Embora o procedimento seja o mesmo, cada projeto tem suas dependências, então o gulpfile.js ficará diferente. Outro ponto de atenção é o uso de bibliotecas como frameworks CSS e Javascript. Em nosso exemplo não fizemos uso de nada fora do <em>boilerplate</em> ou do <em>Core</em>, mas caso tivéssemos feito, seria necessário importar os arquivos das bibliotecas para dentro da pasta dist. Quando trabalho com uma biblioteca como o Bootstrap, por exemplo, puxo o pacote pelo NPM, crio um ou mais arquivos .scss que importam os componentes do Bootstrap que vou usar e, na tarefa de criação do estilo CSS, eu peço para o Gulp considerar os arquivos do Bootstrap dentro de node_modules para serem compilados, assim gero a versão final do CSS com o que preciso da biblioteca. Outro exemplo de uso de arquivos externos está no <em>boilerplate</em> do Underscores. Dentro da pasta js, que fica na raiz do tema, há três arquivos: customizer.js, navigation.js e skip-link-focus-fix.js. Estes arquivos são chamados dependendo da área de acesso do site. O customizer.js por exemplo carrega no momento de edição do tema usando a interface visual do painel de administração. Costumo incluir estes scripts na tarefa do gulp de criar o script Javascript final, porém gero arquivos diferentes já que não faz sentido carregar todos no mesmo arquivo em todas as páginas.</p>
+<p>Com cada projeto configurado, a pasta nome-da-empresa/plugins terá um projeto diferente para cada <em>plugin</em> e nome-da-empresa/temas terá um projeto diferente para cada tema.</p>
+<h2 id="configuração-do-git">Configuração do Git</h2>
+<p>Um repositório Git pode ser criado tanto dentro da pasta nome-da-empresa, o que vai agrupar todos os <em>plugins</em> e temas dentro de um único repositório, quanto dentro de cada <em>plugin</em> ou tema a ser desenvolvido. Penso que para um projeto pequeno, que será mantido por apenas uma pessoa desenvolvedora, faz sentido agrupar todos os projetos dentro de um único repositório. Como este raramente será o caso, recomendo criar um repositório para cada projeto. Dessa forma cada pessoa desenvolvedora clona apenas os arquivos com os quais for trabalhar, e o risco de criar conflitos de versões se há mais de uma pessoa desenvolvedora atualizando arquivos no repositório é menor. Há uma vantagem, no entanto, em trabalhar com um repositório único: manter a estrutura de pastas de temas e <em>plugins</em> que foi criada ao longo deste post intacta, assumindo que tudo foi criado em uma mesma máquina. Para o dia a dia, no entanto, é provável que cada projeto terá seu repositório e a estrutura apresentada aqui pode servir de guia para trabalhar com múltiplos temas e plugins em uma mesma máquina.</p>
+<p>Para finalizar, costumo criar um arquivo chamado .gitignore na raiz do repositório para instruir ao Git tudo o que eu não quero que seja monitorado por mudanças de versão. Adiciono pelo menos uma linha neste arquivo:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-plaintext" data-lang="plaintext">**/node_modules</code></pre></td></tr></table>
+</div>
+</div>
+<p>Assim como o Gulp, o Git usa Glob para encontrar arquivos e pastas. Esta linha informa ao Git para não considerar mudanças nas pastas node_modules presentes em quaisquer projetos, já que isso faria com que fossem mandados para os repositórios arquivos que não precisam ser armazenados. A referência a eles feito no package.json é o suficiente para baixá-los novamente quando necessário. Sempre que outra pessoa acessar o projeto, ela deve rodar o comando npm init para baixar o conteúdo da node_modules. O usuário final vai baixar apenas o conteúdo da pasta dist.</p>
+<h2 id="esta-é-a-forma-correta-de-configurar-o-fluxo-de-trabalho">Esta é a forma correta de configurar o fluxo de trabalho?</h2>
+<p>Há diversas formar de organizar arquivos e pastas para facilitar o desenvolvimento. Não há um consenso sobre a melhor forma ou a oficial de se fazer e as instruções oficiais do WordPress não cobrem diversos cenários, abrindo espaço para a criatividade. Configurar um projeto desta forma pode dar mais trabalho no início, mas o esforço se paga quando é necessário editar o mesmo projeto meses depois.</p>
+<h2 id="leitura-adicional">Leitura adicional</h2>
+<p>Você provavelmente fará muito uso das documentações das ferramentas que usamos neste post. As páginas do <a href="https://codex.wordpress.org/Developer_Documentation" target="_blank" rel="noopener">WordPress</a>, <a href="https://docs.npmjs.com/" target="_blank" rel="noopener">NPM</a> e <a href="https://github.com/gulpjs/gulp/blob/master/docs/README.md" target="_blank" rel="noopener">Gulp</a> serão suas amigas ao longo do processo. O <a href="https://stackoverflow.com/" target="_blank" rel="noopener">StackOverflow</a> também será um aliado indispensável para combater os erros que irão surgir com mensagens enigmáticas.</p>
+<p>Indo além do que falamos, vale conhecer a documentação do <a href="https://sass-lang.com/guide" target="_blank" rel="noopener">Sass</a>, e como integrar frameworks como o <a href="https://getbootstrap.com/docs/4.1/getting-started/theming/" target="_blank" rel="noopener">Bootstrap</a> e Saas usando a biblioteca <a href="https://www.npmjs.com/package/gulp-sass" target="_blank" rel="noopener">gulp-sass</a>. Falando nas bibliotecas do NPM, cada uma possui sua página com documentação de uso e opções que não exploramos.</p>
+<p>Bora organizar a casa!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">Leia também estas histórias</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/sites-estaticos-com-jekyll/images/thumbnail_hu50a9df54572a0d42146a8328e4f78410_32852_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-01-01 19:47:00 &#43;0000 UTC">01/01/2018 19:47:00</time>
+      </div>
+      <a href="/categories/programa%C3%A7%C3%A3o" class="badge" itemprop="articleSection">programação</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Sites estáticos com Jekyll e Github Pages</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Sites são raramente construídos do zero. Há uma infinidade de ferramentas e frameworks que oferecem estruturas prontas para construir e publicar sites na internet. Este post vai apresentar o Jekyll, …</p>
+      <div>
+        <a class="button-primary" href="/stories/sites-estaticos-com-jekyll/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">Como escolher o melhor gráfico?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

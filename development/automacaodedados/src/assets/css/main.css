@@ -1,0 +1,159 @@
+@tailwind base;
+
+@layer base {
+  * {
+    @apply font-body text-gray-900 text-lg leading-relaxed dark:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-title mb-2;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+
+  h5 {
+    @apply text-base;
+  }
+
+  h6 {
+    @apply text-sm;
+  }
+
+  p, ul, ol {
+    @apply mb-4;
+  }
+
+  a {
+    @apply text-secondary underline hover:text-secondary-darker hover:underline dark:text-neutral-lighter dark:hover:text-neutral-darker;
+  }
+
+  figure {
+    @apply w-screen relative -mx-1/2 inset-x-2/4 lg:w-full lg:mx-auto lg:inset-x-0;
+  }
+
+  figure img {
+    @apply mx-auto;
+  }
+
+  figcaption {
+    @apply container mx-auto px-2;
+  }
+
+  figcaption p {
+    @apply text-base text-center px-6;
+  }
+
+  ul {
+    @apply list-disc ml-6;
+  }
+
+  ol {
+    @apply list-decimal ml-6;
+  }
+
+  code {
+    @apply text-lg;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .container-box {
+    @apply px-4 py-6 lg:px-0;
+  }
+
+  .navigation-menu-icon {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" /></svg>');
+    @apply bg-no-repeat block;
+  }
+
+  .search-icon {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>');
+    @apply bg-no-repeat block;
+  }
+
+  .close-icon {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>');
+    @apply bg-no-repeat block;
+  }
+
+  .light-mode-icon {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" /></svg>');
+    @apply bg-no-repeat block;
+  }
+
+  .dark-mode-icon {
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" /></svg>');
+    @apply bg-no-repeat block;
+  }
+
+  .button-primary {
+    @apply px-6 py-4 bg-primary text-white no-underline dark:text-white text-base font-title rounded-lg inline-block transition shadow-lg hover:text-white dark:hover:text-white hover:no-underline hover:shadow-xl hover:bg-primary-darker focus:outline-none focus:ring-primary-darker focus:ring-2 focus:ring-offset-2 active:shadow-none;
+  }
+
+  .badge {
+    @apply px-4 py-2 bg-secondary no-underline dark:bg-neutral rounded-lg text-white dark:text-secondary-darker text-sm font-highlight inline-block transition hover:text-white dark:hover:text-secondary-darker hover:no-underline hover:bg-secondary-darker dark:hover:bg-neutral-darker focus:outline-none focus:ring-secondary-darker dark:focus:ring-neutral-darker focus:ring-2 focus:ring-offset-2;
+  }
+
+  .separator:before, .breadcrumb-separator:before {
+    content: '';
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>');
+    @apply absolute bg-no-repeat;
+  }
+
+  .separator:before {
+    @apply w-8 h-8;
+  }
+
+  .breadcrumb-separator:before {
+    @apply w-6 h-6 m-0.5;
+  }
+
+  .button-page {
+    @apply px-6 py-4 font-title no-underline text-white dark:text-white text-base text-center rounded-lg inline-block transition dark:hover:text-white hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-secondary;
+  }
+
+  .button-highlight {
+    @apply bg-primary px-8 my-2 h-28 no-underline flex justify-between items-center inline-block text-2xl rounded-lg transition hover:no-underline hover:bg-primary-darker focus:outline-none focus:ring-2 focus:ring-primary-darker focus:ring-offset-2;
+  }
+
+  .highlight {
+    @apply mb-4;
+  }
+
+  /* Background */
+  .chroma {
+    @apply bg-neutral-lighter dark:bg-secondary-darker;
+  }
+
+  /* LineTableTD */
+  .chroma .lntd {
+    @apply align-top p-0 m-0 border-0;
+  }
+
+  /* LineTable */
+  .chroma .lntable {
+    @apply block overflow-auto;
+  }
+
+  /* LineNumbersTable */
+  .chroma .lnt {
+    @apply px-2;
+  }
+}

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Configurando Metabase e PostgreSQL no Docker | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Configurando Metabase e PostgreSQL no Docker | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/configurando-metabase-e-postgresql-no-docker/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Configurando Metabase e PostgreSQL no Docker | Automação de Dados">
+<meta property="og:description" content="Configurando Metabase e PostgreSQL no Docker | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2020-11-17 09:10:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-20 09:10:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="14 minutos" />
+
+<meta property="article:tag" content="Automação" />
+<meta property="article:section" content="Automação" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Logotipos do Metabase, PostgreSQL e Docker">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/configurando-metabase-e-postgresql-no-docker/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC" itemprop="datePublished">17/11/2020 09:10:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/automa%c3%a7%c3%a3o" itemprop="articleSection">automação</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Configurando Metabase e PostgreSQL no Docker</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Como elaborar uma arquitetura de serviços simples, de fácil manutenção e portátil utilizando o Docker? Ao longo deste post, você vai descobrir como fazer isso integrando um banco de dados PostgreSQL ao Metabase</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/configurando-metabase-e-postgresql-no-docker/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Configurando Metabase e PostgreSQL no Docker</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 14 minutos</strong>
+        <p>Publicado em 17/11/2020 e atualizado em 20/11/2021.</p>
+<h2 id="isolamento-de-ambientes-com-docker">Isolamento de ambientes com Docker</h2>
+<p>Uma infraestrutura que escale conforme a demanda é essencial para qualquer produto digital que tenha alcance. Capacidade de escala depende de muitas coisas, que variam de especificações técnicas da máquina escolhida a arquitetura de serviços configurada. Uma destas variáveis, tópico deste post, é a configuração de ambientes. Um ambiente bem configurado é fácil de manter e de ajustar, ajudando a evitar — ou a diminuir o impacto — de uma manutenção, seja ela programada ou não.</p>
+<p>Você possivelmente já viu este problema: um mesmo software é desenvolvido em uma máquina, armazenado em um repositório em outra máquina, copiado e modificado em outras cinco máquinas de pessoas desenvolvedoras, unificado no repositório, levado para outra máquina em um ambiente de validação e depois para mais uma máquina em um ambiente de produção. São muitas as máquinas, diversas as configurações e possivelmente o software que funcionou em algumas destas máquinas não funcionará em outras. Horas de pessoas desenvolvedoras são investidas na correção de erros descobertos após o deploy, até descobrir que bastava alterar a versão da linguagem de programação ou do banco de dados utilizada na máquina de produção. Problema resolvido, é hora de espelhar esta mesma configuração em todas as máquinas envolvidas no desenvolvimento. Acontece que o software passará a utilizar uma nova dependência, que requer uma determinada configuração no ambiente onde estará hospedada. Se todas as máquinas envolvidas no processo também não estiverem com esta mesma configuração, a aplicação não funcionará como o esperado, e mais horas de pessoas desenvolvedoras serão investidas para corrigir o problema.</p>
+<p>É para resolver problemas como este que existe o <strong>Docker</strong>, um gerenciador de contêineres. Um contêiner é um local isolado. O isolamento é alcançado ao garantir que, dentro deste ambiente, todas as ferramentas necessárias para o funcionamento da aplicação estejam à disposição, nas versões necessárias. O Docker possui arquivos de configuração chamados <strong>Dockerfiles</strong>, que determinam as configurações de cada ambiente. Estes arquivos são portáteis, o que permite que sejam carregados em diferentes máquinas para criar ambientes idênticos em máquinas com configurações diferentes.</p>
+<p>Vamos explorar o Docker, um exemplo de Dockerfile e descobrir como gerenciar mais de um contêiner, ou ambiente.</p>
+<h2 id="instalação-do-docker">Instalação do Docker</h2>
+<p>A primeira coisa a ser feita é instalar o Docker no seu computador. O download do Docker pode ser feito pelo <a href="https://www.docker.com/" target="_blank" rel="noopener">site oficial</a>. Uma vez que o Docker estiver instalado, abra um console e digite o seguinte comando (caso esteja utilizando ambiente Linux, pode ser necessário utilizar o comando sudo para dar as permissões devidas ao Docker):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker --version</code></pre></td></tr></table>
+</div>
+</div>
+<p>Se o Docker estiver instalado, você verá na tela qual a versão do Docker que está instalada. O passo seguinte é instalar o <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">Docker Compose</a>, um utilitário para o Docker que facilita a gestão de múltiplos contêineres. Faça o download e a instalação do Docker Compose no seu computador. Em seguida, abra um terminal e digite o comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker-compose --version</code></pre></td></tr></table>
+</div>
+</div>
+<p>Se o Docker Compose estiver instalado, você verá na tela qual a versão do Docker Compose que está instalada.</p>
+<figure >
+  
+  <img data-src="images/figure1-docker-and-docker-compose-installed.webp" class="lazy" alt="Versões do Docker e Docker Compose instaladas na minha máquina." title="Versões do Docker e Docker Compose instaladas na minha máquina." />
+  
+  
+  <figcaption>
+    <p>Versões do Docker e Docker Compose instaladas na minha máquina. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="download-das-imagens">Download das imagens</h2>
+<p>Agora que o Docker está instalado na máquina, podemos criar os contêineres que utilizaremos neste tutorial: um com o <a href="https://www.metabase.com/" target="_blank" rel="noopener">Metabase</a> instalado e outro com o <a href="https://www.postgresql.org/" target="_blank" rel="noopener">PostgreSQL</a>.</p>
+<p>Além de garantir um ambiente controlado para hospedagem de softwares, outra grande vantagem do Docker é sua portabilidade. Você pode criar as configurações do seu ambiente e compartilhar com outras pessoas para que elas não precisem fazer este mesmo trabalho do zero. Isto é tão comum na comunidade Docker que existe até um repositório com modelos de ambientes prontos para serem utilizados, chamado <a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a>. Estes modelos de ambientes se chamam <strong>imagens</strong>. Uma imagem contém todos os arquivos e ferramentas necessárias para que o ambiente funcione de forma isolada. Imagens são como uma planta de uma casa, enquanto a casa é o contêiner. É com base na imagem que o contêiner é gerado. Há imagens oficiais de aplicações conhecidas como WordPress, MySQL ou Node.js e há imagens que foram criadas por pessoas da comunidade Docker.</p>
+<p>Vamos utilizar duas imagens: a do <a href="https://hub.docker.com/r/metabase/metabase" target="_blank" rel="noopener">Metabase</a> e a do <a href="https://hub.docker.com/_/postgres" target="_blank" rel="noopener">PostgreSQL</a>. É necessário baixar estas imagens do Docker Hub. Para baixar a imagem do PostgreSQL, abra um terminal e digite o seguinte comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker pull postgres</code></pre></td></tr></table>
+</div>
+</div>
+<p>Você pode acompanhar o progresso do download pelo próprio terminal. Ao finalizar, baixe a imagem do Metabase digitando o seguinte comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker pull metabase/metabase</code></pre></td></tr></table>
+</div>
+</div>
+<p>Cada imagem disponível no Docker Hub possui uma versão, e a versão mais recente é identificada por uma tag chamada latest. É esta versão que é baixada por padrão quando não há especificação de qual versão utilizar. Você pode precisar de versões diferentes para aplicações que requerem certas versões de determinado software. A ferramenta de automação de marketing open source <a href="https://www.mautic.org/" >Mautic</a> é um exemplo de tal ferramenta, que na data de escrita deste post não funciona com PHP 7.3 ou superior, sendo necessário utilizar a versão 7.2. A página de cada imagem no Docker Hub contém instruções de como baixar a imagem na última versão ou escolher uma versão específica.</p>
+<p>Com as imagens disponíveis na máquina, é hora de configurar os contêineres.</p>
+<h2 id="criação-de-um-contêiner">Criação de um contêiner</h2>
+<p>Para utilizar as imagens é necessário informar ao Docker como elas serão utilizadas. Você pode usar cada imagem da forma como ela foi baixada do repositório ou fazer modificações antes de gerar o contêiner. Ao utilizar a imagem da forma como ela foi baixada, o Docker saberá o que precisa fazer e você já pode gerar um contêiner. Para criar um contêiner utilizando a imagem do Metabase, por exemplo, basta rodar o comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -p 3000:3000 metabase/metabase</code></pre></td></tr></table>
+</div>
+</div>
+<p>O comando run cria um novo contêiner com os argumentos passados, sendo o único obrigatório o nome da imagem que será usada para gerar o contêiner. Para que o Metabase seja acessível, é necessário mapear uma porta da máquina para uma porta do contêiner. Isto é feito com a <em>flag</em> “p”. A primeira porta especificada é a da sua máquina e a segunda é a do contêiner, separadas por dois pontos (:). <strong>Verifique se a porta 3000 no seu computador está livre, caso contrário utilize uma porta livre</strong>.</p>
+<p>Por padrão, o contêiner do Metabase expõe a porta 3000. Abra um navegador e digite localhost:3000. Você verá a tela de configurações iniciais do Metabase. Como vamos utilizar o Metabase em conjunto com o PostgreSQL, finalize a conexão entre o terminal e o contêiner entrando no terminal e forçando a parada pelo atalho CTRL + C. Esta parada apenas desliga a conexão direta entre o terminal e o contêiner, mas o contêiner ainda está rodando. Ele precisa ser parado para que a porta 3000 fique livre. Para isto, vamos listar os contêineres em execução com o comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker ps</code></pre></td></tr></table>
+</div>
+</div>
+<p>Veja no terminal que a última coluna é a coluna nome. Nesta coluna está a identificação de cada contêiner criado, e estes nomes são gerados automaticamente se não forem especificados. Cada vez que você gerar um novo contêiner, o Docker dará um nome aleatório para o contêiner. Você pode especificar o nome usando a <em>flag</em> “name”. Por hora, pare a execução do contêiner com o comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker stop nome_do_container</code></pre></td></tr></table>
+</div>
+</div>
+<p>Onde nome_do_container é o nome que o Docker deu para o contêiner recém gerado, que é diferente do nome da imagem.</p>
+<h2 id="criação-de-um-dockerfile">Criação de um Dockerfile</h2>
+<p>Você pode modificar uma imagem baixada de um repositório ou criar uma imagem do zero. Para isto, precisará criar um arquivo chamado <strong>Dockerfile</strong> e fazer as devidas configurações nele. Ao finalizar as configurações, você deverá informar ao Docker como encontrar este arquivo e rodar os comandos que irão construir uma nova imagem.</p>
+<p>Para criar uma nova imagem, crie uma pasta em qualquer diretório no seu computador e, em seguida, abra um bloco de notas. Com o bloco de notas aberto, digite as seguintes linhas:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-dockerfile" data-lang="dockerfile"><span class="k">FROM</span><span class="s"> metabase/metabase:latest</span><span class="err">
+</span><span class="err"></span><span class="k">LABEL</span> <span class="nv">Description</span><span class="o">=</span><span class="s2">&#34;This is a custom build based on the official Metabase image.&#34;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Salve o arquivo no diretório criado com o nome Dockerfile. Este arquivo Dockerfile possui apenas duas instruções:</p>
+<ul>
+<li>Utilizar a imagem base do Metabase em sua versão mais recente (caso a imagem não tivesse sido baixada anteriormente, o Docker tentaria baixar a imagem do repositório);</li>
+<li>Descreve o ambiente.</li>
+</ul>
+<p>Há muitos outros comandos que podem ser utilizados no Dockerfile, úteis para fazer coisas como adicionar outras dependências ao ambiente. A lista completa de comandos pode ser acessada na <a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener">documentação oficial do Docker</a>.</p>
+<p>Abra um terminal e digite os seguintes comandos, lembrando de adaptar o código para que o diretório seja o diretório onde está o arquivo Dockerfile:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /path/to/Dockerfile
+docker build --tag latest metabase_sandbox .</code></pre></td></tr></table>
+</div>
+</div>
+<p>Fazendo a inspeção deste código:</p>
+<ul>
+<li>O comando cd navega pela estrutura de pastas e arquivos do sistema. O caminho a ser digitado deve ser o caminho para chegar até o Dockerfile recém criado;</li>
+<li>O comando build cria uma nova imagem com base na imagem especificada no Dockerfile. A <em>flag</em> “tag” informa que uma tag chamada latest deve ser colocada na imagem, o nome da imagem será metabase_sandbox e o caminho para o Dockerfile é o diretório atual (note o ponto final após o nome da imagem, separado por um espaço. Se o Dockerfile estivesse em outro diretório o ponto seria substituído pelo caminho do Dockerfile).</li>
+</ul>
+<p>Você pode acompanhar cada etapa de criação da imagem no terminal. Ao final da execução, rode o seguinte comando no terminal:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker image ls</code></pre></td></tr></table>
+</div>
+</div>
+<p>Todas as imagens que você possui em seu computador serão mostradas no terminal, incluindo a recém criada, chamada metabase_sandbox. Teste esta nova imagem executando o comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run -p 3000:3000 metabase_sandbox</code></pre></td></tr></table>
+</div>
+</div>
+<p>O resultado deve ser o mesmo de quando você criou um contêiner com base na imagem original. Abra um navegador e digite localhost:3000. A mesma tela de configurações do Metabase irá aparecer.</p>
+<p>Encerre a conexão do terminal com o contêiner utilizando CTRL + C. Todas as imagens e contêineres que são criados consomem espaço no computador e você pode economizar espaço ao eliminar tudo o que não vai mais usar. Para fazer esta limpeza, comece digitando o seguinte comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker ps -a</code></pre></td></tr></table>
+</div>
+</div>
+<p>O comando ps vai mostrar todos os contêineres criados, e a <em>flag</em> “a” vai mostrar também os contêineres que não estão sendo executados no momento. Para excluir o contêiner recém criado rode o comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker rm nome_do_container</code></pre></td></tr></table>
+</div>
+</div>
+<p>Sendo nome_do_container o nome que o Docker determina automaticamente após sua criação ou o nome que você especificou pela <em>flag</em> “name” no comando run. O contêiner será excluído do sistema. Você pode comandar a exclusão automática de um contêiner dentro do comando run, utilizando a <em>flag</em> “rm”. Desta forma, o contêiner será automaticamente excluído assim que sua execução for finalizada.</p>
+<p>Exclua também a imagem metabase_sandbox. Para isso, com todos os contêineres que utilizam esta imagem desativados, rode o seguinte comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker image rm metabase_sandbox</code></pre></td></tr></table>
+</div>
+</div>
+<p>Você pode verificar que a imagem não existe mais ao rodar o comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker image ls</code></pre></td></tr></table>
+</div>
+</div>
+<p>O Dockerfile é necessário para customizar uma imagem existente ou criar uma do zero, mas e quando precisamos de mais de um serviço e estes serviços possuem dependências entre si?</p>
+<h2 id="múltiplos-contêineres-no-docker-com-docker-compose">Múltiplos contêineres no Docker com Docker Compose</h2>
+<p>Existem ferramentas desenhadas especificamente para trabalhar com a gestão de diversos contêineres em Docker. Vamos utilizar uma ferramenta com estas características para centralizar toda a configuração do ambiente em um único local, e esta ferramenta é o <strong>Docker Compose</strong>. O Docker Compose utiliza um único arquivo para fazer toda a configuração dos contêineres, e cada contêiner pode ter seu Dockerfile se for necessário. Este arquivo utilizado pelo Docker Compose se chama <strong>docker-compose.yml</strong>. O arquivo é escrito em <a href="https://en.wikipedia.org/wiki/YAML" target="_blank" rel="noopener">yaml</a>. Vamos criar este arquivo no mesmo diretório onde está o Dockerfile criado anteriormente. Entre neste diretório e crie um novo arquivo de texto com este código:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="w">	</span><span class="nt">db</span><span class="p">:</span><span class="w">
+</span><span class="w">    		</span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">postgres</span><span class="w">
+</span><span class="w">    		</span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">postgresql_metabase</span><span class="w">
+</span><span class="w">    		</span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span><span class="w">    		</span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">        		</span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l">metabase</span><span class="w">
+</span><span class="w">        		</span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l">metabase</span><span class="w">
+</span><span class="w">        		</span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l">db_password</span><span class="w">
+</span><span class="w">    		</span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">        		</span>- <span class="l">db_data:/var/lib/postgresql/data</span><span class="w">
+</span><span class="w">    		</span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      	  	</span>- <span class="m">5432</span><span class="p">:</span><span class="m">5432</span><span class="w">
+</span><span class="w">
+</span><span class="w">	</span><span class="nt">dataviz</span><span class="p">:</span><span class="w">
+</span><span class="w">    		</span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">metabase/metabase</span><span class="w">
+</span><span class="w">    		</span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">metabase</span><span class="w">
+</span><span class="w">    		</span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">always</span><span class="w">
+</span><span class="w">    		</span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="w">     	   	</span><span class="nt">MB_DB_TYPE</span><span class="p">:</span><span class="w"> </span><span class="l">postgres</span><span class="w">
+</span><span class="w">       	 	</span><span class="nt">MB_DB_DBNAME</span><span class="p">:</span><span class="w"> </span><span class="l">metabase</span><span class="w">
+</span><span class="w">       	 	</span><span class="nt">MB_DB_PORT</span><span class="p">:</span><span class="w"> </span><span class="m">5432</span><span class="w">
+</span><span class="w">        		</span><span class="nt">MB_DB_USER</span><span class="p">:</span><span class="w"> </span><span class="l">metabase</span><span class="w">
+</span><span class="w">        		</span><span class="nt">MB_DB_PASS</span><span class="p">:</span><span class="w"> </span><span class="l">db_password</span><span class="w">
+</span><span class="w">       	 	</span><span class="nt">MB_DB_HOST</span><span class="p">:</span><span class="w"> </span><span class="l">db</span><span class="w">
+</span><span class="w">       	 	</span><span class="nt">MB_DB_FILE</span><span class="p">:</span><span class="w"> </span><span class="l">/metabase-data/metabase.db</span><span class="w">
+</span><span class="w">    		</span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span><span class="w">      	  	</span>- <span class="l">db</span><span class="w">
+</span><span class="w">    		</span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">       	 	</span>- <span class="l">dataviz_data:/metabase-data</span><span class="w">
+</span><span class="w">    		</span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">       	 	</span>- <span class="m">3000</span><span class="p">:</span><span class="m">3000</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="w">	</span><span class="nt">db_data</span><span class="p">:</span><span class="w">
+</span><span class="w">	</span><span class="l">dataviz_data:</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Há uma série de configurações neste arquivo. Todas estas configurações poderiam ter sido feitas em Dockerfiles separadamente, com exceção da especificação de relação entre os dois contêineres. O que este arquivo está fazendo:</p>
+<ul>
+<li>Especifica que a versão da linguagem a ser usada no arquivo é a 3.8. Todo arquivo docker-compose.yml deve ter especificado na primeira linha a versão a ser usada. A mais recente na data de escrita deste post é a 3.8;</li>
+<li>Cria dois serviços: um chamado db e outro chamado dataviz. Serviços neste contexto são contêineres e suas respectivas configurações;</li>
+<li>Cria dois <strong>volumes</strong>, repositórios que gravam os dados gerados dentro de contêineres. Sempre que um contêiner é finalizado, os dados gerados são perdidos e os volumes evitam que isso aconteça. Estes volumes foram apenas declarados. Na definição de cada serviço, os volumes serão utilizados para mapear diretórios na máquina e no contêiner, para que arquivos sejam compartilhados entre o contêiner e a máquina. O Docker possui um diretório padrão para armazenar volumes, mas você pode utilizar qualquer outro diretório no computador. É importante lembrar apenas que volumes com diretório declarado vão depender da existência deste diretório em quaisquer máquinas que o docker-compose.yml for instalado, caso contrário a criação dos contêineres resultará em erro.</li>
+</ul>
+<p>Cada serviço possui diversas configurações. O serviço db:</p>
+<ul>
+<li>Utiliza a imagem Postgres. Como não há especificação de versão, a versão mais recente é assumida. O contêiner recebe o nome postgresql_metabase e está configurado para ser destruído sempre que sua execução for finalizada;</li>
+<li>Três variáveis de ambiente são definidas. Uma das diversas opções na criação de imagens é a especificação de variáveis de ambiente, que podem ser modificadas. A imagem do Postgres possui diversas variáveis, e três delas são preenchidas na criação do contêiner: POSTGRES_DB, POSTGRES_USER e POSTGRES_PASSWORD. Estas variáveis serão usadas para criar um banco de dados padrão, um usuário e uma senha padrão respectivamente. Estas credenciais de acesso serão usadas no Metabase em um segundo momento para estabelecer a conexão com o banco de dados;</li>
+<li>O volume db_data é sincronizado com o diretório que contém os bancos de dados no PostgreSQL;</li>
+<li>A porta 5432 é exposta tanto na máquina quanto no contêiner para acesso ao banco de dados.</li>
+</ul>
+<p>E o serviço dataviz:</p>
+<ul>
+<li>Utiliza a imagem do Metabase baixada anteriormente;</li>
+<li>Especifica que o nome do contêiner será metabase;</li>
+<li>Informa que o contêiner deve ser excluído quando sua execução for finalizada;</li>
+<li>Especifica diversas variáveis de ambiente que são exclusivas para o ambiente do Metabase. Estas variáveis informam ao Metabase onde está o banco de dados, quais as credenciais de acesso e onde, dentro do contêiner, será gravado o arquivo de dados gerado pelo Metabase, na variável de ambiente MB_DB_FILE;</li>
+<li>Especifica que o contêiner depende do serviço db. O Docker deve iniciar primeiro o contêiner postgresql_metabase antes de iniciar o contêiner metabase;</li>
+<li>Declara um volume para armazenar o conteúdo da pasta onde estará o banco de dados do Metabase;</li>
+<li>Expõe a porta 3000 na máquina e no contêiner.</li>
+</ul>
+<p>Salve o arquivo com o nome docker-compose.yml. Repare que em nenhum momento utilizamos o Dockerfile criado anteriormente, mas é possível especificar o endereço dele no docker-compose.yml caso seja necessário personalizar a imagem. Vamos utilizar as imagens padrão, configurando apenas as variáveis de ambiente de cada contêiner, os volumes para especificação dos dados que não devem ser perdidos ao término da execução do contêiner e o relacionamento entre os contêineres.</p>
+<p>Abra o terminal e, no diretório em que o arquivo docker-compose.yml se encontra, digite o seguinte comando:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker-compose up</code></pre></td></tr></table>
+</div>
+</div>
+<p>Ao rodar o comando, os dois contêineres iniciaram. Entre no endereço localhost:3000 e inicie o processo de configuração do Metabase. Ao configurar o banco de dados, selecione a opção outros e digite os dados do banco que foram especificados nas variáveis de ambiente do Metabase e do PostgreSQL. No campo host basta digitar o nome do serviço criado no docker-compose.yml, com nome db. Finalize a criação e, na tela principal do Metabase, você deverá ver um banco de dados com algumas tabelas criadas ao lado do banco de dados padrão.</p>
+<figure >
+  
+  <img data-src="images/figure2-metabase-home-page.webp" class="lazy" alt="Banco de dados Metabase, criado no PostgreSQL, conectado ao Metabase." title="Banco de dados Metabase, criado no PostgreSQL, conectado ao Metabase." />
+  
+  
+  <figcaption>
+    <p>Banco de dados Metabase, criado no PostgreSQL, conectado ao Metabase. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="considerações">Considerações</h2>
+<p>Esta é uma arquitetura simples com dois contêineres, mas uma arquitetura pode ter dezenas ou centenas de serviços que se relacionam entre si para fazer com que um produto funcione, conforme a necessidade de cada empresa. Mesmo uma arquitetura como esta poderia ter sido construída de outras formas. Recomendo a leitura das documentações do <a href="https://docs.docker.com/" target="_blank" rel="noopener">Docker</a> e do <a href="https://docs.docker.com/compose/" target="_blank" rel="noopener">Docker Compose</a> para explorar as possibilidades de configuração dos contêineres.</p>
+<p>Infraestruturas com muitas máquinas e diversas aplicações em ambientes distribuídos usam ferramentas como <a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a>, desenhadas para este cenário.</p>
+<p>Bora configurar ambientes!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">Leia também estas histórias</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC">03/09/2020 19:23:00</time>
+      </div>
+      <a href="/categories/automa%C3%A7%C3%A3o" class="badge" itemprop="articleSection">automação</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station e Google Sheets Parte 2 - Migrando para a AWS</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Já vimos neste blog como fazer para enviar leads do RD Station para uma planilha automaticamente. Agora vamos ver como enviar estes mesmos leads para um banco de dados hospedado na AWS</p>
+      <div>
+        <a class="button-primary" href="/stories/rd-station-e-google-sheets-na-aws/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC">02/09/2018 14:07:00</time>
+      </div>
+      <a href="/categories/automa%C3%A7%C3%A3o" class="badge" itemprop="articleSection">automação</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station e Google Sheets: exportação automática de leads para planilhas</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Saiba como enviar dados de leads automaticamente para planilhas no Google Sheets a partir do software de automação de marketing RD Station.</p>
+      <div>
+        <a class="button-primary" href="/stories/rd-station-e-google-sheets/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/apis-e-carrinhos-de-supermercado/images/thumbnail_hu46c54be97ab545b46d52504c6747000a_184568_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-07-04 21:20:00 &#43;0000 UTC">04/07/2018 21:20:00</time>
+      </div>
+      <a href="/categories/automa%C3%A7%C3%A3o" class="badge" itemprop="articleSection">automação</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">APIs e carrinhos de supermercado</h2>
+      <p class="mb-6 text-white" itemprop="abstract">O que é uma API e para que serve? Este post vai introduzir o conceito sem entrar em aspectos técnicos.</p>
+      <div>
+        <a class="button-primary" href="/stories/apis-e-carrinhos-de-supermercado/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">Como escolher o melhor gráfico?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

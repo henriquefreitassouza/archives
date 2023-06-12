@@ -1,0 +1,61 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set category = uri.paths() | last | urldecode %}
+{% set limit = 10 %}
+{% set options = {'items': {'@taxonomy': {'category': category}}, 'order': {'by': 'date', 'dir': 'desc'}, 'paginate': true} %}
+
+{% set collection = page.collection(options) %}
+
+{% block stylesheets %}
+  {% do assets.addCss('theme://public/css/dash-blog.css') %}
+  {{ parent() }}
+{% endblock stylesheets %}
+
+{% block javascript %}
+  {{ parent() }}
+  {% do assets.addJs('theme://public/js/dash-blog.js', {'group': 'bottom'}) %}
+{% endblock %}
+
+{% block content %}
+<section class="dd-section dd-category">
+  <div class="dd-section--container">
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12">
+          {% if collection | length == 0 %}
+            <div class="dd-category__header">
+              <div class="dd-category__header-title dd-title--centered">
+                <h1>Todas as categorias</h1>
+              </div>
+            </div>
+            <div class="dd-category__body">
+              {% include 'partials/categories.html.twig' %}
+            </div>
+          {% else %}
+            {% do paginate(collection, limit) %}
+            <div class="dd-category__header">
+              <div class="dd-category__header-title dd-title--centered">
+                <h1>{{ category }}</h1>
+              </div>
+            </div>
+            <div class="dd-category__body">
+              {% for child in collection %}
+                {% include 'partials/item_list.html.twig' with {'page': child, 'truncate': true} %}
+              {% endfor %}
+            </div>
+            {% if config.plugins.pagination.enabled and collection.params.pagination %}
+            <div class="dd-category__pagination">
+                {% include 'partials/pagination.html.twig' with {'base_url': page.url, 'pagination': collection.params.pagination, 'category': category} %}
+            </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block cta %}
+  {% include 'partials/cta.html.twig' %}
+{% endblock %}

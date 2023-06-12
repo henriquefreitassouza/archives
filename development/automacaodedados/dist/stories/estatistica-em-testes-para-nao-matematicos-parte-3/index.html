@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Estatística para testes - Amostras e probabilidades | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Estatística para testes - Amostras e probabilidades | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-3/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Estatística para testes - Amostras e probabilidades | Automação de Dados">
+<meta property="og:description" content="Estatística para testes - Amostras e probabilidades | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-11-24 11:21:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-10-22 11:21:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="6 minutos" />
+
+<meta property="article:tag" content="Estatística" />
+<meta property="article:section" content="Estatística" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-3/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-3/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Função de probabilidade. P é igual a divisão entre a probabilidade de um evento e o conjunto de eventos possíveis.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-3/images/thumbnail_hu8eee77a9de12b4fd1a4e6c7ea118121e_34577_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-11-24 11:21:00 &#43;0000 UTC" itemprop="datePublished">24/11/2017 11:21:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/estat%c3%adstica" itemprop="articleSection">estatística</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Estatística para testes - Amostras e probabilidades</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Como garantir que o resultado de um teste de hipóteses com amostras é representativo da população estudada?</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-3/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Estatística para testes - Amostras e probabilidades</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 6 minutos</strong>
+        <p>Publicado em 24/11/2017 e atualizado em 22/10/2021.</p>
+<p>Este post é o terceiro de uma série com 6 em que vou destrinchar os principais conceitos estatísticos para testes online. Os tópicos serão:</p>
+<ul>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-1/" >A importância de entender estatística para testes com amostras</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-2/" >Hipóteses</a>;</li>
+<li><strong>Amostras e probabilidades</strong> (este post);</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-4/" >Histogramas e curvas de densidade</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-5/" >P-valor, alfa, beta e tamanho do efeito</a>;</li>
+<li><a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-6/" >Configuração de testes com amostras online e de calculadoras</a>.</li>
+</ul>
+<p>Bônus: <a href="/stories/calculadora-de-significancia-estatistica-para-testes-ab/" >Calculadora de significância estatística para testes A/B</a>.</p>
+<p>Raramente experimentos em ambientes digitais serão feitos com populações inteiras, ao menos em um contexto corporativo. Quando é impossível estudar cada indivíduo de uma população, são utilizadas amostras. Uma amostra é um grupo extraído de uma população. Os aprendizados com a amostra são, então, assumidos para toda a população de onde a amostra foi retirada. Como exatamente é formada a amostra e como saber se ela de fato representa a população em estudo?</p>
+<h2 id="população-x-amostra">População x amostra</h2>
+<p>Uma população representa todos os indivíduos de um grupo. A população de um país, por exemplo, é composta por todas as pessoas que vivem naquele país. Em produtos digitais, uma população é composta por todas as pessoas que acessam o produto. Já a amostra representa uma porção da população, e é usada para inferir informações que se apliquem a toda uma população.</p>
+<p>Amostras possuem qualidade. Uma boa amostra é capaz de representar a população estudada. A coleta das amostras deve, então, ser feita com muito cuidado. Mesmo um experimento bem executado e sem erros aleatórios pode gerar resultados errados, se a amostra não é representativa da população. Para ser boa, uma amostra precisa ser:</p>
+<ul>
+<li>Significante: isto é, ser grande os suficiente para o estudo em questão;</li>
+<li>Representativa: as características da amostra precisam ser fiéis aquelas da população;</li>
+<li>Randômica: a seleção da amostra precisa ser randômica para evitar análises tendenciosas.</li>
+</ul>
+<p>Ferramentas de teste irão garantir a seleção randômica da amostra, mas a significância e a representatividade serão determinadas pela pessoa projetista de testes.</p>
+<p>Populações e amostras são grupos que apresentam traços comuns de comportamento. Para saber como o grupo está organizado em função destes traços, um número conhecido como <strong>medida de tendência central</strong> é utilizado. Medidas de tendência central são números que explicam conjuntos de dados. As três mais comuns são a média, a mediana e o modo. Para testes com amostras online, a <strong>média</strong> é utilizada. Ter um conjunto explicado por um único número é útil para conhecer a organização geral do grupo. Quando não é possível ter acesso a toda uma população para um estudo, a <strong>média populacional</strong> é simplesmente desconhecida. Quando a média populacional é desconhecida, a medida usada é a <strong>média amostral</strong>. Quanto mais significativa e representativa a amostra for, mais próxima essa média estará da média populacional.</p>
+<p>Quando estudos estatísticos são feitos com amostras, as ferramentas matemáticas utilizadas para calcular o nível de proximidade das amostras com as populações entram no campo da <strong>estatística inferencial</strong>.</p>
+<h2 id="estatística-descritiva-e-estatística-inferencial">Estatística descritiva e estatística inferencial</h2>
+<p>O campo da estatística é dividido em dois conjuntos, chamados de <strong>estatística descritiva</strong> e <strong>estatística inferencial</strong>.</p>
+<ul>
+<li>Estatística descritiva: busca explicar conjuntos de dados. Sumarizar estes conjuntos de dados com médias ou explicar a distribuição destes dados são operações de estatística descritiva. É importante notar que em estatística descritiva não é possível tirar conclusões que estão além do conjunto de dados estudado;</li>
+<li>Estatística inferencial: busca explicar características de toda uma população baseado em partes dela. Testes com hipóteses são ferramentas estatísticas dentro deste grupo.</li>
+</ul>
+<p>A inferência em estatística inferencial se dá pela <strong>probabilidade</strong>.</p>
+<h2 id="probabilidades">Probabilidades</h2>
+<p>Probabilidade é a chance de um evento acontecer. Probabilidades são divididas em dois tipos: <strong>independente</strong> e <strong>condicional</strong>.</p>
+<h3 id="probabilidade-independente">Probabilidade independente</h3>
+<p>A independência entre probabilidades significa que a probabilidade de um evento acontecer não está atrelada eventos anteriores. Pense em um dado com seis faces. Na primeira jogada pode sair qualquer número entre 1 e 6. Na segunda também, na terceira a mesma coisa, e assim sucessivamente. O mesmo conceito se aplica a uma moeda em um jogo de cara e coroa, por exemplo.</p>
+<h3 id="probabilidade-condicional">Probabilidade condicional</h3>
+<p>A probabilidade muda de acordo com eventos passados. Um exemplo é um baralho de cartas completo, em que existe igual probabilidade de tirar qualquer uma delas do bolo. A medida que as cartas vão saindo do baralho, a probabilidade de tirar uma das restantes aumenta.</p>
+<h2 id="a-lei-dos-números-grandes">A lei dos números grandes</h2>
+<p>Qual a probabilidade de um dado evento ocorrer? Quanto maior o número de tentativas (ou eventos, ou observações), mais precisa é a estimativa dessa probabilidade. Esse fenômeno é chamado de <strong>lei dos números grandes</strong>. Desconsiderando as limitações com teste com amostras online citadas no <a href="/stories/estatistica-em-testes-para-nao-matematicos-parte-1/" >post introdutório</a> desta série, quanto maior a amostra, maior será a probabilidade de o tratamento dado a um grupo de estudo e o comportamento apresentado estarem correlacionados.</p>
+<p>Em software, os testes são baseados em ações que os indivíduos de uma amostra são ou não capazes de concluir, e a principal métrica é o percentual dos indivíduos da amostra que concluem a determinada ação. Este percentual é conhecido como <strong>taxa de conversão</strong>. Em termos estatísticos, o número é representado de forma absoluta e chamado de <strong>proporção</strong> (ou probabilidade de sucesso, representado pela letra P). É impossível saber qual a verdadeira taxa de conversão (P) quando o tamanho da população é desconhecido (e esta é a realidade de produtos digitais). Aqui entra a estatística inferencial, quando precisamos estimar a proporção P para a ocorrência de um dado evento em uma hipótese.</p>
+<p>Ao longo deste e dos próximos posts usarei os termos taxa de conversão, probabilidade de sucesso e proporção como sinônimos.</p>
+<h2 id="probabilidades-combinadas">Probabilidades combinadas</h2>
+<p>Probabilidades ainda podem ser combinadas, contanto que os eventos probabilísticos sejam <strong>mutuamente exclusivos</strong>. O que isso quer dizer é que dois ou mais eventos podem acontecer sem interferência entre si. Um exemplo no mundo online seria “quantos visitantes que acessaram a página de categoria também acessaram a página de produto?” (assumindo que é possível chegar a essa página de produto sem antes passar pela página de categoria). Se os eventos não são mutuamente exclusivos, é necessário subtrair a porção desses eventos que se cruzam antes de combinar as probabilidades para evitar amostras duplicadas.</p>
+<p>Em testes com amostras online, o número em estudo é a probabilidade de sucessos de acordo com a hipótese formulada, ou a taxa de conversão. O projetista de testes calcula a taxa de conversão média de cada amostra, para calcular a <strong>taxa de conversão média das amostras</strong>, e também uma <strong>margem de erro</strong>. A soma e a subtração da margem de erro com a taxa de conversão média das amostras forma um intervalo que representa as potenciais taxas de conversão para amostras estudadas, chamado de <strong>intervalo de confiança</strong>. Como cada amostra provavelmente possui algum grau de diferença entre as demais colhidas, um intervalo de possíveis taxas de conversão é estimado para inferir a taxa de conversão média de toda a população.</p>
+<p>O intervalo de confiança e a probabilidade de sucesso P serão explorados com mais detalhes em outro post.</p>
+<h2 id="leitura-complementar">Leitura complementar</h2>
+<p>Aprenda probabilidades com mais profundidade no site <a href="http://jukebox.esc13.net/untdeveloper/RM/Stats_Module_2/" target="_blank" rel="noopener">Statistics and Risk Management</a>, de onde os exemplos com dados e cartas usados neste post foram retirados.</p>
+<p>Bora estimar probabilidades!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">Leia também estas histórias</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/calculadora-de-significancia-estatistica-para-testes-ab/images/thumbnail_hu445bb0ea2c66d3cb7c1eb80c74a417bb_106746_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-12-06 11:36:00 &#43;0000 UTC">06/12/2017 11:36:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Calculadora para testes com amostras online</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Construí uma calculadora para testes com amostras online. Ela retorna o tamanho da amostra necessária para o teste, a duração estimada de dias para que o teste seja concluído e a significância …</p>
+      <div>
+        <a class="button-primary" href="/stories/calculadora-de-significancia-estatistica-para-testes-ab/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-6/images/thumbnail_hu8efac969a2e378d483f761e54d87fc3a_81326_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-29 09:12:00 &#43;0000 UTC">29/11/2017 09:12:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Estatística para testes - Configuração das ferramentas</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Configurar testes com amostras online requer alguns cuidados. Configurações erradas podem invalidar os achados do estudo e levar negócios a tomarem decisões com base em dados inverídicos – o que é …</p>
+      <div>
+        <a class="button-primary" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-6/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/estatistica-em-testes-para-nao-matematicos-parte-5/images/thumbnail_hu736ab047195c247913f95fd813824efd_30026_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2017-11-27 09:47:00 &#43;0000 UTC">27/11/2017 09:47:00</time>
+      </div>
+      <a href="/categories/estat%C3%ADstica" class="badge" itemprop="articleSection">estatística</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Estatística para testes - P-valor, alfa, beta e tamanho do efeito</h2>
+      <p class="mb-6 text-white" itemprop="abstract">As ferramentas para testes mais conhecidas conseguem cuidar dos cálculos envolvidos na execução dos experimentos, porém a pessoa projetista de testes deve ser capaz de fornecer as variáveis …</p>
+      <div>
+        <a class="button-primary" href="/stories/estatistica-em-testes-para-nao-matematicos-parte-5/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">Como escolher o melhor gráfico?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

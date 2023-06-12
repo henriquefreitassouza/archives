@@ -1,0 +1,25 @@
+<article class="dd-item">
+  <header class="dd-item__header">
+  {% if (page.media.images | first) %}
+    <div class="dd-item__header-thumbnail">
+      <img src="{{ page.media[(page.media.images | first).filename].url }}" alt="{{ page.title }}" class="img-responsive" />
+    </div>
+  {% endif %}
+  </header>
+  <div class="dd-item__post">
+    <div class="dd-item__post-meta">
+      <div class="dd-item__post-meta-title">
+        <a href="{{ page.url }}">
+          <h2>{{ page.title }}</h2>
+        </a>
+      </div>
+      <div class="dd-item__post-meta-data">
+        {% include 'partials/item_meta.html.twig' %}
+      </div>
+    </div>
+    <main class="dd-item__post-body">
+      {{ page.summary }}
+      <a href="{{ page.url }}" class="dd-item__post-more">Leia mais</a>
+    </main>
+  </div>
+</article>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head lang="pt-br">
+        <title>Musicar - My work with UX - Henrique Freitas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+        <link rel="icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:900|Roboto+Condensed" rel="stylesheet">
+        <link rel="stylesheet" href="../css/app.css">
+    </head>
+    <body>
+        <div class="modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-labelledby="portfolio-item-title">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="portfolio-item-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <img id="modal-img" src="" alt="" class="img-responsive">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header id="page-header">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="../index.html" class="navbar-brand">Henrique Freitas</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="main-nav">
+                        <ul class="nav navbar-nav" role="navigation">
+                            <li><a href="../index.html#latest-work">Latest work</a></li>
+                            <li><a href="../index.html#about">About me</a></li>
+                            <li><a href="../index.html#testimonials">Testimonials</a></li>
+                            <li><a href="../index.html#hire">Hire</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" role="navigation">
+                            <li><a href="../portfolio.html">Portfolio</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main role="main">
+            <section class="portfolio-items portfolio-section container">
+                <header>
+                    <ol class="breadcrumb">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../portfolio.html">Portfolio</a></li>
+                        <li class="active"><span>Musicar</span></li>
+                    </ol>
+                    <hgroup>
+                        <h1>Musicar</h1>
+                        <h2>What is it: a mobile application that connects music teachers and students based on their location.</h2>
+                    </hgroup>
+                </header>
+                <h3>Challenge</h3>
+                <p>The music community is one of the less included when the subject is technology, and according to Sebrae on its last <a href="http://www.bibliotecas.sebrae.com.br/chronus/ARQUIVOS_CHRONUS/bds/bds.nsf/e491dcf107479d1628190fceb77085f9/$File/5810.pdf" target="_blank">report</a> about the music industry, some of the main reasons are the poor technological education and the lack of investments in the sector. Within the industry there's musical education, composed by musicians who aren't familiar with technological resources to manage their classes and self-employed careers, thus don't know how to use technology to find students. On the other hand the music students are composed mainly of young people who are more comfortable with technology and use it to learn an instrument. Musicar aims to connect these tech savvy music students with teacher so they can teach and learn together and create a strong educational community.</p>
+                <h3>Solution</h3>
+                <p>We've built the concept of a mobile application to connect music teachers and students through geolocalization. To help teachers, the main feature was the recommendation system, as recommendation is the only way teachers find new students today. We've also built a landing page to collect e-mails from interested people. Our solution was presented at Expo Music 2016 in a booth sponsored by Santo Angelo.</p>
+                <div class="alert alert-success">
+                    <strong>Achievments: </strong>
+                    <ul>
+                        <li>Saved money by understanding that the customers wouldn't buy the solution without having to code it;</li>
+                    </ul>
+                </div>
+                <h3>Process</h3>
+                <p>The adopted process was to research, build and test. In the research phase, we've discovered who our personas are and interviewed both teachers and students at a music school to find out how they learn today and how technology is used before, during and after the process. For teachers, we've also learned how they find new students and prepare classes. For this project, we've also identified a third persona that is not directly involved in the process, but is equally important which is the parent: most students are dependant on their parents, who sponsor their children's classes.</p>
+                <p>After having a good understanding of our personas we've developed a landing page showing the benefits of the application for our users and offering them the chance to be part of the first users to test the MVP. This landing page was shared on Facebook ads and Google ads and we've collected statistic data about our audience's response.</p>
+                <p>We've had a very low acceptance in the first version of the page and a bounce rate of 95%, 18 subscriptions and more than 60.000 views on the combined ads from Facebook and Google. We've learned that the landing page was too big, slow to load on mobile devices and not very optimized for mobile as well. More than 90% of the Facebook users came from mobile. After learning this we've rebuilt the landing page with only the essential content and an low fidelity interaction design. We've received an invitation from Santo Angelo to present and validate our solution at Expo Music 2016. The second attempt failed again, as we've had no subscriptions, but the interaction design was very intuitive for those who tested the solution. Minor changes were recorded as we're receiving feedback.</p>
+                <h3>Result</h3>
+                <p>The first landing page was built using WordPress with a theme that I've modified. To increase the performance and remove unnecessary resources from the application, the final landing page was built from scratch using some of the Google Material Design processes through the framework Materialize. This was done to make users feel more familiar with the interface, as they've had experience with some of the elements on mobile devices in the past. The mobile mock-ups were built focusing on the interaction rather than the visual. We've focused on testing the match interaction, where teachers and students find each other, as this is the core functionality that makes the MVP.</p>
+                <!--<div class="alert alert-info">
+                    <strong>Interaction design: </strong><a href="https://invis.io/QP8KSQB5G" target="_blank">https://invis.io/QP8KSQB5G</a>
+                </div>-->
+                <div class="row">
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/home.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/home.png" alt="Musicar - Landing Page" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Landing page</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_splash_screen.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_splash_screen.png" alt="Musicar - Splash Screen" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Splash Screen</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_search.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_search.png" alt="Musicar - Home screen | Musicar - Tela inicial" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Home screen</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_filter_search.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_filter_search.png" alt="Musicar - Search for musical instruments | Musicar - Busca por instrumentos musicais" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Search options</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_results.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_results.png" alt="Musicar - Search results | Musicar - Resultados da busca" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Search results</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_profile.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_profile.png" alt="Musicar - selected teacher | Musicar - Professor selecionado" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Selected teacher</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_teacher_profile.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_teacher_profile.png" alt="Musicar - profile details | Musicar - Detalhes do perfil" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Teacher profile details</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_chat.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_chat.png" alt="Musicar - Chat between student and teacher | Musicar - Chat entre aluno e professor" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Chat</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_chat_calendar.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_chat_calendar.png" alt="Musicar - Class schedule calendar | Musicar - Calendário de agendamento de aula" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Schedule calendar</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_chat_class_confirmed.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_chat_class_confirmed.png" alt="Musicar - Scheduled class notification | Musicar - Aviso de aula agendada" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Scheduled class notification</strong>
+                        </a>
+                    </div>
+                    <div class="portfolio-product col-xs-12 col-sm-4 col-md-3 col-lg-2">
+                        <a href="#" class="portfolio-product-item" data-toggle="modal" data-target="#portfolio-modal" data-src="../assets/images/product/musicar/mockup/musicar_menu_profile.png">
+                            <div>
+                                <img src="../assets/images/product/musicar/mockup/thumbnail/musicar_menu_profile.png" alt="Musicar - Sidebar | Musicar - Menu lateral" class="img-responsive img-thumbnail">
+                            </div>
+                            <strong>Sidebar</strong>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <footer id="site-footer" class="section">
+                <div class="container">
+                    <strong><a href="../index.html" title="Go to the home page">Henrique Freitas</a></strong>
+                    <div class="footer-links">
+                        <a href="../index.html#hire">Hire me</a>
+                        <a href="santander.html">Next project &gt;&gt;</a>
+                        <a href="personal-website.html">Previous project &lt;&lt;</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </footer>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="../js/app.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-87608325-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>

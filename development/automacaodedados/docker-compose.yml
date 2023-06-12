@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+    hugo:
+        build:
+            context: ./
+            dockerfile: ./docker/node/Dockerfile
+        volumes:
+            - ./src:/src
+            - ./dist:/dist
+        container_name: hugo
+    apache:
+        build:
+            context: ./
+            dockerfile: ./docker/httpd/Dockerfile
+        depends_on:
+            - hugo
+        ports:
+            - 8080:80
+        volumes:
+            - ./dist:/usr/local/apache2/htdocs
+        container_name: apache

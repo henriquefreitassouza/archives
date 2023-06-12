@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Surfacing the human side of technology on Data Automation</title>
+    <link>https://www.automacaodedados.com.br/en/</link>
+    <description>Recent content in Surfacing the human side of technology on Data Automation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 20 Dec 2021 06:37:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Metaverse post Meta</title>
+      <link>https://www.automacaodedados.com.br/en/stories/o-metaverso-pos-meta/</link>
+      <pubDate>Mon, 20 Dec 2021 06:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/o-metaverso-pos-meta/</guid>
+      <description>Facebook&#39;s name change defined a milestone in the history of a technology that&amp;rsquo;s decades old, but how big is the impact of such change to the development of the metaverse?</description>
+    </item>
+    
+    <item>
+      <title>Identity development in the digital space</title>
+      <link>https://www.automacaodedados.com.br/en/stories/construcao-da-identidade-no-espaco-virtual/</link>
+      <pubDate>Fri, 14 May 2021 19:24:32 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/construcao-da-identidade-no-espaco-virtual/</guid>
+      <description>After a few decades, many aspects of society were transformed by information technologies, developed and maintained by just a few individuals. What can be done to guarantee that citizens will be involved in the construction of a secure and equal virtual society?</description>
+    </item>
+    
+    <item>
+      <title>How to choose the best chart?</title>
+      <link>https://www.automacaodedados.com.br/en/stories/como-escolher-o-melhor-grafico/</link>
+      <pubDate>Sun, 06 Dec 2020 09:39:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/como-escolher-o-melhor-grafico/</guid>
+      <description>Charts make data accessible for different audiences, and can tell a variety of stories, but how to choose the best chart to tell a story?</description>
+    </item>
+    
+    <item>
+      <title>Setting up Metabase and PostgreSQL with Docker</title>
+      <link>https://www.automacaodedados.com.br/en/stories/configurando-metabase-e-postgresql-no-docker/</link>
+      <pubDate>Tue, 17 Nov 2020 09:10:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/configurando-metabase-e-postgresql-no-docker/</guid>
+      <description>How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</description>
+    </item>
+    
+    <item>
+      <title>RD Station and Google Sheets Part 2 - Moving to AWS</title>
+      <link>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets-na-aws/</link>
+      <pubDate>Thu, 03 Sep 2020 19:23:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets-na-aws/</guid>
+      <description>We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</description>
+    </item>
+    
+    <item>
+      <title>What does a data analyst do?</title>
+      <link>https://www.automacaodedados.com.br/en/stories/o-que-faz-a-pessoa-analista-de-dados/</link>
+      <pubDate>Sun, 16 Feb 2020 11:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/o-que-faz-a-pessoa-analista-de-dados/</guid>
+      <description>Data analysts, data scientists, data engineers... There are many professionals who work with data. In this post, we will understand what data analysts do and deliver, and how he or she work alongside other data professionals</description>
+    </item>
+    
+    <item>
+      <title>Do you use tag managers for everything?</title>
+      <link>https://www.automacaodedados.com.br/en/stories/voce-usa-gerenciadores-de-tags-para-tudo/</link>
+      <pubDate>Mon, 20 May 2019 20:05:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/voce-usa-gerenciadores-de-tags-para-tudo/</guid>
+      <description>Tag managers are convenient for managing scripts and avoiding conflicts between marketing and development teams. All snippets of code that are injected on a page are managed from the same place and code maintenance is easier. Very good! Now, what happens when you receive a visitor on your site that is using an ad blocker?</description>
+    </item>
+    
+    <item>
+      <title>Social and environmental impact businesses x repetitive and scalable businesses</title>
+      <link>https://www.automacaodedados.com.br/en/stories/negocios-de-impacto-x-negocios-repetiveis-e-escalaveis/</link>
+      <pubDate>Thu, 02 May 2019 14:43:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/negocios-de-impacto-x-negocios-repetiveis-e-escalaveis/</guid>
+      <description>There exists the first sector, made by governmental institutions, second sector, made by private companies, and third sector, made by non-profit organizations. Part of these organizations from second sector is trying to position themselves closer from the third, making up what is being called sector 2.5. What are these companies and how do the differ from the traditional second sector?</description>
+    </item>
+    
+    <item>
+      <title>People behind personas</title>
+      <link>https://www.automacaodedados.com.br/en/stories/as-pessoas-por-tras-das-personas/</link>
+      <pubDate>Sun, 21 Apr 2019 22:43:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/as-pessoas-por-tras-das-personas/</guid>
+      <description>Customers today are very different from those from previous decades. Throughout this post, we&#39;ll get to know some important milestones that changed customer behavior to understand how to conquer and retain customers that are looking for much more than quality.</description>
+    </item>
+    
+    <item>
+      <title>The day that marketing derailed</title>
+      <link>https://www.automacaodedados.com.br/en/stories/o-dia-em-que-o-marketing-saiu-dos-trilhos/</link>
+      <pubDate>Tue, 16 Apr 2019 19:11:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/o-dia-em-que-o-marketing-saiu-dos-trilhos/</guid>
+      <description>Marketing departments were transformed as internet got popular and new consumer channels and new technologies arose. Today it is possible to calculate the return on investment for each cent invested, but this level of power was achieved without first debating on its ethical implications. Are we using digital marketing the right way to deliver value to people?</description>
+    </item>
+    
+    <item>
+      <title>Dynamic thank you pages using RD Station</title>
+      <link>https://www.automacaodedados.com.br/en/stories/paginas-de-agradecimento-dinamicas-no-rd-station/</link>
+      <pubDate>Sun, 10 Feb 2019 21:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/paginas-de-agradecimento-dinamicas-no-rd-station/</guid>
+      <description>How to display dynamic content on thank you pages for converted leads using RD Station?</description>
+    </item>
+    
+    <item>
+      <title>Automatic workflow to develop plugins and themes for WordPress</title>
+      <link>https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/</link>
+      <pubDate>Sat, 15 Sep 2018 16:29:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/</guid>
+      <description>A good workflow can reduce hours with project maintenance in WordPress. This post will present one possible way to organize a project using templates and Gulp, a task runner.</description>
+    </item>
+    
+    <item>
+      <title>RD Station and Google Sheets: automatically exporting leads to spreadsheets</title>
+      <link>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/</link>
+      <pubDate>Sun, 02 Sep 2018 14:07:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/</guid>
+      <description>Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</description>
+    </item>
+    
+    <item>
+      <title>APIs and grocery carts</title>
+      <link>https://www.automacaodedados.com.br/en/stories/apis-e-carrinhos-de-supermercado/</link>
+      <pubDate>Wed, 04 Jul 2018 21:20:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/apis-e-carrinhos-de-supermercado/</guid>
+      <description>What is an API and what it is for? This post will introduce it without using technical language.</description>
+    </item>
+    
+    <item>
+      <title>Google Apps Script with OAuth2</title>
+      <link>https://www.automacaodedados.com.br/en/stories/google-apps-script-com-oauth2/</link>
+      <pubDate>Mon, 29 Jan 2018 14:42:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/google-apps-script-com-oauth2/</guid>
+      <description>Google Apps Script is packed with many features to enhance other Google products. One of these features allows Google apps to connect with third party services. This feature will be presented throughout this post, focusing on APIs that authenticate using OAuth2 protocol.</description>
+    </item>
+    
+    <item>
+      <title>Static sites with Jekyll and Github Pages</title>
+      <link>https://www.automacaodedados.com.br/en/stories/sites-estaticos-com-jekyll/</link>
+      <pubDate>Mon, 01 Jan 2018 19:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/sites-estaticos-com-jekyll/</guid>
+      <description>Websites are rarely built from scratch. There are many tools and frameworks which provide built in structures to build and publish websites on the internet. This post will present Jekyll, a static site generator, and how to use it in conjunction with Github Pages to publish sites on the internet with no cost.</description>
+    </item>
+    
+    <item>
+      <title>Exploratory research for modeling personas</title>
+      <link>https://www.automacaodedados.com.br/en/stories/fundamentos-da-pesquisa-exploratoria/</link>
+      <pubDate>Thu, 21 Dec 2017 21:04:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/fundamentos-da-pesquisa-exploratoria/</guid>
+      <description>Personas are much used as guidance for developing products and services that people want. Defining personas help guide not only the direction of the product, but also processes related to customer satisfaction such as communication and support. Mapping personas, though, require research. How to use research methods to map the organization&amp;rsquo;s personas?</description>
+    </item>
+    
+    <item>
+      <title>Scientific experiments for businesses</title>
+      <link>https://www.automacaodedados.com.br/en/stories/experimentacao-no-mundo-dos-negocios/</link>
+      <pubDate>Wed, 20 Dec 2017 09:51:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/experimentacao-no-mundo-dos-negocios/</guid>
+      <description>At academies, knowledge is obtained when executing tests on laboratories, controlled environments that allow for easily identification of causes and effects. Resulting knowledge is trustworthy and the process by which was obtained is both verifiable and replicable. It is possible to transpose knowledge production methods used in the academy to business environments to produce knowledge with the same level of quality to drive decisions?</description>
+    </item>
+    
+    <item>
+      <title>The basics of APIs</title>
+      <link>https://www.automacaodedados.com.br/en/stories/fundamentos-das-apis/</link>
+      <pubDate>Tue, 12 Dec 2017 21:34:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/fundamentos-das-apis/</guid>
+      <description>APIs are very useful to automate processes and personalize workflows. From a technical standpoint, they contribute for developing distributed applications. Knowing APIs is vital to create applications able to communicate with the outside world.</description>
+    </item>
+    
+    <item>
+      <title>Online testing sample calculator</title>
+      <link>https://www.automacaodedados.com.br/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/</link>
+      <pubDate>Wed, 06 Dec 2017 11:36:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/</guid>
+      <description>I built an online sample testing calculator. It calculates required sample sizes, estimated time to finish and statistical significance of tests. This post will explain how it works and how to use it.</description>
+    </item>
+    
+    <item>
+      <title>SEO &#43; CRO: end to end optimization</title>
+      <link>https://www.automacaodedados.com.br/en/stories/seo-e-cro/</link>
+      <pubDate>Sun, 03 Dec 2017 08:34:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/seo-e-cro/</guid>
+      <description>Search engines like Google go well beyond keywords in order to show search results. Many techniques are employed to match the right results to the right person at the right time. At the corporate marketing end, SEO professionals work to make their results reach the top of search pages, resulting in more website visits. What happens after that?</description>
+    </item>
+    
+    <item>
+      <title>UX Design: behind the curtains of experience design</title>
+      <link>https://www.automacaodedados.com.br/en/stories/fundamentos-de-ux-design/</link>
+      <pubDate>Fri, 01 Dec 2017 09:16:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/fundamentos-de-ux-design/</guid>
+      <description>The phrase &#39;a good design is invisible&#39; surfaces with some frequency when searched online. Good designs are invisible when experiences are fluid. There are people that dedicate their careers to make memorable experiences, but we all are experience designers. We just don&amp;rsquo;t know it yet</description>
+    </item>
+    
+    <item>
+      <title>Dealing with differences between testing and analytics dashboards</title>
+      <link>https://www.automacaodedados.com.br/en/stories/dados-de-testes-ab-no-google/</link>
+      <pubDate>Thu, 30 Nov 2017 08:39:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/dados-de-testes-ab-no-google/</guid>
+      <description>The number of visitors or sessions that online testing tools display is different from those shown in analytics tools, even if the test is using 100% of available traffic. Sometimes the difference is so significant that raises the question about which dashboard should be used. How to make that difference manageable?</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Setup testing tools</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</link>
+      <pubDate>Wed, 29 Nov 2017 09:12:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</guid>
+      <description>Setup tests with online samples require careful planning. Wrong configurations can invalidate any findings and lead businesses to make wrong decisions – what can be worse than having no data at all.</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - P-value, alpha, beta and effect size</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</link>
+      <pubDate>Mon, 27 Nov 2017 09:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</guid>
+      <description>The most widely adopted testing tools take care of the math on experiments, but the researcher must be able to make the necessary configurations for calculations to be correct. I will explain what are those configuration and how they correlate with a successful experiment.</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Histograms and density curves</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</link>
+      <pubDate>Sun, 26 Nov 2017 09:59:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</guid>
+      <description>During a test, many samples are collected and its conversion rates calculated. The next step is to group and classify this data in such a way that will be possible to infer data about the whole population. How does that happen and why this is important inside a test?</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Samples and probabilities</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</link>
+      <pubDate>Fri, 24 Nov 2017 11:21:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</guid>
+      <description>How to be sure that the result of a hypothesis test with samples is representative of the whole population being studied?</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Hypotheses</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</link>
+      <pubDate>Thu, 23 Nov 2017 11:07:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</guid>
+      <description>There are many types of tests with samples, and this post will present the most used with online testing techniques, such as A/B tests: hypotheses tests.</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - why should I know statistics?</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</link>
+      <pubDate>Wed, 22 Nov 2017 10:35:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</guid>
+      <description>When you see the results of an A/B or split test, do you question the results that you get or accept them without hesitation? If you don&#39;t question them, you should.</description>
+    </item>
+    
+    <item>
+      <title>The optimization aspect of CRO</title>
+      <link>https://www.automacaodedados.com.br/en/stories/a-parte-de-otimizacao-em-cro/</link>
+      <pubDate>Tue, 21 Nov 2017 06:42:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/a-parte-de-otimizacao-em-cro/</guid>
+      <description>As best as it can be any given purchase experience, there is always something to improve. This is, at least, one of the premises of those who work with CRO, or Conversion Rate Optimization. Find out what is CRO and how to use conversion optimization techniques to find growth opportunities within digital products.</description>
+    </item>
+    
+    <item>
+      <title>An overview of Google Apps Script</title>
+      <link>https://www.automacaodedados.com.br/en/stories/uma-introducao-ao-google-apps-script/</link>
+      <pubDate>Mon, 20 Nov 2017 15:05:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/uma-introducao-ao-google-apps-script/</guid>
+      <description>In a previous post I briefly presented Google Apps Script, a tool capable of enhancing the default features of any Google apps. In this post, I will make its proper introduction and show how to use it to automate data collection and treatment tasks.</description>
+    </item>
+    
+    <item>
+      <title>Creating automated reports through APIs</title>
+      <link>https://www.automacaodedados.com.br/en/stories/geracao-de-relatorios-automatizados-por-apis/</link>
+      <pubDate>Sun, 19 Nov 2017 13:13:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/geracao-de-relatorios-automatizados-por-apis/</guid>
+      <description>Recently I had to build a repository with data that would feed some reports. The sources that would need to be ingested were scattered at least across 6 different systems and reunite all that information weekly was time consuming. I&amp;rsquo;ve figured out a way to make that process somewhat more efficient.</description>
+    </item>
+    
+    <item>
+      <title>Growth Value</title>
+      <link>https://www.automacaodedados.com.br/en/stories/growth-value/</link>
+      <pubDate>Fri, 17 Nov 2017 20:36:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/growth-value/</guid>
+      <description>What is Growth Value?</description>
+    </item>
+    
+  </channel>
+</rss>

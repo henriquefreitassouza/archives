@@ -1,0 +1,62 @@
+- id: no_category
+  translation: 'Uncategorized'
+- id: no_hero_posts
+  translation: 'Nothing to see here...'
+- id: latest_posts
+  translation: 'Latest stories'
+- id: no_posts
+  translation: 'No data stories around here. Keep looking.'
+- id: category_title
+  translation: 'All categories'
+- id: more_stories
+  translation: 'You should also read these stories'
+- id: menu_about
+  translation: 'About'
+- id: menu_search
+  translation: 'Search'
+- id: page_path
+  translation: 'page'
+- id: all_about_taxonomy
+  translation: 'All about'
+- id: read_more
+  translation: 'Read more'
+- id: 404_title
+  translation: 'Page not found'
+- id: 404_description
+  translation: 'This page does not exist or was moved to another address. Use the navigation or the search bar available on the header of this page to find stories that you wish to read.'
+- id: about
+  translation: 'Space to publish information that help democratize knowledge about new technologies in Brazil.'
+- id: footer_note
+  translation: 'Made with Hugo + Tailwind and hosted on Github Pages.'
+- id: search_title
+  translation: 'Your search for:'
+- id: footer_title_1
+  translation: 'Data Journey'
+- id: footer_title_2
+  translation: 'Latest stories'
+- id: reading_time
+  translation: 'Estimated time to read'
+- id: minute
+  translation: 'minute'
+- id: minutes
+  translation: 'minutes'
+- id: search_label
+  translation: 'Search stories'
+- id: search_aria_label
+  translation: 'Search the entire website'
+- id: toggle_navigation
+  translation: 'Toggle main navigation'
+- id: skip_to_content
+  translation: 'Skip to content'
+- id: logo_title
+  translation: 'Logo Data Automation'
+- id: search_start
+  translation: 'Start search'
+- id: theme_toggle
+  translation: 'Switch between light and dark themes'
+- id: previous_page
+  translation: 'Previous page'
+- id: next_page
+  translation: 'Next page'
+- id: minutes
+  translation: 'minutes'

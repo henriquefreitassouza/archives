@@ -1,0 +1,49 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set limit = 10 %}
+{% set options = {'items': {'@self': 'children'}, 'order': {'by': 'date', 'dir': 'desc'}, 'paginate': true} %}
+
+{% set collection = page.collection(options) %}
+{% do paginate(collection, limit) %}
+
+{% block stylesheets %}
+  {% do assets.addCss('theme://public/css/dash-blog.css') %}
+  {{ parent() }}
+{% endblock stylesheets %}
+
+{% block javascript %}
+  {{ parent() }}
+  {% do assets.addJs('theme://public/js/dash-blog.js', {'group': 'bottom'}) %}
+{% endblock %}
+
+{% block content %}
+<section class="dd-section dd-blog">
+  <div class="dd-section--container">
+    <div class="container">
+      <div class="columns">
+        <div class="column col-12">
+          <div class="dd-blog__header">
+            <div class="dd-blog__header-title dd-title--centered">
+              {{ page.content }}
+            </div>
+          </div>
+          <div class="dd-blog__body">
+            {% for child in collection %}
+              {% include 'partials/item_list.html.twig' with {'page': child, 'truncate': true} %}
+            {% endfor %}
+          </div>
+          {% if config.plugins.pagination.enabled and collection.params.pagination %}
+          <div class="dd-blog__pagination">
+              {% include 'partials/pagination.html.twig' with {'base_url': page.url, 'pagination': collection.params.pagination} %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block cta %}
+  {% include 'partials/cta.html.twig' %}
+{% endblock %}

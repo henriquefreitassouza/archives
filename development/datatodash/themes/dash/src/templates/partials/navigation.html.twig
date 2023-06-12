@@ -1,0 +1,37 @@
+<div class="dd-navigation__menu-open">
+  <a href="#menu-open" class="btn btn-link dd-navigation__menu-open-button"><i class="icon icon-2x icon-menu"></i></a>
+</div>
+<div id="menu-open" class="dd-navigation__nav">
+    <div class="dd-navigation__nav-menu-close">
+      <a href="#" class="dd-navigation__nav-menu-close-button"><i class="icon icon-2x icon-cross"></i></a>
+    </div>
+    <ul class="dd-navigation__nav-menu nav">
+      {% if page.header.onpage_menu %}
+        {% for module in page.collection %}
+          {% if module.header.url and module.header.menu %}
+            <li class="nav-item"><a href="{{ module.header.url }}">{{ module.header.menu }}</a></li>
+          {% endif %}
+        {% endfor %}
+        <li class="nav-item"><a href="{{ base_url ~ 'blog' }}">Blog</a></li>
+        <li class="nav-item"><a class="dd-navigation__nav-item-cta btn btn-success" href="{{ base_url ~ theme_var('cta_section') }}">Teste grátis</a></li>
+      {% endif %}
+      {% for mitem in site.menu %}
+        <li class="nav-item"><a href="{{ mitem.url }}">{{ mitem.text }}</a></li>
+      {% endfor %}
+      {% if blog and category %}
+      <li class="nav-item"><a class="dd-navigation__nav-item-cta btn btn-success" href="{{ base_url ~ theme_var('cta_section') }}">Teste grátis</a></li>
+      <li class="nav-item"><a href="{{ category }}">Categorias</a></li>
+      <li class="nav-item dd-navigation__nav-search-open"><a href="#search-open"><i class="icon icon-search"></i></a></li>
+      {% endif %}
+    </ul>
+    {% if blog %}
+    <div id="search-open" class="dd-navigation__nav-search">
+      <div class="dd-navigation__nav-search-container">
+        <div class="dd-navigation__nav-search-close">
+          <a href="#" class="dd-navigation__nav-search-close-button"><i class="icon icon-2x icon-cross"></i></a>
+        </div>
+        {% include 'partials/search_form.html.twig' %}
+      </div>
+    </div>
+    {% endif %}
+</div>

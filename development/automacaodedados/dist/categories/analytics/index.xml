@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Analytics on Automação de Dados</title>
+    <link>https://www.automacaodedados.com.br/categories/analytics/</link>
+    <description>Recent content in Analytics on Automação de Dados</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 30 Nov 2017 08:39:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/categories/analytics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lidando com diferenças nas ferramentas de testes e de analytics</title>
+      <link>https://www.automacaodedados.com.br/stories/dados-de-testes-ab-no-google/</link>
+      <pubDate>Thu, 30 Nov 2017 08:39:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/dados-de-testes-ab-no-google/</guid>
+      <description>O número de visitantes ou sessões que ferramentas de testes online mostram é diferente do número reportado em ferramentas de analytics, mesmo que o teste esteja rodando com 100% do tráfego. As vezes a diferença é tal que levanta dúvidas sobre qual o conjunto de números de acessos e conversões que devem ser considerados. Como então fazer com que essa discrepância seja a menor possível?</description>
+    </item>
+    
+  </channel>
+</rss>

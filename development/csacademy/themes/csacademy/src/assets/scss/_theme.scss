@@ -1,0 +1,450 @@
+// 0. Reset
+// --------
+
+.button {
+  text-transform: uppercase;
+}
+
+.title-bar {
+  .cs-main-menu__mobile-toggle {
+    color: $white;
+
+    &:hover, &:active, &:focus {
+      color: $white;
+    }
+  }
+}
+
+.menu {
+  a {
+    color: $white;
+
+    &:hover, &:focus, &:active {
+      color: $csacademy-light-color;
+    }
+  }
+}
+
+.wpcf7-form {
+  label {
+    font-size: $label-font-size;
+  }
+
+  input, textarea, select {
+    font-size: $input-font-size;
+  }
+
+  select {
+    margin-bottom: 0;
+  }
+
+  input[type=submit] {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2rem 0 0;
+    padding: .85em 1em;
+    border: 1px solid transparent;
+    border-radius: 0;
+    transition: background-color .25s ease-out,color .25s ease-out;
+    font-family: inherit;
+    -webkit-appearance: none;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: $csacademy-primary-color;
+    color: $white;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: $button-background-hover;
+    }
+  }
+}
+
+.wpcf7-response-output {
+  margin: auto 0 !important;
+  padding: 0 !important;
+}
+
+.wpcf7-validation-errors, .wpcf7-mail-sent-ng {
+  border: 0 !important;
+  color: $input-error-color !important;
+}
+
+.widget-title {
+  font-size: 1.25rem;
+}
+
+.widget {
+  & > ul { list-style: none; }
+}
+
+.search-form {
+  & > .search-submit {
+    padding: .65em .85em;
+    border: 1px solid transparent;
+    border-radius: 0;
+    transition: background-color .25s ease-out,color .25s ease-out;
+    font-family: inherit;
+    -webkit-appearance: none;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: $csacademy-primary-color;
+    color: $white;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: $button-background-hover;
+    }
+  }
+}
+
+// 1. Base Typography
+// ------------------
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  text-transform: $header-font-capitalize;
+}
+
+// 2. Layout
+// ---------
+
+.cs-header-wrapper {
+  padding: 4rem 0;
+
+  @include breakpoint(medium) {
+    padding: 12rem 0;
+  }
+}
+
+.cs-content-wrapper {
+  padding: 2rem 0;
+
+  @include breakpoint(medium) {
+    padding: 4rem 0;
+  }
+
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6 {
+    font-weight: $global-weight-bold;
+  }
+
+  &--center {
+    & > h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &--left {
+
+  }
+}
+
+.cs-section__header {
+  font-weight: $global-weight-bold;
+  text-align: center;
+
+  &--white {
+    color: $white;
+  }
+}
+
+.cs-section__cta {
+  text-align: center;
+}
+
+.cs-sidebar {
+  & > section {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.cs-post {
+  &__entry-header {
+
+  }
+
+  &__entry-meta {
+    background-color: $csacademy-light-color;
+    padding: .80rem .65rem;
+
+    & a { color: $white; }
+  }
+
+  &__entry-content {
+    padding: 1.5rem 0 0.5rem;
+  }
+
+  &__entry-footer {
+    font-size: 0.8rem;
+  }
+
+  &__comments {
+    margin-top: 1.5rem;
+    padding: 2rem 2.5rem;
+    background-color: $csacademy-secondary-color;
+    color: $white;
+
+    &-title {
+
+    }
+
+    &-list {
+      list-style: none; margin: 0; padding: 0;
+    }
+
+    &-none {
+
+    }
+
+  }
+}
+
+.comment-metadata {
+  padding: 0.8rem 0;
+}
+
+.comment-respond {
+  margin-top: 2rem;
+
+  & input[type=submit] {
+    padding: .65em .85em;
+    border: 1px solid transparent;
+    border-radius: 0;
+    transition: background-color .25s ease-out,color .25s ease-out;
+    font-family: inherit;
+    -webkit-appearance: none;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    background-color: $csacademy-primary-color;
+    color: $white;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: $button-background-hover;
+    }
+  }
+}
+
+.comment-form-comment {
+  & > label { color: $white; font-weight: $global-weight-bold; }
+}
+
+// 3. Sections
+// -----------
+
+.cs-main-menu {
+  .grid-container {
+    flex-grow: 1;
+  }
+
+  .custom-logo {
+    max-width: 100%;
+    width: 100px;
+  }
+
+  .submenu {
+    padding: 1.2rem 0;
+
+    .is-submenu-item {
+      @include breakpoint(medium) {
+        text-align: right;
+      }
+    }
+  }
+
+  .site-branding {
+    a { color: $white; }
+  }
+}
+
+.cs-header {
+  background-size: cover;
+  background-color: $csacademy-medium-color;
+
+  .cs-header__course-information {
+    background-color: $csacademy-secondary-color;
+    color: $white;
+    padding: 1.2rem;
+    text-align: center;
+
+    div {
+      padding: .5rem;
+    }
+
+    a {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
+
+  .cs-header__signup {
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
+
+.cs-course-navigation {
+  background-color: $csacademy-dark-color;
+  padding: 1.2rem;
+}
+
+.cs-page-header {
+  padding: 3rem 0;
+
+  .cs-header__content {
+
+  }
+}
+
+.cs-speakers {
+  &__speaker {
+    flex-direction: column;
+    border: 1px solid $csacademy-secondary-color;
+    margin: 1rem 0;
+    padding: 2.5rem;
+
+    &-picture {
+      text-align: center;
+      margin-bottom: 1rem;
+
+      img {
+        max-width: 400px;
+        width: 100%;
+      }
+
+      @include breakpoint(medium) {
+        margin-bottom: 0;
+      }
+    }
+
+    &-minibio {
+      h3, strong { text-align: center; }
+      strong { display: block; margin-bottom: 0.5rem; }
+
+      @include breakpoint(large) {
+        margin-left: 2.5rem;
+
+        h3, strong { text-align: left; }
+      }
+    }
+  }
+}
+
+.cs-modules {
+  &__container {
+
+  }
+
+  &__item {
+    a {
+      & > strong {
+        text-transform: uppercase;
+      }
+
+      & > span {
+        display: block;
+        font-size: rem-calc(16);
+        margin-top: 0.5rem;
+      }
+
+      &:hover, &:focus, &:active {
+        color: $white;
+      }
+    }
+
+    &:last-child {
+      border-bottom: 1px solid;
+    }
+  }
+}
+
+.cs-signup {
+
+  &__map {
+    height: 0; overflow: hidden; padding-bottom: 56.25%; position: relative;
+
+    iframe {
+      height: 100%; left: 0; position: absolute; top: 0; width: 100%;
+    }
+  }
+
+  &__info {
+    &-price {
+      padding: 1rem 1.5rem;
+      background-color: $csacademy-secondary-color;
+      color: $white;
+      font-weight: $global-weight-bold;
+    }
+  }
+
+  &__cta {
+    margin-top: 3rem;
+
+    @include breakpoint(large) {
+      margin-top: 0;
+    }
+  }
+}
+
+.cs-footer {
+
+  .cs-footer__about {
+    background-color: $csacademy-dark-color;
+    color: $white;
+    padding: 1.2rem 0;
+
+    &-text {
+      line-height: 2rem;
+    }
+
+    .cs-footer__navigation {
+      .menu-item {
+        a {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  .cs-footer__copyright {
+    background-color: $black;
+    color: $white;
+    padding: 1.2rem 0;
+  }
+}
+
+.cs-courses {
+  &__course-info {
+    transition: all .2s ease-in-out;
+
+    &-title {
+      font-weight: $global-weight-bold;
+    }
+
+    &-metadata {
+      color: $csacademy-secondary-color;
+    }
+
+    &-content {
+      color: $black;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

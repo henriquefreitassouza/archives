@@ -1,0 +1,12 @@
+﻿Musicatura at a glance
+
+Musicatura é uma plataforma de apoio a estudantes e instrutores interessados em aulas de música. A plataforma permite que músicos aprendizes e instrutores se conheçam e agendem aulas sobre quaisquer instrumentos ou assuntos ligados a música. 
+O estudante que se cadastra tem acesso a um banco de dados de instrutores cadastrados na plataforma com detalhes sobre seu método e campos de ensino e sua agenda de aulas. O estudante pode contatar o instrutor e avaliar suas aulas para que outros estudantes tenham depoimentos sobre o serviço prestado. O estudante tem acesso a materiais de apoio que o professor lhe disponibilize pela ferramenta.
+O instrutor que se cadastra tem acesso a um banco de dados de estudantes cadastrados na plataforma com detalhes sobre sua agenda de aulas, áreas de interesse e nível de conhecimento nestas áreas.
+Tanto o instrutor quanto o estudante podem procurar pessoas para combinar aulas, a plataforma sugere estudantes ou instrutores para o usuário com base em sua localização geográfica. Pessoas podem ser encontradas com base em filtros definidos pelo usuário como verba disponível para investir nas aulas, por calendário de disponibilidade ou localidade específica. O estudante informa sua disponibilidade para novas aulas como um sistema de vagas de emprego e os instrutores interessados podem entrar em contato.
+A plataforma disponibilizará conteúdo exclusivo para estudantes contratando instrutores cadastrados para desenvolver o material, que pode ser escrito ou gravado em áudio e vídeo.
+Instituições de ensino poderão se cadastrar na plataforma para oferecer seus serviços utilizando a ferramenta para diminuir seus próprios custos de operação. Ongs e instituições que executam projetos sociais poderão utilizar a ferramenta gratuitamente em parceria com o Musicatura.
+A plataforma incentivará o instrutor a realizar a sua primeira aula gratuitamente e o site irá fazer sua remuneração com base na hora aula. O estudante deve confirmar a aula para que o instrutor receba o pagamento.
+Estudantes e instrutores recebem selos (badges) conforme a quantidade de aulas realizadas que foram combinadas pelo site.
+
+Musicatura = mistura de Uber, AirBnb, Mercado Livre e Netflix
