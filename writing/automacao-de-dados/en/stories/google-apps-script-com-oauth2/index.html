@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>Google Apps Script with OAuth2 | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Google Apps Script with OAuth2 | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/google-apps-script-com-oauth2/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="Google Apps Script with OAuth2 | Data Automation">
+<meta property="og:description" content="Google Apps Script with OAuth2 | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2018-01-29 14:42:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-07 14:42:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="17 minutes" />
+
+<meta property="article:tag" content="Automation" />
+<meta property="article:section" content="Automation" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/google-apps-script-com-oauth2/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/google-apps-script-com-oauth2/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="OAuth2 authentication flow.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/google-apps-script-com-oauth2/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/google-apps-script-com-oauth2/images/thumbnail_huae1c884c85eba8321296d9a909c79aac_36559_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2018-01-29 14:42:00 &#43;0000 UTC" itemprop="datePublished">29/01/2018 14:42:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/automation" itemprop="articleSection">automation</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Google Apps Script with OAuth2</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Google Apps Script is packed with many features to enhance other Google products. One of these features allows Google apps to connect with third party services. This feature will be presented throughout this post, focusing on APIs that authenticate using OAuth2 protocol.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/google-apps-script-com-oauth2/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Google Apps Script with OAuth2</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 17 minutes</strong>
+        <p>Published on January 29, 2018 and updated on November 07, 2021.</p>
+<p>Update November 07, 2021: Since this post was published, Google Apps Script had many updates, including changes to the interface, the adoption of ES6 for writing Javascript, a new log output system and a new trigger management system. Authenticating on services that use OAuth2, though, works the same way as the time of the original publication.</p>
+<h2 id="what-is-oauth2">What is OAuth2?</h2>
+<p>It is the second version of an authentication protocol that grant permissions to resources based on the privileges of the user that is trying to access them. OAuth protocol was mentioned on this blog, when discussing <a href="/en/stories/fundamentos-das-apis/" >the fundamentals of APIs</a>.</p>
+<h2 id="why-use-oauth">Why use OAuth?</h2>
+<p>Other methods of authentication, such as API keys, require developers to manipulate and store these keys safely somewhere. Although some services implement restrictions around the usage of keys, it is still up to the developer to secure the keys. Another problem with keys is that they usually disregard the level of privileges that users using it have, making it difficult to grant the right permissions to the right users. OAuth protocol implement the concept of tokens, keys that expire, grant specific privileges and are bound to a single authenticated user.</p>
+<p>To illustrate the difference between authenticating with OAuth and API keys, imagine the following: someone arrives at a hotel and ask for a room. The manager then gives the guest a handful of keys that opens all doors, even if the guest is only going to use one room. At the end of the stay, the guest check out and forget to give the keys back to the manager. The stay was so good that he recommended the hotel to a friend, to whom he gave the whole set of keys. At the end of the stay, the second guest organized a party and wrecked the whole room. In this example, API keys is the equivalent to the handful of keys. These keys do not expire, open every room and anyone can use.</p>
+<p>Imagine now a new scenario: the same person goes to a hotel and asks for a room. The manager then asks for how many people and if the guest have any particular preferences. After answering all questions, the manager find the appropriate key, give it to the guest and informs the room number. At the end of the stay, the guest give the key back to the manager and leave the hotel. The experience was very nice and this person recommend the hotel to a friend. The friend then go to the hotel and meet the manager, who ask the same questions about size and preferences in order to find the best room. Upon answering the questions, the manager then give another key to the guest, which opens up a different room. At the end of the stay, the new guest give they key back to the manager and leave. In this second example, the key is a OAuth token. This key is used by specific users to access specific resources and is in possession of the user as long as he&rsquo;s hosted in the hotel. This is the idea behind OAuth: authentication and privileges are managed with security in mind. Even if another user have an access token, this token will not have use if it was not granted to him.</p>
+<h2 id="oauth2-protocol-authorization-flow">OAuth2 protocol authorization flow</h2>
+<p>A OAuth2 authorization flow works as follows:</p>
+<ul>
+<li>Users initiate the process by triggering some event, such as a button click;</li>
+<li>Users are then required to provide access credentials;</li>
+<li>If provided credentials are correct, the user is identified. On the contrary, the system will block access to protected resources;</li>
+<li>Authenticated users receive access tokens that grant the amount of privileges as defined by the owner of protected resources;</li>
+<li>Users ask for protected resources and send their access token to confirm their identities;</li>
+<li>If both user and token are recognized, restricted data is sent back to the user.</li>
+</ul>
+<p>This flow looks like the one from the following image, made by <a href="https://www.digitalocean.com/" target="_blank" rel="noopener">Digital Ocean</a>:</p>
+<figure >
+  
+  <img data-src="images/figure1-oauth2-authentication-process.webp" class="lazy" alt="OAuth2 authentication flow." title="OAuth2 authentication flow." />
+  
+  
+  <figcaption>
+    <p>OAuth2 authentication flow. Source: Digital Ocean.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="how-does-oauth2-and-google-apps-script-are-used-together">How does OAuth2 and Google Apps Script are used together?</h2>
+<p>External services may use different approaches when authenticating and authorizing users, and sometimes have more than one. Google apps, for instance, may use both API keys and OAuth2. Google Apps Script have no native support to OAuth2, but there are external libraries that can be added to projects. Let&rsquo;s see how this works by connecting a spreadsheet created on Google Sheets with <a href="https://search.google.com/search-console/about" target="_blank" rel="noopener">Google Search Console</a> (former Webmaster Tools).</p>
+<h3 id="1-create-a-new-file-on-google-sheets">1. Create a new file on Google Sheets</h3>
+<p>Create a new file, then go to Tools &gt; Script Editor. The script editor is Google Apps Script.</p>
+<figure >
+  
+  <img data-src="images/figure2-google-apps-script-editor.webp" class="lazy" alt="Google Apps Script file editor." title="Google Apps Script file editor." />
+  
+  
+  <figcaption>
+    <p>Google Apps Script file editor. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>With the exception of Code.gs, all files were created by me. The first step is to install the library that implements OAuth2. With the editor opened, go to Resources &gt; Libraries. The field &ldquo;Find a Library&rdquo; is a search engine for libraries. The code associated with the library used throughout this post is <strong>1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF</strong>. It suffice to paste this code into the field and the library will show up. Select the latest version (24 by the time this post was published) and hit OK.</p>
+<figure >
+  
+  <img data-src="images/figure3-google-apps-script-oauth2-plugin.webp" class="lazy" alt="OAuth2 library, made by Google." title="OAuth2 library, made by Google." />
+  
+  
+  <figcaption>
+    <p>OAuth2 library, made by Google. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<h3 id="2-setup-the-project-that-was-associated-with-the-script-on-google-cloud-console">2. Setup the project that was associated with the script on Google Cloud Console</h3>
+<p><a href="https://console.cloud.google.com/" target="_blank" rel="noopener">Google Cloud Console</a> is a platform that host apps built and used by Google services, like plugins. Custom apps and access credentials are managed on Google Cloud Console. To access Google Cloud Console go to Resources &gt; Cloud Platform project. A popup window will provide a link with format [script-name]-project-id-[project-id], where [script-name] is the name given to the script associated with the spreadsheet and [project-id] is a random identifier assigned by Google Cloud Console.</p>
+<figure >
+  
+  <img data-src="images/figure4-google-cloud-project-id.webp" class="lazy" alt="Google Cloud Project&#39;s ID associated to the script." title="Google Cloud Project&#39;s ID associated to the script." />
+  
+  
+  <figcaption>
+    <p>Google Cloud Project&#39;s ID associated to the script. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Projects created on Google Apps Script will also create Google Cloud Console projects, where access credentials for third party services are managed.</p>
+<figure >
+  
+  <img data-src="images/figure5-google-cloud-project-info.webp" class="lazy" alt="Google Cloud Console project&#39;s dashboard." title="Google Cloud Console project&#39;s dashboard." />
+  
+  
+  <figcaption>
+    <p>Google Cloud Console project&#39;s dashboard. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>One the project is open, it is necessary to select all Google services to be used. There is one for Search Console, which will be used for this post. Within the section &ldquo;Getting Started&rdquo; click at &ldquo;Enable APIs and get credentials like keys&rdquo;. On the sidebar, go to &ldquo;Library&rdquo; and search for &ldquo;Search Console&rdquo; in the search box. The first result is from an API called &ldquo;Google Search Console API&rdquo;. Choose this option and click at the button labeled &ldquo;Enable&rdquo;.</p>
+<figure >
+  
+  <img data-src="images/figure6-google-search-console-api.webp" class="lazy" alt="Google Search Console API connection service." title="Google Search Console API connection service." />
+  
+  
+  <figcaption>
+    <p>Google Search Console API connection service. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>After selecting the API, it is necessary to inform how users will authenticate when retrieving data through this API. There are basically two authentication methods: authentication keys and OAuth2. This post will use the option OAuth2. In the sidebar, choose the option &ldquo;Credentials&rdquo; and in the next screen, click in &ldquo;Create credentials&rdquo;. In the following drop down, select &ldquo;OAuth client ID&rdquo;.</p>
+<figure >
+  
+  <img data-src="images/figure7-google-cloud-project-credentials.webp" class="lazy" alt="First step when setting up new Google Search Console API credentials." title="First step when setting up new Google Search Console API credentials." />
+  
+  
+  <figcaption>
+    <p>First step when setting up new Google Search Console API credentials. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Google Cloud Console will ask what kind of app is being built. Select the option &ldquo;Web application&rdquo; and fill the required fields. There are two required fields, which are the name of the app and at least one redirect URL, which will be used to redirect users after authentication process. This URL will be the one assigned to the script created at Google Apps Script. This URL will be something like <a href="https://script.google.com/macros/d/%5BSCRIPT">https://script.google.com/macros/d/[SCRIPT</a> ID]/usercallback, where [SCRIPT ID] is a random identifier generated by Google Apps Script when the project was created. This id can be found in File &gt; Project properties. Copy the id and set up the URL.</p>
+<p>Once the project is configured, the following information will be provided in Google Cloud Console: a CLIENT ID and a CLIENT SECRET. These will be used to build another URL, the authentication URL. Copy this information and close Google Cloud Console.</p>
+<h3 id="3-write-the-code-that-will-authorize-and-access-the-api">3. Write the code that will authorize and access the API</h3>
+<p>Now that Google Cloud Console is ready to manage external requests it is possible to call this service from Google Apps Script, given that there are credentials with access to Search Console data. The first thing to be done is to write the code that will be used to authenticate users that will access Search Console data from the spreadsheet. There is a default file created in the editor called Code.gs and an empty function. I&rsquo;ve created a new file declaring global variables to ease maintenance. In this newly created file, declare the following variables:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">CLIENT_ID</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_ID&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">CLIENT_SECRET</span> <span class="o">=</span> <span class="s1">&#39;YOUR_CLIENT_SECRET&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">SCOPE</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/auth/webmasters.readonly&#39;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">SITE</span> <span class="o">=</span> <span class="s1">&#39;YOUR_SITE_ON_SEARCH_CONSOLE&#39;</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>CLIENT_ID and CLIENT_SECRET are credentials provided by Google Cloud Console when creating an authorization method. Replace both &ldquo;YOUR_CLIENT_ID&rdquo; and &ldquo;YOUR_CLIENT_SECRET&rdquo; with the ones that were copied from Google Cloud Console. Access scopes are a requirement for any OAuth2 flow and grant specific access permissions. All access scopes for OAuth2 flows at Google are available on the <a href="https://developers.google.com/identity/protocols/googlescopes" target="_blank" rel="noopener">documentation page</a>. Search Console have two scopes: readonly, which grants read privileges, and webmasters, which grants read and write privileges. This post will use readonly. The variable SITE declare the website that is registered in Search Console, whose data will be returned. The name of this website should match the one registered on Search Console. If the website is, for instance, <a href="http://henriquefreitas.com.br">http://henriquefreitas.com.br</a>, this variable should be filled accordingly.</p>
+<p>Create a new file on File &gt; New &gt; Script file. Give a name and hit OK. In this file, write the code that instantiate the OAuth2 object and start the authorization flow:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getService</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">OAuth2</span><span class="p">.</span><span class="nx">createService</span><span class="p">(</span><span class="s1">&#39;searchconsole&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">setAuthorizationBaseUrl</span><span class="p">(</span><span class="s1">&#39;https://accounts.google.com/o/oauth2/auth&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">setTokenUrl</span><span class="p">(</span><span class="s1">&#39;https://accounts.google.com/o/oauth2/token&#39;</span><span class="p">)</span>
+
+      <span class="p">.</span><span class="nx">setClientId</span><span class="p">(</span><span class="nx">CLIENT_ID</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">setClientSecret</span><span class="p">(</span><span class="nx">CLIENT_SECRET</span><span class="p">)</span>
+
+      <span class="p">.</span><span class="nx">setCallbackFunction</span><span class="p">(</span><span class="s1">&#39;authCallback&#39;</span><span class="p">)</span>
+
+      <span class="p">.</span><span class="nx">setPropertyStore</span><span class="p">(</span><span class="nx">PropertiesService</span><span class="p">.</span><span class="nx">getUserProperties</span><span class="p">())</span>
+
+      <span class="p">.</span><span class="nx">setScope</span><span class="p">(</span><span class="nx">SCOPE</span><span class="p">)</span>
+
+      <span class="p">.</span><span class="nx">setParam</span><span class="p">(</span><span class="s1">&#39;login_hint&#39;</span><span class="p">,</span> <span class="nx">Session</span><span class="p">.</span><span class="nx">getActiveUser</span><span class="p">().</span><span class="nx">getEmail</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">setParam</span><span class="p">(</span><span class="s1">&#39;access_type&#39;</span><span class="p">,</span> <span class="s1">&#39;offline&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">authCallback</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="nx">getService</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">isAuthorized</span> <span class="o">=</span> <span class="nx">service</span><span class="p">.</span><span class="nx">handleCallback</span><span class="p">(</span><span class="nx">request</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isAuthorized</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">HtmlService</span><span class="p">.</span><span class="nx">createHtmlOutput</span><span class="p">(</span><span class="s1">&#39;Authenticated. You can close this tab.&#39;</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">HtmlService</span><span class="p">.</span><span class="nx">createHtmlOutput</span><span class="p">(</span><span class="s1">&#39;Access denied. Check your credentials and try again. You can close this tab.&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Note that the variables that were created at the global variables file are recognized in this file. The function getService is responsible for creating and returning an OAuth2 object with defined scope and authentication flow. Different methods are chained to produce the final object:</p>
+<ul>
+<li>setAuthorizationBaseUrl build the authentication URL. This URL is built using data such as CLIENT ID and CLIENT SECRET, making it unique for each user. The base section, though, is the same and defined on this method;</li>
+<li>setTokenUrl is the URL that will return valid authentication tokens for authorized users;</li>
+<li>setCallbackFunction points to a function that will be executed after the authentication flow finishes;</li>
+<li>setPropertyStore registers where tokens will be stored;</li>
+<li>setScope set access scope;</li>
+<li>setParam add custom configurations. Parameter login_hint prevent login screens to be shown to users logged in more than one Google account. Parameter access_type authorize offline usage.</li>
+</ul>
+<p>The function authCallback is triggered every time getService is called. This checks if users are authenticated and informs them. A sidebar is opened in the browser showing messages for login attempts.</p>
+<p>Create another file in File &gt; New &gt; Script file. Name this file and hit OK. This is the file that will request data from Search Console through its API. Write the following code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getSearchConsole</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">apiUrl</span> <span class="o">=</span> <span class="s1">&#39;https://www.googleapis.com/webmasters/v3/sites/&#39;</span> <span class="o">+</span> <span class="nx">SITE</span> <span class="o">+</span> <span class="s1">&#39;/searchAnalytics/query?fields=rows&amp;alt=json&#39;</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">getSearchConsoleData</span><span class="p">(</span><span class="nx">apiUrl</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">json</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">reportHeaders</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Keyword&#39;</span><span class="p">,</span> <span class="s1">&#39;Clicks&#39;</span><span class="p">,</span> <span class="s1">&#39;Impressions&#39;</span><span class="p">,</span> <span class="s1">&#39;CTR&#39;</span><span class="p">,</span> <span class="s1">&#39;Position&#39;</span><span class="p">]];</span>
+      <span class="nx">displaySearchConsoleData</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="nx">reportHeaders</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getSearchConsoleData</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">dimensions</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">response</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">headers</span><span class="p">,</span> <span class="nx">payload</span><span class="p">,</span> <span class="nx">options</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">startDate</span> <span class="o">=</span> <span class="nx">Utilities</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">-</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">),</span> <span class="nx">Session</span><span class="p">.</span><span class="nx">getScriptTimeZone</span><span class="p">(),</span> <span class="s1">&#39;yyyy-MM-dd&#39;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">endDate</span> <span class="o">=</span> <span class="nx">Utilities</span><span class="p">.</span><span class="nx">formatDate</span><span class="p">(</span><span class="k">new</span> <span class="nb">Date</span><span class="p">(),</span> <span class="nx">Session</span><span class="p">.</span><span class="nx">getScriptTimeZone</span><span class="p">(),</span> <span class="s1">&#39;yyyy-MM-dd&#39;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="nx">getService</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">service</span><span class="p">.</span><span class="nx">hasAccess</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Authorization&#39;</span><span class="o">:</span> <span class="s1">&#39;Bearer &#39;</span> <span class="o">+</span> <span class="nx">service</span><span class="p">.</span><span class="nx">getAccessToken</span><span class="p">()</span> <span class="p">};</span>
+    <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;startDate&#39;</span><span class="o">:</span> <span class="nx">startDate</span><span class="p">,</span>
+      <span class="s1">&#39;endDate&#39;</span><span class="o">:</span> <span class="nx">endDate</span><span class="p">,</span>
+      <span class="s1">&#39;dimensions&#39;</span><span class="o">:</span> <span class="nx">dimensions</span>
+    <span class="p">};</span>
+    <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;headers&#39;</span><span class="o">:</span> <span class="nx">headers</span><span class="p">,</span>
+      <span class="s1">&#39;contentType&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;method&#39;</span><span class="o">:</span> <span class="s1">&#39;post&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;payload&#39;</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">payload</span><span class="p">),</span>
+      <span class="s1">&#39;muteHttpExceptions&#39;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">};</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nx">response</span> <span class="o">=</span> <span class="nx">UrlFetchApp</span><span class="p">.</span><span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">options</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{}</span>
+
+  <span class="p">}</span> <span class="k">else</span> <span class="nx">showDialog</span><span class="p">();</span>
+
+  <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">displaySearchConsoleData</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="nx">reportHeaders</span><span class="p">,</span> <span class="nx">numKeys</span><span class="p">,</span> <span class="nx">initialColumnPosition</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">searchConsoleData</span> <span class="o">=</span> <span class="nx">spreadsheet</span><span class="p">.</span><span class="nx">getActiveSpreadsheet</span><span class="p">().</span><span class="nx">getSheetByName</span><span class="p">(</span><span class="s1">&#39;Search Console&#39;</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">report</span> <span class="o">=</span> <span class="p">[];</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">json</span><span class="p">.</span><span class="nx">rows</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">numKeys</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">keys</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
+        <span class="nx">json</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">keys</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span>
+      <span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">report</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">keys</span><span class="p">);</span>
+
+    <span class="nx">report</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span>
+      <span class="nx">json</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">clicks</span><span class="p">,</span>
+      <span class="nx">json</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">impressions</span><span class="p">,</span>
+      <span class="nx">json</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">ctr</span><span class="p">,</span>
+      <span class="nx">json</span><span class="p">.</span><span class="nx">rows</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">position</span>
+    <span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="nx">searchConsoleData</span><span class="p">.</span><span class="nx">getRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nx">initialColumnPosition</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">reportHeaders</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">).</span><span class="nx">setValues</span><span class="p">(</span><span class="nx">reportHeaders</span><span class="p">);</span>
+  <span class="nx">searchConsoleData</span><span class="p">.</span><span class="nx">getRange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nx">initialColumnPosition</span><span class="p">,</span> <span class="nx">report</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">reportHeaders</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">length</span><span class="p">).</span><span class="nx">setValues</span><span class="p">(</span><span class="nx">report</span><span class="p">);</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This code was split along different functions to modularize the project. It is possible to make different API call specifying different views of data. What this code does is:</p>
+<ul>
+<li>Function getSearchConsole build the API endpoint where data is;</li>
+<li>Next, call this URL using getSearchConsoleData which was created accepting as parameters the URL and a list with just one item: query. Query is the option that return searched keywords that resulted in search results being printed or clicked at SERP (Search Engine Results Page). There are other options, such as page, device, country, search type and date. To return more than one option, just pass it to the list, for instance: [&lsquo;query&rsquo;, &lsquo;page&rsquo;, &lsquo;device&rsquo;]. This list will result in the dimensions that will be returned along with all metrics;</li>
+<li>Check response to see if there&rsquo;s any data;</li>
+<li>If there is data, decode the string, which is in JSON, and write the data into the spreadsheet using the method displaySearchConsoleData, created at the end of the file. This method receive as parameters the data that was returned from the API already decoded, a multidimensional list of headers that will identify each column of data, a number of keys that align with specific section of the decoded object and the column number from which the table of data will begin.</li>
+</ul>
+<p>Calls to Google Search Console API will return objects like the following one:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+  <span class="p">{</span>
+    <span class="nx">keys</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">query</span><span class="o">:</span> <span class="s1">&#39;keyword&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">clicks</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="nx">impressions</span><span class="o">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="nx">ctr</span><span class="o">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="nx">position</span><span class="o">:</span> <span class="mf">3.2</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nx">keys</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">query</span><span class="o">:</span> <span class="s1">&#39;another_keyword&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">clicks</span><span class="o">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="nx">impressions</span><span class="o">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="nx">ctr</span><span class="o">:</span> <span class="mf">0.6</span><span class="p">,</span>
+    <span class="nx">position</span><span class="o">:</span> <span class="mf">1.2</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The section keys hold the dimensions (or qualities) of data, and all metrics are alongside the remaining properties of the object. The parameter that contains the number of keys corresponds to the number of dimensions that were returned. This is done so the print function build the data table correctly. The last parameter defines from which sheet column the function should start writing the table.</p>
+<p>Function getSearchConsoleData, called by getSearchConsole, does the following:</p>
+<ul>
+<li>Use getService to access the OAuth2 instance to see if the user is authorized to access Search Console data;</li>
+<li>If it is, objects with request headers and some configurations (start date, finish data and dimensions) are created to be sent along the request;</li>
+<li>Call Search Console API using a static method available on Google Apps Script: UrlFetchApp.fetch(url, options). This method return an HTTPResponse object with resulting data and response headers;</li>
+<li>Any data returned by this call will be stored on a variable called response, which is then returned to the requester;</li>
+<li>Method showDialog, called when users aren&rsquo;t logged in, will be created further down the line.</li>
+</ul>
+<p>Function displaySearchConsoleData show in the spreadsheet the data that was returned from the API and receive as parameters the decoded object, a list of headers in a multidimensional array and the aforementioned number of keys and the number of the column that will start the report. It works the following way:</p>
+<ul>
+<li>Open a sheet inside the spreadsheet called Search Console (check if the name of the sheet where Search Console data will be stored matches the sheet name here);</li>
+<li>Iterate over the object, accessing its properties;</li>
+<li>Store all dimensions in an array called keys;</li>
+<li>Store this newly created array inside another one called report;</li>
+<li>Iterate over all Search Console metrics properties, adding them to the reports list;</li>
+<li>Write both table headers and data into the selected sheet.</li>
+</ul>
+<h2 id="4-build-an-interface-that-will-allow-users-to-call-the-api">4. Build an interface that will allow users to call the API</h2>
+<p>Up to this moment there is no way to interact with this script from the spreadsheet. In Google Apps Script editor, create a new file and write the following code:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">showSidebar</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">service</span> <span class="o">=</span> <span class="nx">getService</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">template</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">service</span><span class="p">.</span><span class="nx">hasAccess</span><span class="p">())</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">authorizationUrl</span> <span class="o">=</span> <span class="nx">service</span><span class="p">.</span><span class="nx">getAuthorizationUrl</span><span class="p">();</span>
+    <span class="nx">template</span> <span class="o">=</span> <span class="nx">HtmlService</span><span class="p">.</span><span class="nx">createTemplate</span><span class="p">(</span>
+      <span class="s1">&#39;&lt;h1&gt;Autentication&lt;/h1&gt; &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;&lt;a href=&#34;&lt;?= authorizationUrl ?&gt;&#34; target=&#34;_blank&#34;&gt;Authorize this script to access Search Console data on your behalf.&lt;/a&gt;. &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;&lt;p&gt;Why do I have to do this?&lt;/p&gt; &#39;</span> <span class="o">+</span>
+      <span class="s1">&#39;&lt;p&gt;This app needs your permission in order to access data stored on Google Search Console.&lt;/p&gt;&#39;</span>
+    <span class="p">);</span>
+    <span class="nx">template</span><span class="p">.</span><span class="nx">authorizationUrl</span> <span class="o">=</span> <span class="nx">authorizationUrl</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">template</span> <span class="o">=</span> <span class="nx">HtmlService</span><span class="p">.</span><span class="nx">createTemplate</span><span class="p">(</span><span class="s1">&#39;This script is already authorized to access data on Search Console. This tab can be closed.&#39;</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">page</span> <span class="o">=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">();</span>
+  <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getUi</span><span class="p">().</span><span class="nx">showSidebar</span><span class="p">(</span><span class="nx">page</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">showDialog</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">service</span> <span class="o">=</span> <span class="nx">getService</span><span class="p">();</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">service</span><span class="p">.</span><span class="nx">hasAccess</span><span class="p">())</span> <span class="nx">Browser</span><span class="p">.</span><span class="nx">msgBox</span><span class="p">(</span><span class="s1">&#39;Authorize this script to access data on Google Search Console on your behalf. Access Search Console &gt; Login.&#39;</span><span class="p">,</span> <span class="nx">Browser</span><span class="p">.</span><span class="nx">Buttons</span><span class="p">.</span><span class="nx">OK</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getData</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">getSearchConsole</span><span class="p">();</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">Browser</span><span class="p">.</span><span class="nx">msgBox</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">Browser</span><span class="p">.</span><span class="nx">Buttons</span><span class="p">.</span><span class="nx">OK</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onOpen</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">ui</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getUi</span><span class="p">();</span>
+  <span class="nx">ui</span><span class="p">.</span><span class="nx">createMenu</span><span class="p">(</span><span class="s1">&#39;Search Console&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;Login&#39;</span><span class="p">,</span> <span class="s1">&#39;showSidebar&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">addItem</span><span class="p">(</span><span class="s1">&#39;Refresh data&#39;</span><span class="p">,</span> <span class="s1">&#39;getData&#39;</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">addToUi</span><span class="p">();</span>
+
+  <span class="nx">showDialog</span><span class="p">();</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Function showSidebar show a sidebar with a link to iniciate an OAuth2 flow. In case the user is already authenticated, this information will be known to him on this sidebar.</p>
+<p>Function showDialog show a message instructing users to browse to Search Console &gt; Login. The function that build this menu will be created on this same file.</p>
+<p>Function getData call Search Console API. If it fails, users are presented with an error message.</p>
+<p>Function onOpen have a special meaning inside Google Apps Script. It is automatically executed whenever the file that is attached to the script, in this case a spreadsheet, is opened. Whenever opened, this function will create a menu called Search Console with two options: Login, to open the sidebar with a link to initiate the authentication flow, and Refresh data, which makes a new API call to Search Console.</p>
+<h3 id="5-automate-api-calls-optional">5. Automate API calls (optional)</h3>
+<p>By now, every time that this code runs, the last seven days of data will be returned from Search Console. It is possible, though, to automate these calls so users don&rsquo;t have to access the menu every time they need fresh data. To do this, go to the script editor and access Edit &gt; Current project&rsquo;s triggers. This options can be also accessed from the toolbar, represented with an icon of a clock. Both ways will show a modal with an option to create triggers. Try to create a new trigger that calls the function getData hourly, for instance. Hit the save button. At each hour this function will be called and fresh data will populate the spreadsheet automatically!</p>
+<figure >
+  
+  <img data-src="images/figure8-google-apps-script-run-trigger.webp" class="lazy" alt="Trigger configured to automatically run the function that updates the spreadsheet with Search Console data." title="Trigger configured to automatically run the function that updates the spreadsheet with Search Console data." />
+  
+  
+  <figcaption>
+    <p>Trigger configured to automatically run the function that updates the spreadsheet with Search Console data. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="automation-with-google-apps-script">Automation with Google Apps Script</h2>
+<p>Scripts like the one shown in this post are extremely useful to automate repetitive tasks and relocate teams on more strategic tasks for the department they work or for the entire company. Automate and add features to existing Google Products are just some of Google Apps Script&rsquo;s capabilities. Implementation presented in this post can be used to backup search terms and volumes for the configured Search Console property. Search Console stores twelve months of data, making backups a necessity in order to have old data to analyze. To do this, the script presented need a slight change so that fresh data do not override previous lines. Once this is adjustes it is done! Automated backups are in place.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>Read the following to have a deep understanding of Google Apps Script and OAuth2 protocol:</p>
+<ul>
+<li><a href="https://github.com/googlesamples/apps-script-oauth2" target="_blank" rel="noopener">OAuth2 library</a> created by Google and used throughout this post;</li>
+<li><a href="https://developers.google.com/apps-script/overview" target="_blank" rel="noopener">Google Apps Script documentation</a>;</li>
+<li>The post on <a href="/en/stories/fundamentos-das-apis/" >API basics</a> written on this blog;</li>
+<li>The post on <a href="/en/stories/uma-introducao-ao-google-apps-script/" >Google Apps Script basics</a> written on this blog;</li>
+<li><a href="https://aaronparecki.com/oauth-2-simplified/" target="_blank" rel="noopener">OAuth basics, por Aaron Parecki</a>;</li>
+<li><a href="https://developers.google.com/identity/protocols/OAuth2" target="_blank" rel="noopener">OAuth2 with Google Apps</a>;</li>
+<li><a href="https://developers.google.com/oauthplayground/" target="_blank" rel="noopener">OAuth2 sandbox for testing authentication with Google Services</a>;</li>
+<li><a href="https://developers.google.com/apis-explorer/#p/" target="_blank" rel="noopener">List of endpoints and addresses for testing Google' APIs</a>.</li>
+</ul>
+<p>Let&rsquo;s automate!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC">17/11/2020 09:10:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Setting up Metabase and PostgreSQL with Docker</h2>
+      <p class="mb-6 text-white" itemprop="abstract">How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</p>
+      <div>
+        <a class="button-primary" href="/en/stories/configurando-metabase-e-postgresql-no-docker/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC">03/09/2020 19:23:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets Part 2 - Moving to AWS</h2>
+      <p class="mb-6 text-white" itemprop="abstract">We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets-na-aws/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC">02/09/2018 14:07:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets: automatically exporting leads to spreadsheets</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

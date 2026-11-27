@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>Static sites with Jekyll and Github Pages | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Static sites with Jekyll and Github Pages | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/sites-estaticos-com-jekyll/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="Static sites with Jekyll and Github Pages | Data Automation">
+<meta property="og:description" content="Static sites with Jekyll and Github Pages | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2018-01-01 19:47:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-07 19:47:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="7 minutes" />
+
+<meta property="article:tag" content="Development" />
+<meta property="article:section" content="Development" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/sites-estaticos-com-jekyll/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/sites-estaticos-com-jekyll/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Octocat, Github&#39;s logo.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/sites-estaticos-com-jekyll/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/sites-estaticos-com-jekyll/images/thumbnail_hu50a9df54572a0d42146a8328e4f78410_32852_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2018-01-01 19:47:00 &#43;0000 UTC" itemprop="datePublished">01/01/2018 19:47:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/development" itemprop="articleSection">development</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Static sites with Jekyll and Github Pages</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Websites are rarely built from scratch. There are many tools and frameworks which provide built in structures to build and publish websites on the internet. This post will present Jekyll, a static site generator, and how to use it in conjunction with Github Pages to publish sites on the internet with no cost.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/sites-estaticos-com-jekyll/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Static sites with Jekyll and Github Pages</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 7 minutes</strong>
+        <p>Published on January 01, 2018 and updated on November 07, 2021.</p>
+<p>Update November 07, 2021: this blog was originally made with the technology stack presented on this post. Currently it is built using <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a>.</p>
+<p>Content management systems (CMS) are behind many websites on the internet. <a href="https://wordpress.org/" target="_blank" rel="noopener">WordPress</a> alone is present <a href="https://w3techs.com/technologies/overview/content_management/all" target="_blank" rel="noopener">on almost 30% of all published websites</a>, with 60% market share. In total, about 50% of all internet is built with some CMS technology. What makes them so popular is a combination between simplicity, ease of use, open source technology and readily available themes and plugins. Not all CMS platforms are open, but the most commonly used ones embrace open source and are maintained by huge communities of enthusiasts. There are cases, though, in which projects do not need all the features present in a CMS and can benefit from simpler structures. This is when <strong>static site generators</strong> comes in.</p>
+<h2 id="static-x-dynamic-websites">Static x dynamic websites</h2>
+<p>Dynamic sites usually have a connection with database management systems and other information sources. These information feed the structure of websites to deliver content. One example of such can be found within product pages from e-commerces. Product pages have the same base structure, but its content change according to the product being selected.</p>
+<p>A static site, on the other hand, doesn&rsquo;t use relational databases to fill its content. All content is present on HTML files that are served to the browser.</p>
+<h2 id="static-site-generators">Static site generators</h2>
+<p>Just like a CMS, static site generators are capable of producing lots of different websites, like blogs, portfolios, landing pages and even e-commerces. They even have plugins and themes that add more features to them. Possible reasons to use static site generators instead of a CMS are for its <strong>simplicity</strong>, <strong>speed</strong> and <strong>cost</strong>. While a CMS runs on a server that interprets back end programming languages and databases, static site generators need only a server that can deliver static files. Even if there is a transformation pipeline before serving files, this process is much faster than interpreting languages or consulting databases. Static sites are more lightweight, keeping them easier to maintain. One downside compared to a CMS, though, is that its users should have some knowledge on front end or markdown in order to maintain the website.</p>
+<p>There are many technologies for creating static websites. <a href="https://learn.cloudcannon.com/" target="_blank" rel="noopener">Cloud Cannon</a> built the following list with some of these tools:</p>
+<figure >
+  
+  <img data-src="images/figure1-static-site-generators.webp" class="lazy" alt="Some tools for creating static websites." title="Some tools for creating static websites." />
+  
+  
+  <figcaption>
+    <p>Some tools for creating static websites. Source: Cloud Cannon.</p>
+  </figcaption>
+  
+</figure>
+
+<p>These are just some of the tools. The website <a href="https://www.staticgen.com/" target="_blank" rel="noopener">Static Gen</a> built a list with dozens more. What they do essentially is compile the project into a series of HTML files that can be hosted on web servers. During compilation, any markup languages, template languages and other pieces of code are transformed into HTML files. Although the final content is static, each file within the project can make use of structures usually associated with programming languages such as conditionals and loops.</p>
+<h2 id="jekyll">Jekyll</h2>
+<p>I first stumbled upon static site generators by meeting <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>, a tool that have native integration with <a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a>.</p>
+<p>Jekyll have a configuration file called <strong>_config.yml</strong>. This file contains variables that can be referenced on any page of the website. Variables can store numbers, text, conditional values and lists. These variables are declared using a <strong>key: value</strong> syntax. Variables can also be scoped. Scopes can be global, which can be referenced on all pages, local, which are page specific, and it is also possible to create custom scopes. Variables can also be declared inside pages using a notation called <strong>Front Matter</strong>. Front Matter declaration are metadata with instructions on how to compile the page into the final HTML. Using Front Matter, it is possible to separate global configurations from page specific configurations. One example of such is choosing the layout that will be used to render the page. Suppose that the header and footer sections have their own files. Inside a &ldquo;child&rdquo; page, it is possible to declare a variable called <strong>layout</strong> and specify which template will be used when rendering the child page. Jekyll will search inside a templates folder for a file matching the given name.</p>
+<p>This tool is widely used to create blogs, which can be seen when analyzing the default project structure. A default project contain the following folder structure:</p>
+<ul>
+<li><strong>_draft</strong>: contains draft posts;</li>
+<li><strong>_posts</strong>: contains published posts;</li>
+<li><strong>_layouts</strong>: contains templates used on all pages;</li>
+<li><strong>_data</strong>: contains data sources that can feed pages;</li>
+<li><strong>_plugins</strong>: contains plugin files;</li>
+<li><strong>_site</strong>: contains compile HTML files to be hosed on web servers.</li>
+</ul>
+<p>The default template language used with Jekyll is <a href="http://shopify.github.io/liquid/" target="_blank" rel="noopener">Liquid</a>, created by <a href="https://pt.shopify.com/" target="_blank" rel="noopener">Shopify</a>. Generally speaking, there are two types of tags used in Liquid. They are <strong>output tags</strong> and <strong>function tags</strong>. An exit in Liquid is anything that is written between two pairs of curly braces:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{{</span> <span class="nx">value</span> <span class="p">}}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>output tags can even receive filters. Outputs are separated from filters with a vertical pipe, and some examples of filters are to uppercase letters and to slice them:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{{</span> <span class="nx">value</span> <span class="o">|</span> <span class="nx">upcase</span> <span class="p">}}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Function tags, on the other hand, execute logical operations, and are written with a pair of curly braces with percentage symbols inside. Most of these tags can be opened and closed:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">value</span> <span class="o">%</span><span class="p">}</span>
+  <span class="c1">// TODO
+</span><span class="c1"></span><span class="p">{</span><span class="o">%</span> <span class="nx">endif</span> <span class="o">%</span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Besides if else and for, include also uses this syntax:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="o">%</span> <span class="nx">include</span> <span class="nx">arquivo</span><span class="p">.</span><span class="nx">html</span> <span class="nx">param</span><span class="o">=</span><span class="s2">&#34;valor&#34;</span> <span class="o">%</span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>It doesn&rsquo;t have a close tag though, and parameters are optional.</p>
+<p>Jekyll posts are written using <a href="https://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a> by default. Post files in Jekyll must be named using the convention <strong>year-month-day.md</strong> or <strong>year-month-day.markdown</strong> with 4 digit year and month and day both with 2 digits. File extensions can be md or markdown. All posts must initiate with a Front Matter declaration at their beginning:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="l">post</span><span class="w">
+</span><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w">  </span><span class="s2">&#34;Hello world!&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w">   </span><span class="ld">2018-01-01 19:47:00</span><span class="w">
+</span><span class="w"></span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l">geral</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Front Matter is written in a language called <strong>Yaml</strong>, a serialization language used to create configuration files. Everything inside the sets of three dashes will be compiled, and Front Matter directives won&rsquo;t be visible on compiled files.</p>
+<p>Jekyll also have <a href="http://jekyllthemes.org/" target="_blank" rel="noopener">themes</a> and <a href="https://jekyllrb.com/docs/plugins/" target="_blank" rel="noopener">plugins</a> ready to be used and maintained by the community.</p>
+<h2 id="github-pages">Github Pages</h2>
+<p>Github Pages is a static site server hosted on Github. It can host websites and use Jekyll as its static site generator. Hosting websites on Github Pages is free. It is useful for hosting portfolios, blogs or any other website which doesn&rsquo;t require dynamic content. Github Pages can be used by simply creating a repository with the same name as a git account. Mine, for instance, is henriquefreitassouza.github.io, so the repository will be called henriquefreitassouza.github.io. The complete path to this newly created repository will be <a href="https://github.com/youruser/youruser.github.io">https://github.com/youruser/youruser.github.io</a>. Mine, for instance, is <a href="https://github.com/henriquefreitassouza/henriquefreitassouza.github.io">https://github.com/henriquefreitassouza/henriquefreitassouza.github.io</a>. When entering the address <a href="https://youruser.github.io">https://youruser.github.io</a>, contents within this repository will be served as web pages.</p>
+<p>Since Github Pages already uses Jekyll, it suffice to clone the repository, create all Jekyll files inside it and send them to Github once development is done. The project is automatically compiled and everything inside _site (the directory containing compiled files) will be served by Github Pages.</p>
+<p>To make the website even more professional, its repository can be referenced with a custom domain name. If you have a domain name and want it to point to the repository, this can be easily accomplished. There is a setting inside repository settings called <strong>custom domain</strong> within section <strong>Github Pages</strong>. You just have to fill the name of the domain and save the settings that a CNAME file will be created on the root of the repository. The following step is to configure DNS servers with the company that provided the domain name. If using <a href="https://registro.br/" target="_blank" rel="noopener">registro.br</a> for instance, just select the domain name, click in <strong>edit zone</strong> and add all Github addresses with the name of the domain and type <strong>A</strong>. To conclude, it is possible configure a www subdomain adding a new CNAME entry and adding www just before your domain name. The DNS addresses that Github offer are <strong>192.30.252.153</strong> and <strong>192.30.252.154</strong>. It can take up to 24 hours for propagation.</p>
+<p>A important detail about Github Pages is that any website hosted there is executed under a flag called <strong>--safe</strong>, which blocks plugins by default. If you want to use plugins with your project, one option it to compile the website in your local machine and then send the compiled website to the repository that is being served at Github Pages.</p>
+<h2 id="further-reading">Further reading</h2>
+<p>The goal with this post was to introduce the world of static site generators and not to be a tutorial of any kind. To further learn about Jekyll and Github Pages use the following sources:</p>
+<ul>
+<li><a href="https://learn.cloudcannon.com/" target="_blank" rel="noopener">Cloud Cannon's complete Jekyll tutorial</a>;</li>
+<li><a href="https://pages.github.com/" target="_blank" rel="noopener">Configuring a respository on Github Pages</a>;</li>
+<li><a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll docs</a>;</li>
+<li><a href="https://willianjusten.com.br/dominio-proprio-no-github-pages/" target="_blank" rel="noopener">Setting up a custom domain name on Github Pages using Registro.br</a>.</li>
+</ul>
+<p>Let&rsquo;s generate static websites!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/workflow-para-desenvolvimento-wordpress/images/thumbnail_huee065fcd8bcd8b13505bcfc59ae5b7fd_68810_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-09-15 16:29:00 &#43;0000 UTC">15/09/2018 16:29:00</time>
+      </div>
+      <a href="/en/categories/development" class="badge" itemprop="articleSection">development</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Automatic workflow to develop plugins and themes for WordPress</h2>
+      <p class="mb-6 text-white" itemprop="abstract">A good workflow can reduce hours with project maintenance in WordPress. This post will present one possible way to organize a project using templates and Gulp, a task runner.</p>
+      <div>
+        <a class="button-primary" href="/en/stories/workflow-para-desenvolvimento-wordpress/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

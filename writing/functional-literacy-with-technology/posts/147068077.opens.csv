@@ -1,0 +1,2 @@
+post_id,timestamp,email,post_type,post_audience,active_subscription,country,city,region,device_type,client_os,client_type,user_agent
+147068077,2024-09-27T17:40:26.072Z,henrique@henriquefreitas.com,newsletter,everyone,false,BR,,,,,,Mozilla/5.0 (X11; Linux x86_64; rv:115.0) Gecko/20100101 Thunderbird/115.15.0

@@ -1,0 +1,11 @@
+<nav class="w-full mt-4" role="navigation" itemprop="pagination">
+  <div class="flex items-center">
+    <ul class="mx-auto mb-0" role="menubar">
+      {{#each pages}}
+      <li class="inline-block px-1 page" role="menuitem" aria-posinset="{{this}}">
+        <a class="button-page bg-primary hover:no-underline hover:text-white hover:bg-primary-darker focus:ring-primary-darker dark:text-white dark:hover:text-white" href="#">{{this}}</a>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</nav>

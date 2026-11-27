@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Lidando com diferenças nas ferramentas de testes e de analytics | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Lidando com diferenças nas ferramentas de testes e de analytics | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/dados-de-testes-ab-no-google/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Lidando com diferenças nas ferramentas de testes e de analytics | Automação de Dados">
+<meta property="og:description" content="Lidando com diferenças nas ferramentas de testes e de analytics | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-11-30 08:39:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-10-31 08:39:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="12 minutos" />
+
+<meta property="article:tag" content="Analytics" />
+<meta property="article:section" content="Analytics" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/dados-de-testes-ab-no-google/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/dados-de-testes-ab-no-google/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Dashboard no Google Analytics mostrando dados de testes A/B.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/dados-de-testes-ab-no-google/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/dados-de-testes-ab-no-google/images/thumbnail_hu93f0ffe847bfb31d907f7e33d3a76905_61241_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-11-30 08:39:00 &#43;0000 UTC" itemprop="datePublished">30/11/2017 08:39:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/analytics" itemprop="articleSection">analytics</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Lidando com diferenças nas ferramentas de testes e de analytics</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">O número de visitantes ou sessões que ferramentas de testes online mostram é diferente do número reportado em ferramentas de analytics, mesmo que o teste esteja rodando com 100% do tráfego. As vezes a diferença é tal que levanta dúvidas sobre qual o conjunto de números de acessos e conversões que devem ser considerados. Como então fazer com que essa discrepância seja a menor possível?</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/dados-de-testes-ab-no-google/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Lidando com diferenças nas ferramentas de testes e de analytics</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 12 minutos</strong>
+        <p>Publicado em 30/11/2017 e atualizado em 31/10/2021.</p>
+<p>Atualização 31/10/2021: Na data de publicação deste post, a versão 4 do Google Analytics ainda não havia sido publicada. O Google Analytics 4 foi refeito em resposta as legislações de privacidade em diversos países ao redor do mundo. A interface e recursos sofreram diversas modificações, sendo algumas das mais notáveis a menor dependência de cookies para identificar usuários e a remoção de visões. O rastreio de eventos, utilizado ao longo deste post, difere entre as versões 3 e 4. A versão 4 não utiliza mais os atributos <em>Category</em>, <em>Action</em>, <em>Label</em> e <em>Value</em> nos eventos. Os exemplos deste post utilizam o Google Analytics versão 3.</p>
+<p>Tanto ferramentas para testes quanto para analytics farão a coleta e o armazenamento de dados que representam usuários. Ambas gravam sessões e eventos de conversão ao longo do tempo, e exibem estas informações em painéis. Ao comparar os dados das duas ferramentas considerando a mesma janela de tempo, no entanto, os números não batem. Por que isso acontece?</p>
+<h2 id="diferenças-de-implementação-e-configuração">Diferenças de implementação e configuração</h2>
+<p>Ferramentas de testes e ferramentas de analytics <a href="https://support.abtasty.com/hc/en-us/articles/201747527-There-are-differences-in-data-between-AB-Tasty-and-my-analytics-tool" target="_blank" rel="noopener">são bem diferentes uma da outra</a>. Mesmo que as informações sejam as mesmas, os procedimentos para coleta, tratamento e armazenamento diferem entre estas ferramentas. Mesmo com a garantia de que a implementação das ferramentas foi feita corretamente e que não há erros na coleta dos dados, os números vão continuar diferentes. A dúvida então passa a ser: qual das ferramentas devo considerar ao elaborar um relatório?</p>
+<p>Optar por visualizar os números apenas dentro do painel de testes é uma boa opção quando esses números não estão amarrados a outras métricas da empresa. Em outras palavras, quando a métrica que está sendo medida possui baixo nível de correlação com outras. Um exemplo de uma métrica que pode ter alta correlação com outras é o CTR em um elemento de página que passa os visitantes entre etapas de funil. Nesse caso a dificuldade é usar os números reportados no painel da ferramenta de testes para calcular a taxa de visitantes únicos ou a de sessões que passa por cada etapa do funil.</p>
+<p>Falando de ferramentas de analytics, elas computam diversas métricas ligadas a comportamentos do tráfego dentro do produto. A primeira diferença em relação a ferramentas de teste se dá na duração dos cookies: a versão 3 do Google Analytics, por exemplo, instala cookies com duração de 30 minutos após inatividade, o que significa que visitantes inativos por mais de 30 minutos terão os cookies deletados de seus navegadores. Ferramentas de teste usam cookies com durações bem maiores, e cada fabricante dá um tempo de duração padrão. A definição padrão de cookies pode ou não ser suficiente, dependerá do tipo de produto. Imagine que uma plataforma de vídeos pode não querer que a duração padrão de cookies seja 30 minutos de inatividade, pois pode ocorrer de seus visitantes assistirem a vídeos com duração superior a essa. Como pode não haver interação com a página durante a execução do vídeo, o tempo decorrido durante a execução do vídeo é tido como sendo de inatividade. A diferença no tempo de validade dos cookies pode fazer com que os mesmos visitantes sejam contados mais de uma vez em uma ferramenta e não na outra.</p>
+<p>O tempo e o local de carregamento dos scripts das ferramentas de analytics e de testes também pode causar diferenças. Scripts referenciados no rodapé de uma página precisam esperar a página toda ser servida para então serem carregados, caso não estejam sendo pré carregados. Se a página contém muitos elementos multimídia e/ou dinâmicos, o carregamento pode demorar. Outra situação perigosa está na forma assíncrona de carregamento dos scripts. Scripts, folhas de estilo, imagens e outros elementos que compõem uma página podem ser carregados de forma <strong>síncrona</strong> ou <strong>assíncrona</strong>. Carregamento síncrono significa que, quando o navegador estiver fazendo a leitura da página a ser exibida e ela faz referência a documentos externos, como um script, o restante do carregamento da página será interrompido para que o arquivo externo possa ser incluído com o restante da página. O carregamento assíncrono faz com que os carregamentos dos arquivos externos e da página aconteçam simultaneamente. O que acontece no carregamento assíncrono, em particular, é que a página pode ter carregado e o documento externo ainda estar carregando. Se o visitante deixa a página ou o produto antes que a ferramenta possa carregar, ele não é contabilizado. O teste neste caso não terá sequer iniciado. Em outros casos o teste pode iniciar depois que o visitante estiver interagindo com a página e neste caso a experiência de navegação será alterada se ele cair nas variações de tratamento, pois as alterações do teste serão aplicadas na frente dele (efeito conhecido como <em>Flash of Original Content</em>, ou FOOC).</p>
+<h2 id="e-o-google-optimize">E o Google Optimize?</h2>
+<p>O <a href="https://www.google.com/analytics/optimize/" target="_blank" rel="noopener">Google Optimize</a> é uma ferramenta para testes A/B, A/B/N, mvt e split criada pela Google. Por ser parte da suíte de produtos Google, possui integração nativa com o Google Analytics. Para criar testes com ela, é necessário fornecer o ID de uma visão do Google Analytics, na versão 3, para que o Optimize alimente o relatório apropriado, que fica em Behavior &gt; Experiments. Uma vez que o Optimize tenha permissão de acesso a visão, os dados de testes estarão disponíveis na ferramenta. Mesmo o Optimize apresenta diferenças entre o Analytics e seu painel interno de relatórios. As diferenças são tanto entre o relatório de experimentos no Google Analytics e no painel da ferramenta quanto o relatório de experimentos no Google Analytics e os demais relatórios do próprio analytics. <a href="https://support.google.com/360suite/optimize/answer/6323229?hl=en" target="_blank" rel="noopener">A documentação</a> diz que isso acontece por diferenças na forma como os cálculos acontecem entre as ferramentas, e também por diferença no tempo de alimentação dos relatórios. Enquanto o Google Analytics recebe os dados do teste com frequência, o Optimize recebe cargas de dados do Analytics a cada 12 horas. A recomendação do Google é sempre olhar para os dados do painel do Optimize para tomar decisões.</p>
+<h2 id="o-painel-de-eventos">O painel de eventos</h2>
+<p>Várias ferramentas de testes possuem conectores com o Google Analytics que facilitam o envio de informações para a ferramenta, mas possuem limitações similares as do Google Optimize. Uma forma que encontrei para ajudar na conciliação dos números foi usar o recurso de eventos. Ferramentas de analytics conseguem registrar eventos personalizados. Esses eventos podem ser configurados por pessoas desenvolvedoras direto na aplicação ou por uma equipe de marketing, caso uma ferramenta de gestão de tags esteja instalada. Um exemplo de tal ferramenta é o <a href="https://www.google.com/analytics/tag-manager/" target="_blank" rel="noopener">Google Tag Manager</a> (GTM).</p>
+<p>Eventos são ações de interesse. Exemplos de eventos são:</p>
+<ul>
+<li>Acessar uma página;</li>
+<li>Clicar em um botão;</li>
+<li>Assistir a um vídeo;</li>
+<li>Baixar um arquivos.</li>
+</ul>
+<p>Uma vez monitorados, informações sobre os eventos são enviadas para a ferramenta de analytics. No caso da versão 3 do Google Analytics, um disparo de evento gera as seguintes informações:</p>
+<ul>
+<li><em>Category</em>: identificador da categoria de eventos;</li>
+<li><em>Action</em>: identificador da ação que disparou o evento. Exemplos podem ser play, click, download e etc;</li>
+<li><em>Label</em>: uma etiqueta com informações adicionais sobre o evento, que o distingue de outros com a mesma ação e que estejam na mesma categoria;</li>
+<li><em>Value</em>: um valor numérico associado ao evento. Pode ser um valor monetário ou algum número que quantifique a ação executada.</li>
+</ul>
+<p>Esses atributos possuem uma relação de hierarquia, de forma que evento contém categorias, categorias contém ações, ações contém labels e labels contém valores.</p>
+<h2 id="mapeamento-de-eventos-de-teste-no-google-analytics-versão-3">Mapeamento de eventos de teste no Google Analytics versão 3</h2>
+<p>A solução para o problema de diferença de números será registrar eventos na ferramenta de analytics em dois momentos:</p>
+<ul>
+<li>Um quando o visitante acessa o produto;</li>
+<li>Um quando o visitante realiza o evento de conversão.</li>
+</ul>
+<p>Os eventos possuem praticamente as mesmas propriedades em <em>Event</em>, <em>Action</em> e <em>Label</em>. O uso de <em>Value</em> é opcional. O que vai mudar é o <em>Action</em>, que vai assumir um valor quando um visitante for selecionado para participar do teste e outro quando o visitante executar o evento de conversão. Um diagrama da solução proposta se parece com este:</p>
+<figure >
+  
+  <img data-src="images/figure1-hierarchy-google-events.webp" class="lazy" alt="Hierarquia de eventos na versão 3 do Google Analytics para testes A/B." title="Hierarquia de eventos na versão 3 do Google Analytics para testes A/B." />
+  
+  
+  <figcaption>
+    <p>Hierarquia de eventos na versão 3 do Google Analytics para testes A/B. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="configuração-da-ferramenta-de-testes">Configuração da ferramenta de testes</h2>
+<p>Para ilustrar o conceito, será apresentada uma proposta de implementação utilizando o Google Optimize e a versão 3 do Google Analytics. O envio de informações para o Google Analytics será feito pelo gerenciador de tags Google Tag Manager.</p>
+<p>Em geral, ferramentas de testes possuem tanto um editor de sites do tipo “clicar e arrastar” quanto um para inserção de código manual. Esses editores de código aceitam HTML, CSS e Javascript, e em algumas ferramentas possuem injeção de códigos em dois níveis: um global e um local. O editor de scripts global injeta trechos de código em todas as variações do teste, enquanto o local é carregado de acordo com a variação selecionada.</p>
+<p>Para o exemplo de implementação a seguir, o código será escrito no editor local.</p>
+<p>Com o Google Tag Manager instalado, basta chamar o método push do objeto dataLayer e enviar os dados para um evento que tenha sido registrado no Google Tag Manager:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+    <span class="nx">event</span><span class="o">:</span> <span class="s1">&#39;evento_no_gtm&#39;</span><span class="p">,</span>
+    <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;categoria&#39;</span><span class="p">,</span>
+    <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;acao&#39;</span><span class="p">,</span>
+    <span class="nx">label</span><span class="o">:</span> <span class="s1">&#39;descricao&#39;</span>
+  <span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Esse atributo &ldquo;event&rdquo; pertence ao objeto dataLayer e faz referência a uma tag no Google Tag Manager. Em uma instalação da versão 3 do Google Analytics sem o Google Tag Manager, será necessário mandar um disparo do tipo evento para dentro do Google Analytics:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;send&#39;</span><span class="p">,</span> <span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">&#39;acao&#39;</span><span class="p">,</span> <span class="s1">&#39;descricao&#39;</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>No caso do push com o dataLayer, será feito um disparo de uma tag de evento que enviará os dados para o Google Analytics. Dentro do editor de scripts local, cada variação vai receber um trecho de código como um dos exemplos, que deve ser disparado em dois momentos diferentes para cada variação do teste. Os parâmetros serão:</p>
+<ul>
+<li>category: recomendo usar o nome ou um identificador do teste dentro da categoria;</li>
+<li>action: a ação terá duas opções, uma para acesso e outra para conversão. Action pode assumir &ldquo;acesso&rdquo; ou &ldquo;conversão&rdquo; por exemplo;</li>
+<li>label: guardará a variação do teste. Pode ser uma letra ou o nome da alteração induzida.</li>
+</ul>
+<p>Category será igual em todas as chamadas ao código de disparo, label e action vão mudar conforme a variação do teste, e se foi feita uma visita ou uma conversão. A segunda chamada ao código de disparo do evento deve ser feita somente após o evento de conversão ter sido disparado, nesse caso é necessário criar um trigger que escute esse evento:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">cta</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;cta&#39;</span><span class="p">);</span>
+    <span class="nx">cta</span><span class="p">.</span><span class="nx">onlick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// Se usar o Google Tag Manager
+</span><span class="c1"></span>      <span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="nx">event</span><span class="o">:</span> <span class="s1">&#39;evento_no_gtm&#39;</span><span class="p">,</span>
+        <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;categoria&#39;</span><span class="p">,</span>
+        <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;acao&#39;</span><span class="p">,</span>
+        <span class="nx">label</span><span class="o">:</span> <span class="s1">&#39;descricao&#39;</span>
+      <span class="p">});</span>
+
+      <span class="c1">// Se não usar o Google Tag Manager
+</span><span class="c1"></span>      <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;send&#39;</span><span class="p">,</span> <span class="s1">&#39;event&#39;</span><span class="p">,</span> <span class="s1">&#39;categoria&#39;</span><span class="p">,</span> <span class="s1">&#39;acao&#39;</span><span class="p">,</span> <span class="s1">&#39;descricao&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Dica: opte por usar javascript nativo quando possível para evitar a dependência de outras bibliotecas, o que pode tornar o tempo de carregamento maior e aumentar a possibilidade de o conteúdo da página &ldquo;piscar&rdquo; diante do usuário (FOOC).</p>
+<p>O uso de window.onload garante que o botão só será acessado após ter sido carregado. Pode acontecer de o trecho de código javascript carregar antes da página e ele tentar acessar elementos que ainda não foram carregados. O uso de DOMContentLoaded fica a cargo da pessoa desenvolvedora, considerando <a href="https://caniuse.com/#search=DOMContentLoaded" target="_blank" rel="noopener">que navegadores antigos não reconhecem este método</a>.</p>
+<p>O código completo a ser adicionado a cada variação do teste:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript">  <span class="c1">// Código executado assim que o visitante é direcionado para uma das variações do teste
+</span><span class="c1"></span>  <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Se não usar Google Tag Manager dá pra fazer com ga(&#39;send&#39;, &#39;event&#39;, &#39;teste_no_cta&#39;, &#39;acesso&#39;, &#39;grupo_controle&#39;)
+</span><span class="c1"></span>    <span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="nx">event</span><span class="o">:</span> <span class="s1">&#39;testes_tag&#39;</span><span class="p">,</span> <span class="c1">// Nome da tag no Google Tag Manager
+</span><span class="c1"></span>      <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;teste_no_cta&#39;</span><span class="p">,</span> <span class="c1">// Nome do teste
+</span><span class="c1"></span>      <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;acesso&#39;</span><span class="p">,</span> <span class="c1">// Acesso a página do teste
+</span><span class="c1"></span>      <span class="nx">label</span><span class="o">:</span> <span class="s1">&#39;grupo-controle&#39;</span> <span class="c1">// O visitante caiu no grupo de controle.
+</span><span class="c1"></span>    <span class="p">});</span>
+
+    <span class="kd">var</span> <span class="nx">btn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;cta&#39;</span><span class="p">);</span>
+
+    <span class="nx">btn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// Se não usar Google Tag Manager dá pra fazer com ga(&#39;send&#39;, &#39;event&#39;, &#39;teste_no_cta&#39;, &#39;conversao&#39;, &#39;grupo_controle&#39;)
+</span><span class="c1"></span>      <span class="nx">dataLayer</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="nx">event</span><span class="o">:</span> <span class="s1">&#39;testes_tag&#39;</span><span class="p">,</span> <span class="c1">// Nome da tag no Google Tag Manager
+</span><span class="c1"></span>        <span class="nx">category</span><span class="o">:</span> <span class="s1">&#39;teste_no_cta&#39;</span><span class="p">,</span> <span class="c1">// Nome do teste
+</span><span class="c1"></span>        <span class="nx">action</span><span class="o">:</span> <span class="s1">&#39;conversao&#39;</span><span class="p">,</span> <span class="c1">// Conversão na página do teste
+</span><span class="c1"></span>        <span class="nx">label</span><span class="o">:</span> <span class="s1">&#39;grupo-controle&#39;</span> <span class="c1">// O visitante caiu no grupo de controle.
+</span><span class="c1"></span>      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Navegue até o relatório de eventos em Behavior &gt; Events &gt; Top Events. Uma vez que o teste tenha iniciado, os eventos de acesso e conversão deverão ser registrados neste relatório. Veja a diferença entre as colunas de eventos e eventos únicos. Como o teste pode funcionar em mais de uma página ou os visitantes a recarregarem, acompanhe pelos eventos únicos, que não serão atualizados com múltiplos disparos sendo enviados ao Google Analytics. Para comparar a quantidade de eventos com usuários ou sessões, crie um relatório personalizado em Customization &gt; Custom Reports incluindo usuários únicos e eventos únicos, com quebra por categoria, ação e label.</p>
+<figure >
+  
+  <img data-src="images/figure2-google-custom-report.webp" class="lazy" alt="Criação de relatório personalizado na versão 3 do Google Analytics." title="Criação de relatório personalizado na versão 3 do Google Analytics." />
+  
+  
+  <figcaption>
+    <p>Criação de relatório personalizado na versão 3 do Google Analytics. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Dessa forma é possível contabilizar acessos individuais e também por sessão dentro do Google Analytics.</p>
+<figure >
+  
+  <img data-src="images/figure3-google-test-event-dashboard.webp" class="lazy" alt="Painel de métricas de testes A/B na versão 3 do Google Analytics." title="Painel de métricas de testes A/B na versão 3 do Google Analytics." />
+  
+  
+  <figcaption>
+    <p>Painel de métricas de testes A/B na versão 3 do Google Analytics. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Ao clicar na categoria do evento, deverão ser abertas as ações com o número de visitantes que participaram do teste e o número total de conversões. Ao clicar em uma das ações (acesso ou conversão) o relatório irá mostrar as variações do teste para acessos ou para conversões dependendo de qual ação tenha sido selecionada. Para ver as categorias, ações e labels em uma mesma tabela, basta usar a opção de tabela fixa no relatório personalizado. Os números de usuários, sessões e eventos únicos deverão ficar próximos visto que as informações sobre testes só vão para o Google Analytics uma vez que o teste tenha iniciado.</p>
+<p>Mesmo que a diferença de dados entre as ferramentas de testes e de analytics não deixe de existir, os números nos painéis estarão mais próximos e terão uma mesma fonte de origem, que é a ferramenta de testes.</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/" itemprop="item">
+          <span class="text-white" itemprop="name">Ferramentas e Técnicas para a Análise de Dados</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

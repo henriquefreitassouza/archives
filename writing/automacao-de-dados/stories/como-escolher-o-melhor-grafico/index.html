@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Como escolher o melhor gráfico? | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Como escolher o melhor gráfico? | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/como-escolher-o-melhor-grafico/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Como escolher o melhor gráfico? | Automação de Dados">
+<meta property="og:description" content="Como escolher o melhor gráfico? | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2020-12-06 09:39:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-20 09:39:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="10 minutos" />
+
+<meta property="article:tag" content="Visualização" />
+<meta property="article:section" content="Visualização" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/como-escolher-o-melhor-grafico/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/como-escolher-o-melhor-grafico/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Diferentes tipos de gŕaficos lado a lado">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/como-escolher-o-melhor-grafico/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/como-escolher-o-melhor-grafico/images/thumbnail_hu645f783e1f75aab460e7270b672b7e37_39577_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2020-12-06 09:39:00 &#43;0000 UTC" itemprop="datePublished">06/12/2020 09:39:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/visualiza%c3%a7%c3%a3o" itemprop="articleSection">visualização</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Como escolher o melhor gráfico?</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">Gráficos tornam dados acessíveis para diferentes audiências, e podem contar as mais variadas histórias, mas como escolher o melhor gráfico para contar uma história?</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/como-escolher-o-melhor-grafico/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Como escolher o melhor gráfico?</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 10 minutos</strong>
+        <p>Publicado em 06/12/2020 e atualizado em 20/11/2021.</p>
+<h2 id="conheça-seus-dados">Conheça seus dados</h2>
+<p>Em poucas palavras, o melhor gráfico é aquele que conta a história que precisa ser contada. Para contar esta história, no entanto, precisamos conhecê-la. No contexto de dados, quais são as informações que precisam ser mostradas e como estão organizadas? A tabulação apropriada é importante para garantir a correta apresentação do gráfico. Veja a tabela a seguir:</p>
+<figure >
+  
+  <img data-src="images/figure1-untidy-table.webp" class="lazy" alt="Tabela com informações de estudantes." title="Tabela com informações de estudantes." />
+  
+  
+  <figcaption>
+    <p>Tabela com informações de estudantes. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Esta tabela pode ser facilmente transformada em um gráfico que apresenta as notas por indivíduo ou por idade. Veja agora esta tabela:</p>
+<figure >
+  
+  <img data-src="images/figure2-tidy-table.webp" class="lazy" alt="Tabela com as mesmas informações de estudantes, porém há uma informação em cada coluna." title="Tabela com as mesmas informações de estudantes, porém há uma informação em cada coluna." />
+  
+  
+  <figcaption>
+    <p>Tabela com as mesmas informações de estudantes, porém há uma informação em cada coluna. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>A informação é a mesma da tabela anterior, notas por questão. O segundo formato, no entanto, é mais difícil de ser visualizado em um software de planilhas. Esta segunda tabela possui um arranjo chamado <em><strong>tidy</strong></em>, que segue três regras:</p>
+<ul>
+<li>Cada coluna contém apenas uma variável;</li>
+<li>Cada linha contém uma observação;</li>
+<li>Cada célula contém apenas um valor.</li>
+</ul>
+<p>O arranjo <em>tidy</em> é importante para a realização de análises exploratórias e para alimentar algoritmos de aprendizado de máquina. A visualização de dados neste formato é facilitada por ferramentas de manipulação de dados, como o Pandas, que será utilizado para apresentar os gráficos deste post. A primeira tabela apresentada, com um arranjo largo, ou <em><strong>untidy</strong></em>, é melhor compreendida por pessoas e facilmente transformada em gráficos.</p>
+<h2 id="critérios-para-a-escolha-do-melhor-gráfico">Critérios para a escolha do melhor gráfico</h2>
+<p>Com os dados conhecidos e tabulados, é hora de montar o gráfico. A escolha do melhor gráfico <a href="https://towardsdatascience.com/data-visualization-101-how-to-choose-a-chart-type-9b8830e558d6" target="_blank" rel="noopener">terá outras influências</a> além da mensagem a ser comunicada:</p>
+<ul>
+<li>Familiaridade do público com gráficos;</li>
+<li>Quantidade de classificações dos dados;</li>
+<li>Tipo de dado (discreto ou contínuo);</li>
+<li>Relacionamento entre os dados.</li>
+</ul>
+<h3 id="familiaridade-do-público-com-gráficos">Familiaridade do público com gráficos</h3>
+<p>Saber de antemão o quanto o público sabe interpretar gráficos pode ajudar na escolha daquele que melhor vai passar a mensagem. Tamanho da audiência também deve ser levado em consideração, visto que gráficos com muitos elementos podem não ficar bem apresentados em telas grandes como projetores.</p>
+<h3 id="quantidade-de-classificações-dos-dados">Quantidade de classificações dos dados</h3>
+<p>A quantidade de classificações é outro fator de importância, pois muitas divisões podem inviabilizar certas visualizações, como um gráfico de pizza.</p>
+<h3 id="tipo-de-dado-discreto-ou-contínuo">Tipo de dado (discreto ou contínuo)</h3>
+<p>Um determinado dado pode assumir valores <strong>discretos</strong> ou <strong>contínuos</strong>. Um dado discreto é um que pode assumir um valor dentre um conjunto finito de opções. Na tabela com arranjo <em>tidy</em> apresentada anteriormente, a coluna questão carrega dados desta natureza. As colunas idade e nota carregam dados contínuos, pois podem assumir qualquer valor. Note que, em algumas tabelas, variáveis numéricas podem ser discretas. Tendo como exemplo a coluna questão, os dados poderiam ter sido apresentados apenas por um número e não com a letra Q antes do número. Os dados então seriam numéricos, mas discretos.</p>
+<h3 id="relacionamento-entre-os-dados">Relacionamento entre os dados</h3>
+<p>Se existe uma relação de continuidade entre os dados, alguns gráficos são melhores para mostrar esta relação, como o de linha. Dados que podem ser descritos por uma característica em comum, como o tempo, possivelmente são relacionados. Exemplo desta relação é o valor das ações de uma empresa a cada dia. Exemplo de dados que não possuem relacionamentos são as questões das tabelas apresentadas neste post. As questões podem ser representadas comparativamente em um gráfico, mas uma questão não possui relação com a outra.</p>
+<h2 id="tipos-de-gráficos">Tipos de gráficos</h2>
+<p>Ao considerar os fatores para escolha do melhor gráfico, o número de opções deve cair, mas ainda assim é possível que existam diversos bons candidatos para a visualização. É importante conhecer as características de cada tipo de gráfico para basear a escolha.</p>
+<h3 id="gráfico-de-barras">Gráfico de barras</h3>
+<figure >
+  
+  <img data-src="images/figure3-bar-chart.webp" class="lazy" alt="Gráfico de barras." title="Gráfico de barras." />
+  
+  
+  <figcaption>
+    <p>Gráfico de barras. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Este tipo de gráfico é útil para fazer agrupamentos em torno de uma métrica comum, como uma contagem, uma soma ou uma média. Esta característica o torna útil para fazer <strong>comparações</strong>.</p>
+<ul>
+<li>Quantidade de classificações dos dados: poucas. Embora não haja um número exato para o limite de categorias, eu tenho como referência a configuração padrão do Google Data Studio para exibição de barras no gráfico, que é <strong>10</strong>;</li>
+<li>Tipo de dado (discreto ou contínuo): discreto;</li>
+<li>Relacionamento entre os dados: não relacionados.</li>
+</ul>
+<h3 id="gráfico-de-linhas">Gráfico de linhas</h3>
+<figure >
+  
+  <img data-src="images/figure4-line-chart.webp" class="lazy" alt="Gráfico de linhas." title="Gráfico de linhas." />
+  
+  
+  <figcaption>
+    <p>Gráfico de linhas. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O gráfico de linhas é útil para identificar <strong>tendências</strong>, e é uma boa escolha quando é importante entender a oscilação entre um ponto no gráfico e os demais.</p>
+<ul>
+<li>Quantidade de classificações dos dados: poucas;</li>
+<li>Tipo de dado (discreto ou contínuo): contínuo;</li>
+<li>Relacionamento entre os dados: relacionados.</li>
+</ul>
+<h3 id="gráfico-de-pizza">Gráfico de pizza</h3>
+<figure >
+  
+  <img data-src="images/figure5-pizza-chart.webp" class="lazy" alt="Gráfico de pizza." title="Gráfico de pizza." />
+  
+  
+  <figcaption>
+    <p>Gráfico de pizza. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O gráfico de pizza possui uma utilidade particular: <strong>observar as partes de um todo</strong>. Este gráfico é útil para entender o que compõe um conjunto de dados com poucas classificações.</p>
+<ul>
+<li>Quantidade de classificações dos dados: muito poucas. Não há um número certo a ser considerado como limite para um gráfico desta natureza, mas procuro manter em <strong>2</strong> partes;</li>
+<li>Tipo de dado (discreto ou contínuo): discreto;</li>
+<li>Relacionamento entre os dados: não relacionados.</li>
+</ul>
+<h3 id="histograma">Histograma</h3>
+<figure >
+  
+  <img data-src="images/figure6-histogram-chart.webp" class="lazy" alt="Histograma." title="Histograma." />
+  
+  
+  <figcaption>
+    <p>Histograma. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O histograma é similar ao gráfico de barras, mas sua função é categorizar variáveis contínuas. Ele serve para <strong>visualizar a distribuição dos dados</strong>. Este gráfico é útil para entender como um conjunto de dados está espalhado, ou distribuído. A categorização é feita em intervalos, ou <em>bins</em>, e sua quantidade é determinada ao construir o gráfico. Cuidado ao usar este gráfico: a escolha tendenciosa da quantidade de intervalos, ou o <em>binning bias</em>. Quantidades muito pequenas ou muito grandes de intervalos não capturam a distribuição de forma representativa, e informações valiosas podem se perder. É uma boa ideia criar este gráfico algumas vezes, com diferentes quantidades de intervalos, para saber a quantidade ideal de intervalos que representam os dados.</p>
+<ul>
+<li>Quantidade de classificações dos dados: uma;</li>
+<li>Tipo de dado (discreto ou contínuo): contínuo;</li>
+<li>Relacionamento entre os dados: não relacionados.</li>
+</ul>
+<h3 id="gráfico-de-dispersão">Gráfico de dispersão</h3>
+<figure >
+  
+  <img data-src="images/figure7-scatter-plot-chart.webp" class="lazy" alt="Gráfico de dispersão." title="Gráfico de dispersão." />
+  
+  
+  <figcaption>
+    <p>Gráfico de dispersão. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Este gráfico serve para <strong>visualizar o relacionamento entre dois conjuntos de dados contínuos</strong>. Ele é útil para entender de forma visual como duas variáveis se movimentam juntas. O gráfico de dispersão aceita uma terceira dimensão ao utilizar recursos como cores, formas, opacidade ou tamanho dos elementos para distinguir categorias dentro de cada ponto. Utilizando as tabelas dos exemplos apresentados no começo deste post, podemos construir um gráfico de dispersão das pessoas que responderam a questão 1 e a questão 2, dispostas nos eixos X e Y (primeira e segunda dimensão). Ao dividir os respondentes por sexo e atribuir uma cor a cada sexo, por exemplo, os pontos serão colocados na tela de acordo com cada sexo, e esta é a terceira dimensão (cor).</p>
+<ul>
+<li>Quantidade de classificações dos dados: uma;</li>
+<li>Tipo de dado (discreto ou contínuo): contínuo;</li>
+<li>Relacionamento entre os dados: não relacionados.</li>
+</ul>
+<h3 id="gráfico-de-caixa">Gráfico de caixa</h3>
+<figure >
+  
+  <img data-src="images/figure8-box-plot-chart.webp" class="lazy" alt="Gráfico de caixa." title="Gráfico de caixa." />
+  
+  
+  <figcaption>
+    <p>Gráfico de caixa. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Assim como o histograma, este gráfico também <strong>exibe a distribuição de um conjunto de dados</strong>, porém ele traz mais informações sobre a distribuição e permite categorizar o conjunto de dados. Se em um histograma eu consigo exibir a distribuição de idades das pessoas que responderam cada questão das tabelas do início deste post, por exemplo, em um gráfico de caixa eu consigo representar esta mesma distribuição separada por sexo.</p>
+<p>A área da caixa representa o maior volume dos dados, o local onde estão concentrados a maioria dos dados. A linha dentro da caixa é a mediana da distribuição. As linhas, ou bigodes, que estendem a caixa são conjuntos de dados que estão mais longe da mediana. O intervalo entre a ponta de cada linha e as bordas da caixa e o intervalo entre as bordas da caixa e a mediana se chamam quartis, e cada quartil possui um tamanho fixo. O primeiro quartil (Q1), que vai da ponta da linha esquerda (onde estão os menores números na distribuição) até o início da borda esquerda da caixa, concentra 25% dos dados. O intervalo entre as bordas da caixa é o segundo quartil (Q2), que concentra 50% dos dados. A mediana separa as metades da caixa, de forma que cada metade em seu interior representa 25% do conjunto de dados. Por fim, o intervalo entre a borda direita da caixa e a ponta da linha direita, onde estão os maiores números na distribuição, ou o terceiro quartil (Q3), concentram os 25% finais dos dados. A área da caixa entre o primeiro e o terceiro quartil é chamada de intervalo interquartil (IQR).</p>
+<p>Este gráfico pode ainda apresentar valores extremos, que são valores muito altos ou muito baixos em relação ao conjunto de dados. Estes dados são chamados de <em>outliers</em> e aparecem como pontos além das linhas. A definição de quais pontos vão para além da linha esquerda segue a fórmula Q1 - 1,5 * IQR e para a linha direita segue a fórmula Q3 + 1,5 * IQR. Quaisquer pontos que sejam menores ou maiores que o número calculado nas fórmulas apresentadas ficarão nas extremidades do gráfico.</p>
+<ul>
+<li>Quantidade de classificações dos dados: poucas;</li>
+<li>Tipo de dado (discreto ou contínuo): contínuo;</li>
+<li>Relacionamento entre os dados: não relacionados.</li>
+</ul>
+<h3 id="gráfico-de-área">Gráfico de área</h3>
+<figure >
+  
+  <img data-src="images/figure9-area-chart.webp" class="lazy" alt="Gráfico de área." title="Gráfico de área." />
+  
+  
+  <figcaption>
+    <p>Gráfico de área. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Este gráfico <strong>mostra a distribuição de um conjunto de dados</strong>, assim como o histograma e o gráfico de caixa. Enquanto o histograma é útil para categorizar conjuntos contínuos de dados, o gráfico de área é útil para visualizar a oscilação na distribuição dos dados sem o problema de tendência de intervalos. Este gráfico é usado para apresentar visualmente a magnitude das mudanças no conjunto de dados, representado pela área abaixo de sua curva.</p>
+<ul>
+<li>Quantidade de classificações dos dados: poucas;</li>
+<li>Tipo de dado (discreto ou contínuo): contínuo;</li>
+<li>Relacionamento entre os dados: não relacionados.</li>
+</ul>
+<h3 id="mapa-de-calor">Mapa de calor</h3>
+<figure >
+  
+  <img data-src="images/figure10-heatmap-chart.webp" class="lazy" alt="Mapa de calor." title="Mapa de calor." />
+  
+  
+  <figcaption>
+    <p>Mapa de calor. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Este gráfico é uma junção de dois histogramas: um no eixo X e outro no Y do gráfico, formando uma tabela com células de igual tamanho. A função deste gráfico é <strong>mostrar a correlação entre diversas variáveis</strong> utilizando um sistema de cores. Este gráfico é útil para visualizar, em uma única imagem, diversas correlações, sem a necessidade de criar gráficos de dispersão individuais para cada par de variáveis. Este gráfico não mostra o comportamento de uma variável em função de outra, no entanto, ele apenas mostra a força de uma correlação utilizando uma métrica de correlação escolhida.</p>
+<ul>
+<li>Quantidade de classificações dos dados: muitas;</li>
+<li>Tipo de dado (discreto ou contínuo): contínuo;</li>
+<li>Relacionamento entre os dados: não relacionados.</li>
+</ul>
+<h2 id="composição-dos-gráficos">Composição dos gráficos</h2>
+<p>Em 2014, a pesquisadora Tamara Munzner publicou um livro chamado Visualization Analysis and Design, que diz que certos elementos visuais são melhores do que outros para transmitir mensagens. A pesquisadora foi capaz de classificar estes elementos em uma ordem baseado na efetividade de cada elemento em transmitir informações. Os elementos com melhor efetividade para transmitir informações <strong>ordenadas</strong> são:</p>
+<ol>
+<li>Posição;</li>
+<li>Largura;</li>
+<li>Ângulo;</li>
+<li>Área;</li>
+<li>Profundidade;</li>
+<li>Iluminação;</li>
+<li>Saturação;</li>
+<li>Curvatura;</li>
+<li>Volume.</li>
+</ol>
+<p>E para transmitir informações <strong>categóricas</strong>:</p>
+<ol>
+<li>Posição espacial;</li>
+<li>Cor;</li>
+<li>Movimento;</li>
+<li>Forma.</li>
+</ol>
+<figure >
+  
+  <img data-src="images/figure11-cleveland-and-mcgill-element-perception.webp" class="lazy" alt="Classificação de formas e cores em uma escala de efetividade para transmitir informações." title="Classificação de formas e cores em uma escala de efetividade para transmitir informações." />
+  
+  
+  <figcaption>
+    <p>Classificação de formas e cores em uma escala de efetividade para transmitir informações. Fonte: Universidade de Iowa.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Considere também utilizar estes elementos de efetividade como critério para escolha do gráfico a ser utilizado.</p>
+<h2 id="escolhendo-o-melhor-gráfico">Escolhendo o melhor gráfico</h2>
+<p>Estes são só alguns dos tipos de gráficos, mas há muitos outros como o gráfico cachoeira ou gráficos polares. Os gráficos apresentados neste post devem atender as necessidades do dia a dia operacional de uma empresa. A escolha entre um e outro irá depender das características dos dados e da audiência que vai receber a mensagem, e pode acontecer de um gráfico apenas não ser o suficiente para contar toda a história.</p>
+<p>Para ver como criei os gráficos apresentados neste post, acesse <a href="https://github.com/henriquefreitassouza/data/blob/main/fundamentals_eda/Tipos%20de%20Gr%C3%A1ficos.ipynb" target="_blank" rel="noopener">este notebook</a>, feito no Jupyter Lab e hospedado no <a href="https://github.com/henriquefreitassouza" target="_blank" rel="noopener">meu Github</a>.</p>
+<p>Bora visualizar dados!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/" itemprop="item">
+          <span class="text-white" itemprop="name">Ferramentas e Técnicas para a Análise de Dados</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

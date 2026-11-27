@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html class="" lang="pt" dir="ltr">
+  <head>
+    <title>Ferramentas e Técnicas para a Análise de Dados | Automação de Dados</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Ferramentas e Técnicas para a Análise de Dados | Automação de Dados" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/">
+<meta property="og:locale" content="pt" />
+<meta property="og:title" content="Ferramentas e Técnicas para a Análise de Dados | Automação de Dados">
+<meta property="og:description" content="Ferramentas e Técnicas para a Análise de Dados | Automação de Dados">
+<meta property="og:site_name" content="Automação de Dados">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2022-01-24 10:37:14 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2022-01-24 10:37:14 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Tempo estimado para a leitura" />
+<meta name="twitter:data1" content="19 minutos" />
+
+<meta property="article:tag" content="Análise" />
+<meta property="article:section" content="Análise" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Notebook aberto mostrando uma página do Google Analytics.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="en" href="https://www.automacaodedados.com.br/en/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/" title="English">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Pular para o conteúdo</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Automação de Dados">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Automação de Dados</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Trocar entre temas escuro e claro">
+          <span class="sr-only">Trocar entre temas escuro e claro</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Abrir e fechar navegação principal</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">Todas as Histórias</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/search/">
+    <label class="sr-only" for="q">Buscar histórias</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Buscar em todo o site" placeholder='Buscar histórias'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Iniciar a busca</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/images/thumbnail_hua18b26a9cd37f45322e31ea2f7604f15_85161_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2022-01-24 10:37:14 &#43;0000 UTC" itemprop="datePublished">24/01/2022 10:37:14</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/categories/an%c3%a1lise" itemprop="articleSection">análise</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">Ferramentas e Técnicas para a Análise de Dados</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">O universo de dados está se expandindo em todas as direções, e as previsões para os anos seguintes são promissoras. No meio do caminho entre o hoje e o amanhã, uma miríade de novas ferramentas e técnicas nasce para ajudar analistas de dados a resolverem os mais complexos problemas. O que fazem estas ferramentas e técnicas, e como utilizá-las dentro do contexto organizacional para responder problemas de negócios?</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">Todas as histórias</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">Ferramentas e Técnicas para a Análise de Dados</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Tempo estimado para a leitura: 19 minutos</strong>
+        <p>Este post está dividido em dois blocos:</p>
+<ul>
+<li>A seção introdutória vai analisar o momento atual das tecnologias para análise de dados e os desafios enfrentados pelas organizações.</li>
+<li>A seção prática vai apresentar o ciclo analítico e como utilizá-lo em conjunto com ferramentas de análise de dados para resolver problemas de negócios.</li>
+</ul>
+<p>Caso queira ir direto para a mão na massa, pule para a seção &ldquo;Uma volta no ciclo analítico&rdquo;.</p>
+<h2 id="análise-de-dados-no-século-xxi">Análise de dados no século XXI</h2>
+<p>Que o arsenal à disposição de pessoas analistas de dados é bem robusto, não há dúvidas. Se há 3.000 anos antes de Cristo, escribas <a href="https://www.amazon.com/Sapiens-Humankind-Yuval-Noah-Harari/dp/0062316095" target="_blank" rel="noopener">recebiam instruções sobre técnicas avançadas de catalogação e análise de dados</a>, hoje máquinas recebem tais instruções. Enquanto tecnicalidades ficam a cargo de máquinas, pessoas concentram esforços para encontrarem as respostas para as dúvidas que possuem. Não que analistas de dados da era comum não aprendam técnicas para catalogação e análise de dados, mas temos recursos para lidar com certas tarefas mais facilmente do que nossos antepassados. A pergunta que precisamos responder é: <strong>Como combinar o potencial das ferramentas e bases de dados para encontrar respostas para as perguntas que temos?</strong>. O objetivo final é o mesmo desde que as sociedades agrícolas se desenvolveram, agora usando ferramentas digitais para analisar planilhas, APIs, scrappers, notebooks, bancos de dados, data warehouses, data lakes e outras fontes em detrimento do olhômetro, ábacos e calculadoras mentais como ferramentas para decifrar papiros e tabuletas de argila.</p>
+<figure >
+  
+  <img data-src="images/figure1-clay-tablet-mesopotamia.webp" class="lazy" alt="Tabuleta de argila de 2041 antes da era comum. O documento é um registro de pessoas que trabalhavam em uma região agrícola onde hoje fica o Iraque." title="Tabuleta de argila de 2041 antes da era comum. O documento é um registro de pessoas que trabalhavam em uma região agrícola onde hoje fica o Iraque." />
+  
+  
+  <figcaption>
+    <p>Tabuleta de argila de 2041 antes da era comum. O documento é um registro de pessoas que trabalhavam em uma região agrícola onde hoje fica o Iraque. Fonte: Spurlock Museum of World Cultures.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="desafios-do-momento-novas-dinâmicas-sociais-e-novos-formatos-de-conteúdo">Desafios do momento: novas dinâmicas sociais e novos formatos de conteúdo</h2>
+<p>Não é de hoje que podemos registrar tudo a todo momento. A medida que armazenar informações e processá-las se torna mais e mais barato, todo tipo de dado é armazenado com (ou sem) a expectativa de que possa se tornar útil em algum momento. E que momento é este? <strong>É o agora</strong>. Como capacidade de processamento acompanhou a de armazenamento, ferramentas conseguem manusear grandes volumes de dados e entregar informações precisas para embasar a menor das decisões em uma empresa. Este poder computacional trouxe pelo menos duas novidades para a cena de dados:</p>
+<ul>
+<li>A possibilidade de enriquecer bases de dados existentes para obter conhecimentos mais específicos;</li>
+<li>A Interpretação de novos formatos de dados como vídeo, áudio e espacial.</li>
+</ul>
+<p>Sendo este segundo ponto importante para entender as características e comportamentos de uma sociedade global, dinâmica e instantânea que se comunica de outras formas que não somente pela linguagem escrita. O texto foi o formato predominante para armazenamento de dados primeiro pelas limitações tecnológicas de outros tempos, depois porque pode ser facilmente manuseado e organizado para posterior leitura. A internet está repleta de dados em outros formatos que não o texto, e estes formatos não são nada organizados para análise.</p>
+<figure >
+  
+  <img data-src="images/figure2-mobile-traffic-worldwide-2020.webp" class="lazy" alt="O vídeo é o formato predominante para consumo de conteúdo, e está presente nas mais diversas formas de comunicação online, incluindo aplicativos de mensagem." title="O vídeo é o formato predominante para consumo de conteúdo, e está presente nas mais diversas formas de comunicação online, incluindo aplicativos de mensagem. Mesmo o formato de texto, vale notar, sofre alterações com a linguagem característica do ambiente digital: abreviada e com palavras e significados próprios deste contexto." />
+  
+  
+  <figcaption>
+    <p>O vídeo é o formato predominante para consumo de conteúdo, e está presente nas mais diversas formas de comunicação online, incluindo aplicativos de mensagem. Mesmo o formato de texto, vale notar, sofre alterações com a linguagem característica do ambiente digital: abreviada e com palavras e significados próprios deste contexto. Fonte: Reddit.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Planilhas e bancos de dados, me arrisco a dizer, são universais em organizações de todos os tipos e tamanhos. São fáceis de entender e manusear, e cumprem com a missão de organizar o conhecimento interno produzido pelas organizações. Estas ferramentas são, porém, repositórios para o armazenamento de textos. O máximo que podem fazer é armazenar formatos de multimídia em objetos <a href="https://en.wikipedia.org/wiki/Binary_large_object" target="_blank" rel="noopener">BLOB</a>, e mesmo assim não dá pra fazer muito além de resgatar o objeto em uma aplicação ou consultar metadados (se houver). Esta solução não é desenhada para armazenar ou produzir conhecimento a partir de dados gerados na internet. O problema foi resolvido com o surgimento de uma nova arquitetura de dados, composta por diversas ferramentas, algumas das quais nasceram para lidar especificamente com dados não estruturados na internet.</p>
+<p>Uma destas ferramentas é o data lake, usada para armazenamento de dados. Estas soluções <a href="https://www.dataversity.net/data-lakes-what-they-are-and-how-to-use-them/" target="_blank" rel="noopener">armazenam quaisquer tipos de dados e os disponibilizam para serem processados por outras ferramentas à medida que forem necessários</a>. Ferramentas de data analytics e aprendizado de máquina então ajudam pessoas a <strong>encontrar sentido</strong> em massas de dados não estruturados armazenados em data lakes. O data lake não substitui soluções já conhecidas, como data warehouses ou mesmo bancos de dados legados, mas sim trabalha em conjunto com elas.</p>
+<p>Estruturas de armazenamento e processamento de dados chamadas de pipelines são construídas para trafegar dados dos mais variados tipos entre duas pontas, de forma que possam ser transformados em conhecimento por analistas e cientistas de dados. O pipeline de dados fornece a infraestrutura necessária para garantir dados limpos, padronizados e seguros em uma fonte única da verdade. Desta fonte nascem dashboards e relatórios que embasam a tomada de decisões nas organizações, sejam por pessoas ou por algoritmos. Um pipeline de dados que ajude a responder problemas de negócios, e escale sem problemas à medida que mais dados e novas fontes são adicionadas, é imprescindível para interpretar os tantos sinais que as sociedades conectadas à internet deixam em sites, aplicativos e sensores. Há mais um conceito importante para o sucesso de empreitadas de dados, no entanto, sem o qual todo o esforço de armazenamento e processamento de dados perde o sentido.</p>
+<figure >
+  
+  <img data-src="images/figure3-data-pipeline-steps.webp" class="lazy" alt="Estágios de um pipeline de dados. Durante a coleta, quaisquer tipos de dados podem ser capturados da forma como são e posteriormente processados em formatos mais adequados para estudo." title="Estágios de um pipeline de dados. Durante a coleta, quaisquer tipos de dados podem ser capturados da forma como são e posteriormente processados em formatos mais adequados para estudo." />
+  
+  
+  <figcaption>
+    <p>Estágios de um pipeline de dados. Durante a coleta, quaisquer tipos de dados podem ser capturados da forma como são e posteriormente processados em formatos mais adequados para estudo. Fonte: Towards Data Science.</p>
+  </figcaption>
+  
+</figure>
+
+<h2 id="o-contexto-de-negócios">O contexto de negócios</h2>
+<p>Assim como petróleo, os dados não possuem valor por si só. Dificilmente um dado serve para alguma coisa, assim como não é possível derramar petróleo no reservatório de gasolina de um carro esperando que ele entre em combustão. Acontece que petróleo devidamente processado e utilizado como insumo para a produção de bens de consumo ainda pode não ter valor. O petróleo é usado na produção de gasolina, mas também de plástico. Se você pretende abastecer seu carro, uma vasilha de plástico não é o que você vai utilizar, embora seja feita da mesma matéria prima da gasolina. Se você precisa de uma vasilha de plástico, é provável que você tenha outras necessidades (a não ser que você precise carregar gasolina até o seu carro, que parou antes de chegar até o posto mais próximo). O que define se você precisa de gasolina ou de uma vasilha de plástico é o problema a ser resolvido, ou <strong>o contexto</strong>.</p>
+<p>Algumas das <a href="https://towardsdatascience.com/the-future-of-the-modern-data-stack-in-2022-4f4c91bb778f#2a20-47bfce3afb1f" target="_blank" rel="noopener">previsões para o universo de dados em 2022</a> e futuro próximo são a popularização de data meshes, a inclusão de uma camada de métricas em pipelines de dados e uma linha cada vez mais tênue entre profissionais de dados e de produtos. Essas mudanças apontam para a necessidade de dar cada vez mais poder às equipes para que todas as pessoas consigam extrair conhecimento a partir de dados e utilizar este conhecimento para tornar a organização cada vez mais eficiente. Em outras palavras, as previsões apontam para a necessidade de enriquecer cada vez mais os dados com o contexto certo para a geração de negócios. Um mesmo dado pode ter sentidos diferentes e embasar decisões diferentes para pessoas diferentes. Uma equipe de sucesso do cliente, diante de um alto churn, vai tentar entender as razões para o número e tomará decisões para evitar que o churn cresça ainda mais entre a base atual de consumidores. Uma equipe de marketing munida com o mesmo número pode montar uma nova estratégia de comunicação com novos potenciais consumidores utilizando outros argumentos de venda ou com foco em outras fatias do público consumidor.</p>
+<p>Sem o contexto de negócios, dados processados continuam não tendo valor. Sabendo disso, analistas de dados buscam conhecer ao máximo o ambiente de negócios onde estão inseridos, e o utilizam na composição do produto de suas análises, seja para testar hipóteses ou interpretar achados. <strong>O conhecimento mais importante para uma pessoa analista de dados, então, não é uma ferramenta ou técnica. É o conhecimento do negócio</strong>.</p>
+<p>Com uma sólida infraestrutura de dados, contextualizada pelas necessidades do negócio, analistas de dados têm o desafio de encontrar respostas para as mais diversas situações organizacionais. Como estas pessoas fazem isso?</p>
+<h2 id="ciclo-analítico-e-ferramentas-para-a-análise-de-dados">Ciclo analítico e ferramentas para a análise de dados</h2>
+<figure >
+  
+  <img data-src="images/figure4-analytics-cycle-pt.webp" class="lazy" alt="As etapas do ciclo analítico." title="As etapas do ciclo analítico." />
+  
+  
+  <figcaption>
+    <p>As etapas do ciclo analítico. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Pipelines de dados e ferramentas, embora possam diferir de organização para organização, possuem etapas e funções similares. O que realmente muda é o contexto de negócios. Diversas organizações possuem equipes de marketing, vendas, sucesso do cliente e financeiro, mas cada equipe funciona de forma distinta em cada empresa, mesmo que duas ou mais empresas operem no mesmo segmento. Entender estas nuances e como o negócio funciona tem seus benefícios:</p>
+<ul>
+<li>Entender por que os dados estão organizados da forma como estão;</li>
+<li>Entender o que significam os dados;</li>
+<li>Entender como cada unidade de negócios faz uso de dados em seus processos de tomada de decisão.</li>
+</ul>
+<p>Por isso entender do negócio é mais importante do que conhecer ferramentas ou técnicas. Os dados ganham uma camada de contexto necessária para que a pessoa analista entregue um produto de dados relevante a quem precisa dele, coisa que ferramentas e técnicas sozinhas não podem dar.</p>
+<p>Uma forma de trabalhar problemas de dados é usar o <strong>ciclo analítico</strong>, um processo para construção de produtos de dados desenhados para atender as necessidades de uma pessoa ou grupo específicos. O ciclo analítico é um processo que não parte da exploração imediata de bases de dados, mas sim do entendimento do contexto para a elaboração de hipóteses. O processo assume algumas premissas:</p>
+<ul>
+<li>Existe conhecimento prévio a análise, o conhecimento do negócio;</li>
+<li>O objetivo é aprender algo por meio da validação ou rejeição de <a href="https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/" target="_blank" rel="noopener">hipóteses</a>;</li>
+<li>Um mesmo problema pode ser explorado diversas vezes. A análise não acaba ao final da primeira volta.</li>
+</ul>
+<p>Seguindo preceitos do desenvolvimento de software, equipes de dados entregam interações do produto que respondem a perguntas de negócio, e formulam novas hipóteses que levam a novas descobertas a cada passagem pelo ciclo.</p>
+<p>As etapas do ciclo analítico são:</p>
+<ul>
+<li>Definição do problema;</li>
+<li>Geração de hipóteses;</li>
+<li>Coleta de dados;</li>
+<li>Tratamento dos dados;</li>
+<li>Análise exploratória;</li>
+<li>Elaboração das descobertas;</li>
+<li>Apresentação das descobertas.</li>
+</ul>
+<h3 id="definição-do-problema">Definição do problema</h3>
+<p>Desafios de dados vão partir de alguma necessidade do negócio, problematizada. Durante a primeira etapa do ciclo analítico, analistas de dados se debruçam sobre este problema para que conheçam o máximo possível de antemão: o que é, como acontece, desde quando é um problema, quem é impactado e por que o problema deve ser resolvido.</p>
+<h3 id="geração-de-hipóteses">Geração de hipóteses</h3>
+<p>Por conhecerem suas realidades, as áreas de negócio já possuem noções pré estabelecidas dos processos atuais, e também dos problemas com os quais lidam. Conhecer estas impressões é importante para estabelecer o ponto de partida para a análise. Os insumos das áreas de negócio são então transformados em hipóteses sobre o problema. As hipóteses vão definir os termos da análise, o que esperar de resultado e como confrontar os achados com as noções pré estabelecidas.</p>
+<h3 id="coleta-de-dados">Coleta de dados</h3>
+<p>O passo seguinte é mapear as fontes de dados que são importantes para a resolução do problema, onde estão, como acessá-las e entender como são alimentadas.</p>
+<h3 id="tratamento-dos-dados">Tratamento dos dados</h3>
+<p>A qualidade dos dados vai variar significativamente não só entre organizações que possuem e que não possuem um pipeline de dados, mas também para o problema em questão. Mesmo organizações com processos maduros de gestão de dados podem não ter informações para resolver determinadas demandas de negócios. Analistas de dados precisam conhecer técnicas de tratamento de dados por pelo menos duas razões:</p>
+<ul>
+<li>Para serem capazes de acrescentar novas fontes de dados a análise;</li>
+<li>Para ressignificar dados existentes em novos contextos de negócios.</li>
+</ul>
+<h3 id="análise-exploratória">Análise exploratória</h3>
+<p>Agora sim, analistas de dados colocam as mãos nos dados! Bases de dados agregadas podem ser grandes o suficiente para permitir a mais granular das análises, mesmo que a necessidade por tal análise não exista. As etapas anteriores condicionam analistas de dados a concentrarem esforços no que é importante para o negócio. Neste momento, a base é analisada e os achados são confrontados com as hipóteses previamente estabelecidas. Durante a análise exploratória, novas hipóteses podem surgir e demandar novas bases de dados. Diversas voltas menores no ciclo podem passar apenas pelas etapas de coleta, tratamento e análise exploratória de dados.</p>
+<h3 id="elaboração-das-descobertas">Elaboração das descobertas</h3>
+<p>Com o conhecimento da análise em mãos, analistas de dados elaboram quadros de métricas e apresentações para comunicar suas descobertas.</p>
+<h3 id="apresentação-das-descobertas">Apresentação das descobertas</h3>
+<p>Ao final da volta, o negócio recebe os aprendizados obtidos com as possíveis maneiras de resolver o problema levantado no início do processo. Novas dúvidas de negócio podem surgir, dando início a uma nova volta no ciclo.</p>
+<h2 id="uma-volta-no-ciclo-analítico">Uma volta no ciclo analítico</h2>
+<p>Para demonstrar o ciclo analítico, vou utilizar um banco de dados de um aplicativo de delivery. A análise do banco de dados será feita utilizando Python com as bibliotecas Pandas, Numpy e Matplotlib.</p>
+<p>A empresa que desenvolve o aplicativo possui o seguinte problema: o NPS das avaliações dos restaurantes tem ficado abaixo das expectativas. A equipe de sucesso do cliente quer entender o que está fazendo o NPS cair e saber o que fazer para reverter o cenário.</p>
+<h3 id="começando-pelo-problema">Começando pelo problema</h3>
+<p>O NPS é uma métrica de satisfação. Ela mensura a percepção de um produto e serviço sob a perspectiva de seus consumidores. A equipe de sucesso do cliente usa esta métrica para avaliar a efetividade dos esforços empregados em retenção da base de consumidores. Retenção para o aplicativo possui contextos diferentes, a depender do consumidor:</p>
+<ul>
+<li>Para consumidores, retenção é voltar na plataforma para fazer um novo pedido;</li>
+<li>Para entregadores, retenção é voltar na plataforma para fazer uma nova entrega;</li>
+<li>Para restaurantes, retenção é voltar a utilizar a plataforma para fazer novas vendas.</li>
+</ul>
+<p>A equipe de sucesso do cliente percebeu que a avaliação que os restaurantes dão para a plataforma tem caído mês a mês. O NPS dos restaurantes começou a cair em um período que coincide com o início da pandemia de COVID-19 no Brasil. O aplicativo <a href="https://link.estadao.com.br/noticias/inovacao,ifood-pedidos-45-milhoes-quarentena,70003468959" target="_blank" rel="noopener">recebeu um volume imenso de novos cadastros</a> de restaurantes, entregadores e consumidores, à medida que diversas empresas de alimentação se adaptaram para funcionar no ambiente digital.</p>
+<h3 id="elaborando-as-hipóteses">Elaborando as hipóteses</h3>
+<p>São diversas as razões que levam a uma nota baixa no NPS, relacionadas ou não com a plataforma em si. Com base em avaliações anteriores, as seguintes hipóteses foram elaboradas:</p>
+<ul>
+<li>A insatisfação dos clientes dos restaurantes aumentou, gerando também insatisfação dos restaurantes com a plataforma;</li>
+<li>Clientes dos restaurantes estão comprando menos pela plataforma;</li>
+<li>O volume de atrasos nas entregas está muito alto.</li>
+</ul>
+<p>Estas hipóteses precisam agora ser testadas.</p>
+<h3 id="a-base-de-dados">A base de dados</h3>
+<p>A equipe de sucesso do cliente possui um banco de dados com avaliações de restaurantes ao longo de 7 meses, de Abril a Outubro de 2020. A base está em formato CSV, um formato que armazena dados separados por um delimitador. Esta base será a única fonte de informação para estudar o problema e testar as hipóteses.</p>
+<h3 id="tratamento-dos-dados-1">Tratamento dos dados</h3>
+<p>A base entregue para análise foi compilada a partir de dados presentes em diferentes ferramentas usadas na empresa, e possui os dados necessários para testar as hipóteses levantadas.</p>
+<h3 id="conhecendo-os-dados">Conhecendo os dados</h3>
+<p>Neste momento, vamos criar familiaridade com a base de dados, fazer as transformações necessárias para contextualizá-los e testar as hipóteses estabelecidas. Trechos da análise original serão adicionados a este post, e o documento completo pode ser acessado <a href="https://github.com/henriquefreitassouza/data/blob/main/ifood/IFood%20NPS%20EDA.ipynb" target="_blank" rel="noopener">em meu Github</a>.</p>
+<p>Com o ambiente configurado e bibliotecas instaladas, vamos carregá-las no projeto e ver os dados pela primeira vez.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_data/dados_dashboard.csv&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">]);</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure5-dataframe-header.webp" class="lazy" alt="Vendo o dataset pela primeira vez." title="Vendo o dataset pela primeira vez." />
+  
+  
+  <figcaption>
+    <p>Vendo o dataset pela primeira vez. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>O índice usado no dataframe é a data de avaliação. As agregações que vamos utilizar se baseiam nesta data.</p>
+<p>O dataset tem 121 colunas, sem contar o índice. Todas as colunas estão sendo exibidas, pois uma configuração foi adicionada à biblioteca para remover o limite padrão de colunas a serem exibidas.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure6-dataframe-numeric-statistics.webp" class="lazy" alt="Sumário das variáveis numéricas, dado por df.describe()." title="Sumário das variáveis numéricas, dado por df.describe()." />
+  
+  
+  <figcaption>
+    <p>Sumário das variáveis numéricas, dado por df.describe(). Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Um olhar atento ao resultado de df.info() mostra que há apenas 2 dados nulos, ambos na coluna months_at_ifood.</p>
+<p>88 variáveis são do tipo inteiro e 23 são pontos flutuantes. 91% do dataset é formado por números.</p>
+<p>Como o tempo é um fator importante para esta análise (pois a queda se dá ao longo do tempo), vamos direcionar os esforços a trabalhar as métricas que vão nos dar uma visão melhor dos dados por esta perspectiva. Neste momento, vamos saber <strong>como o NPS se move em função das variáveis de tempo</strong>. Estas variáveis são mês de cadastro e tempo de plataforma.</p>
+<p>Começando pelo tempo de plataforma:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># As observações com a quantidade de meses em branco serão assumidas como a diferença entre a data da avaliação e a data de hoje</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;months_at_ifood&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Tratar a quantidade de meses como uma variável categórica para facilitar a agregação</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood_int&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;months_at_ifood_int&#39;</span><span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure7-average-nps-by-average-number-of-months.webp" class="lazy" alt="Nota do NPS por tempo de cadastro na plataforma. Parece que quanto maior a quantidade média de meses, mais notas baixas o restaurante possui." title="Nota do NPS por tempo de cadastro na plataforma. Parece que quanto maior a quantidade média de meses, mais notas baixas o restaurante possui." />
+  
+  
+  <figcaption>
+    <p>Nota do NPS por tempo de cadastro na plataforma. Parece que quanto maior a quantidade média de meses, mais notas baixas o restaurante possui. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Olhando para o NPS ao longo dos meses de avaliação:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure8-average-nps-by-month.webp" class="lazy" alt="Agregado pelo mês de avaliação, a nota do NPS caiu nos primeiros três meses, estabilizou no começo do segundo semestre e voltou a cair a partir de Setembro." title="Agregado pelo mês de avaliação, a nota do NPS caiu nos primeiros três meses, estabilizou no começo do segundo semestre e voltou a cair a partir de Setembro." />
+  
+  
+  <figcaption>
+    <p>Agregado pelo mês de avaliação, a nota do NPS caiu nos primeiros três meses, estabilizou no começo do segundo semestre e voltou a cair a partir de Setembro. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>A queda parece sutil quando analisado o conjunto de dados inteiro. Precisamos desmembrar o conjunto para estudar suas partes menores. Vamos fazer isso <strong>diferenciando restaurantes novos de antigos na plataforma</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood_int&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood_int&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>O tempo médio de cadastro de um restaurante na plataforma é de 9,6 meses. 67,9% dos restaurantes na plataforma estão cadastrados há 9 meses ou menos. Para definir o que é um restaurante novo, vamos adotar o seguinte conceito: restaurante novo na plataforma é aquele cadastrado há 9 meses ou menos (ou aquele que está abaixo ou igual a média de tempo de cadastro de restaurantes).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="p">[</span><span class="s1">&#39;new_restaurant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">9</span> <span class="k">else</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;months_at_ifood_int&#39;</span><span class="p">]]</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;new_restaurant&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure9-number-of-old-and-new-restaurants.webp" class="lazy" alt="A maior parte das avaliações foram de restaurantes novos." title="A maior parte das avaliações foram de restaurantes novos." />
+  
+  
+  <figcaption>
+    <p>A maior parte das avaliações foram de restaurantes novos. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;new_restaurant&#39;</span><span class="p">)[</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>A média geral do NPS é 7,54. Ao separar por restaurantes novos e antigos, as avaliações são:</p>
+<ul>
+<li>Novos: 7,66</li>
+<li>Antigos: 7,31</li>
+</ul>
+<p>Ao separar restaurantes por tempo de cadastro, parece haver uma tendência de novos restaurantes terem notas maiores.</p>
+<p>A primeira hipótese levantada foi “<strong>a insatisfação dos clientes dos restaurantes aumentou, gerando também insatisfação dos restaurantes com a plataforma</strong>&quot;. Saber que restaurantes mais antigos estão com uma nota geral menor, acrescido ao contexto da pandemia de COVID-19, pode sugerir que <strong>restaurantes tradicionais da plataforma não estão conseguindo se adaptar tão bem a chegada de novos competidores</strong>, alguns que possivelmente nasceram já em um contexto de pandemia e montaram operações dedicadas ao delivery.</p>
+<p>Vamos agora saber <strong>como o NPS se move em função da quantidade de pedidos feitos no aplicativo</strong>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># As janelas de tempo são 7, 14 e 28 dias</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">)[[</span><span class="s1">&#39;qtd_concluded_orders_28&#39;</span><span class="p">,</span> <span class="s1">&#39;qtd_concluded_orders_promotions_28&#39;</span><span class="p">,</span> <span class="s1">&#39;qtd_concluded_orders_lunch_28&#39;</span><span class="p">,</span> <span class="s1">&#39;qtd_concluded_orders_dinner_28&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure10-nps-by-number-of-concluded-orders.webp" class="lazy" alt="O NPS é maior nos extremos (0 e 10) e cai nas avaliações seguintes (1 e 9) para pedidos concluídos com e sem promoção e também nas horas de almoço e janta. O comportamento se repete para as janelas de 7 e 14 dias. A oscilação da nota por horário é maior do que com ou sem o uso de cupons." title="O NPS é maior nos extremos (0 e 10) e cai nas avaliações seguintes (1 e 9) para pedidos concluídos com e sem promoção e também nas horas de almoço e janta. O comportamento se repete para as janelas de 7 e 14 dias. A oscilação da nota por horário é maior do que com ou sem o uso de cupons. Fonte: Autor." />
+  
+  
+  <figcaption>
+    <p>O NPS é maior nos extremos (0 e 10) e cai nas avaliações seguintes (1 e 9) para pedidos concluídos com e sem promoção e também nas horas de almoço e janta. O comportamento se repete para as janelas de 7 e 14 dias. A oscilação da nota por horário é maior do que com ou sem o uso de cupons. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="c1"># As janelas de tempo são 7, 14 e 28 dias</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">)[</span><span class="s1">&#39;qtd_batch_orders_28&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure11-nps-by-batch-orders.webp" class="lazy" alt="Para pedidos acumulados nos últimos 14 e 28 dias, há mais notas entre 0, 1 e 2 no NPS do que as demais." title="Para pedidos acumulados nos últimos 14 e 28 dias, há mais notas entre 0, 1 e 2 no NPS do que as demais." />
+  
+  
+  <figcaption>
+    <p>Para pedidos acumulados nos últimos 14 e 28 dias, há mais notas entre 0, 1 e 2 no NPS do que as demais. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Fazendo o mesmo exercício, mas agrupado ao longo dos meses:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[[</span><span class="s1">&#39;qtd_concluded_orders_28&#39;</span><span class="p">,</span> <span class="s1">&#39;qtd_concluded_orders_promotions_28&#39;</span><span class="p">,</span> <span class="s1">&#39;qtd_concluded_orders_lunch_28&#39;</span><span class="p">,</span> <span class="s1">&#39;qtd_concluded_orders_dinner_28&#39;</span><span class="p">]]</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure12-number-of-orders-by-month.webp" class="lazy" alt="O volume de pedidos cai de forma geral e nos horários de refeição, e aumenta quando há promoções." title="O volume de pedidos cai de forma geral e nos horários de refeição, e aumenta quando há promoções." />
+  
+  
+  <figcaption>
+    <p>O volume de pedidos cai de forma geral e nos horários de refeição, e aumenta quando há promoções. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;qtd_batch_orders_28&#39;</span><span class="p">]</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure13-batch-orders-by-month.webp" class="lazy" alt="E a quantidade de pedidos acumulados aumenta a cada mês." title="E a quantidade de pedidos acumulados aumenta a cada mês." />
+  
+  
+  <figcaption>
+    <p>E a quantidade de pedidos acumulados aumenta a cada mês. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>A maneira como o NPS se distribui pela quantidade de pedidos concluídos e totais não sugere a falta de clientes, como a hipótese “<strong>clientes dos restaurantes estão comprando menos pela plataforma</strong>&quot; assume, mas sim que o comportamento de consumo se alterou, possivelmente em função da pandemia de COVID-19. <strong>Mais pedidos estão sendo fechados com o uso de cupons</strong>.</p>
+<p>Para finalizar esta primeira análise exploratória, vamos estudar a <strong>avaliação NPS em função dos atrasos nas retiradas e nas entregas</strong>. O dataset possui diversas variáveis de atraso, que incluem apenas o atraso na retirada do pedido ou o atraso na retirada do pedido e na entrega ao cliente. Vamos estudar os efeitos dos atrasos na retirada e atrasos na entrega na pontuação do NPS.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[[</span><span class="s1">&#39;delay_in_delivery_qtd_punctuality_7&#39;</span><span class="p">,</span> <span class="s1">&#39;delay_in_delivery_qtd_punctuality_14&#39;</span><span class="p">,</span> <span class="s1">&#39;delay_in_delivery_qtd_punctuality_28&#39;</span><span class="p">]]</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure14-nps-by-time-to-initiate-delivery.webp" class="lazy" alt="Avaliações com notas mais altas parecem ter também uma proporção maior de atrasos, apesar de parecer contra intuitivo." title="Avaliações com notas mais altas parecem ter também uma proporção maior de atrasos, apesar de parecer contra intuitivo." />
+  
+  
+  <figcaption>
+    <p>Avaliações com notas mais altas parecem ter também uma proporção maior de atrasos, apesar de parecer contra intuitivo. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;nps_grade&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[[</span><span class="s1">&#39;delay_in_collection_qtd_punctuality_7&#39;</span><span class="p">,</span> <span class="s1">&#39;delay_in_collection_qtd_punctuality_14&#39;</span><span class="p">,</span> <span class="s1">&#39;delay_in_collection_qtd_punctuality_28&#39;</span><span class="p">]]</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure15-nps-by-delayed-delivery.webp" class="lazy" alt="Já quando a análise é feita pelo tempo para retirada, quanto menor o número de atrasos, maior é a nota." title="Já quando a análise é feita pelo tempo para retirada, quanto menor o número de atrasos, maior é a nota." />
+  
+  
+  <figcaption>
+    <p>Já quando a análise é feita pelo tempo para retirada, quanto menor o número de atrasos, maior é a nota. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<p>A última hipótese estabelecida é: <strong>o volume de atrasos nas entregas está muito alto</strong>. Os dados dos últimos meses mostram que a nota no NPS ainda pode ser alta mesmo com atrasos no cliente. A nota é menor, no entanto, quando a retirada no restaurante atrasa. <strong>A métrica de sucesso para o restaurante parece ser conseguir despachar o pedido a tempo para o cliente</strong>.</p>
+<p>Muitas outras perguntas e análises podem ser feitas. Usamos apenas uma fração das 122 variáveis presentes no banco de dados, mas foram o suficiente para apresentar as primeiras descobertas e testar as primeiras hipóteses. Com tudo o que aprendemos, é possível então elaborar descobertas para apresentar ao time de sucesso do cliente.</p>
+<h3 id="preparando-a-comunicação-dos-achados">Preparando a comunicação dos achados</h3>
+<p>Descobrimos que restaurantes mais antigos estão tendo mais dificuldade em manter boas avaliações no NPS, consumidores estão prezando por promoções e que restaurantes condenam entregadores que atrasam. Como agora usar essas informações para melhorar avaliações futuras do NPS? Não há uma resposta única, e é provável que várias respostas diferentes sejam testadas pela equipe até que as alavancas do NPS sejam descobertas. Para guiar os esforços da equipe, no entanto, podemos usar os achados para sugerir pelo menos duas ações:</p>
+<ul>
+<li>Utilizar mais cupons promocionais em parceria com os restaurantes;</li>
+<li>Criar ações promocionais específicas para restaurantes antigos.</li>
+</ul>
+<p>Neste momento, analistas de dados elaboram o material de apresentação para a equipe de sucesso do cliente.</p>
+<h3 id="apresentação-das-descobertas-1">Apresentação das descobertas</h3>
+<p>Um produto de análise pode ser estático, como o que fizemos, ou dinâmico, usando uma ferramenta que permita com que o negócio possa responder outras perguntas utilizando estes dados sob demanda. O tipo de ferramenta a ser usada vai depender do problema em questão, do tempo que as pessoas analistas de dados dispõem para atender o negócio e do letramento em dados do público alvo.</p>
+<h2 id="e-agora">E agora?</h2>
+<p>Certa vez escrevi neste blog que <a href="https://www.automacaodedados.com.br/stories/o-que-faz-a-pessoa-analista-de-dados/" target="_blank" rel="noopener">análise de dados pode ser infinita</a>. Podemos levantar muitas outras perguntas e fazer muitas outras análises na base de dados, mas para que analistas de dados possam entregar valor ao negócio, é necessário que consigam respostas para os problemas do momento. O ciclo analítico ajuda equipes de dados a realizarem entregas incrementais e valor constante para o negócio.</p>
+<p>Cada organização está em um estágio diferente de maturação em dados. Enquanto algumas possuem complexos pipelines de dados, outras possuem informações espalhadas em silos, sem controle e tratamento devido para que consigam analisar seus dados sob uma perspectiva unificada. Entender o fluxo de dados por completo &ndash; da ingestão a entrega para ferramentas de visualização &ndash; é importante também para pessoas analistas de dados, pois este conhecimento irá ajudar a navegar por diferentes estruturas organizacionais.</p>
+<h2 id="leitura-adicional">Leitura adicional</h2>
+<p>Você pode consultar o notebook usado para esta análise em <a href="https://github.com/henriquefreitassouza/data/blob/main/ifood/IFood%20NPS%20EDA.ipynb" target="_blank" rel="noopener">meu Github</a>, bem como diversos outros notebooks com diferentes projetos de análise exploratória de dados.</p>
+<p>Bora percorrer o ciclo analítico!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Certa vez li que dados são como resíduos nucleares. Desde então tomo cuidado redobrado com o uso que faço deles.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">Leia também estas histórias</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/stories/o-que-faz-a-pessoa-analista-de-dados/images/thumbnail_huaf0ef3d719039008c4a527b9e58ea975_75826_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-02-16 11:37:00 &#43;0000 UTC">16/02/2020 11:37:00</time>
+      </div>
+      <a href="/categories/an%C3%A1lise" class="badge" itemprop="articleSection">análise</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">O que faz a pessoa analista de dados?</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Analista de dados, cientista de dados, engenheiro de dados&amp;hellip; São diversos as profissões que atuam com dados. Neste post, vamos entender o que faz e o que entrega uma pessoa analista de dados, e …</p>
+      <div>
+        <a class="button-primary" href="/stories/o-que-faz-a-pessoa-analista-de-dados/">Leia mais</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Automação de Dados" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Automação de Dados</span>
+        </div>
+        <p class="text-white">Espaço para a divulgação de informações que ajudem a democratizar o conhecimento sobre novas tecnologias no Brasil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Todas as categorias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/an%C3%A1lise/" itemprop="item">
+          <span class="text-white" itemprop="name">Análise</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/automa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Automação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/empreendedorismo/" itemprop="item">
+          <span class="text-white" itemprop="name">Empreendedorismo</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/estat%C3%ADstica/" itemprop="item">
+          <span class="text-white" itemprop="name">Estatística</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/governan%C3%A7a/" itemprop="item">
+          <span class="text-white" itemprop="name">Governança</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/programa%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Programação</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/categories/visualiza%C3%A7%C3%A3o/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualização</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Últimas histórias</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/ferramentas-e-tecnicas-para-a-analise-de-dados/" itemprop="item">
+          <span class="text-white" itemprop="name">Ferramentas e Técnicas para a Análise de Dados</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">O Metaverso pós Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Construção da identidade no espaço virtual</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Feito com Hugo &#43; Tailwind e hospedado no Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

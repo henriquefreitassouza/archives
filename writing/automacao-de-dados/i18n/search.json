@@ -1,0 +1,20 @@
+{
+  "pt": {
+    "page_title": "Busque por histórias",
+    "search_title_single": "história encontrada",
+    "search_title_plural": "histórias encontradas",
+    "serp_text": "Utilize a barra de busca no cabeçalho desta página para fazer a pesquisa.",
+    "serp_title": "Sua busca por",
+    "serp_text_not_found": "Não foram encontradas histórias com o termo pesquisado. Faça uma nova busca utilizando outras palavras.",
+    "read_more": "Leia mais"
+  },
+  "en": {
+      "page_title": "Search for stories",
+      "search_title_single": "story found",
+      "search_title_plural": "stories found",
+      "serp_text": "Use the search bar on the header to perform a search.",
+      "serp_title": "Your search for",
+      "serp_text_not_found": "No results were found with the given search term. Try searching again with other words.",
+      "read_more": "Read more"
+    }
+}

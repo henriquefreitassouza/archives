@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Statistics on Data Automation</title>
+    <link>https://www.automacaodedados.com.br/en/categories/statistics/</link>
+    <description>Recent content in Statistics on Data Automation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 06 Dec 2017 11:36:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/en/categories/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Online testing sample calculator</title>
+      <link>https://www.automacaodedados.com.br/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/</link>
+      <pubDate>Wed, 06 Dec 2017 11:36:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/calculadora-de-significancia-estatistica-para-testes-ab/</guid>
+      <description>I built an online sample testing calculator. It calculates required sample sizes, estimated time to finish and statistical significance of tests. This post will explain how it works and how to use it.</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Setup testing tools</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</link>
+      <pubDate>Wed, 29 Nov 2017 09:12:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</guid>
+      <description>Setup tests with online samples require careful planning. Wrong configurations can invalidate any findings and lead businesses to make wrong decisions – what can be worse than having no data at all.</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - P-value, alpha, beta and effect size</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</link>
+      <pubDate>Mon, 27 Nov 2017 09:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</guid>
+      <description>The most widely adopted testing tools take care of the math on experiments, but the researcher must be able to make the necessary configurations for calculations to be correct. I will explain what are those configuration and how they correlate with a successful experiment.</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Histograms and density curves</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</link>
+      <pubDate>Sun, 26 Nov 2017 09:59:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</guid>
+      <description>During a test, many samples are collected and its conversion rates calculated. The next step is to group and classify this data in such a way that will be possible to infer data about the whole population. How does that happen and why this is important inside a test?</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Samples and probabilities</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</link>
+      <pubDate>Fri, 24 Nov 2017 11:21:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</guid>
+      <description>How to be sure that the result of a hypothesis test with samples is representative of the whole population being studied?</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - Hypotheses</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</link>
+      <pubDate>Thu, 23 Nov 2017 11:07:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</guid>
+      <description>There are many types of tests with samples, and this post will present the most used with online testing techniques, such as A/B tests: hypotheses tests.</description>
+    </item>
+    
+    <item>
+      <title>Statistics for testing - why should I know statistics?</title>
+      <link>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</link>
+      <pubDate>Wed, 22 Nov 2017 10:35:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</guid>
+      <description>When you see the results of an A/B or split test, do you question the results that you get or accept them without hesitation? If you don&#39;t question them, you should.</description>
+    </item>
+    
+  </channel>
+</rss>

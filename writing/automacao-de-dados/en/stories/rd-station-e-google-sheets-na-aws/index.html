@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>RD Station and Google Sheets Part 2 - Moving to AWS | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="RD Station and Google Sheets Part 2 - Moving to AWS | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets-na-aws/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="RD Station and Google Sheets Part 2 - Moving to AWS | Data Automation">
+<meta property="og:description" content="RD Station and Google Sheets Part 2 - Moving to AWS | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2020-09-03 19:23:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-11-19 19:23:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="25 minutes" />
+
+<meta property="article:tag" content="Automation" />
+<meta property="article:section" content="Automation" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="RD Station, Google Sheets and Amazon Web Services logos.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/rd-station-e-google-sheets-na-aws/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC" itemprop="datePublished">03/09/2020 19:23:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/automation" itemprop="articleSection">automation</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">RD Station and Google Sheets Part 2 - Moving to AWS</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/rd-station-e-google-sheets-na-aws/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">RD Station and Google Sheets Part 2 - Moving to AWS</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 25 minutes</strong>
+        <p>Published on September 03, 2020 and updated on November 19, 2021.</p>
+<p><strong>SPOILER ALERT: This post contains lines of code! I&rsquo;ll assume that you&rsquo;re familiar with SQL, Javascript and Node.js</strong>.</p>
+<p>Exactly 2 years ago I wrote a post on this blog in which I explain <a href="/en/stories/rd-station-e-google-sheets" >how to integrate RD Station with Google Sheets</a>. With only one webhook, one automation flow and some lines of code, it is possible to automate sending leads to spreadsheets and reduce time with data collection. For a small operation this process works fine, but what when the database grows, there are many people using it and performance starts to become an issue? It is time to upgrade to a better architecture.</p>
+<h2 id="the-limitations-of-a-spreadsheet">The limitations of a spreadsheet</h2>
+<p>The first problem when using webhooks to integrate RD Station is felt right after turning the automation on with lists containing many leads (more than 3,000 leads): overwriting data in the spreadsheet. Each lead is sent by the webhook individually, which requires a proper process to manage multiple lines being written in the spreadsheet at the same time. Google Apps Script (or GAS) <a href="https://developers.google.com/apps-script/guides/services/quotas" target="_blank" rel="noopener">restraints the amount of simultaneous executions with 30 per user</a>. Since on the previous post the spreadsheet was configured to authenticate anonymous users using the credentials of a user with write access permission, each call to the script by the webhook utilize the quota of the user. A system of lock and release was created to manage concurrent accesses, but the solution proved ineffective to manage many leads being sent through the webhook simultaneously.</p>
+<p>This problema can be avoided by determining a cutoff date and two lead segmentation lists by date of creation: one that goes until the cutoff date and another that goes after the cutoff date. All leads created up to the cutoff date will be manually registered into the spreadsheet and the automation is turned on using the list with leads created after the cutoff date. Solved the problem, the spreadsheet will be fed with data from news leads, until one of these things starts to happen:</p>
+<ul>
+<li>The limit of cells is reached or is about to be;</li>
+<li>The problem with excessive amount of calls to GAS repeats due to many new leads going to the automation flow simultaneously;</li>
+<li>The spreadsheet, which lives in a Google Drive directory, is modified or erased by accident;</li>
+<li>The file starts to get really big and slow to open.</li>
+</ul>
+<p>These are just problems that makes accessing the file harder, we&rsquo;re not even considering legal issues when uploading leads data to a Google Drive directory.</p>
+<p>Fortunately, the place to which this solution will be moved will mitigate or solve these problems and many others.</p>
+<h2 id="cloud-infrastructure">Cloud infrastructure</h2>
+<p>Build and maintain a infrastructure to collect, process and store data in the office is very costly. Consider just the up front costs with computers and qualified personnel. Even before storing a single bit, a company that has decided to venture into creating its own data hub will possibly dedicate months of work to make everything work as planned. Add internal bureaucracy for approving such project and the cost with maintenance and soon enough you&rsquo;ll end up with a project that, probably, won&rsquo;t pay off.</p>
+<p>To abstract such complexity of managing the necessary infrastructure required to host apps, some companies around the world rent their own infrastructures: machines, network equipment and qualified personnel that take care of everything that happens &ldquo;behind the curtains&rdquo; so the focus keep on creating and maintaining applications, not worrying with building this infrastructure from scratch.</p>
+<p>One company that offers this service is Amazon, with its infrastructure division Amazon Web Services (AWS). It is the solution provided by AWS that will be used throughout this post.</p>
+<p>A pause before moving on: everything that will be done using AWS could have been done using any other infrastructure as a service (IaaS) provider.</p>
+<h2 id="amazon-web-services">Amazon Web Services</h2>
+<p>Cloud computing solutions from AWS are prepared to receive different traffic volumes: it &ldquo;scale&rdquo; according to the demand, which means that more resources from the infrastructure get allocated as demand grows and once it isn&rsquo;t needed anymore, resources are released. Pricing is set based on the usage of the infrastructure, there is no single price or table of prices for most of the services like a traditional hosting provider. These services are listed across dozens of categories and with them it is possible to do many things, from storing text files to process neural network algorithms.</p>
+<figure >
+  
+  <img data-src="images/figure1-aws-product-list.webp" class="lazy" alt="The different categories of services provided by AWS." title="The different categories of services provided by AWS." />
+  
+  
+  <figcaption>
+    <p>The different categories of services provided by AWS. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>For this exercise, we&rsquo;ll make use of the following services:</p>
+<ul>
+<li>AWS API Gateway;</li>
+<li>AWS Lambda;</li>
+<li>AWS RDS MySQL.</li>
+</ul>
+<p>Together, this services will be responsible to receive the webhook from RD Station (the same one used in the previous post), treat the data at the entrance and store this data into a MySQL database.</p>
+<figure >
+  
+  <img data-src="images/figure2-data-pipeline.webp" class="lazy" alt="The design to be created at AWS." title="The design to be created at AWS." />
+  
+  
+  <figcaption>
+    <p>The design to be created at AWS. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<h3 id="aws-api-gateway">AWS API Gateway</h3>
+<p>AWS API Gateway is the API builder from AWS. With this service it is possible to create REST APIs and also websockets, used to create instant messaging apps. With a REST API it is possible to open a door to listen for the webhook to be sent by RD Station.</p>
+<h3 id="aws-lambda">AWS Lambda</h3>
+<p>AWS Lambda is a service capable of executing code from different programming languages. This service will orchestrate the usage of all other resources to be used in the infrastructure, and will be executed as the API gets called. If you know the MVC architecture (Model, View, Controller), AWS Lambda will act as a controller.</p>
+<h3 id="aws-rds-mysql">AWS RDS MySQL</h3>
+<p>AWS have a category of services called RDS, or Relational Database Service, which supports several known databases, such as PostgreSQL, MariaDB or MySQL. There is also a database manager built over MySQL called AWS Aurora, focused on performance. For this exercise we&rsquo;ll stick with an instance of a native MySQL.</p>
+<p>Along with these services, we&rsquo;ll need three others to publish the architecture:</p>
+<ul>
+<li>AWS IAM;</li>
+<li>AWS VPC;</li>
+<li>AWS CloudWatch.</li>
+</ul>
+<h3 id="aws-iam">AWS IAM</h3>
+<p>Every service on AWS have access restrictions. Permissions are granted for system users and to other services. The system that manage these permissions in AWS is called IAM, or Identity Access Management.</p>
+<h3 id="aws-vpc">AWS VPC</h3>
+<p>As well as user permissions, AWS services can or can&rsquo;t be isolated from the internet. Isolated services are part of a network whose rules are managed by administrative users and devices that are inside this network can be connected to the internet upon approval. This isolated environment is called VPC, or Virtual Private Cloud. The database will live inside this safe network.</p>
+<h2 id="aws-cloudwatch">AWS CloudWatch</h2>
+<p>Each code executed on AWS Lambda generates an execution log. This log must, necessarily, be stored on CloudWatch. The service allows to store any kind of log, including API calls, but for this exercise only the execution log will be registered.</p>
+<p>Each service can be configured in the smallest details using an administrative panel, called <strong>console</strong>.</p>
+<h2 id="setting-up-the-environment">Setting up the environment</h2>
+<p>Identified all the services that will make up the infrastructure, time to configure them.</p>
+<h3 id="creating-an-account-at-aws">Creating an account at AWS</h3>
+<p>Creating an account at AWS can be done with no cost. Throughout the first year of usage, <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener">many services are free</a>, including the one we&rsquo;ll be using throughout this post.</p>
+<p>To utilize these services, <a href="https://portal.aws.amazon.com/billing/signup#/start" target="_blank" rel="noopener">create an AWS account</a> and login in the console.</p>
+<figure >
+  
+  <img data-src="images/figure3-aws-console.webp" class="lazy" alt="AWS console." title="AWS console." />
+  
+  
+  <figcaption>
+    <p>AWS console. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>All AWS services have redundancy, meaning that they&rsquo;re mirrored across servers located on different parts of the planet. You can choose the region you want to work from and how each service you&rsquo;ll be using will be mirrored on different zones, to ensure availability in case something happens to the infrastructure in which you app is hosted. When creating an account, the default region is Ohio (us-east-2), in the United States. There is an AWS data center in São Paulo (sa-east-1) which can be used to host apps that will be used in Brazil. For this exercise, I kept the default zone (us-east-2) and the language is set to english.</p>
+<h3 id="creating-the-database">Creating the database</h3>
+<p>The first thing that we&rsquo;ll do at the environment is to create the database. To do this, use the search bar that is located in the home screen and type RDS. Select the first result. The same menu can be accessed under Services. Upon entering the first time in any service at AWS you will be greeted with a home page presenting the service. Hit the button &ldquo;Create database&rdquo;.</p>
+<figure >
+  
+  <img data-src="images/figure4-amazon-mysql.webp" class="lazy" alt="Configuration screen for a new MySQL database." title="Configuration screen for a new MySQL database." />
+  
+  
+  <figcaption>
+    <p>Configuration screen for a new MySQL database. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Keep the option &ldquo;Standard Create&rdquo; checked, to show all configurations.</p>
+<p>Select MySQL as the database and the edition MySQL Community. Keep the suggested version (by the time this post was published, 8.0.17).</p>
+<p>On templates, select Free tier. We&rsquo;ll use the service that is provided by free for the first 12 months.</p>
+<p>Choose a name to identify this instance of the database and a password. This name is not the database name, but an identifier to represent both the database and its configurations.</p>
+<p>Keep the default options for hardware configurations.</p>
+<p>Under Connectivity, make sure that there is a VPC (Virtual Private Cloud) selected. When creating a database, it will be associated with a VPC.</p>
+<p>Hit Additional connectivity configuration to show additional options.</p>
+<p>In Subnet group make sure that the default network group is selected.</p>
+<p>On Public access select Yes. It will be possible to access the database from tools outside the VPC, and this will be done only to create the database and the table at which the data from RD Station will be stored. After finishing creating the database and table, we&rsquo;ll disable public access and let VPC control the traffic allowed to access the database.</p>
+<p>In Existing VPC security groups, select the default option.</p>
+<p>Keep all remaining configurations as is and hit Create database.</p>
+<figure >
+  
+  <img data-src="images/figure5-database-created.webp" class="lazy" alt="New database info screen created at AWS." title="New database info screen created at AWS." />
+  
+  
+  <figcaption>
+    <p>New database info screen created at AWS. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Now that the database is created, write down the endpoint, which is the address that will be used to connect to the database, the given port number (the default port is 3306), user and password created in the previous step. With this data it is possible to use any MySQL client to connect to the database.</p>
+<p>It is not possible to connect to the database yet. Although Public access was set to Yes when creating the database, services outside the VPC still can&rsquo;t access the database because they can&rsquo;t enter the VPC. It is necessary to allow them to do so, which will be done listing the IP address of your machine to the list of authorized addresses that can access the VPC.</p>
+<h3 id="configuring-the-network-on-vpc">Configuring the network on VPC</h3>
+<p>Use the search bar available on Services to search for &ldquo;VPC&rdquo;. Select the first result. You will see the initial page for the service.</p>
+<p>In the options menu for the service, click in Security Groups, under Security. This will list all security groups for the default VPC that is created together with the AWS account.</p>
+<figure >
+  
+  <img data-src="images/figure6-vpc-configuration.webp" class="lazy" alt="List of security groups inside the default VPC." title="List of security groups inside the default VPC." />
+  
+  
+  <figcaption>
+    <p>List of security groups inside the default VPC. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Each security group contains a set of rules for traffic to enter and leave each service inside a VPC. It is possible to create many groups with different settings for each service. In this exercise we&rsquo;ll just edit the default security group to authorize the IP address from your machine to be able to access the database.</p>
+<p>Click on the default security group ID. There are rules set for traffic that come and go on tabs Inbound rules and Outbound rules, respectively. The default exit rule is to authorize all traffic under the VPC. Hit Edit inbound rules.</p>
+<p>Hit the button Add rule. Each rule in the security group must have set the type of traffic, protocol, port and origin address. To authorize the IP address from your machine establishing a connection with the database select the type All TCP. Both protocol and port will be automatically filled. Select Source and then My IP. You IP address will be added to the table. Hit Save rules to apply the configuration.</p>
+<p>You IP address is now authorized to enter the VPC and connect with the database using the endpoint that was assigned during creation. We&rsquo;ll now test this connection.</p>
+<h2 id="database-configuration">Database configuration</h2>
+<p>For this exercise, I&rsquo;ll use MySQL Workbench, which can be <a href="https://dev.mysql.com/downloads/workbench/" target="_blank" rel="noopener">downloaded for free</a> in MySQL website. With MySQL opened, hit new connection. Give a name for the connection, leave the mode as Standard (TCP/IP) and fill the inputs Hostname, Port, Username and Password with those that were given to you after creating the new MySQL instance on AWS. Click on Test connection to validate if it is possible to connect to the database from your local machine. If everything is OK, hit &ldquo;OK&rdquo; to establish a new connection with the database.</p>
+<figure >
+  
+  <img data-src="images/figure7-mysql-workbench.webp" class="lazy" alt="Open connection between MySQL Workbench and the database." title="Open connection between MySQL Workbench and the database." />
+  
+  
+  <figcaption>
+    <p>Open connection between MySQL Workbench and the database. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Let&rsquo;s create a database called rdstation. For that, write the following query using the query editor:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">rdstation</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Run the command using the lightning icon, in the toolbar above the text editor or using the shortcut CTRL + Enter (or command + Enter). A new database was created. We need now to create a table in this database to store leads coming from RD Station. Before creating the table we need to select a database. To select the newly created database execute the following query:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">USE</span><span class="w"> </span><span class="n">rdstation</span><span class="p">;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>With the database selected, create a table called leads:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="nf">leads</span><span class="p">(</span><span class="w">
+</span><span class="w">	</span><span class="n">id</span><span class="w"> </span><span class="kt">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="no">NULL</span><span class="w"> </span><span class="kp">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w">
+</span><span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">),</span><span class="w">
+</span><span class="w">  </span><span class="n">email</span><span class="w"> </span><span class="kt">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="w">
+</span><span class="w"></span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The database is now configured to store data from new leads coming from the webhook.</p>
+<h3 id="creating-the-lambda-function">Creating the lambda function</h3>
+<p>The next step is to configure the Lambda service, which executes code snippets that will orchestrate all services used in the architecture to be created. The code will be executed inside functions, called after some event. These functions are called lambda functions. It is not necessary to create and configure an environment to run lambda functions, this was already done by AWS. We will focus on creating the code and load it to the service.</p>
+<p>Using the search bar, search for &ldquo;Lambda&rdquo; and click at the first result. After entering page for the Lambda service, hit &ldquo;Create function&rdquo;.</p>
+<figure >
+  
+  <img data-src="images/figure8-aws-lambda.webp" class="lazy" alt="New function configuration settings at AWS." title="New function configuration settings at AWS." />
+  
+  
+  <figcaption>
+    <p>New function configuration settings at AWS. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Amazon provides a list of templates for commonly used functions. For this exercise, we&rsquo;ll create a new blank function (Author from scratch).</p>
+<p>The next step is to name the function, following the same rules used by programming languages.</p>
+<p>For this exercise Javascript will be the language of choice, under a Node.js server. The most recent version available when this post was published will be used (12.x).</p>
+<p>The next step is grant the function the permissions it needs to run. It is possible to create a new set of rules (roles) without leaving the lambda creation screen. To do that, select the option &ldquo;Create a new role with basic Lambda permissions&rdquo;.</p>
+<p>Finally, hit Create function.</p>
+<figure >
+  
+  <img data-src="images/figure9-aws-test-function.webp" class="lazy" alt="New function created at AWS Lambda." title="New function created at AWS Lambda." />
+  
+  
+  <figcaption>
+    <p>New function created at AWS Lambda. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Now that the function is created, we need to setup the moment in which it will be called. As in the architecture designed at the beginning of this post, we need the function to be called as soon as the API receive data from a webhook. Let&rsquo;s create this API from the lambda function that was configured.</p>
+<p>In the Designer section, hit Add trigger. Expand the options in the search input that appears and select API Gateway. Upon selecting this option, an API configuration assistant will open. Select Create an API  and select the option REST API. In security, keep the option Open. Hit Additional settings. Give a name for the API and, optionally, a name for the current development stage. You can create several development stages, useful to create distinct environments such as development, staging and production, for instance. With all configurations set, hit Add.</p>
+<p>Go back to the function configurations page. Find the group of settings VPC. We need to add this lambda function inside the VPC where the database lives. This isn&rsquo;t the only way to establish this connection, it is possible to leave the lambda function ouside the VPC and establish a connection with the VPC and with the database. By keeping the lambda function inside a VPC, tough, we eliminate the need to setup a connection between the lambda function and the VPC. <strong>Remember: objects inside a VPC have no internet access by default. In this exercise, it will be possible to place the lambda function inside the VPC, since the function only interacts with a database that is also inside the VPC, with no need to call external services on the internet</strong>.</p>
+<p>In VPC, hit Edit. Select the default VPC, the three default subnets and the default security group. Note that by selecting a default security group, the page will show all Inbound and Outbound rules defined on security group settings, including the one we created to authorize the IP address of your local machine to connect with the VPC. Hit Save.</p>
+<p>The function is configured, but there are two more tasks left: grant API reading permissions to the function that was created and writing down the endpoint address from which the webhook from RD Station will be sending data to.</p>
+<h3 id="granting-permissions-to-the-lambda-function">Granting permissions to the lambda function</h3>
+<p>When creating a lambda function, we checked the option to create a set of permissions for the function to work. These permissions authorize the function to:</p>
+<ul>
+<li>Write logs on AWS CloudWatch;</li>
+<li>Write data on AWS EC2, which is the AWS virtual machines service, where functions are stored.</li>
+</ul>
+<p>We need to grant another permission to the function, one that will allow it to read data from the API previously created. To do that, go to Services and search for &ldquo;IAM&rdquo;. Select the first result. In the options menu, select Roles.</p>
+<figure >
+  
+  <img data-src="images/figure10-aws-iam.webp" class="lazy" alt="List of roles that were created as we configured AWS services." title="List of roles that were created as we configured AWS services." />
+  
+  
+  <figcaption>
+    <p>List of roles that were created as we configured AWS services. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The role that was created have the same name as the function. Select this role.</p>
+<p>Hit the button &ldquo;Attach policies&rdquo;. A list of possible permissions for this role will appear on the page. Using the search box, search for a permission called &ldquo;AmazonAPIGatewayInvokeFullAccess&rdquo;. Select this permission and hit &ldquo;Attach policy&rdquo;. This permission will be added to the role, and all services that use this role will have this and all permissions associated with the role.</p>
+<h3 id="finding-the-api-address">Finding the API address</h3>
+<p>The last configuration step is to get the API endpoint address. To do that, go to Services. In the search box, type &ldquo;API&rdquo; and select the first option. The screen that opens will show that there&rsquo;s an API already created, which is the one automatically created when configuring the trigger for the lambda function. Select this API. Note that there is an endpoint already created that uses the same name as the lambda function previously created. Once the API was published, it was assigned an endpoint following the convention https://api-address/stage/functionName, where stage is the name of the default stage that was created and functionName is the resource that invoke the lambda function. If you don&rsquo;t include the function name (also called resource or method) in the address that calls the API, you will see an error when trying to access this address directly from the browser that says &ldquo;Missing authentication token&rdquo;.</p>
+<p>To find the address associated with the API, go to Stages and select the stage that was created when setting up the API. Write down the address given in Invoke URL. Note that this address have no resource attached to it (there is no function name after the stage). For the address to be complete, it should reference the name of the resource. If you need to know the exact name of the resource that was created for you, go to Resources, above Stages in the menu.</p>
+<h2 id="the-orchestrator">The orchestrator</h2>
+<p>The lambda function we&rsquo;ve created will orchestrate all resources used in this infrastructure. We need to teach it how to do that. Go to the lambda service page and select the function that was created. We could type all commands using the editor provided by AWS. There is a restriction with this editor, though: we can&rsquo;t install packages. Using Node.js as the server, we can&rsquo;t use NPM (Node Package Manager). We need the mysql package to establish a connection with the database from within the lambda function and this package is not available on this environment. All necessary dependencies for the project need to be available at AWS.</p>
+<p>To load all required files, create a folder in a directory on your local machine and start a new Node.js project in the root of this folder. If you don&rsquo;t have Node.js installed on your machine, <a href="https://nodejs.org/en/" target="_blank" rel="noopener">install it</a> before moving on.</p>
+<p>Once Node.js is installed on your machine, open a terminal and access the root folder of the project to be loaded on AWS Lambda. Inside this folder, run the command:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm init</code></pre></td></tr></table>
+</div>
+</div>
+<p>This command will ask for some information to setup the project, like author name and initialization file. Fill this as you prefer, keep the entrance point as being index.js and confirm everything once you&rsquo;re done.</p>
+<p>It is necessary to install the mysql package, <a href="https://www.npmjs.com/package/mysql" target="_blank" rel="noopener">available on NPM</a>. Run the following command on your terminal:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">npm install mysql</code></pre></td></tr></table>
+</div>
+</div>
+<p>The package will be installed in the project folder, with all its dependencies, inside a folder called node_modules.</p>
+<p>With mysql installed, we can use it to establish a connection with the database.</p>
+<p>Open your code editor of choice and create, inside the root folder for this project, a file called index.js. This file will contain the code we&rsquo;ll write to catch the webhook from RD Station and store its data into the database.</p>
+<h3 id="the-basic-structure-of-a-lambda-function">The basic structure of a lambda function</h3>
+<p>All lambda functions are declared with a basic setup. In Javascript that is running on a Node.js server, this structure is:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="kr">async</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+	<span class="c1">// TODO
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="s1">&#39;Hello from lambda!&#39;</span><span class="p">)</span>
+  <span class="p">};</span>
+  <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This handler object stores the &ldquo;heart&rdquo; of the lambda function. Everything that&rsquo;s core is set to run inside a function that&rsquo;s stored inside the handler and its execution status is returned once finished. Before writing the code that goes into the function, we&rsquo;ll adjust this basic structure to run synchronously.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">context</span><span class="p">.</span><span class="nx">callbackWaitsForEmptyEventLoop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">statusCode</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="s1">&#39;Hello from lambda!&#39;</span><span class="p">,</span>
+    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>There are some things to be noticed after rewriting this function:</p>
+<ul>
+<li>The function declared now have three parameters;</li>
+<li>The function is now finished when calling a callback function;</li>
+<li>We configure an object called context to tell Node.js to <a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/" target="_blank" rel="noopener">not wait for the event queue to be processed</a>;</li>
+<li>The object to be returned now have a headers property to send headers along with the data. The header Access-Control-Allow-Origin allows the API to be called from services outside the domain where it is hosted, <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html" target="_blank" rel="noopener">which is required for the API to read the data that will be sent by the webhook</a>.</li>
+</ul>
+<p>With this setup in place, let&rsquo;s write the function code inside index.js.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mysql&#39;</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">handleEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">handleCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">status_code</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">statusCode</span><span class="o">:</span> <span class="nx">status_code</span><span class="p">,</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="nx">message</span><span class="p">,</span>
+    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>We start by importing the package mysql. Next, we create two functions: handleEvent and handleCallback. The function handleEvent will treat the object event. This object carries information about the request and have a property called body. When a POST request is done and data is passed on its body (which is the case of the webhook from RD Station), this property will have data. To make this exercise simple, we&rsquo;ll just check if there&rsquo;s data in the property body and, if there is, we try to parse the object assuming it it formatted as JSON.</p>
+<p>The next function, handleCallback, abstract the call to callback, which is sent as a parameter to the function declared on the object handler. This function returns to the requester the status of its execution.</p>
+<p>We&rsquo;ll now create an object to connect with the database.
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_HOST</span><span class="p">,</span>
+  <span class="nx">user</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_USER</span><span class="p">,</span>
+  <span class="nx">password</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_PASSWORD</span><span class="p">,</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_PORT</span><span class="p">,</span>
+  <span class="nx">database</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_DATABASE</span>
+<span class="p">});</span></code></pre></td></tr></table>
+</div>
+</div></p>
+<p>We&rsquo;ll setup some environment variables inside the lambda function that will store the database access credentials. AWS have a service designed to store information like credentials called AWS Secrets Manager. This service, though, is not available in the free tier.</p>
+<p>Once everything is done, we&rsquo;ll now write the function that will receive the webhook and store its data into the database.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">context</span><span class="p">.</span><span class="nx">callbackWaitsForEmptyEventLoop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">handleEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">&#39;leads&#39;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">lead</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// This INSERT syntax is valid in MySQL but it isn&#39;t a default SQL standard
+</span><span class="c1"></span>      <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;INSERT INTO leads SET ?&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="nx">lead</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="o">:</span> <span class="nx">lead</span><span class="p">.</span><span class="nx">email</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">,</span> <span class="nx">fields</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">connection</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+
+        <span class="nx">handleCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="nx">handleCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;Script ended&#39;</span><span class="p">);</span>
+<span class="p">};</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This function:</p>
+<ul>
+<li>Tells Node.js that the callback function doesn&rsquo;t need to wait for other events that need to be processed;</li>
+<li>Check if the there&rsquo;s a body parameter within the API request and if there&rsquo;s JSON data in it;</li>
+<li>Check if the object that was returned have a property called leads*;</li>
+<li>If there are no leads, invoke the callback function;</li>
+<li>If there are leads, wait 1 second for a query to insert data into the database to run.</li>
+</ul>
+<p>* <a href="https://developers.rdstation.com/pt-BR/migration/webhooks" target="_blank" rel="noopener">The webhook format will change</a>. For reference, this is the content that we&rsquo;re expecting at the time this post was published:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+  <span class="s2">&#34;leads&#34;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&#34;id&#34;</span><span class="o">:</span> <span class="s2">&#34;1&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;uuid&#34;</span><span class="o">:</span> <span class="s2">&#34;c2f3d2b3-......-eef38be32f7f&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;email&#34;</span><span class="o">:</span> <span class="s2">&#34;email@email.com&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;Lead Name&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;company&#34;</span><span class="o">:</span> <span class="s2">&#34;Company Name&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;job_title&#34;</span><span class="o">:</span> <span class="s2">&#34;Job&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;bio&#34;</span><span class="o">:</span> <span class="s2">&#34;This is my bio&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;created_at&#34;</span><span class="o">:</span> <span class="s2">&#34;2012-06-04T15:31:35-03:00&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;opportunity&#34;</span><span class="o">:</span> <span class="s2">&#34;false&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;number_conversions&#34;</span><span class="o">:</span> <span class="s2">&#34;3&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;user&#34;</span><span class="o">:</span> <span class="s2">&#34;email@example.com&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;first_conversion&#34;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&#34;content&#34;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&#34;identificador&#34;</span><span class="o">:</span> <span class="s2">&#34;ebook-abc&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;nome&#34;</span><span class="o">:</span> <span class="s2">&#34;Lead Name&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;email_lead&#34;</span><span class="o">:</span> <span class="s2">&#34;email@email.com&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;telefone&#34;</span><span class="o">:</span> <span class="s2">&#34;99999999&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;empresa&#34;</span><span class="o">:</span> <span class="s2">&#34;Company Name&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;cargo&#34;</span><span class="o">:</span> <span class="s2">&#34;IT&#34;</span>
+        <span class="p">},</span>
+        <span class="s2">&#34;created_at&#34;</span><span class="o">:</span> <span class="s2">&#34;2012-06-04T15:31:35-03:00&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;cumulative_sum&#34;</span><span class="o">:</span> <span class="s2">&#34;1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;source&#34;</span><span class="o">:</span> <span class="s2">&#34;source 1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;conversion_origin&#34;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&#34;source&#34;</span><span class="o">:</span> <span class="s2">&#34;source 1&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;medium&#34;</span><span class="o">:</span> <span class="s2">&#34;medium 1&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="s2">&#34;value 1&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;campaign&#34;</span><span class="o">:</span> <span class="s2">&#34;campaign 1&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;channel&#34;</span><span class="o">:</span> <span class="s2">&#34;channel 1&#34;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">&#34;last_conversion&#34;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&#34;content&#34;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&#34;identificador&#34;</span><span class="o">:</span> <span class="s2">&#34;webinar-abc&#34;</span><span class="p">,</span>
+          <span class="s2">&#34;email_lead&#34;</span><span class="o">:</span> <span class="s2">&#34;support@example.org&#34;</span>
+        <span class="p">},</span>
+        <span class="s2">&#34;created_at&#34;</span><span class="o">:</span> <span class="s2">&#34;2012-06-04T15:31:35-03:00&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;cumulative_sum&#34;</span><span class="o">:</span> <span class="s2">&#34;2&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;source&#34;</span><span class="o">:</span> <span class="s2">&#34;source 2&#34;</span>
+      <span class="p">},</span>
+      <span class="s2">&#34;custom_fields&#34;</span><span class="o">:</span> <span class="p">{},</span>
+      <span class="s2">&#34;website&#34;</span><span class="o">:</span> <span class="s2">&#34;http://www.mywebsite.com&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;personal_phone&#34;</span><span class="o">:</span> <span class="s2">&#34;48 999999999&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;mobile_phone&#34;</span><span class="o">:</span> <span class="s2">&#34;48 999999999&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;city&#34;</span><span class="o">:</span> <span class="s2">&#34;Florianópolis&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;state&#34;</span><span class="o">:</span> <span class="s2">&#34;SC&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;lead_stage&#34;</span><span class="o">:</span> <span class="s2">&#34;Lead&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;tags&#34;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&#34;tag 1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;tag 2&#34;</span>
+      <span class="p">],</span>
+      <span class="s2">&#34;fit_score&#34;</span><span class="o">:</span> <span class="s2">&#34;d&#34;</span><span class="p">,</span>
+      <span class="s2">&#34;interest&#34;</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The final index.js file:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kr">const</span> <span class="nx">mysql</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;mysql&#39;</span><span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">handleEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="k">return</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">handleCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">status_code</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">callback</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">statusCode</span><span class="o">:</span> <span class="nx">status_code</span><span class="p">,</span>
+    <span class="nx">body</span><span class="o">:</span> <span class="nx">message</span><span class="p">,</span>
+    <span class="nx">headers</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;Access-Control-Allow-Origin&#39;</span><span class="o">:</span> <span class="s1">&#39;*&#39;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">connection</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+  <span class="nx">host</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_HOST</span><span class="p">,</span>
+  <span class="nx">user</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_USER</span><span class="p">,</span>
+  <span class="nx">password</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_PASSWORD</span><span class="p">,</span>
+  <span class="nx">port</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_PORT</span><span class="p">,</span>
+  <span class="nx">database</span><span class="o">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_DATABASE</span>
+<span class="p">});</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">context</span><span class="p">.</span><span class="nx">callbackWaitsForEmptyEventLoop</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+  <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">handleEvent</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">response</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="s1">&#39;leads&#39;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">lead</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">leads</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// This INSERT syntax is valid in MySQL but it isn&#39;t a default SQL standard
+</span><span class="c1"></span>      <span class="nx">connection</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;INSERT INTO leads SET ?&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="nx">lead</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span> <span class="nx">email</span><span class="o">:</span> <span class="nx">lead</span><span class="p">.</span><span class="nx">email</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">,</span> <span class="nx">fields</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">connection</span><span class="p">.</span><span class="nx">release</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+
+        <span class="nx">handleCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="nx">handleCallback</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="s1">&#39;Script ended&#39;</span><span class="p">);</span>
+<span class="p">};</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Save the file. Select all files and folders created (index.js, node_modules and package.json) and add them into a compressed file. This file must be compressed as zip.</p>
+<figure >
+  
+  <img data-src="images/figure11-aws-lambda-function.webp" class="lazy" alt="Compressed folder containing index.js, node_modules and package.json." title="Compressed folder containing index.js, node_modules and package.json." />
+  
+  
+  <figcaption>
+    <p>Compressed folder containing index.js, node_modules and package.json. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>With the compressed folder in hand, open up the page for AWS Lambda and, inside the block Function code, select Actions &gt; Upload a .zip file. A select file window will open. Select the compressed file that contains the project files and hit Save. These files will be served in the editor for this lambda function, just like the mysql package and its dependencies.</p>
+<h3 id="setting-up-environment-variables">Setting up environment variables</h3>
+<p>When creating the object that establish a connection with the database, we&rsquo;ve used five environment variables:</p>
+<ul>
+<li>RDS_HOST;</li>
+<li>RDS_PORT;</li>
+<li>RDS_DATABASE;</li>
+<li>RDS_USER;</li>
+<li>RDS_PASSWORD.</li>
+</ul>
+<p>We need to create those variables inside lambda environment. Browse to Environment variables, below the code editor, and hit Edit. In the field Key, add RDS_HOST and in Value the endpoint that was obtained when creating the database. Select Add environment variable to add another environment variable to the project. Create all variables and add the configuration you&rsquo;ve received when creating the database instance and the database itself.</p>
+<h2 id="setting-up-the-webhook-in-rd-station">Setting up the webhook in RD Station</h2>
+<p>The final step is to activate sending webhooks from RD Station, <a href="/stories/rd-station-e-google-sheets/" >which can be accomplished under account configurations or automation flows</a>. Just follow the same procedure that was done in the post on integrating RD Station and Google Sheets, changing only the address to where the webhook must send data to. We&rsquo;ll be using the API address that was created on AWS API Gateway instead of GAS. Remember that the address must have the name of the endpoint and the resource.</p>
+<p>All done! RD Station leads are now being stored in a relational database at AWS.</p>
+<h2 id="optional-disable-public-access-to-the-database-endpoint">Optional: disable public access to the database endpoint</h2>
+<p>If you want, you can disable external access to the database endpoint outside the VPC and make sure that only the lambda function is allowed to access the database. To do that, go to Services and search for RDS (or use the history bar next to the options menu to access the service).</p>
+<p>Hit databases and select the instance that was created for the database.</p>
+<p>Hit the button Modify.</p>
+<p>In the group of options Connectivity, select Additional connectivity configuration and in Public access select the option Not publicly accessible. Hit the button Continue at the end of the page to update the instance with the new configuration.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>After running this exercise, you had a brief introduction to some of the services provided by AWS. This same architecture could have been done differently, using other services. RD Station can be just one source of data to a Data Warehouse or a Data Lake, or yet could have entered a more complex data pipeline before being written into the database. There are many possibilities and the way the implementation will work will vary according to each project&rsquo;s needs. <a href="https://docs.aws.amazon.com/index.html" target="_blank" rel="noopener">AWS documentation</a> is a great source of information, just like the many posts available at Stack Overflow from people that had issues when setting up AWS services.</p>
+<p>Remember the problem illustrated at the beginning of this post when integrating RD Station and Google Sheets: the high volume of simultaneous leads. Many leads being simultaneously sent to the API can result in many instances of a lambda function running and many database connections to be opened. The solution given to this problem at the beginning of the post was to separate leads based on the date they were created, which also works here. This solution avoids wasting computational resources and increase costs associated with this task on AWS.</p>
+<p>Let&rsquo;s continue automating!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC">17/11/2020 09:10:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Setting up Metabase and PostgreSQL with Docker</h2>
+      <p class="mb-6 text-white" itemprop="abstract">How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</p>
+      <div>
+        <a class="button-primary" href="/en/stories/configurando-metabase-e-postgresql-no-docker/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC">02/09/2018 14:07:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets: automatically exporting leads to spreadsheets</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/apis-e-carrinhos-de-supermercado/images/thumbnail_hu46c54be97ab545b46d52504c6747000a_184568_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-07-04 21:20:00 &#43;0000 UTC">04/07/2018 21:20:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">APIs and grocery carts</h2>
+      <p class="mb-6 text-white" itemprop="abstract">What is an API and what it is for? This post will introduce it without using technical language.</p>
+      <div>
+        <a class="button-primary" href="/en/stories/apis-e-carrinhos-de-supermercado/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>

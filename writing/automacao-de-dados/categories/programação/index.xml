@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programação on Automação de Dados</title>
+    <link>https://www.automacaodedados.com.br/categories/programa%C3%A7%C3%A3o/</link>
+    <description>Recent content in Programação on Automação de Dados</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 15 Sep 2018 16:29:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/categories/programa%C3%A7%C3%A3o/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Workflow automático para desenvolvimento de temas e plugins no WordPress</title>
+      <link>https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/</link>
+      <pubDate>Sat, 15 Sep 2018 16:29:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/workflow-para-desenvolvimento-wordpress/</guid>
+      <description>Um fluxo de trabalho bem montado pode economizar horas de manutenções futuras em projetos WordPress. Este post vai apresentar uma possível organização de projeto utilizando templates e o gerenciador de tarefas Gulp.</description>
+    </item>
+    
+    <item>
+      <title>Sites estáticos com Jekyll e Github Pages</title>
+      <link>https://www.automacaodedados.com.br/stories/sites-estaticos-com-jekyll/</link>
+      <pubDate>Mon, 01 Jan 2018 19:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/sites-estaticos-com-jekyll/</guid>
+      <description>Sites são raramente construídos do zero. Há uma infinidade de ferramentas e frameworks que oferecem estruturas prontas para construir e publicar sites na internet. Este post vai apresentar o Jekyll, um gerador de sites estáticos, e como usá-lo em conjunto com o Github Pages para publicar sites sem custo algum.</description>
+    </item>
+    
+  </channel>
+</rss>

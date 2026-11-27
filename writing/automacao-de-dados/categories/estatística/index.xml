@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Estatística on Automação de Dados</title>
+    <link>https://www.automacaodedados.com.br/categories/estat%C3%ADstica/</link>
+    <description>Recent content in Estatística on Automação de Dados</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 06 Dec 2017 11:36:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/categories/estat%C3%ADstica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Calculadora para testes com amostras online</title>
+      <link>https://www.automacaodedados.com.br/stories/calculadora-de-significancia-estatistica-para-testes-ab/</link>
+      <pubDate>Wed, 06 Dec 2017 11:36:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/calculadora-de-significancia-estatistica-para-testes-ab/</guid>
+      <description>Construí uma calculadora para testes com amostras online. Ela retorna o tamanho da amostra necessária para o teste, a duração estimada de dias para que o teste seja concluído e a significância estatística de todas as variações. Explicarei neste post como esta calculadora funciona e como usá-la.</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Configuração das ferramentas</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</link>
+      <pubDate>Wed, 29 Nov 2017 09:12:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-6/</guid>
+      <description>Configurar testes com amostras online requer alguns cuidados. Configurações erradas podem invalidar os achados do estudo e levar negócios a tomarem decisões com base em dados inverídicos – o que é potencialmente pior do que não ter dados.</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - P-valor, alfa, beta e tamanho do efeito</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</link>
+      <pubDate>Mon, 27 Nov 2017 09:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-5/</guid>
+      <description>As ferramentas para testes mais conhecidas conseguem cuidar dos cálculos envolvidos na execução dos experimentos, porém a pessoa projetista de testes deve ser capaz de fornecer as variáveis matemáticas que compõem estes cálculos. Explicarei quais são estas variáveis e como elas se relacionam para gerar o resultado de um teste.</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Histogramas e curvas de densidade</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</link>
+      <pubDate>Sun, 26 Nov 2017 09:59:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-4/</guid>
+      <description>Ao longo de um teste, várias amostras são obtidas e suas taxas de conversão são calculadas. O próximo passo é agrupar e classificar esses dados de tal forma que seja possível tirar as informações necessárias para inferir dados sobre toda a população. Como exatamente isso acontece e qual sua importância para a execução de testes?</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Amostras e probabilidades</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</link>
+      <pubDate>Fri, 24 Nov 2017 11:21:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-3/</guid>
+      <description>Como garantir que o resultado de um teste de hipóteses com amostras é representativo da população estudada?</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - Hipóteses</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</link>
+      <pubDate>Thu, 23 Nov 2017 11:07:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-2/</guid>
+      <description>Existem vários tipos de testes baseados em amostragens, e neste post será apresentado o mais comum quando se fala em testes com amostras online, como o A/B: testes baseados em hipóteses.</description>
+    </item>
+    
+    <item>
+      <title>Estatística para testes - A importância de saber estatística</title>
+      <link>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</link>
+      <pubDate>Wed, 22 Nov 2017 10:35:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/stories/estatistica-em-testes-para-nao-matematicos-parte-1/</guid>
+      <description>Você costuma fazer testes do tipo A/B, split ou outros e se pergunta se os dados que a ferramenta de testes fornece são válidos? Se a resposta é não, você deveria.</description>
+    </item>
+    
+  </channel>
+</rss>

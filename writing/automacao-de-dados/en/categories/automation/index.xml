@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Automation on Data Automation</title>
+    <link>https://www.automacaodedados.com.br/en/categories/automation/</link>
+    <description>Recent content in Automation on Data Automation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 17 Nov 2020 09:10:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/en/categories/automation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up Metabase and PostgreSQL with Docker</title>
+      <link>https://www.automacaodedados.com.br/en/stories/configurando-metabase-e-postgresql-no-docker/</link>
+      <pubDate>Tue, 17 Nov 2020 09:10:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/configurando-metabase-e-postgresql-no-docker/</guid>
+      <description>How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</description>
+    </item>
+    
+    <item>
+      <title>RD Station and Google Sheets Part 2 - Moving to AWS</title>
+      <link>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets-na-aws/</link>
+      <pubDate>Thu, 03 Sep 2020 19:23:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets-na-aws/</guid>
+      <description>We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</description>
+    </item>
+    
+    <item>
+      <title>RD Station and Google Sheets: automatically exporting leads to spreadsheets</title>
+      <link>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/</link>
+      <pubDate>Sun, 02 Sep 2018 14:07:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/rd-station-e-google-sheets/</guid>
+      <description>Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</description>
+    </item>
+    
+    <item>
+      <title>APIs and grocery carts</title>
+      <link>https://www.automacaodedados.com.br/en/stories/apis-e-carrinhos-de-supermercado/</link>
+      <pubDate>Wed, 04 Jul 2018 21:20:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/apis-e-carrinhos-de-supermercado/</guid>
+      <description>What is an API and what it is for? This post will introduce it without using technical language.</description>
+    </item>
+    
+    <item>
+      <title>Google Apps Script with OAuth2</title>
+      <link>https://www.automacaodedados.com.br/en/stories/google-apps-script-com-oauth2/</link>
+      <pubDate>Mon, 29 Jan 2018 14:42:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/google-apps-script-com-oauth2/</guid>
+      <description>Google Apps Script is packed with many features to enhance other Google products. One of these features allows Google apps to connect with third party services. This feature will be presented throughout this post, focusing on APIs that authenticate using OAuth2 protocol.</description>
+    </item>
+    
+    <item>
+      <title>The basics of APIs</title>
+      <link>https://www.automacaodedados.com.br/en/stories/fundamentos-das-apis/</link>
+      <pubDate>Tue, 12 Dec 2017 21:34:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/fundamentos-das-apis/</guid>
+      <description>APIs are very useful to automate processes and personalize workflows. From a technical standpoint, they contribute for developing distributed applications. Knowing APIs is vital to create applications able to communicate with the outside world.</description>
+    </item>
+    
+    <item>
+      <title>An overview of Google Apps Script</title>
+      <link>https://www.automacaodedados.com.br/en/stories/uma-introducao-ao-google-apps-script/</link>
+      <pubDate>Mon, 20 Nov 2017 15:05:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/uma-introducao-ao-google-apps-script/</guid>
+      <description>In a previous post I briefly presented Google Apps Script, a tool capable of enhancing the default features of any Google apps. In this post, I will make its proper introduction and show how to use it to automate data collection and treatment tasks.</description>
+    </item>
+    
+    <item>
+      <title>Creating automated reports through APIs</title>
+      <link>https://www.automacaodedados.com.br/en/stories/geracao-de-relatorios-automatizados-por-apis/</link>
+      <pubDate>Sun, 19 Nov 2017 13:13:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/geracao-de-relatorios-automatizados-por-apis/</guid>
+      <description>Recently I had to build a repository with data that would feed some reports. The sources that would need to be ingested were scattered at least across 6 different systems and reunite all that information weekly was time consuming. I&amp;rsquo;ve figured out a way to make that process somewhat more efficient.</description>
+    </item>
+    
+  </channel>
+</rss>

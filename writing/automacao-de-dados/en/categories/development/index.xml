@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Development on Data Automation</title>
+    <link>https://www.automacaodedados.com.br/en/categories/development/</link>
+    <description>Recent content in Development on Data Automation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 15 Sep 2018 16:29:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/en/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automatic workflow to develop plugins and themes for WordPress</title>
+      <link>https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/</link>
+      <pubDate>Sat, 15 Sep 2018 16:29:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/workflow-para-desenvolvimento-wordpress/</guid>
+      <description>A good workflow can reduce hours with project maintenance in WordPress. This post will present one possible way to organize a project using templates and Gulp, a task runner.</description>
+    </item>
+    
+    <item>
+      <title>Static sites with Jekyll and Github Pages</title>
+      <link>https://www.automacaodedados.com.br/en/stories/sites-estaticos-com-jekyll/</link>
+      <pubDate>Mon, 01 Jan 2018 19:47:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/sites-estaticos-com-jekyll/</guid>
+      <description>Websites are rarely built from scratch. There are many tools and frameworks which provide built in structures to build and publish websites on the internet. This post will present Jekyll, a static site generator, and how to use it in conjunction with Github Pages to publish sites on the internet with no cost.</description>
+    </item>
+    
+  </channel>
+</rss>

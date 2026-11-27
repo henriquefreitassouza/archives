@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Analysis on Data Automation</title>
+    <link>https://www.automacaodedados.com.br/en/categories/analysis/</link>
+    <description>Recent content in Analysis on Data Automation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 16 Feb 2020 11:37:00 +0000</lastBuildDate><atom:link href="https://www.automacaodedados.com.br/en/categories/analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What does a data analyst do?</title>
+      <link>https://www.automacaodedados.com.br/en/stories/o-que-faz-a-pessoa-analista-de-dados/</link>
+      <pubDate>Sun, 16 Feb 2020 11:37:00 +0000</pubDate>
+      
+      <guid>https://www.automacaodedados.com.br/en/stories/o-que-faz-a-pessoa-analista-de-dados/</guid>
+      <description>Data analysts, data scientists, data engineers... There are many professionals who work with data. In this post, we will understand what data analysts do and deliver, and how he or she work alongside other data professionals</description>
+    </item>
+    
+  </channel>
+</rss>

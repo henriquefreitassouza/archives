@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html class="" lang="en" dir="ltr">
+  <head>
+    <title>An overview of Google Apps Script | Data Automation</title>
+
+
+
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Understand the fundamentals of Google Apps Script and get to know how to use it to automate tasks. | Data Automation" />
+
+<meta property="og:url" content="https://www.automacaodedados.com.br/en/stories/uma-introducao-ao-google-apps-script/">
+<meta property="og:locale" content="en" />
+<meta property="og:title" content="An overview of Google Apps Script | Data Automation">
+<meta property="og:description" content="Understand the fundamentals of Google Apps Script and get to know how to use it to automate tasks. | Data Automation">
+<meta property="og:site_name" content="Data Automation">
+
+<meta name="twitter:card" content="summary_large_image">
+
+
+<meta property="og:type" content="article">
+<meta property="article:author" content="Henrique Freitas Souza" />
+<meta property="article:published_time" content="2017-11-20 15:05:00 &#43;0000 UTC" />
+<meta property="article:modified_time" content="2021-10-18 15:05:00 &#43;0000 UTC" />
+<meta name="twitter:label1" content="Estimated time to read" />
+<meta name="twitter:data1" content="6 minutes" />
+
+<meta property="article:tag" content="Automation" />
+<meta property="article:section" content="Automation" />
+
+
+
+<meta property="og:image" content="https://www.automacaodedados.com.br/en/stories/uma-introducao-ao-google-apps-script/images/thumbnail.jpg">
+<meta name="twitter:image" content="https://www.automacaodedados.com.br/en/stories/uma-introducao-ao-google-apps-script/images/thumbnail.jpg">
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="400" />
+
+<meta name="og:image:alt" content="Google Apps Script home website page.">
+
+    <link href="https://www.automacaodedados.com.br/images/favicon.ico" rel="icon" type="image/x-icon" />
+
+	
+	<link rel="alternate" hreflang="pt" href="https://www.automacaodedados.com.br/stories/uma-introducao-ao-google-apps-script/" title="Português">
+	
+
+<link rel="preload" as="script" href="/js/ui.min.js" />
+<link rel="preload" as="script" href="/js/theme.min.js" />
+<link rel="preload" as="style" href="/css/fonts.min.css" />
+<link rel="preload" as="style" href="/css/main.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<link rel="stylesheet" href="/css/main.min.css" />
+<script src="/js/ui.min.js" async></script>
+
+    
+  </head>
+  <body class="overflow-x-hidden dark:bg-secondary">
+    <div class="flex flex-col h-screen">
+      <a class="sr-only focus:sr-only" href="#content">Skip to content</a>
+      <header class="flex flex-col justify:between">
+  <div class="container container-box mx-auto lg:px-0">
+    <div class="px-2 flex flex-wrap justify-between items-center">
+      <div class="w-6/12 md:w-auto">
+        <a href="/en" class="flex items-center mr-2 font-title no-underline hover:no-underline focus:outline-none focus:ring-2 focus:ring-offset-8 focus:ring-secondary-darker dark:ring-offset-secondary dark:ring-white">
+          <img class="mr-2 w-16 h-8" id="site-logo" src="https://www.automacaodedados.com.br/images/automacaodedados_logo.svg" alt="Logo Data Automation">
+          <span class="text-base font-title leading-none mb-0 break-words dark:text-white">Data Automation</span>
+        </a>
+      </div>
+      <div class="flex items-center lg:order-last">
+        <a class="p-2 mr-2 inline-block no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:mr-0 lg:ml-2" id="theme-menu-toggle" href="#" title="Switch between light and dark themes">
+          <span class="sr-only">Switch between light and dark themes</span>
+          <i class="w-7 h-7" id="theme-toggle-icon"></i>
+        </a>
+        <a id="navigation-menu-toggle" class="p-2 inline-block text-base no-underline focus:outline-none focus:ring-2 focus:ring-secondary-darker dark:focus:ring-white lg:hidden" role="button" aria-owns="main-menu" aria-controls="main-menu" aria-expanded="false" href="#main-menu">
+          <span class="sr-only">Toggle main navigation</span>
+          <i class="navigation-menu-icon w-7 h-7 dark:filter dark:invert" id="navigation-toggle-icon"></i>
+        </a>
+      </div>
+      <div id="main-menu" class="flex flex-grow mt-4 hidden targeted:block lg:block lg:w-auto lg:mt-0" aria-labelledby="navigation-menu-toggle">
+  <div class="container mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+      <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+        <ul class="ml-auto mb-2 lg:mb-0">
+          
+          <li class="list-none lg:inline-block" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a class="py-2 inline-block no-underline hover:text-gray-900 hover:underline dark:hover:text-white lg:p-2 lg:mr-2" href="/en/stories" itemprop="item">
+              <span class="text-base dark:text-white" itemprop="name">All Stories</span>
+            </a>
+          </li>
+          
+        </ul>
+      </nav>
+      <div itemscope itemtype="https://schema.org/WebSite">
+  <form class="inline-search flex p-2 mb-2 border-2 rounded-lg dark:bg-white lg:mb-0" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" action="/en/search/" role="search" method="get">
+    <meta itemprop="target" content="https://www.automacaodedados.com.br/en/search/">
+    <label class="sr-only" for="q">Search stories</label>
+    <input class="text-sm px-4 w-full focus:outline-none focus:border-transparent dark:text-gray-900" itemprop="query" id="q" name="q" type="search" aria-label="Search the entire website" placeholder='Search stories'>
+    <button class="p-2 text-base focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary-darker" type="submit">
+      <span class="sr-only">Start search</span>
+      <i class="search-icon w-4 h-4"></i>
+    </button>
+  </form>
+</div>
+
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+</header>
+
+      <main id="content" class="flex-grow">
+        
+
+
+<article role="article" itemscope itemtype="https://schema.org/Article">
+  <header>
+
+  
+
+
+  
+  
+  
+  
+  
+<div class="relative py-8">
+  
+    
+  <div class="absolute inset-0 bg-cover bg-center filter brightness-75" style="background-image: url('/en/stories/uma-introducao-ao-google-apps-script/images/thumbnail_hu3a715c45854479e2c8fba80d8e6db228_68301_1024x400_fill_q75_box_smart1.jpg');"></div>
+  
+  <div class="relative container container-box mx-auto">
+    <div class="flex justify-between items-center mb-6 px-2">
+      <div class="flex flex-col lg:flex-row">
+        
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base lg:ml-2" pubdate datetime="2017-11-20 15:05:00 &#43;0000 UTC" itemprop="datePublished">20/11/2017 15:05:00</time>
+        
+      </div>
+      <a class="badge dark:ring-offset-secondary-darker" href="/en/categories/automation" itemprop="articleSection">automation</a>
+    </div>
+    <div class="flex flex-col px-2">
+      
+      <div>
+        <h1 class="text-white text-5xl break-words lg:text-6xl lg:break-normal" itemprop="headline">An overview of Google Apps Script</h1>
+      </div>
+      <div>
+        
+        <p class="text-white text-2xl" itemprop="abstract">In a previous post I briefly presented Google Apps Script, a tool capable of enhancing the default features of any Google apps. In this post, I will make its proper introduction and show how to use it to automate data collection and treatment tasks.</p>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  </header>
+  <div class="bg-secondary hidden dark:bg-neutral lg:block">
+    <div class="container container-box mx-auto">
+      <div class="px-2">
+      <nav aria-label="Breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="flex ml-auto mb-0">
+    
+  
+    
+  
+    
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/" itemprop="item">
+      
+      <span class="text-white" itemprop="name">Home</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/" itemprop="item">
+      
+        <span class="text-white" itemprop="name">All stories</span>
+      
+    </a>
+    <i class="breadcrumb-separator"></i>
+  </li>
+  
+
+  
+
+  
+  <li class="flex relative pr-7 last:pr-0 dark:filter dark:invert" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+    <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-gray-100" href="/en/stories/uma-introducao-ao-google-apps-script/" aria-current="page" itemprop="item">
+      <span class="text-white" itemprop="name">An overview of Google Apps Script</span>
+    </a>
+  </li>
+  
+
+  </ul>
+</nav>
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="container container-box mx-auto">
+    <div class="max-w-3xl px-2 mx-auto flex flex-col">
+      <main id="post" itemprop="articleBody">
+        <strong class="inline-block text-base mb-4 dark:text-white">Estimated time to read: 6 minutes</strong>
+        <p>Published on November 20, 2017 and updated on October 18, 2021.</p>
+<p>Update October 18, 2021: on this date, it is possible to use Javascript&rsquo;s ES6 features to write scripts on Google Apps Script.</p>
+<p>I&rsquo;ve used Google Apps Script for the first time when I needed to transport data from external sources to a spreadsheet on Google Sheets. The task I had to accomplish was similar to the one I&rsquo;ve described on my <a href="/en/stories/geracao-de-relatorios-automatizados-por-apis/" >previous post</a>: ingest and transform data to feed the correct cells on the spreadsheet. I&rsquo;ve been studying the tool since, trying to understand what else it can accomplish. I&rsquo;ve figured out many interesting things, some of which I&rsquo;m going to share on this post.</p>
+<h2 id="google-apps-script">Google Apps Script</h2>
+<p>The tool is a script editor that can execute code from a language very similar to Javascript. With it, it is possible to create apps that are executed alongside Google&rsquo;s main line of products, making those products even more personalized to any need. Those that are used with Javascript or similar languages don&rsquo;t have to learn a new language to start working with Google Apps Script. The difference between the Javascript that is used inside Google Apps Script is that it implements some classes and utilities to work with the other Google apps. There are also utilities to make some tasks easier, like calls to external services or work with dates and times.</p>
+<p>Google Apps Script can do more that modify content created on apps like Google Docs, Google Spreadsheets or Google Slides. They allow developers to do things like create new options for those apps, send emails through Gmail, create and organize documents on Google Drive, consume APIs like the one from Google Maps and build workflows, just to cite some of its resources. On the documentation page there is a <a href="https://developers.google.com/apps-script/guides/support/case-studies" target="_blank" rel="noopener">showcase</a> of applications made by users.</p>
+<h2 id="how-to-use-google-apps-script">How to use Google Apps Script</h2>
+<p>Essentially, there are two ways to create scripts using the tool: bound to an existing Google document or a standalone script.</p>
+<h3 id="bind-scripts">Bind scripts</h3>
+<p>Scripts that are created and bind to a document have all permissions to work with the document that it is bound to. Once bound, the script cannot be unbound from the document. To create a bind script, open or create a new Google document, then open the menu Tools &gt; Script editor.</p>
+<figure >
+  
+  <img data-src="images/figure1-script-editor-menu-open.webp" class="lazy" alt="Spreadsheet opened with menu option Script Editor shown." title="Spreadsheet opened with menu option Script Editor shown." />
+  
+  
+  <figcaption>
+    <p>Spreadsheet opened with menu option Script Editor shown. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Once opened, the script editor will load with a blank file called Code.gs.</p>
+<figure >
+  
+  <img data-src="images/figure2-script-editor-main-screen-opened.webp" class="lazy" alt="Script editor main screen opened in 2017." title="Script editor main screen opened in 2017." />
+  
+  
+  <figcaption>
+    <p>Script editor main screen opened in 2017. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The panel interface is the same for both bind and standalone scripts. The left side panel shows all project files and the right side panel is the editor area. The file that is created with every new project, Code.gs, there is only one function predefined, called myFunction. Once the code is ready, it can be executed by going to Execute &gt; Execute function &gt; Function name, as funtion name being the name of a function that is declared.</p>
+<figure >
+  
+  <img data-src="images/figure3-script-editor-run-function.webp" class="lazy" alt="Script editor ready to run a function in 2017." title="Script editor ready to run a function in 2017." />
+  
+  
+  <figcaption>
+    <p>Script editor ready to run a function in 2017. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>The console log can be used to visualize any script outputs.</p>
+<figure >
+  
+  <img data-src="images/figure4-script-editor-executions-logged.webp" class="lazy" alt="Popup window showing logs in 2017." title="Popup window showing logs in 2017." />
+  
+  
+  <figcaption>
+    <p>Popup window showing logs in 2017. Source: Author</p>
+  </figcaption>
+  
+</figure>
+
+<p>This log is different from the execution log. While the execution log register script execution outputs, the console log register data produced by the function throughout its execution. To send data to the console log, which can be used to test the output for instance, use the Logger class:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">Logger</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">);</span></code></pre></td></tr></table>
+</div>
+</div>
+<figure >
+  
+  <img data-src="images/figure5-script-editor-log-window.webp" class="lazy" alt="Log popup window showing user messages in 2017." title="Log popup window showing user messages in 2017." />
+  
+  
+  <figcaption>
+    <p>Log popup window showing user messages in 2017. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Another interesting Google Apps Script resource is to setup the so called triggers, that can wait for a given event to execute tasks associated with that event. Triggers can be of two types: time based and event based. Time based triggers run periodically, and the interval is set by the user, and event based triggers run when a given event occur. Some event based triggers are:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">onEdit</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// TODO
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onChange</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// TODO
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">onOpen</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// TODO
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Event based triggers are created with functions, and the code inside those functions is executed when the event happens. A practical application on Google Spreadsheets, for instance, is to update cells based on user input. Consider the example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">onEdit</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">range</span><span class="p">.</span><span class="nx">getA1Notation</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&#34;L8&#34;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sheet</span> <span class="o">=</span> <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getActiveSheet</span><span class="p">();</span>
+    <span class="nx">sheet</span><span class="p">.</span><span class="nx">getRange</span><span class="p">(</span><span class="s2">&#34;L9&#34;</span><span class="p">).</span><span class="nx">setValue</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">oldValue</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>This function listen the event associated with editing any cell of a spreadsheet, verify if the cell being edited correspond to the postiion L8, and then update another cell with the edited cell&rsquo;s previous value.</p>
+<figure >
+  
+  <img data-src="images/figure6-dynamically-loaded-data.webp" class="lazy" alt="Planilha com dados financeiros sendo atualizada automaticamente." title="O valor da célula L9 na aba ativa é atualizado com base no valor da célula L8." />
+  
+  
+  <figcaption>
+    <p>O valor da célula L9 é atualizado com base no valor da célula L8. Fonte: Autor.</p>
+  </figcaption>
+  
+</figure>
+
+<figure >
+  
+  <img data-src="images/figure6-dynamically-loaded-data.webp" class="lazy" alt="Spreadsheet with financial data updated automatically." title="The value at cell L9 is updated whenever the contents of L8 cell are updated." />
+  
+  
+  <figcaption>
+    <p>The value at cell L9 is updated whenever the contents of L8 cell are updated. Source: Author.</p>
+  </figcaption>
+  
+</figure>
+
+<p>Triggers that are time based can be configured on the Triggers menu option, shaped after a clock. This trigger is configured by defining the moment that it will occur (when the file is opened or changed), and the time interval at which the trigger will run.</p>
+<p>There are many other possible uses for Google Apps Script. Suppose that you have a document containing a list of contacts stored on Google Drive. You can create a script to read all the contacts on this list, register them on Google Contacts, and then send an email to the contact list using Gmail. If this is a task that must happen with frequency, it is possible to setup a time based trigger and the process will be automated.</p>
+<h3 id="standalone-scripts">Standalone scripts</h3>
+<p>Standalone scripts work similar to bind scripts. Unlike the former, they are visible on Google Drive as files and can be used to create Web Apps or utilities, like a task automation utility. One example would be to organize new files that are stored on Google Drive in a given folder or with a given name.</p>
+<h2 id="web-apps">Web Apps</h2>
+<p>Scripts can be published on the internet, with a unique address. This is useful when the script should receive data from external systems. In order to be published on the internet and to be a web app, the project must contain at least one script with two declared functions:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">doGet</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// TODO
+</span><span class="c1"></span>  <span class="c1">// Return object from types HtmlOutput or TextOutput
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">doPost</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// TODO
+</span><span class="c1"></span><span class="p">}</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>The function doGet must return an object of either HtmlOutput or TextOutput types. To interact with the script from an external application, it must be published as a web app with proper permissions. Once it is published, external application can easily access its web address and send the data that will be used by the script.</p>
+<h2 id="additional-resources">Additional resources</h2>
+<p>These are some of the resources provided by Google Apps Script. I suggest you to bookmark the <a href="https://developers.google.com/apps-script/" target="_blank" rel="noopener">documentation site</a> on your browser, as you will use it quite often. At the <a href="https://developers.google.com/apps-script/overview" target="_blank" rel="noopener">guides</a> section there are beginner level tutorials for those who want to learn by doing, under the &ldquo;5-Minute Quickstarts&rdquo;. In the <a href="https://developers.google.com/apps-script/support" target="_blank" rel="noopener">support</a> section there are links to questions asked on Stack Overflow and many other resources.</p>
+<p>Let&rsquo;s automate!</p>
+
+      </main>
+      <footer>
+        
+
+
+<div class="h-1 w-16 my-6 bg-gray-900 mx-auto dark:bg-white"></div>
+<div class="flex justify-center items-center" itemprop="author" itemscope itemtype="https://schema.org/Person">
+  <div class="mr-4 w-3/12 md:w-2/12">
+    <img class="rounded-full" src="/images/profiles/henriquesouza/profile.webp" alt="Henrique Freitas Souza" itemprop="image">
+  </div>
+  <div class="w-9/12 md:w-10/12">
+    <address class="font-title dark:text-white" itemprop="name">Henrique Freitas Souza</address>
+    
+    <p class="mb-auto text-base dark:text-white" itemprop="description">Once I&#39;ve read that data is like nuclear waste. Since then I&#39;m extra careful when using them.</p>
+    
+  </div>
+</div>
+
+
+      </footer>
+    </div>
+  </div>
+</article>
+
+  
+  
+<div class="container container-box mx-auto">
+  <div class="px-2 lg:px-0">
+    <aside role="complementary">
+      <span class="inline-block w-full font-title text-3xl text-center mb-4 px-2 dark:text-white">You should also read these stories</span>
+      <div class="lg:flex lg:flex-wrap lg:justify-start">
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/configurando-metabase-e-postgresql-no-docker/images/thumbnail_hu46ba3eab324bd3b57676d5fcac380c13_42865_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-11-17 09:10:00 &#43;0000 UTC">17/11/2020 09:10:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">Setting up Metabase and PostgreSQL with Docker</h2>
+      <p class="mb-6 text-white" itemprop="abstract">How to built a simple service architecture, easy to maintain and portable using Docker? Throughout this post, you&amp;rsquo;ll discover how to do that integrating a PostgreSQL database with Metabase</p>
+      <div>
+        <a class="button-primary" href="/en/stories/configurando-metabase-e-postgresql-no-docker/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets-na-aws/images/thumbnail_hu4a2eaaaa0922d32f9b411fc58706e27f_32210_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2020-09-03 19:23:00 &#43;0000 UTC">03/09/2020 19:23:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets Part 2 - Moving to AWS</h2>
+      <p class="mb-6 text-white" itemprop="abstract">We saw before on this blog how to send leads from RD Station to a spreadsheet automatically. Now we will see how to send these same leads to a database hosted on AWS</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets-na-aws/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+          
+
+
+
+
+<div class="mb-4 lg:mb-0 lg:p-2 lg:w-1/2 xl:w-1/3">
+  <article class="relative flex flex-col bg-gray-300 p-6 h-full rounded-lg dark:bg-secondary-darker" role="article" itemscope itemtype="https://schema.org/Article">
+  
+    
+    <div class="absolute inset-0 bg-cover bg-center filter brightness-50 rounded-lg" style="background-image: url('/en/stories/rd-station-e-google-sheets/images/thumbnail_hu9a8e1eb5a7452283d6f6255f788ec07e_26449_500x500_fill_q75_box_smart1.jpg');"></div>
+  
+    <header class="relative flex flex-wrap justify-between items-center mb-6">
+      
+      <div>
+        <address class="text-white text-base" itemprop="author">Henrique</address>
+        <time class="text-white text-base" itemprop="datePublished" pubdate datetime="2018-09-02 14:07:00 &#43;0000 UTC">02/09/2018 14:07:00</time>
+      </div>
+      <a href="/en/categories/automation" class="badge" itemprop="articleSection">automation</a>
+      
+    </header>
+    <main class="relative" itemprop="articleBody">
+      
+      <h2 class="text-white" itemprop="headline">RD Station and Google Sheets: automatically exporting leads to spreadsheets</h2>
+      <p class="mb-6 text-white" itemprop="abstract">Get to know how to automatically send leads to Google Sheets from RD Station, a marketing automation software</p>
+      <div>
+        <a class="button-primary" href="/en/stories/rd-station-e-google-sheets/">Read more</a>
+      </div>
+      
+    </main>
+  </article>
+</div>
+
+        
+      </div>
+    </aside>
+  </div>
+</div>
+  
+
+
+      </main>
+      <footer>
+        <div class="bg-secondary-darker">
+  <div class="container container-box mx-auto">
+    <div class="flex flex-wrap justify-between px-2 lg:px-0">
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-2/4">
+        <div class="flex items-center mb-4">
+          <img src="https://www.automacaodedados.com.br/images/automacaodedados_logo_white.svg" alt="Logo Data Automation" class="mr-2 w-16 h-8">
+          <span class="font-title inline-block text-white text-base">Data Automation</span>
+        </div>
+        <p class="text-white">Space to publish information that help democratize knowledge about new technologies in Brazil.</p>
+      </div>
+      <div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">All categories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analysis/" itemprop="item">
+          <span class="text-white" itemprop="name">Analysis</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/analytics/" itemprop="item">
+          <span class="text-white" itemprop="name">Analytics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/automation/" itemprop="item">
+          <span class="text-white" itemprop="name">Automation</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/design/" itemprop="item">
+          <span class="text-white" itemprop="name">Design</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/development/" itemprop="item">
+          <span class="text-white" itemprop="name">Development</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/entrepreneurship/" itemprop="item">
+          <span class="text-white" itemprop="name">Entrepreneurship</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/governance/" itemprop="item">
+          <span class="text-white" itemprop="name">Governance</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/marketing/" itemprop="item">
+          <span class="text-white" itemprop="name">Marketing</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/statistics/" itemprop="item">
+          <span class="text-white" itemprop="name">Statistics</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/categories/visualization/" itemprop="item">
+          <span class="text-white" itemprop="name">Visualization</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+<div class="w-full mb-6 last:mb-auto lg:mb-auto lg:p-2 lg:w-1/4">
+  <span class="font-title inline-block mb-4 text-white text-base">Latest stories</span>
+  <nav role="navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="list-none ml-auto">
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/o-metaverso-pos-meta/" itemprop="item">
+          <span class="text-white" itemprop="name">The Metaverse post Meta</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/construcao-da-identidade-no-espaco-virtual/" itemprop="item">
+          <span class="text-white" itemprop="name">Identity development in the digital space</span>
+        </a>
+      </li>
+      
+      <li class="mb-2 last:mb-auto" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a class="text-white no-underline hover:text-white hover:underline dark:hover:text-white" href="/en/stories/como-escolher-o-melhor-grafico/" itemprop="item">
+          <span class="text-white" itemprop="name">How to choose the best chart?</span>
+        </a>
+      </li>
+      
+    </ul>
+  </nav>
+</div>
+
+    </div>
+  </div>
+</div>
+<div class="bg-gray-300">
+  <div class="container container-box mx-auto">
+    <div class="text-center lg:flex lg:justify-between lg:items-center lg:text-left px-2">
+      <span class="inline-block text-base dark:text-gray-900">Made with Hugo &#43; Tailwind and hosted on Github Pages.</span>
+      <div itemscope itemtype="https://schema.org/Language">
+        <ul class="ml-auto mb-0">
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/" itemprop="name">🇧🇷 Português</a>
+          </li>
+          
+          <li class="inline-block" itemprop="availableLanguage" itemscope itemtype="https://schema.org/Language">
+            <a class="px-2 py-1 text-base no-underline hover:text-gray-900 hover:underline dark:text-gray-900 dark:hover:text-gray-900" href="/en/" itemprop="name">🇺🇸 English</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </footer>
+    </div>
+    <script src="/js/theme.min.js"></script>
+
+    
+<script src="/js/lazy.min.js" async></script>
+
+  </body>
+</html>
